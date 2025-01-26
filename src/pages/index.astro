@@ -19,7 +19,7 @@ const services = [
   },
   {
     title: "Align Teams on Shared Goals",
-    description: "Set clear metrics (e.g., lead time, rework rate, deployment frequency) that connect directly to customer value. Everyone knows what success looks like and how to achieve it.",
+    description: "Set clear metrics for customer value. Everyone knows what success looks like and how to achieve it.",
     icon: `<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>`
   }
 ];
@@ -28,14 +28,13 @@ const process = [
   {
     title: "Planning & Alignment",
     steps: [
-      "Define Scope and Goals: We clarify your improvement needs, objectives, and where the biggest constraints lie (e.g., inter-team dependencies, feedback delays) and involve key stakeholders from the start."
+      "We clarify your improvement needs, objectives, where the biggest constraints lie (e.g., inter-team dependencies, feedback delays) and involve key stakeholders from the start."
     ]
   },
   {
     title: "Workshop Sessions",
     steps: [
-      "Visualize and measure your workflows.",
-      "See bottlenecks and dependencies.",
+      "Visualize and measure your workflows, spotting bottlenecks and dependencies.",
       "Enable powerful conversations about how to improve."
     ]
   },
@@ -48,7 +47,7 @@ const process = [
   {
     title: "Implementation & Ongoing Support",
     steps: [
-      "Regular Check-ins: We review progress, address blockers, and refine plans as your organization evolves."
+      "Regular Check-ins: We review progress, address blockers, and refine plans as needed."
     ]
   }
 ];
@@ -121,6 +120,24 @@ const testimonials = [
       </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section class="py-20 px-4 bg-[rgb(240,242,245)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[rgb(33,48,118)]">What Clients Say</h2>
+        {testimonials.map(testimonial => (
+          <blockquote class="bg-white p-8 rounded-lg shadow-md">
+            <p class="text-gray-600 mb-6 text-lg italic">"{testimonial.quote}"</p>
+            <footer class="flex items-center gap-4">
+              <div>
+                <cite class="text-[rgb(33,48,118)] font-bold not-italic">{testimonial.name}</cite>
+                <p class="text-gray-500">{testimonial.role}</p>
+              </div>
+            </footer>
+          </blockquote>
+        ))}
+      </div>
+    </section>
+
     <!-- Case Study Section -->
     <section class="py-20 px-4 bg-white">
       <div class="max-w-4xl mx-auto">
@@ -146,24 +163,6 @@ const testimonials = [
             <li>Fewer Surprises: Shifting quality checks earlier means potential issues are found sooner.</li>
           </ul>
         </div>
-      </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-20 px-4 bg-[rgb(240,242,245)]">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[rgb(33,48,118)]">What Clients Say</h2>
-        {testimonials.map(testimonial => (
-          <blockquote class="bg-white p-8 rounded-lg shadow-md">
-            <p class="text-gray-600 mb-6 text-lg italic">"{testimonial.quote}"</p>
-            <footer class="flex items-center gap-4">
-              <div>
-                <cite class="text-[rgb(33,48,118)] font-bold not-italic">{testimonial.name}</cite>
-                <p class="text-gray-500">{testimonial.role}</p>
-              </div>
-            </footer>
-          </blockquote>
-        ))}
       </div>
     </section>
 

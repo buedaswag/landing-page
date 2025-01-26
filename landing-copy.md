@@ -9,21 +9,25 @@
    - **improve Your Release Process** Identify bottlenecks, handoffs, dependencies, and address them for smoother, more predictable releases.
    - **Deliver Reliable, High-Quality Software** by building quality at the source and minimizing defects before they reach customers.
    - **Release Often and Stay Competitive** Improving work saves time and compounds over time, freeing up your teams to deliver value and stay ahead of the competition.
-   - **Align Teams on Shared Goals**: Set clear metrics (e.g., lead time, rework rate, deployment frequency) that connect directly to customer value. Everyone knows what success looks like and how to achieve it.
+   - **Align Teams on Shared Goals**: Set clear metrics for customer value. Everyone knows what success looks like and how to achieve it.
 
 3. **Process / Method (“How We Work”)**
    - **Step 1: Planning & Alignment**
-     - Define Scope and Goals: We clarify your improvement needs, objectives, and where the biggest constraints lie (e.g., inter-team dependencies, feedback delays) and involve key stakeholders from the start.
+     - We clarify your improvement needs, objectives, where the biggest constraints lie (e.g., inter-team dependencies, feedback delays) and involve key stakeholders from the start.
    - **Step 2: Workshop Sessions**
-     - Visualize and measure your workflows.
-     - See bottlenecks and dependencies.
-     - Enable powerful conversations about how to improve.
+     - Visualize and measure your workflows, spotting bottlenecks and dependencies. Enable powerful conversations about how to improve.
    - **Step 3: Improvement Roadmap**
      - Prioritize Initiatives: We build a plan with clear actions, owners, timelines, and measurable goals.
    - **Step 4: Implementation & Ongoing Support**
-     - Regular Check-ins: We review progress, address blockers, and refine plans as your organization evolves.
+     - Regular Check-ins: We review progress, address blockers, and refine plans as needed.
 
-### Example Project Results
+4. **Testimonials**
+   - Mika, Director of Engineering:
+     “The value stream mapping Miguel organized for our engineering team revealed how our deployment process could improve and served as a powerful team-building exercise. Everyone got on the same page, understanding what we’re good at and what needs work.
+
+     Empowering the team to set realistic targets, based on real analysis, motivated us to reach those targets—and exceed them. It’s a great example of a team taking control of its ways of working.”
+
+5. **Example Project Results**
 
 **The Challenge**
 A cross-functional team relied on one or two developers to handle production
@@ -53,12 +57,6 @@ in the process, creating extra work and delays.
 - **Primary Call to Action**: [What would you like to improve?]
 - OR
 - **Primary Call to Action**: [Let's Talk About Improvements]
-
-5. **Testimonials**
-   - Mika, Director of Engineering:
-     “The value stream mapping Miguel organized for our engineering team revealed how our deployment process could improve and served as a powerful team-building exercise. Everyone got on the same page, understanding what we’re good at and what needs work.
-
-     Empowering the team to set realistic targets, based on real analysis, motivated us to reach those targets—and exceed them. It’s a great example of a team taking control of its ways of working.”
 
 6. **About**
    - **Headline**: Meet Miguel Dias: Lean & DevOps Consultant Specializing in Value Stream Mapping
