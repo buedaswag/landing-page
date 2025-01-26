@@ -13,13 +13,13 @@
 
 3. **Process / Method (“How We Work”)**
    - **Step 1: Planning & Alignment**
-     - We clarify your improvement needs, objectives, where the biggest constraints lie (e.g., inter-team dependencies, feedback delays) and involve key stakeholders from the start.
+     - We clarify your improvement needs, objectives, where the biggest constraints lie, and involve key stakeholders from the start.
    - **Step 2: Workshop Sessions**
-     - Visualize and measure your workflows, spotting bottlenecks and dependencies. Enable powerful conversations about how to improve.
+     - Visualize and measure your workflows, spotting bottlenecks and dependencies, enabling powerful conversations about how to improve.
    - **Step 3: Improvement Roadmap**
-     - Prioritize Initiatives: We build a plan with clear actions, owners, timelines, and measurable goals.
+     - Prioritize Initiatives: Your teams build a plan with clear actions, owners, timelines, and measurable goals.
    - **Step 4: Implementation & Ongoing Support**
-     - Regular Check-ins: We review progress, address blockers, and refine plans as needed.
+     - Regular Check-ins: We review progress, address blockers, and refine actions as needed.
 
 4. **Testimonials**
    - Mika, Director of Engineering:
@@ -52,6 +52,36 @@ in the process, creating extra work and delays.
 - **Fewer Surprises**: Shifting quality checks earlier means potential
   issues are found sooner, reducing the cost of more expensive unplanned work.
 
+
+
+4. **Example Project Results**
+   - **The Challenge**: An engineering team struggled with lengthy lead times—nearly a month between code completion and production release. Inter-team dependencies and unpredictable handoffs slowed everything down, and feedback arrived too late to prevent issues from reaching end users.
+   - **Our Approach**:
+     - Held a Value Stream Mapping workshop to identify bottlenecks, collaboration gaps, and delayed handoffs.
+     - Created a roadmap that empowered every developer to participate in deployments and detect potential issues earlier.
+   - **The Outcome**:
+     - Significant Lead Time Reduction: Deployment lead time dropped from 28 days to 10 days, enabling faster feedback and iteration.
+     - Improved Coordination: With clear responsibilities, the team could plan releases more effectively and respond to changes quickly.
+     - Better Quality Control: Earlier detection of defects meant fewer disruptions for both the team and end users.
+
+5. **Example Project Results**
+
+- **The Challenge**
+  A small group of developers handled all production deployments, causing
+  28-day lead times and irregular releases.
+
+- **Our Approach**
+  - Ran a Value Stream Mapping workshop to find bottlenecks and missed
+    handoffs.
+  - Empowered the entire dev team to deploy and set a weekly release cadence.
+
+- **The Outcome**
+  - **64% Lead Time Reduction**: From 28 days down to 10.
+  - **Frequent Releases**: Weekly or biweekly, not monthly.
+  - **Fewer Surprises**: Earlier quality checks minimized costly rework.
+
+
+
 - **Primary Call to Action**: [Let's Talk About Your Improvement Goals]
 - OR
 - **Primary Call to Action**: [What would you like to improve?]
@@ -68,5 +98,5 @@ in the process, creating extra work and delays.
 
 7. **Call to Action**
    - **Ready to Transform Your Software Delivery?**
-     - Whether you’re a small team or a large organization, Value Stream Mapping can help you release features faster, discover problems earlier, and improve cross-team collaboration. Let’s talk about how to reduce lead times, lower costs, and give your teams more room to innovate.
-     - [Get in Touch]
+     - Whether you’re a small team or a large organization, Value Stream Mapping can help you release features more often, discover problems earlier, and improve cross-team collaboration.
+     - [Let's Talk About Improvements]
