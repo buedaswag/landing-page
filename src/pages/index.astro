@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const featuredPosts = [
+  {
+    title: "What is Value Stream Mapping?",
+    date: "June 2, 2024",
+    description: "The essentials of Value Stream Mapping, including its definition, process, and how it can transform your business by aligning software delivery with customer value."
+  },
+  {
+    title: "Improving Large Scale Software Delivery: results",
+    date: "June 2, 2024",
+    description: "We reduced the team's Deployment Lead Time by 46%, just 5 weeks into our Value Stream Mapping project"
+  },
+  {
+    title: "New York Style Lean Coffee: A Structured Format for Group Discussions",
+    date: "January 23, 2025",
+    description: "Lean Coffee is a structured, but agenda-less meeting. Participants gather, build an agenda, and begin talking. Conversations are directed and productive because the agenda for the meeting was democratically generated."
+  }
+];
+
+const services = [
+  {
+    title: "Software Delivery Improvements for Teams and Organizations",
+    description: "Whether you're a team of 5 or an organization of 120 people, we start by defining your improvement goals, aligning with organizational strategy, and your team's expertise. We create a shared understanding of these goals, and facilitate your teams in creating an improvement roadmap with measurable actions. We follow up, so the roadmap doesnt fall into a black hole, and aligns with your organization's fast-changing reality.",
+    icon: `<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z"/></svg>`
+  },
+  {
+    title: "Streamline Your Release Process",
+    description: "Say goodbye to downtime and firefighting! We'll help you optimize your end-to-end deployment process, reduce lead times, and deliver features faster—empowering your team to focus on high-value customer needs instead of recurring issues.",
+    icon: `<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L11 13.17l6.59-6.59L19 8l-7 9z"/></svg>`
+  },
+  {
+    title: "Eliminate Bottlenecks and Boost Collaboration",
+    description: "Stop delays, rework and firefighting caused by misaligned teams and unclear workflows.",
+    icon: `<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>`
+  },
+  {
+    title: "Deliver Reliable, High-Quality Releases",
+    description: "Frequent and reliable releases are essential to delighting and building trust with your customers. We'll improve release quality and reduce errors by identifying and addressing root causes, ensuring every release meets your high standards.",
+    icon: `<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>`
+  },
+  {
+    title: "Reduce Costs and Free Up Your Team",
+    description: "By eliminating inefficiencies and unplanned work, which I've been told time and time again is costing 25% to 50% of people's time, we'll reduce operational costs—freeing up your team to focus on customer-centric initiatives and high-impact projects.",
+    icon: `<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>`
+  },
+  {
+    title: "Align Teams Toward Shared Goal of Measurable Customer Value",
+    description: "We establish clear metrics to monitor improvements, ensuring all process changes translate into tangible benefits for your customers and measurable results for your business.",
+    icon: `<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>`
+  }
+];
+---
+
+<Layout title="Miguel Dias - DevOps & Value Stream Mapping Expert">
+  <main>
+    <!-- Hero Section -->
+    <section class="hero min-h-[80vh] flex items-center justify-center bg-[rgb(67,97,238)] text-white px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6">
+          Transform Your Software Delivery
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-white/90">
+          I help organizations reduce deployment lead time and improve value delivery through Value Stream Mapping and DevOps practices.
+        </p>
+        <a href="#contact" class="inline-block bg-[rgb(245,180,60)] hover:bg-[rgb(235,170,50)] text-[rgb(33,48,118)] font-bold py-3 px-8 rounded-lg text-lg transition-colors">
+          Let's Work Together
+        </a>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20 px-4 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12">
+          {services.map(service => (
+            <div class="flex gap-6">
+              <div class="flex-shrink-0 w-12 h-12 text-[rgb(67,97,238)]" set:html={service.icon} />
+              <div>
+                <h3 class="text-xl font-bold mb-3 text-[rgb(33,48,118)]">{service.title}</h3>
+                <p class="text-gray-600">{service.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Blog Posts -->
+    <section class="py-20 px-4 bg-[rgb(240,242,245)]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[rgb(33,48,118)]">Latest Insights</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          {featuredPosts.map(post => (
+            <article class="bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="p-6">
+                <p class="text-sm text-gray-500 mb-2">{post.date}</p>
+                <h3 class="text-xl font-semibold mb-3 text-[rgb(33,48,118)]">{post.title}</h3>
+                <p class="text-gray-600 mb-4">{post.description}</p>
+                <a href="#" class="text-[rgb(67,97,238)] hover:text-[rgb(33,48,118)] font-medium">Read More →</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-[rgb(67,97,238)] text-white">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Improve Your Software Delivery?</h2>
+        <p class="text-xl mb-8">Let's discuss how Value Stream Mapping can transform your organization.</p>
+        <a href="mailto:miguel@migueldias.eu" class="inline-block bg-[rgb(245,180,60)] text-[rgb(33,48,118)] font-bold py-3 px-8 rounded-lg text-lg hover:bg-[rgb(235,170,50)] transition-colors">
+          Get in Touch
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>
