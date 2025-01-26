@@ -1,37 +1,27 @@
 1. **Hero / Landing Section**
    - **Headline**: Improve Your Software Delivery
    - **Sub-Headline**:
-    - I help organizations deploy software more often, with higher quality and fewer deployment problems with Value Stream Mapping and DevOps best practices.
+    - I help organizations deploy software more often, with higher quality and fewer problems with Value Stream Mapping and DevOps.
     - **Primary Call to Action**: [Let's Talk About Improvements]
 
 
 2. **Services Overview (“What I Help You Achieve”)**
-   - **improve Your Release Process** from development to production so new features reach your customers faster. Identify bottlenecks, handoffs, dependencies, and address them for smoother, more predictable releases.
-   - **Deliver Reliable, High-Quality Releases** by building quality at the source and minimizing defects before they reach customers. This is takes signifiantly less expensive (in customer trust and operations) than fixing errors after the fact.
-
-   () by building quality at the source and minimizing defects before they reach customers. Clarifying missin information and fixing errors can take 25-50% of the time of the actual work.
-
-   By enabling communication across teams and applying DevOps principles, you’ll catch potential issues earlier.
-   - **Reduce Rework and Operational Costs.** Clarifying missin information and fixing errors can take 25-50% of the time of the actual work. Improving work saves time and compounds over time, freeing up your teams to deliver value and stay ahead of the competition.
-
-   (Release often and stay competitive ) Improving work saves time and compounds over time, freeing up your teams to deliver value and stay ahead of the competition.
-
+   - **improve Your Release Process** Identify bottlenecks, handoffs, dependencies, and address them for smoother, more predictable releases.
+   - **Deliver Reliable, High-Quality Software** by building quality at the source and minimizing defects before they reach customers.
+   - **Release Often and Stay Competitive** Improving work saves time and compounds over time, freeing up your teams to deliver value and stay ahead of the competition.
    - **Align Teams on Shared Goals**: Set clear metrics (e.g., lead time, rework rate, deployment frequency) that connect directly to customer value. Everyone knows what success looks like and how to achieve it.
-   - **Hands-On Guidance & Ongoing Support**: I don’t just provide recommendations; I work with you through planning, workshops and follow-ups to set your organization up for success in the marketplace.
 
 3. **Process / Method (“How We Work”)**
    - **Step 1: Planning & Alignment**
-     - Define Scope and Goals: We clarify your improvement needs, objectives, and where the biggest constraints lie (e.g., inter-team dependencies, feedback delays).
-     - Engage Stakeholders: We involve engineering leads, operations, and decision-makers so everyone is on board from the start.
-   - **Step 2: Value Stream Mapping Workshops**
-     - Map the Current State: Visualize your deployment pipeline end to end, revealing how teams and processes connect—and where they break down.
-     - Redesign for Efficiency: Develop a future-state map that reduces wait times, clarifies responsibilities, and helps catch quality issues sooner.
+     - Define Scope and Goals: We clarify your improvement needs, objectives, and where the biggest constraints lie (e.g., inter-team dependencies, feedback delays) and involve key stakeholders from the start.
+   - **Step 2: Workshop Sessions**
+     - Visualize and measure your workflows.
+     - See bottlenecks and dependencies.
+     - Enable powerful conversations about how to improve.
    - **Step 3: Improvement Roadmap**
-     - Prioritize Initiatives: We build a step-by-step plan with clear owners, timelines, and measurable goals.
-     - Track Key Metrics: Monitor lead time, release frequency, and defect rates to measure progress and keep everyone accountable.
+     - Prioritize Initiatives: We build a plan with clear actions, owners, timelines, and measurable goals.
    - **Step 4: Implementation & Ongoing Support**
      - Regular Check-ins: We review progress, address blockers, and refine plans as your organization evolves.
-     - Coaching & Training: Practical sessions that help your teams adopt the new practices and sustain improvements over the long run.
 
 ### Example Project Results
 
