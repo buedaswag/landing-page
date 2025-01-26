@@ -1,15 +1,7 @@
 1. **Hero / Landing Section**
    - **Headline**: Improve Your Software Delivery
    - **Sub-Headline**:
-    - I help organizations deploy software more often, with higher quality and fewer deployment problems. Enable inter-team collaboration, and catch issues early—on using Value Stream Mapping and DevOps best practices.
-    - or
-    - I help organizations reduce deployment lead time and improve value delivery through Value Stream Mapping and DevOps practices.
-
-   - **Short Intro Paragraph**: I help organizations and teams improve their release processes so they can focus on what matters most: delivering high-quality features to customers without last-minute surprises. Would you like to improve the predictability or your releases or cross-team dependencies, let’s work together.
-    - **Primary Call to Action**: [Let's Talk About Your Improvement Goals]
-    - OR
-    - **Primary Call to Action**: [What would you like to improve?]
-    - OR
+    - I help organizations deploy software more often, with higher quality and fewer deployment problems with Value Stream Mapping and DevOps best practices.
     - **Primary Call to Action**: [Let's Talk About Improvements]
 
 

@@ -1,54 +1,65 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const featuredPosts = [
-  {
-    title: "What is Value Stream Mapping?",
-    date: "June 2, 2024",
-    description: "The essentials of Value Stream Mapping, including its definition, process, and how it can transform your business by aligning software delivery with customer value."
-  },
-  {
-    title: "Improving Large Scale Software Delivery: results",
-    date: "June 2, 2024",
-    description: "We reduced the team's Deployment Lead Time by 46%, just 5 weeks into our Value Stream Mapping project"
-  },
-  {
-    title: "New York Style Lean Coffee: A Structured Format for Group Discussions",
-    date: "January 23, 2025",
-    description: "Lean Coffee is a structured, but agenda-less meeting. Participants gather, build an agenda, and begin talking. Conversations are directed and productive because the agenda for the meeting was democratically generated."
-  }
-];
-
 const services = [
   {
-    title: "Software Delivery Improvements for Teams and Organizations",
-    description: "Whether you're a team of 5 or an organization of 120 people, we start by defining your improvement goals, aligning with organizational strategy, and your team's expertise. We create a shared understanding of these goals, and facilitate your teams in creating an improvement roadmap with measurable actions. We follow up, so the roadmap doesnt fall into a black hole, and aligns with your organization's fast-changing reality.",
-    icon: `<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z"/></svg>`
-  },
-  {
-    title: "Streamline Your Release Process",
-    description: "Say goodbye to downtime and firefighting! We'll help you optimize your end-to-end deployment process, reduce lead times, and deliver features faster—empowering your team to focus on high-value customer needs instead of recurring issues.",
+    title: "Improve Your Release Process",
+    description: "From development to production so new features reach your customers faster. Identify bottlenecks, handoffs, dependencies, and address them for smoother, more predictable releases.",
     icon: `<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L11 13.17l6.59-6.59L19 8l-7 9z"/></svg>`
   },
   {
-    title: "Eliminate Bottlenecks and Boost Collaboration",
-    description: "Stop delays, rework and firefighting caused by misaligned teams and unclear workflows.",
-    icon: `<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>`
-  },
-  {
     title: "Deliver Reliable, High-Quality Releases",
-    description: "Frequent and reliable releases are essential to delighting and building trust with your customers. We'll improve release quality and reduce errors by identifying and addressing root causes, ensuring every release meets your high standards.",
+    description: "Build quality at the source and minimize defects before they reach customers. This takes significantly less expense (in customer trust and operations) than fixing errors after the fact.",
     icon: `<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>`
   },
   {
-    title: "Reduce Costs and Free Up Your Team",
-    description: "By eliminating inefficiencies and unplanned work, which I've been told time and time again is costing 25% to 50% of people's time, we'll reduce operational costs—freeing up your team to focus on customer-centric initiatives and high-impact projects.",
+    title: "Reduce Rework and Operational Costs",
+    description: "Clarifying missing information and fixing errors can take 25-50% of the time of the actual work. Improving work saves time and compounds over time, freeing up your teams to deliver value and stay ahead of the competition.",
     icon: `<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>`
   },
   {
-    title: "Align Teams Toward Shared Goal of Measurable Customer Value",
-    description: "We establish clear metrics to monitor improvements, ensuring all process changes translate into tangible benefits for your customers and measurable results for your business.",
+    title: "Align Teams on Shared Goals",
+    description: "Set clear metrics (e.g., lead time, rework rate, deployment frequency) that connect directly to customer value. Everyone knows what success looks like and how to achieve it.",
     icon: `<svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>`
+  }
+];
+
+const process = [
+  {
+    title: "Planning & Alignment",
+    steps: [
+      "Define Scope and Goals: We clarify your improvement needs, objectives, and where the biggest constraints lie (e.g., inter-team dependencies, feedback delays).",
+      "Engage Stakeholders: We involve engineering leads, operations, and decision-makers so everyone is on board from the start."
+    ]
+  },
+  {
+    title: "Value Stream Mapping Workshops",
+    steps: [
+      "Map the Current State: Visualize your deployment pipeline end to end, revealing how teams and processes connect—and where they break down.",
+      "Redesign for Efficiency: Develop a future-state map that reduces wait times, clarifies responsibilities, and helps catch quality issues sooner."
+    ]
+  },
+  {
+    title: "Improvement Roadmap",
+    steps: [
+      "Prioritize Initiatives: We build a step-by-step plan with clear owners, timelines, and measurable goals.",
+      "Track Key Metrics: Monitor lead time, release frequency, and defect rates to measure progress and keep everyone accountable."
+    ]
+  },
+  {
+    title: "Implementation & Support",
+    steps: [
+      "Regular Check-ins: We review progress, address blockers, and refine plans as your organization evolves.",
+      "Coaching & Training: Practical sessions that help your teams adopt new practices and sustain improvements over the long run."
+    ]
+  }
+];
+
+const testimonials = [
+  {
+    name: "Mika",
+    role: "Director of Engineering",
+    quote: "The value stream mapping Miguel organized for our engineering team revealed how our deployment process could improve and served as a powerful team-building exercise. Everyone got on the same page, understanding what we're good at and what needs work. Empowering the team to set realistic targets, based on real analysis, motivated us to reach those targets—and exceed them. It's a great example of a team taking control of its ways of working."
   }
 ];
 ---
@@ -59,13 +70,13 @@ const services = [
     <section class="hero min-h-[80vh] flex items-center justify-center bg-[rgb(67,97,238)] text-white px-4">
       <div class="max-w-4xl mx-auto text-center">
         <h1 class="text-5xl md:text-7xl font-bold mb-6">
-          Transform Your Software Delivery
+          Improve Your Software Delivery
         </h1>
         <p class="text-xl md:text-2xl mb-8 text-white/90">
-          I help organizations reduce deployment lead time and improve value delivery through Value Stream Mapping and DevOps practices.
+          I help organizations deploy software more often, with higher quality and fewer deployment problems with Value Stream Mapping and DevOps best practices.
         </p>
         <a href="#contact" class="inline-block bg-[rgb(245,180,60)] hover:bg-[rgb(235,170,50)] text-[rgb(33,48,118)] font-bold py-3 px-8 rounded-lg text-lg transition-colors">
-          Let's Work Together
+          Let's Talk About Improvements
         </a>
       </div>
     </section>
@@ -73,6 +84,7 @@ const services = [
     <!-- Services Section -->
     <section class="py-20 px-4 bg-white">
       <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[rgb(33,48,118)]">What I Help You Achieve</h2>
         <div class="grid md:grid-cols-2 gap-12">
           {services.map(service => (
             <div class="flex gap-6">
@@ -87,21 +99,90 @@ const services = [
       </div>
     </section>
 
-    <!-- Featured Blog Posts -->
+    <!-- Process Section -->
+    <section class="py-20 px-4 bg-[rgb(240,242,245)]">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[rgb(33,48,118)]">How We Work</h2>
+        <div class="grid md:grid-cols-2 gap-12">
+          {process.map((step, index) => (
+            <div class="bg-white p-8 rounded-lg shadow-md">
+              <div class="flex items-center gap-4 mb-4">
+                <span class="w-8 h-8 flex items-center justify-center bg-[rgb(67,97,238)] text-white rounded-full font-bold">
+                  {index + 1}
+                </span>
+                <h3 class="text-xl font-bold text-[rgb(33,48,118)]">{step.title}</h3>
+              </div>
+              <ul class="space-y-3">
+                {step.steps.map(item => (
+                  <li class="text-gray-600">{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Study Section -->
+    <section class="py-20 px-4 bg-white">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[rgb(33,48,118)]">Example Project Results</h2>
+        <div class="bg-[rgb(240,242,245)] p-8 rounded-lg">
+          <h3 class="text-xl font-bold mb-4 text-[rgb(33,48,118)]">The Challenge</h3>
+          <p class="text-gray-600 mb-8">
+            A cross-functional team relied on one or two developers to handle production deployments, leading to long lead times—around 28 days on average—and inconsistent release schedules. Key issues often weren't caught until late in the process, creating extra work and delays.
+          </p>
+
+          <h3 class="text-xl font-bold mb-4 text-[rgb(33,48,118)]">Our Approach</h3>
+          <ul class="list-disc list-inside text-gray-600 mb-8 space-y-2">
+            <li>Value Stream Mapping Workshop: We facilitated collaborative mapping sessions to understand the deployment process, identifying bottlenecks, handoffs, and communication gaps.</li>
+            <li>Team Empowerment: All developers in the team now know the process for deploying changes and are empowered to deploy.</li>
+            <li>Predictable Release Cadence: Collaborated with change management to set weekly deployment windows.</li>
+          </ul>
+
+          <h3 class="text-xl font-bold mb-4 text-[rgb(33,48,118)]">The Outcome</h3>
+          <ul class="list-disc list-inside text-gray-600 space-y-2">
+            <li>64% Lead Time Reduction: Time from code completion to live deployment dropped from 28 to 10 days.</li>
+            <li>Higher Deployment Frequency: Releases now happen weekly or every other week instead of monthly.</li>
+            <li>Team Ownership: Every developer understands the deployment process and can execute it.</li>
+            <li>Fewer Surprises: Shifting quality checks earlier means potential issues are found sooner.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
     <section class="py-20 px-4 bg-[rgb(240,242,245)]">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[rgb(33,48,118)]">Latest Insights</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          {featuredPosts.map(post => (
-            <article class="bg-white rounded-lg shadow-md overflow-hidden">
-              <div class="p-6">
-                <p class="text-sm text-gray-500 mb-2">{post.date}</p>
-                <h3 class="text-xl font-semibold mb-3 text-[rgb(33,48,118)]">{post.title}</h3>
-                <p class="text-gray-600 mb-4">{post.description}</p>
-                <a href="#" class="text-[rgb(67,97,238)] hover:text-[rgb(33,48,118)] font-medium">Read More →</a>
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[rgb(33,48,118)]">What Clients Say</h2>
+        {testimonials.map(testimonial => (
+          <blockquote class="bg-white p-8 rounded-lg shadow-md">
+            <p class="text-gray-600 mb-6 text-lg italic">"{testimonial.quote}"</p>
+            <footer class="flex items-center gap-4">
+              <div>
+                <cite class="text-[rgb(33,48,118)] font-bold not-italic">{testimonial.name}</cite>
+                <p class="text-gray-500">{testimonial.role}</p>
               </div>
-            </article>
-          ))}
+            </footer>
+          </blockquote>
+        ))}
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 px-4 bg-white">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[rgb(33,48,118)]">Meet Miguel Dias: Lean & DevOps Consultant Specializing in Value Stream Mapping</h2>
+        <div class="text-gray-600 space-y-6">
+          <p>
+            My passion is helping organizations optimize complex release processes so they can deliver consistent customer value. With experience in DevOps, Cloud Infrastructure, Data Engineering, and Analytics, I bring a comprehensive approach to each project.
+          </p>
+          <p>
+            Through Value Stream Mapping workshops, I help teams pinpoint their bottlenecks—especially around inter-team collaboration—and develop actionable plans. Some teams have seen lead time reductions above 60%, plus a renewed confidence in preventing issues before they reach customers.
+          </p>
+          <p>
+            Let's work together to reduce dependencies, improve quality at the source, and create a faster, more reliable software delivery pipeline.
+          </p>
         </div>
       </div>
     </section>
@@ -109,8 +190,10 @@ const services = [
     <!-- Contact Section -->
     <section id="contact" class="py-20 px-4 bg-[rgb(67,97,238)] text-white">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Improve Your Software Delivery?</h2>
-        <p class="text-xl mb-8">Let's discuss how Value Stream Mapping can transform your organization.</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Software Delivery?</h2>
+        <p class="text-xl mb-8">
+          Whether you're a small team or a large organization, Value Stream Mapping can help you release features faster, discover problems earlier, and improve cross-team collaboration. Let's talk about how to reduce lead times, lower costs, and give your teams more room to innovate.
+        </p>
         <a href="mailto:miguel@migueldias.eu" class="inline-block bg-[rgb(245,180,60)] text-[rgb(33,48,118)] font-bold py-3 px-8 rounded-lg text-lg hover:bg-[rgb(235,170,50)] transition-colors">
           Get in Touch
         </a>
