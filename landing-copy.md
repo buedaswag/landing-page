@@ -90,9 +90,3 @@ in the process, creating extra work and delays.
    - **Ready to Transform Your Software Delivery?**
      - Whether you’re a small team or a large organization, Value Stream Mapping can help you release features faster, discover problems earlier, and improve cross-team collaboration. Let’s talk about how to reduce lead times, lower costs, and give your teams more room to innovate.
      - [Get in Touch]
-
-8. **Tips for Implementation**
-   - **Keep it skimmable**: Use clear headings and bullet points to help busy tech leaders quickly see key points.
-   - **Highlight inter-team collaboration**: Emphasize how you address cross-team dependencies and communication issues.
-   - **Show real metrics**: The 28-day to 10-day example underscores tangible results without naming specifics.
-   - **Use visuals**: Photos or diagrams from your workshops (blurred if needed) can make your approach more concrete.
