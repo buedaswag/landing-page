@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "4321:4321" # Ensure binding host port to container port
+    environment:
+      - HOST=0.0.0.0 # Properly expose container
+      - NODE_ENV=development
+    networks:
+      - blog-net # Add a dedicated network for isolation
+
+networks:
+  blog-net:
+    driver: bridge
