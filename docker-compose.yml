@@ -4,7 +4,7 @@ services:
   web:
     build: .
     ports:
-      - "4321:4321" # Ensure binding host port to container port
+      - "4444:4444" # Ensure binding host port to container port
     environment:
       - HOST=0.0.0.0 # Properly expose container
       - NODE_ENV=development
