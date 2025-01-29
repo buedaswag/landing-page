@@ -88,15 +88,7 @@ in the process, creating extra work and delays.
 - OR
 - **Primary Call to Action**: [Let's Talk About Improvements]
 
-6. **About**
-   - **Headline**: Meet Miguel Dias: Lean & DevOps Consultant Specializing in Value Stream Mapping
-   - **Body**: My passion is helping organizations optimize complex release processes so they can deliver consistent customer value. With experience in DevOps, Cloud Infrastructure, Data Engineering, and Analytics, I bring a comprehensive approach to each project.
-
-     Through Value Stream Mapping workshops, I help teams pinpoint their bottlenecks—especially around inter-team collaboration—and develop actionable plans. Some teams have seen lead time reductions above 60%, plus a renewed confidence in preventing issues before they reach customers.
-
-     Let’s work together to reduce dependencies, improve quality at the source, and create a faster, more reliable software delivery pipeline.
-
 7. **Call to Action**
-   - **Ready to Transform Your Software Delivery?**
+   - **Ready to Improve Your Software Delivery?**
      - Whether you’re a small team or a large organization, Value Stream Mapping can help you release features more often, discover problems earlier, and improve cross-team collaboration.
      - [Let's Talk About Improvements]
