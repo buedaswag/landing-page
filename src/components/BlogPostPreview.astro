@@ -36,7 +36,7 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
   .post-preview {
     width: 100%;
     max-width: 42rem;
-    margin: 0 auto 6rem;
+    margin: 0 auto 4rem;
   }
 
   .post-link {
@@ -46,7 +46,7 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 0.5rem;
@@ -66,11 +66,17 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
     width: 100%;
     margin-bottom: 1.5rem;
     overflow: hidden;
+    position: relative;
+    padding-top: 45%;
   }
 
   .image-container img {
+    position: absolute;
+    top: -10%;
+    left: 0;
     width: 100%;
-    height: auto;
+    height: 120%;
+    object-fit: cover;
     display: block;
   }
 
@@ -83,7 +89,7 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 
   @media (max-width: 768px) {
     h2 {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
     }
 
     p {
