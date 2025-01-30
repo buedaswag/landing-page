@@ -1,0 +1,129 @@
+---
+import { getCollection } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BlogLayout title={`${post.data.title} - Miguel Dias`}>
+  <article class="post">
+    <header>
+      <h1>{post.data.title}</h1>
+      <time datetime={post.data.date}>
+        {new Date(post.data.date).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </time>
+    </header>
+
+    {post.data.image && (
+      <div class="image-container">
+        <img src={post.data.image} alt={post.data.title} />
+      </div>
+    )}
+
+    <div class="content">
+      <Content />
+    </div>
+  </article>
+</BlogLayout>
+
+<style>
+  .post {
+    width: 100%;
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  header {
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+  }
+
+  time {
+    display: block;
+    color: #666;
+    font-size: 1rem;
+  }
+
+  .image-container {
+    width: 100%;
+    margin: 2rem 0;
+    overflow: hidden;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .content {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--text-color);
+  }
+
+  .content :global(h2) {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem;
+  }
+
+  .content :global(h3) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1.5rem 0 1rem;
+  }
+
+  .content :global(p) {
+    margin-bottom: 1.5rem;
+  }
+
+  .content :global(ul), .content :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .content :global(a) {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+
+  .content :global(a:hover) {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    .content {
+      font-size: 1rem;
+    }
+  }
+</style>
