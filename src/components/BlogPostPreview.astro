@@ -10,7 +10,8 @@ interface Props {
 
 const { title, description, date, url, image, base } = Astro.props;
 
-const formattedImage = image ? `${base}${image}` : null;
+// Remove base from image path as it's causing issues
+const formattedImage = image;
 const formattedDate = new Date(date).toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
@@ -35,11 +36,12 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 
 <style>
   .post-preview {
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
+    width: 100%;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    text-align: left;
+    text-align: center;
   }
 
   .post-link {
@@ -55,10 +57,11 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 
   .image-container {
     width: 100%;
-    margin-bottom: 1.5rem;
-    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
     overflow: hidden;
     aspect-ratio: 16/9;
+    background-color: #f7fafc;
   }
 
   .image-container img {
@@ -73,38 +76,43 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
   }
 
   .post-content {
-    padding: 0;
+    padding: 0 1rem;
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
     line-height: 1.2;
-    margin-bottom: 0.5rem;
-    color: var(--text-color);
+    margin-bottom: 1rem;
+    color: #1a202c;
   }
 
   time {
     display: block;
-    color: #666;
-    font-size: 1rem;
-    margin-bottom: 0.75rem;
+    color: #718096;
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
   }
 
   p {
     color: #4a5568;
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     line-height: 1.6;
-    margin: 0;
+    margin: 0 auto;
+    max-width: 600px;
   }
 
   @media (max-width: 768px) {
     h2 {
-      font-size: 1.75rem;
+      font-size: 2rem;
+    }
+
+    time {
+      font-size: 1rem;
     }
 
     p {
-      font-size: 1rem;
+      font-size: 1.125rem;
     }
   }
 </style>
