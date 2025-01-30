@@ -1,3 +1,4 @@
+---
 import { getCollection } from 'astro:content';
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import BlogPostPreview from '../../components/BlogPostPreview.astro';
@@ -7,6 +8,7 @@ const sortedPosts = posts.sort((a, b) =>
   new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 const base = import.meta.env.BASE_URL || '/';
+---
 
 <BlogLayout title="Miguel Dias – Blog">
   <section class="posts">
