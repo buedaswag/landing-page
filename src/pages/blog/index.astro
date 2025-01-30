@@ -11,22 +11,33 @@ const base = import.meta.env.BASE_URL || '/';
 ---
 
 <BlogLayout title="Miguel Dias – Blog">
-  <section class="posts">
-    {sortedPosts.map((post) => (
-      <BlogPostPreview
-        base={base}
-        title={post.data.title}
-        description={post.data.description}
-        date={post.data.date}
-        url={`/blog/${post.slug}`}
-        image={post.data.image}
-      />
-    ))}
-  </section>
+  <div class="blog-container">
+    <section class="posts">
+      {sortedPosts.map((post) => (
+        <BlogPostPreview
+          base={base}
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.date}
+          url={`/blog/${post.slug}`}
+          image={post.data.image}
+        />
+      ))}
+    </section>
+  </div>
 </BlogLayout>
 
 <style>
+  .blog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
   .posts {
-    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
   }
 </style>
