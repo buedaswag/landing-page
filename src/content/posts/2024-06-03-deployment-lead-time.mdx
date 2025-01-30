@@ -1,0 +1,18 @@
+---
+layout: post
+title: "Deployment Lead Time"
+categories: jekyll update
+description: |
+  What is Deployment Lead Time, why is it important and how to measure it.
+---
+
+It begins when a developer checks in a change to version control, and ends when that change is successfully running in production, providing value to the customer and generating useful feedback and telemetry.
+
+In practice, check the commit timestamp on your main branch, then check when the code is successfully running in production. This last part varies, and some teams might define it to be when the change hits production, plus 1 day of it running without causing downtime to the customer.
+
+Long lead times generally mean we also batch multiple changes together, making it harder to know which change broke production, and increasing the amount of time between when a developer writes the code, and when they get feedback on the performance of that code. It might be that they work on 3 other features before the old code fails in production, further making it harder to troubleshoot.
+Long lead times might also mean that our deployment process has manual steps that should be standardized and automated, to prevent errors and speed up the process. These steps might be part of the deployment itself or, commonly, analyzing logs and metrics for a healthy deployment might also be up for automation.
+
+Reducing Deployment Lead Time is a major benefit of a Value Stream Mapping Workshop. We are able to reduce it by understanding our deployment process, finding the main bottlenecks and improving them.
+
+[Here are the results of one of the workshops I organized.](/blog/2024-06-02-improving-large-scale-software-delivery-results)

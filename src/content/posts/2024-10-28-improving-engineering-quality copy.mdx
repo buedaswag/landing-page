@@ -1,0 +1,30 @@
+---
+layout: post
+title: "Improving Engineering Quality: Key Insights from a Recent Workshop"
+categories: jekyll update
+description: |
+  Addressing Gaps in User Behavior Visibility and Realistic Test Setups for a Global Supply Chain Leader.
+---
+
+![Workshop Insights on Quality](/images/2024-10-28/0940e9fa-1e6b-4994-bf72-90909de29b74.png)
+
+Last week I was in Helsinki for a workshop around the topic of “Quality” for a global leader in supply chain planning.
+
+Some of the main ideas to improve were:
+
+- Establishing **long-lived customer environments** for consistent testing
+- Enhancing **visibility into user behavior**
+
+Some of the main challenges we discussed were:
+
+- Tests currently don’t reflect actual customer usage patterns
+- Limited integration tests and datasets that are too small
+- Lack of a complete view of **how users interact** with our application
+- Insufficient visibility into user actions **before an error occurs**
+
+[This article from The New Stack](https://thenewstack.io/why-duplicating-environments-for-microservices-backfires/) relates to several key points raised in the workshop:
+
+- **Traceability** with end-to-end correlation between logs, enabling us to trace a user’s actions across various services
+- Maintaining a realistic, always-available **test environment**
+
+The article goes even further, discussing **data isolation** and implementing multiple **sandboxes** (isolated environments within the same infrastructure). I suspect that this approach may already be feasible or even previously requested by our customer.

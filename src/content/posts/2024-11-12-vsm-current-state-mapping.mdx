@@ -1,0 +1,78 @@
+---
+layout: post
+title: "Current State Mapping Session Overview"
+categories: jekyll update
+description: |
+  An overview of the current state mapping session of a Value Stream Mapping Workshop: reviewing goals, mapping processes, analyzing constraints, and achieving cross-team alignment.
+---
+
+An overview of the Current State Mapping session of a Value Stream Mapping Workshop. The full workshop includes:
+
+1. [Planning](/blog/2024-11-11-vsm-planning)
+1. [Current State Mapping](/blog/2024-11-12-vsm-current-state-mapping)
+1. [Dependency Mapping]({% post_url 2024-11-25-vsm-dependency-mapping %}#dependency-mapping)
+1. [Future State Mapping](/blog/2024-11-26-vsm-future-state-mapping)
+1. [Improvement Roadmap](/blog/2024-11-27-vsm-improvement-roadmap)
+1. Final Presentation
+1. Follow-up Period
+
+Current State Mapping: reviewing goals, mapping processes, analyzing constraints, and achieving cross-team alignment.
+
+### Session Kickoff
+
+* Briefly review planning before starting the mapping process:
+  * Motivation: What's driving the need for improvement?
+  * Scope: Define value stream focus and specific conditions
+    * Example: Onboarding new customers vs upgrading existing ones
+    * Example: Focus on delivering product A vs product B
+  * Goals: Establish measurable goals for next 3 months
+
+### Mapping Process
+
+* Start mapping the value stream:
+  * Add blocks representing the main processes to the board
+  * Estimate cycle time for each block
+  * Estimate wait time between each block
+  * Add other useful context-specific metrics:
+    * Errors and rework at problematic spots
+    * Queues and amount of work in progress
+* Calculate summary metrics for the entire value stream
+
+![Current State Mapping](/images/2024-11-12/cs1.png)
+
+![Current State Mapping Example](/images/2024-11-12/cs2.png)
+
+### Analysis
+
+* Identify and highlight hotspots:
+  * Where are the longest cycle and wait times?
+  * Where do errors or rework occur most often?
+  * Where does work pile up?
+* Highlight key constraint to focus on next:
+  * What improvements will have the biggest impact on our goals?
+  * Usually focuses on reducing end-to-end duration
+  * For teams with fixed release schedules, may focus on quality problem areas
+
+![Current State Mapping Example](/images/2024-11-12/cs3.png)
+
+### Key Outcomes
+
+The team achieves:
+
+- Consensual representation of main processes in end-to-end value stream
+- Estimations of cycle and wait times for each main process
+- Cross-functional alignment on key improvement areas that will have biggest impact on goals
+
+### Glossary
+
+* **Cycle time**: The total time it takes to complete a specific process from start to finish, including both work time and wait time.
+* **Wait time**: The duration of time that work items spend waiting to be processed in a value stream, often due to dependencies or resource constraints.
+
+---
+
+### Inspiration
+
+This approach is heavily inspired by
+
+* [Steve Pereira](https://www.linkedin.com/in/devopsto/) and [Andrew Davis](https://www.linkedin.com/in/andrewdavis-io/)'s *[Flow Engineering](https://www.linkedin.com/company/flow-engineering-org/posts/?feedView=all)* book.
+* [Karen Martin](https://www.linkedin.com/in/karenmartinopex/) and [Mike Osterling](https://www.linkedin.com/in/mikeosterling/)'s *[Value Stream Mapping](https://tkmg.com/books/value-stream-mapping/)* book.

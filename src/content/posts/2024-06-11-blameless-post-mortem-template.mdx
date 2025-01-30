@@ -1,0 +1,100 @@
+---
+layout: post
+title: "Blameless Post-Mortem Meeting Template"
+categories: jekyll update
+description: |
+  A Blameless Post-Mortem Meeting Template to help structure and guide the meeting.
+---
+
+![post mortem](/images/post_mortem.jpeg)
+
+## 1. Initial Statement
+
+- This is a blameless post mortem. Our goal is to better understand the system we operate. We follow the [Retrospective Prime Directive](https://retrospectivewiki.org/index.php?title=The_Prime_Directive):
+  > "Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand."
+
+- We will not speculate on “would have…”, “should have…”, “could have…”. These are counterfactual statements, they refer to the system as imagined, instead of the system in reality, which is the focus.
+
+## 2. Timeline of the Incident
+
+- This includes all actions we took and at what time (ideally with links to slack), what effects we observed (specific metrics, configuration changes, etc. preferred over subjective narratives), all investigation paths we followed, and what resolutions were considered.
+  - When and who detected?
+  - How was it discovered? (e.g., automated monitoring, manual detection, customer notified us)
+  - When service was satisfactorily restored
+  - Events that contributed to the incident
+  - Troubleshooting paths and actions taken
+  - What did our external communications look like (with the customer)?
+  - Perspectives of the participants
+
+### 2023-04-30
+
+- Incident start?
+
+### ...
+
+### 2023-08-30
+
+- Incident end?
+
+## 3. Factors that Contributed to the Incident
+
+- Talk about the most important ones and try to understand them and discover others (use brainstorming or “infinite hows”).
+- All perspectives should be included and respected. Nobody should be permitted to argue with a contributing factor somebody else has identified.
+- The goal is not to engage in Convergent Behavior such as trying to identify one or more Root Causes.
+- It's not about what was the root cause, it's about several factors and the interactions between them
+- In a complex system, incidents are often the result of multiple, interacting factors. Focusing solely on root causes can lead to a narrow view that misses important systemic issues.
+- Sort the contributing factors into categories
+
+### Design Decision
+
+- Example: Lack of Redundancy - Critical components of the system might not have redundancy, causing a single point of failure.
+
+### Remediation
+
+- Example: Delayed Patch Implementation - A known vulnerability might have been patched too late, allowing an incident to occur.
+
+### Discovering there was a problem
+
+- Example: Late Detection by Monitoring Systems - The monitoring systems in place may have failed to detect the issue promptly.
+
+### Operational Practices
+
+- Example: Lack of Clear Procedures - The absence of clear operational procedures might have led to confusion or incorrect actions during the incident.
+
+### Technical Failures
+
+- Example: Integration Issues - Poor integration with other systems or services might have caused unexpected problems.
+
+### Communication Breakdowns
+
+- Example: Inaccurate Information Dissemination - Incorrect or outdated information might have been shared, causing more issues.
+
+## 4. Corrective Actions that Will Be Made Top Priorities After the Meeting
+
+- Brainstorming
+- Choosing the best potential actions to either prevent or enable faster detection or recovery.
+- The goal is to identify the smallest number of incremental steps to achieve the desired outcomes, as opposed to “big bang” changes, which not only take longer to implement, but delay the improvements we need.
+- Any corrective actions must be assigned to someone and have a deadline. If the corrective action is not a top priority when the meeting is over, then it is not a corrective action (this ensures problems are addressed, and prevents us from generating a list of good ideas that are never implemented)
+
+### Corrective actions (Owner / Deadline 30 days)
+
+### 4.1 List of Lower Priority Items
+
+- Create a list of lower priority items and assign an owner. If this happens again, we can use this list as a starting point for future countermeasures.
+
+## 5. Incident Metrics and Their Organizational Impact
+
+### Examples of Incident Metrics
+
+- Event severity: relates to impact on the service and customers
+- Total downtime: how long were customers unable to use the service to any degree?
+- Time to detect: how long until we knew there was a problem?
+- Time to resolve: how long after we knew there was a problem did it take us to solve it?
+
+## Bibliography
+
+This material is greatly inspired by:
+
+- [The DevOps Handbook](https://itrevolution.com/product/the-devops-handbook-second-edition/)
+- [Video on post mortems at Rally](https://www.brighttalk.com/webcast/6505/404248)
+- [Ross Clanton and Heather Mickman - DevOps at Target](https://www.youtube.com/watch?v=exrjV9V9vhY&t=3s)

@@ -1,0 +1,146 @@
+---
+layout: post
+title: "Validated Learning in SaaS for Performance & Reliability Gains"
+categories: jekyll update
+description: |
+  Exploring validated learning in SRE: lessons from Lean Startup applied to large scale SaaS.
+---
+
+![Validated Learning](/images/2024-10-31/validated_learning.png)
+
+## Overview of Validated Learning from *The Lean Startup*
+
+One concept that stands out in *The Lean Startup* is **validated learning**. It's a structured Lean Management approach to testing assumptions and learning from feedback.
+
+### What is Validated Learning?
+
+Validated learning involves systematically testing assumptions and adjusting based on real-world feedback. Here are the core steps in this approach:
+
+![Validated Learning](/images/2024-10-31/validated_learning_2.png)
+
+The goal is to learn as fast as possible what will bring the greatest value to the customer—based on actionable metrics—without wasting time and human potential on building things that don’t deliver value.
+
+This approach for understanding what to do is definitely a departure from:
+
+* “This is the fire we need to put out right now.” (Reacting to urgent but potentially low-value issues)
+* “This is what we think we should do.” (Assuming actions without validating their impact)
+* “This is what we’ve been asked to do.” (Simply following requests without questioning their value to the customer)
+
+Instead, it's about asking:
+
+* What can we do that will make the biggest impact (based on evidence)?
+* And using real-world feedback to validate or adjust our actions accordingly.
+
+![Validated Learning](/images/2024-10-31/validated_learning_3.jpeg)
+
+by [Steve Fenton](https://www.linkedin.com/posts/stevefenton_devops-metrics-activity-7255488521346412547-SFa-?utm_source=share&utm_medium=member_desktop)
+
+### 1. Identify Assumptions
+
+Start by pinpointing your key assumptions about your business model, product, or market. Focus on the riskiest assumptions that, if incorrect, could impact your business's success.
+
+#### Example Assumptions
+
+To effectively formulate hypotheses about roadmap elements, it's essential to first outline some of the key assumptions. Here are some examples of assumptions that may exist:
+
+1. **Monitoring Capabilities**
+   - Assuming current monitoring tools are providing sufficient coverage of system performance.
+   - Assuming the alerts set up are well-calibrated and provide timely notifications of issues.
+
+2. **Incident Response**
+   - Assuming the current incident response playbooks are adequate for all types of incidents.
+   - Assuming the team has the right skills and tools to quickly respond to performance issues.
+
+3. **Release Pipeline Efficiency**
+   - Assuming automation is being used effectively at each stage of the release pipeline.
+   - Assuming there are no major bottlenecks in the current build and deploy processes.
+
+4. **Team Practices**
+   - Assuming teams have an understanding of where performance issues arise and what practices lead to them.
+   - Assuming quality gates currently catch a majority of defects before production.
+
+### 1a. Conduct Smoke Tests
+
+Before diving deep into specific hypotheses, run preliminary tests to gauge interest and identify which assumptions are worth exploring further. This helps understand what stakeholders truly value and where to focus validation efforts.
+
+#### Example Smoke Tests for Site Reliability
+
+- Interview key stakeholders (Customers, Release Managers, CAB members, Product teams) about their biggest pain points
+- Review recent incident reports and deployment logs to identify patterns
+- Gather feedback from end users about system performance impact
+
+### 2. Create a Testable Hypothesis
+
+Convert your assumptions into specific, testable hypotheses. These hypotheses should be straightforward and capable of being validated or invalidated.
+
+#### Example Hypotheses for a Performance and Site Reliability Central Enabling Team
+
+1. **Monitoring Improvement Hypothesis**
+   - If we enhance monitoring coverage for our systems, then we expect a 20% reduction in the number of incidents without prior alerts over the next quarter.
+
+2. **Incident Response Efficiency Hypothesis**
+   - If we provide additional training on incident response playbooks, then we expect the mean time to recovery (MTTR) for major incidents to decrease by 15% within two months.
+
+3. **Release Pipeline Optimization Hypothesis**
+   - If we automate the manual approval stage in our release pipeline, then we expect the lead time for deployment to be reduced by 30% within the next six weeks.
+
+4. **Team Knowledge Enhancement Hypothesis**
+   - If we conduct workshops on identifying root causes of performance issues, then we expect a reduction in repeat performance incidents by 25% within three months.
+
+### 3. Design an Experiment
+
+Build a minimal experiment to test your hypothesis. Often, this involves creating a Minimum Viable Product (MVP) – the simplest version of your product that enables you to collect meaningful data.
+
+Example MVPs:
+
+1. Basic monitoring dashboard for a single critical service
+2. Streamlined incident response playbook
+3. Automated deployment gate checker
+
+### 4. Define Metrics
+
+Choose metrics that will measure the success or failure of your experiment. Aim for actionable metrics that relate directly to your hypothesis.
+
+#### Actionable Metrics vs. Vanity Metrics
+
+- **Actionable Metrics** are metrics that provide insights you can act upon. They help you make decisions and drive improvements. Examples include deployment lead time, SLO compliance rates, incident frequency, and system downtime duration. These metrics are directly tied to your hypotheses and tell you whether you are making progress.
+- **Vanity Metrics** are numbers that look good on paper but don't necessarily provide meaningful insights for decision-making. Examples include number of features deployed, total number of customers served, or total number of alerts configured. These metrics can be misleading as they often lack context or actionable value.
+
+### 5. Run the Experiment
+
+Conduct your experiment by exposing your MVP to potential customers, whether through customer interviews, A/B testing, or a basic product launch.
+
+### 6. Measure Results
+
+Gather and analyze data from your experiment, considering both quantitative and qualitative feedback.
+
+### 7. Learn and Decide
+
+Evaluate if your hypothesis is validated or invalidated. Document your learnings and decide on the next steps.
+
+### 8. Iterate or Pivot
+
+If validated, continue refining. If invalidated, consider pivoting – making a structured course correction to test a new fundamental hypothesis. In a Site Reliability Engineering context, common pivots include:
+
+- **Focus Pivot**: Shifting from monitoring all services equally to prioritizing critical user journeys (like Etsy focusing SLOs on checkout flows)
+- **Customer Segment Pivot**: Changing which teams or users you support (like shifting from supporting developers to enabling product teams to self-serve)
+- **Solution Pivot**: Maintaining the same goal but changing how you solve it (like moving from manual incident response to automated remediation)
+- **Platform Pivot**: Converting a collection of tools into a unified platform (like Google's evolution of SRE tooling into Cloud Operations suite)
+- **Value Capture Pivot**: Changing how you measure success (like shifting from counting incidents to measuring user-impacting issues)
+
+The key is preserving the lessons learned about reliability and performance while testing new approaches to achieve your reliability goals.
+
+### 9. Repeat the Process
+
+Validated learning is an ongoing cycle. With each iteration, you refine your approach, focusing on learning faster than anyone else to uncover a sustainable business model.
+
+### Current Application of Validated Learning
+
+I'm currently planning a roadmap with a team, and we're using validated learning to think about what we can do that will bring the greatest value for our customers. We're discussing what we already know, identifying the biggest current problems, figuring out who we can ask to get more insights, and trying to know how can we validate that we're making progress.
+
+How can you apply validated learning in your day-to-day work? What's been your experience with validated learning?
+
+### Resources
+
+- [The Lean Startup](https://theleanstartup.com/)
+- [Napkin AI for one of the pictures](https://www.napkin.ai/)
