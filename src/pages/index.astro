@@ -63,12 +63,12 @@ const testimonials = [
 <Layout title="Miguel Dias - DevOps & Value Stream Mapping Expert">
   <main>
     <!-- Hero Section -->
-    <section class="hero min-h-[80vh] flex items-center justify-center bg-[rgb(67,97,238)] text-white px-4">
+    <section class="hero min-h-[80vh] flex items-center justify-center bg-white text-[rgb(33,48,118)] px-4">
       <div class="max-w-4xl mx-auto text-center">
         <h1 class="text-5xl md:text-7xl font-bold mb-6">
           Improve Your Software Delivery
         </h1>
-        <p class="text-xl md:text-2xl mb-8 text-white/90">
+        <p class="text-xl md:text-2xl mb-8 text-[rgb(33,48,118)]/90">
           I help organizations deploy software more often, with higher quality and fewer problems with Value Stream Mapping and DevOps.
         </p>
         <a href="#contact" class="inline-block bg-[rgb(245,180,60)] hover:bg-[rgb(235,170,50)] text-[rgb(33,48,118)] font-bold py-3 px-8 rounded-lg text-lg transition-colors">
@@ -78,16 +78,16 @@ const testimonials = [
     </section>
 
     <!-- Services Section -->
-    <section class="py-20 px-4 bg-white">
+    <section class="py-20 px-4 bg-[#001C46]">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[rgb(33,48,118)]">What I Help You Achieve</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">What I Help You Achieve</h2>
         <div class="grid md:grid-cols-2 gap-12">
           {services.map(service => (
             <div class="flex gap-6">
-              <div class="flex-shrink-0 w-12 h-12 text-[rgb(67,97,238)]" set:html={service.icon} />
+              <div class="flex-shrink-0 w-12 h-12 text-white" set:html={service.icon} />
               <div>
-                <h3 class="text-xl font-bold mb-3 text-[rgb(33,48,118)]">{service.title}</h3>
-                <p class="text-gray-600">{service.description}</p>
+                <h3 class="text-xl font-bold mb-3 text-white">{service.title}</h3>
+                <p class="text-white/80">{service.description}</p>
               </div>
             </div>
           ))}
@@ -174,7 +174,7 @@ const testimonials = [
             I help organizations improve complex release processes so they can deliver consistent customer value. I bring practical experience in Lean Management, DevOps, Cloud Infrastructure, Data Engineering, and Analytics, to solve your unique challenges.
           </p>
           <p>
-            Let’s work together to address dependencies, improve quality at the source, and create a faster, more reliable software delivery process.
+            Let's work together to address dependencies, improve quality at the source, and create a faster, more reliable software delivery process.
           </p>
         </div>
       </div>
