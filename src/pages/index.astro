@@ -83,15 +83,34 @@ const testimonials = [
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">What I Help You Achieve</h2>
         <div class="grid md:grid-cols-2 gap-12">
-          {services.map(service => (
-            <div class="flex gap-6">
-              <div class="flex-shrink-0 w-12 h-12 text-white" set:html={service.icon} />
-              <div>
-                <h3 class="text-xl font-bold mb-3 text-white">{service.title}</h3>
-                <p class="text-white/80">{service.description}</p>
-              </div>
+          <div class="flex gap-6">
+            <div class="flex-shrink-0 w-12 h-12 text-white" set:html={services[0].icon} />
+            <div>
+              <h3 class="text-xl font-bold mb-3 text-white">{services[0].title}</h3>
+              <p class="text-white/80">{services[0].description}</p>
             </div>
-          ))}
+          </div>
+          <div class="flex gap-6">
+            <div class="flex-shrink-0 w-12 h-12 text-white" set:html={services[1].icon} />
+            <div>
+              <h3 class="text-xl font-bold mb-3 text-white">{services[1].title}</h3>
+              <p class="text-white/80">{services[1].description}</p>
+            </div>
+          </div>
+          <div class="flex gap-6">
+            <div class="flex-shrink-0 w-12 h-12 text-white" set:html={services[2].icon} />
+            <div>
+              <h3 class="text-xl font-bold mb-3 text-white">{services[2].title}</h3>
+              <p class="text-white/80">{services[2].description}</p>
+            </div>
+          </div>
+          <div class="flex gap-6">
+            <div class="flex-shrink-0 w-12 h-12 text-white" set:html={services[3].icon} />
+            <div>
+              <h3 class="text-xl font-bold mb-3 text-white">{services[3].title}</h3>
+              <p class="text-white/80">{services[3].description}</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
