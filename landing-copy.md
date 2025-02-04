@@ -77,18 +77,21 @@ A cross-functional team relied on one or two developers to handle production dep
 
 ## The Challenge
 
-A platform engineering team struggled with long lead times of nearly a month between code push and production deployment. An inter-team dependency slowed the team down and deployment feedback arrived later than desired. The team wanted to prevent issues from reaching the customer, and wanted faster feedback on deployments, so they could fix any issues faster.
+A platform engineering team struggled with long lead times of 28 days between code push and production deployment. An inter-team dependency slowed the team down and deployment feedback arrived later than desired. The team wanted to prevent issues from reaching the customer, and wanted faster feedback on deployments, so they could fix any issues faster.
 
 ## Our Approach
 
 - Held a Value Stream Mapping workshop to identify bottlenecks, collaboration gaps, and delayed handoffs.
 - Created a roadmap that empowered every developer to participate in deployments and detect potential issues earlier.
+- Collaborated with change management to set weekly deployment windows, so the team could plan effectively and integrate improvements gradually.
+
+
 
 ## The Outcome
 
-- Significant Lead Time Reduction: Deployment lead time dropped from 28 days to 10 days, enabling faster feedback and iteration.
-- Improved Coordination: With clear responsibilities, the team could plan releases more effectively and respond to changes quickly.
-- Better Quality Control: Earlier detection of defects meant fewer disruptions for both the team and end users.
+- **64% Lead Time Reduction**: Time from code completion to live deployment dropped from 28 to 10 days — delivering value more often.
+- **Team Ownership**: Every developer understands the deployment process and can execute it, removing single points of failure.
+- **Fewer Surprises**: Shifting quality checks earlier means potential issues are found sooner, reducing the cost of more expensive unplanned work.
 
 # Example Project Results
 
