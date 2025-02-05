@@ -1,37 +1,30 @@
 ---
+import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import BlogLayout from '../../layouts/BlogLayout.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
-  return posts.map(post => ({
-    params: { slug: post.slug },
-    props: { post },
+  const blogEntries = await getCollection('posts');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
   }));
 }
 
-const { post } = Astro.props;
-const { Content } = await post.render();
+const { entry } = Astro.props;
+const { Content } = await entry.render();
 ---
 
-<BlogLayout title={`${post.data.title} - Miguel Dias`}>
-  <article class="post">
-    <header>
-      <h1>{post.data.title}</h1>
-      <time datetime={post.data.date}>
-        {new Date(post.data.date).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        })}
-      </time>
-    </header>
-
-    <div class="content">
-      <Content />
-    </div>
-  </article>
-</BlogLayout>
+<Layout title={entry.data.title}>
+  <main>
+    <!-- Blog Content -->
+    <article class="max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl font-bold text-[rgb(33,48,118)] mt-12 mb-4">{entry.data.title}</h1>
+      <time class="text-gray-500 block mb-12">{entry.data.date}</time>
+      <div class="prose max-w-none">
+        <Content />
+      </div>
+    </article>
+  </main>
+</Layout>
 
 <style>
   .post {

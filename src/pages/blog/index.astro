@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogLayout from '../../layouts/BlogLayout.astro';
+import Layout from '../../layouts/Layout.astro';
 import BlogPostPreview from '../../components/BlogPostPreview.astro';
 
 const posts = await getCollection('posts');
@@ -10,22 +10,24 @@ const sortedPosts = posts.sort((a, b) =>
 const base = import.meta.env.BASE_URL || '/';
 ---
 
-<BlogLayout title="Miguel Dias – Blog">
-  <div class="blog-container">
-    <section class="posts">
-      {sortedPosts.map((post) => (
-        <BlogPostPreview
-          base={base}
-          title={post.data.title}
-          description={post.data.description}
-          date={post.data.date}
-          url={`/blog/${post.slug}`}
-          image={post.data.image}
-        />
-      ))}
-    </section>
-  </div>
-</BlogLayout>
+<Layout title="Miguel Dias – Blog">
+  <main>
+    <div class="blog-container">
+      <section class="posts">
+        {sortedPosts.map((post) => (
+          <BlogPostPreview
+            base={base}
+            title={post.data.title}
+            description={post.data.description}
+            date={post.data.date}
+            url={`/blog/${post.slug}`}
+            image={post.data.image}
+          />
+        ))}
+      </section>
+    </div>
+  </main>
+</Layout>
 
 <style>
   .blog-container {
