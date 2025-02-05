@@ -92,43 +92,19 @@ Whether you're a small team or a large organization, Value Stream Mapping can he
 
 ## About
 
-### Background
-I’ve spent 5 years as a Cloud Infrastructure Engineer, and I’ve also worked as a Data Engineer and Data Analyst in large organizations, startups, and even a non-profit. For the past year, I’ve been working with teams and organizations to improve software delivery by running value stream mapping workshops. My experience in DevOps and cloud infrastructure has given me a solid understanding of what teams face daily—and how small changes can make a big difference.
+### About
 
-### My Vision for Value Stream Mapping
-What I love about value stream mapping is that it brings people together. In my workshops, it’s common to see teams collaborating—sometimes for the first time in the same room—to share their perspectives on how work flows to deliver value to the customer. This process isn’t just about creating a neat roadmap. It’s about helping everyone see where problems are, how their work connects to the bigger picture, and what they can do to improve it all.
+![Miguel](/images/profile-helsinki-1000.png)
 
-When teams start mapping their current state, they see not just the issues they face, but also how a few tweaks can reduce stress, cut out unnecessary work, and even make their day-to-day tasks more interesting. It’s about measuring what we do, understanding the flow of work, and creating improvements that really matter—both for the customer and for the people doing the work.
+I focus on helping multiple teams and organizations improve their software delivery processes by facilitating Value Stream Mapping workshops.
 
-### OR
-
-### About Me
-[Round profile photo centered here]
-
-I’m a DevOps and Cloud Infrastructure Engineer with over five years of experience building and optimizing systems for startups, large enterprises, and nonprofits. For the past year, I’ve focused on helping teams improve their software delivery processes through value stream mapping workshops. My background in data engineering, analytics, and cloud infrastructure gives me a unique perspective—I understand the challenges teams face because I’ve lived them firsthand.
+I’m a Software Engineer with over five years of experience, building systems for startups, large companies, and a nonprofit. My background is in DevOps, Cloud Infrastructure, Data Engineering and Analytics.
 
 ### Why Value Stream Mapping?
-I work with teams to untangle complex workflows and align their efforts around delivering real value to customers. Here’s what drives me:
 
-Collaboration Over Complexity
-Value stream mapping brings people together—often for the first time—to visualize how their work flows from idea to customer. Teams discover how their actions impact others, uncover hidden bottlenecks, and collectively design solutions.
-
-Less Stress, Better Outcomes
-When teams see the full picture, they eliminate redundant work, reduce firefighting, and focus on what matters. This isn’t just about efficiency; it’s about creating space for meaningful, rewarding work.
-
-Metrics That Matter
-We define clear goals and track progress through metrics tied to customer value. Teams see the why behind improvements, which builds buy-in and momentum—even in corporate environments where initiatives often stall.
-
-Ownership & Sustainability
-The best solutions come from the people doing the work. By involving everyone—from leadership to frontline teams—we create roadmaps that stick. No more top-down mandates; just shared ownership and measurable results.
-
-How It Works
-In my workshops, we:
-
-Map current workflows to pinpoint delays and waste.
-
-Identify goals that benefit both customers and teams (e.g., faster delivery, fewer errors).
-
-Co-design improvements and track outcomes with simple, actionable metrics.
-
-The result? Processes that feel lighter, work that delivers pride, and teams that finally see how their contributions ripple outward to the people they serve.
+- Focuses on value delivered to the customer from day 1
+- Aligns teams on shared goals that they co-create
+- Removes stressful and boring work
+- Teams see problems from each others perspective
+- Measurable goals give purpose to improvements
+- Teams create and own the improvement roadmap

@@ -6,14 +6,34 @@ import Layout from '../layouts/Layout.astro';
   <main>
     <section class="py-20 px-4 bg-white">
       <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[rgb(33,48,118)]">I'm a Lean Management & DevOps Consultant</h1>
-        <div class="text-gray-600 space-y-6">
+        <!-- Profile Image -->
+        <div class="flex justify-center mb-16">
+          <div class="w-64 h-64 rounded-full overflow-hidden">
+            <img
+              src="/images/profile-helsinki-1000.png"
+              alt="Miguel Dias"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        <div class="text-gray-600 space-y-6 max-w-2xl mx-auto">
           <p>
-            I help organizations improve complex release processes so they can deliver consistent customer value. I bring practical experience in Lean Management, DevOps, Cloud Infrastructure, Data Engineering, and Analytics, to solve your unique challenges.
+            I focus on helping multiple teams and organizations improve their software delivery processes by facilitating Value Stream Mapping workshops.
           </p>
           <p>
-            Let's work together to address dependencies, improve quality at the source, and create a faster, more reliable software delivery process.
+            I'm a Software Engineer with over five years of experience, building systems for startups, large companies, and a nonprofit. My background is in DevOps, Cloud Infrastructure, Data Engineering and Analytics.
           </p>
+
+          <h2 class="text-2xl font-bold text-[rgb(33,48,118)] mt-12 mb-6">Why Value Stream Mapping?</h2>
+          <ul class="list-disc list-inside space-y-3">
+            <li>Focuses on value delivered to the customer from day 1</li>
+            <li>Aligns teams on shared goals that they co-create</li>
+            <li>Removes stressful and boring work</li>
+            <li>Teams see problems from each others perspective</li>
+            <li>Measurable goals give purpose to improvements</li>
+            <li>Teams create and own the improvement roadmap</li>
+          </ul>
         </div>
       </div>
     </section>
