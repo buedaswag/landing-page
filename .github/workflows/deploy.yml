@@ -33,4 +33,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: withastro/action@v3
         with:
-          path: dist  # Changed from 'dist' to 'path: dist'
+          path: dist
+          package-manager: npm
