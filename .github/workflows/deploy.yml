@@ -33,4 +33,4 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: withastro/action@v3
         with:
-          dist: dist # Folder to deploy
+          path: dist  # Changed from 'dist' to 'path: dist'
