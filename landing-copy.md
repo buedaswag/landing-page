@@ -41,7 +41,7 @@ Regular Check-ins: We review progress, address blockers, and refine actions as n
 
 Empowering the team to set realistic targets, based on real analysis, motivated us to reach those targets—and exceed them. It's a great example of a team taking control of its ways of working."
 
-### Example Project Results
+### Case Study
 
 #### The Challenge
 
