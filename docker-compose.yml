@@ -8,9 +8,17 @@ services:
     environment:
       - HOST=0.0.0.0 # Properly expose container
       - NODE_ENV=development
+    volumes:
+      - .:/app
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - node_modules:/app/node_modules
     networks:
       - blog-net # Add a dedicated network for isolation
 
 networks:
   blog-net:
     driver: bridge
+
+volumes:
+  node_modules:
