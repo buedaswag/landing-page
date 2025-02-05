@@ -2,8 +2,8 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Copy package.json
+COPY package.json ./
 
 # Install dependencies
 RUN npm install
@@ -11,7 +11,7 @@ RUN npm install
 # Copy the rest of the application
 COPY . .
 
-# Set proper permissions for node_modules
+# Set proper permissions
 RUN chown -R node:node /app
 
 # Switch to non-root user
