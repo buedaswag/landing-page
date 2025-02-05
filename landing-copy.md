@@ -14,23 +14,6 @@
 
 [Let's Talk About Improvements]
 
-### Services Overview ("What I Help You Achieve")
-
-#### Improve Your Release Process
-
-Identify bottlenecks, handoffs, dependencies, and address them for smoother, more predictable releases.
-
-#### Deliver Reliable, High-Quality Software
-
-Build quality at the source and minimizing defects before they reach customers.
-
-#### Release Often and Stay Competitive
-
-Improving work saves time and compounds over time, freeing up your teams to deliver value and stay ahead of the competition.
-
-#### Align Teams on Shared Goals
-
-Set clear metrics for customer value. Everyone knows what success looks like and how to achieve it.
 
 ### Process / Method ("How We Work")
 
@@ -91,6 +74,24 @@ Whether you're a small team or a large organization, Value Stream Mapping can he
 [Let's Talk About Improvements]
 
 ## About
+
+### Services Overview ("What I Help You Achieve")
+
+#### Improve Your Release Process
+
+Identify bottlenecks, handoffs, dependencies, and address them for smoother, more predictable releases.
+
+#### Deliver Reliable, High-Quality Software
+
+Build quality at the source and minimizing defects before they reach customers.
+
+#### Release Often and Stay Competitive
+
+Improving work saves time and compounds over time, freeing up your teams to deliver value and stay ahead of the competition.
+
+#### Align Teams on Shared Goals
+
+Set clear metrics for customer value. Everyone knows what success looks like and how to achieve it.
 
 ### About
 

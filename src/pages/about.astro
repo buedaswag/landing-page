@@ -4,16 +4,52 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="About - Miguel Dias">
   <main>
+    <!-- What I Help You Achieve Section -->
+    <section class="py-20 px-4 bg-[rgb(240,242,245)]">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-8 text-[rgb(33,48,118)]">What I Help You Achieve</h2>
+        <p class="text-gray-600 text-lg mb-12 max-w-3xl mx-auto">
+          I help organizations improve their software delivery processes through Value Stream Mapping, enabling teams to deploy more often, with higher quality and fewer problems.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-8 text-left">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-bold mb-3 text-[rgb(33,48,118)]">Improve Your Release Process</h3>
+            <p class="text-gray-600">Identify bottlenecks, handoffs, dependencies, and address them for smoother, more predictable releases.</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-bold mb-3 text-[rgb(33,48,118)]">Deliver Reliable, High-Quality Software</h3>
+            <p class="text-gray-600">Build quality at the source and minimize defects before they reach customers.</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-bold mb-3 text-[rgb(33,48,118)]">Release Often and Stay Competitive</h3>
+            <p class="text-gray-600">Improving work saves time and compounds over time, freeing up your teams to deliver value and stay ahead of the competition.</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-bold mb-3 text-[rgb(33,48,118)]">Align Teams on Shared Goals</h3>
+            <p class="text-gray-600">Set clear metrics for customer value. Everyone knows what success looks like and how to achieve it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
     <section class="py-20 px-4 bg-white">
       <div class="max-w-4xl mx-auto">
         <!-- Profile Image -->
         <div class="flex justify-center mb-16">
-          <div class="w-48 h-48 rounded-full overflow-hidden">
-            <img
-              src="/images/about/profile-helsinki-1000.png"
-              alt="Miguel Dias"
-              class="w-full h-full object-cover object-[center_35%]"
-            />
+          <div class="text-center">
+            <div class="w-48 h-48 rounded-full overflow-hidden mb-4">
+              <img
+                src="/images/about/profile-helsinki-1000.png"
+                alt="Miguel Dias"
+                class="w-full h-full object-cover object-[center_35%]"
+              />
+            </div>
+            <h1 class="text-2xl font-bold text-[rgb(33,48,118)]">Miguel Dias</h1>
           </div>
         </div>
 
