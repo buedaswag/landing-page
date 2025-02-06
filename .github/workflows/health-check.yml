@@ -1,0 +1,16 @@
+name: Website Health Check
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check website health
+      run: |
+        response=$(curl --write-out "%{http_code}" --silent --output /dev/null "https://migueldias.eu")
+        if [ "$response" -ne 200 ]; then exit 1; fi
