@@ -37,9 +37,8 @@ Regular Check-ins: We review progress, address blockers, and refine actions as n
 
 #### Mika, Director of Engineering:
 
-"The value stream mapping Miguel organized for our engineering team revealed how our deployment process could improve and served as a powerful team-building exercise. Everyone got on the same page, understanding what we're good at and what needs work.
-
-Empowering the team to set realistic targets, based on real analysis, motivated us to reach those targets—and exceed them. It's a great example of a team taking control of its ways of working."
+"The value stream mapping Miguel organized for our Identity Service team had several impacts. On one side, a tremendous potential was unveiled how the process of deploying changes can be improved. On the other, it was a great team building exercise.
+Putting focus on something very specific leads to a set of individuals getting on the same page. Understanding how we operate - where are we good at and what can we improve - leads to a shared sense of achievement. Last, empowering the team to set realistic targets (based on analysis and discussions) motivates to reach these targets and beyond. It’s a great example of a team taking control over their ways of working."
 
 ### Case Study
 
