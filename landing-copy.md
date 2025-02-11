@@ -68,7 +68,7 @@ A platform engineering team struggled with long lead times of 28 days between co
 
 #### Ready to Improve Your Software Delivery?
 
-Whether you're a small team or a large organization, Value Stream Mapping can help you release features more often, discover problems earlier, and improve cross-team collaboration.
+Whether you're a small team or a large organization, I can help you deliver more often, discover problems earlier, and improve cross-team collaboration.
 
 [Let's Talk About Improvements]
 
