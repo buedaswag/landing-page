@@ -113,9 +113,8 @@ const testimonials = [
               <div class="text-gray-600 mb-6 text-lg italic">
                 <p>"{testimonial.quote[0]}</p>
                 {testimonial.quote.slice(1).map(paragraph => (
-                  <p class="mt-4">{paragraph}</p>
+                  <p class="mt-4">{paragraph}{paragraph === testimonial.quote[testimonial.quote.length - 1] ? '"' : ''}</p>
                 ))}
-                <p>"</p>
               </div>
               <footer class="space-y-4">
                 <div class="flex items-center gap-4">
