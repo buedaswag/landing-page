@@ -1,0 +1,13 @@
+---
+title: "Testimonial from Iker Garagarza, Director of Engineering at Relex Solutions"
+description: "Read what Iker Garagarza, Director of Engineering at Relex Solutions, has to say about working with Miguel on Value Stream Mapping initiatives."
+pubDate: "2024-02-17"
+---
+
+During 2024, I interacted few times with Miguel in the context of Value Stream Mapping. First time was when he presented the outcome of the VSM work done with one team and I thought the presentation was interesting and something that could bring value to the whole company.
+
+Then he approached me suggesting to perform the exercise with two of my teams, one of them being a team responsible of delivering our solution directly to the customers. I thought this could be fruitful so I proposed it to the team and they were excited to get working with Miguel. Miguel had an initial meeting with us where he presented the practicalities and understand the context, including stakeholders, so that we could plan the next workshops together. This was a really smooth approach and Miguel was great driving the workshops, ensuring people were engaged and aiming to get all the needed information from the team members. All the workshops led us to the outcome we were expecting and got a good overview on areas we could improve to make the whole process more efficient. It was great to see the whole process, Miguel's facilitation skills as well as his VSM expertise.
+
+Interestingly, on another information sharing session I saw that Miguel had a presentation around another area in the company covering the similar scope to my own team. I joined the call to hear the outcome and it was again a good presentation by Miguel. Interestingly, some of items impacting the other area were also impacting my area, so there are also shared learnings we can take out of it.
+
+As a summary, I think Miguel is very proactive in his work, is great at facilitating and documenting workshops and their outcomes and has a great expertise around VSM, which I believe can help us greatly as a company. I highly appreciate his focus on value and efficiency as well as having the customer at the centre of our delivery, as there is no value without customer.
