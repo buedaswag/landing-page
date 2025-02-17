@@ -151,20 +151,6 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"posts": {
-"2024-02-17-iker-garagarza-testimonial.md": {
-	id: "2024-02-17-iker-garagarza-testimonial.md";
-  slug: "2024-02-17-iker-garagarza-testimonial";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".md"] };
-"2024-02-17-mika-schafroth-testimonial.md": {
-	id: "2024-02-17-mika-schafroth-testimonial.md";
-  slug: "2024-02-17-mika-schafroth-testimonial";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".md"] };
 "2024-06-02-improving-large-scale-software-delivery-results.mdx": {
 	id: "2024-06-02-improving-large-scale-software-delivery-results.mdx";
   slug: "2024-06-02-improving-large-scale-software-delivery-results";
@@ -322,6 +308,20 @@ declare module 'astro:content' {
 "2025-01-23-new-york-lean-coffee.mdx": {
 	id: "2025-01-23-new-york-lean-coffee.mdx";
   slug: "2025-01-23-new-york-lean-coffee";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"2025-02-17-iker-garagarza-testimonial.mdx": {
+	id: "2025-02-17-iker-garagarza-testimonial.mdx";
+  slug: "2025-02-17-iker-garagarza-testimonial";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"2025-02-17-mika-schafroth-testimonial.mdx": {
+	id: "2025-02-17-mika-schafroth-testimonial.mdx";
+  slug: "2025-02-17-mika-schafroth-testimonial";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
