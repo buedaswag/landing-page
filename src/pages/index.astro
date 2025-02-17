@@ -32,7 +32,7 @@ const testimonials = [
   {
     name: "Iker Garagarza",
     role: "Director of Engineering, Relex Solutions",
-    postSlug: "2024-02-17-iker-garagarza-testimonial",
+    postSlug: "2025-02-17-iker-garagarza-testimonial",
     quote: [
       "During 2024, I interacted few times with Miguel in the context of Value Stream Mapping. First time was when he presented the outcome of the VSM work done with one team and I thought the presentation was interesting and something that could bring value to the whole company.",
       "Then he approached me suggesting to perform the exercise with two of my teams, one of them being a team responsible of delivering our solution directly to the customers. This was a really smooth approach and Miguel was great driving the workshops, ensuring people were engaged and aiming to get all the needed information from the team members."
@@ -41,7 +41,7 @@ const testimonials = [
   {
     name: "Mika Schafroth",
     role: "Director of Engineering, Relex Solutions",
-    postSlug: "2024-02-17-mika-schafroth-testimonial",
+    postSlug: "2025-02-17-mika-schafroth-testimonial",
     quote: [
       "The value stream mapping Miguel organized for our Identity Service team had several impacts. On one side, a tremendous potential was unveiled how the process of deploying changes can be improved. On the other, it was a great team building exercise.",
       "Putting focus on something very specific leads to a set of individuals getting on the same page. Understanding how we operate - where are we good at and what can we improve - leads to a shared sense of achievement."
@@ -110,10 +110,12 @@ const testimonials = [
         <div class="grid md:grid-cols-2 gap-8">
           {testimonials.map(testimonial => (
             <blockquote class="bg-white p-8 rounded-lg shadow-md">
-              <div class="text-gray-600 mb-6 text-lg italic space-y-4">
-                <div>"{testimonial.quote.map((paragraph, index) => (
-                  <p class={index > 0 ? "mt-4" : ""}>{paragraph}</p>
-                ))}"</div>
+              <div class="text-gray-600 mb-6 text-lg italic">
+                <p>"{testimonial.quote[0]}</p>
+                {testimonial.quote.slice(1).map(paragraph => (
+                  <p class="mt-4">{paragraph}</p>
+                ))}
+                <p>"</p>
               </div>
               <footer class="space-y-4">
                 <div class="flex items-center gap-4">
@@ -123,7 +125,7 @@ const testimonials = [
                   </div>
                 </div>
                 <a
-                  href={`/posts/${testimonial.postSlug}`}
+                  href={`/blog/${testimonial.postSlug}`}
                   class="inline-block text-[rgb(67,97,238)] hover:text-[rgb(67,97,238)]/90 font-medium transition-colors"
                 >
                   Read Full Testimonial →
