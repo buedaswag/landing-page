@@ -27,7 +27,7 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
       <time datetime={post.data.date}>{formattedDate}</time>
     </header>
 
-    <div class="content">
+    <div class="content prose prose-slate max-w-none">
       <Content />
     </div>
   </article>

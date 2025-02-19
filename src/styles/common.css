@@ -13,3 +13,69 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+/* Table styles - specifically for markdown content */
+:where(table) {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    border: 2px solid #333;
+}
+
+:where(th),
+:where(td) {
+    border: 2px solid #333;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+:where(th) {
+    font-weight: bold;
+}
+
+/* Additional styles to ensure table borders are visible in markdown */
+.markdown-content table,
+.prose table,
+article table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    border: 2px solid #333;
+}
+
+.markdown-content th,
+.markdown-content td,
+.prose th,
+.prose td,
+article th,
+article td {
+    border: 2px solid #333;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+@layer base {
+
+    /* Target markdown content tables */
+    .prose table,
+    article table,
+    main table {
+        @apply w-full border-2 border-gray-800 my-4;
+        border-collapse: collapse;
+    }
+
+    .prose th,
+    .prose td,
+    article th,
+    article td,
+    main th,
+    main td {
+        @apply border-2 border-gray-800 p-3 text-left;
+    }
+
+    .prose th,
+    article th,
+    main th {
+        @apply font-bold;
+    }
+}
