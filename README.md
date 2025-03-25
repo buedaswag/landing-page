@@ -1,5 +1,11 @@
 # Landing Page
 
+## Run locally
+
+```bash
+docker compose up --build
+```
+
 ## How to Take a Scrolling Screenshot on Mac
 
 ### Using Chrome DevTools:
@@ -17,3 +23,8 @@
   - **Shottr** (Free, lightweight)
 
 This method works best for capturing entire web pages without manually stitching screenshots together.
+
+## TODO
+
+* the date feild in the articles should be extracted from te doc name
+* add the testemonial from Mark
