@@ -41,14 +41,23 @@ def wait_for_server(url="http://localhost:4444", max_attempts=10):
     import requests
     for attempt in range(max_attempts):
         try:
+            log(f"Attempting to connect to {url}...")
             response = requests.get(url, timeout=2)
             if response.status_code == 200:
                 log("Server is ready!")
                 return True
-        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout):
-            log(f"Waiting for server... attempt {attempt + 1}/{max_attempts}")
-            pass
-        time.sleep(1)
+            else:
+                log(f"Server returned status code: {response.status_code}")
+        except requests.exceptions.ConnectionError as e:
+            log(f"Connection error: {str(e)}")
+        except requests.exceptions.Timeout as e:
+            log(f"Timeout error: {str(e)}")
+        except Exception as e:
+            log(f"Unexpected error: {str(e)}")
+        
+        if attempt < max_attempts - 1:
+            log(f"Waiting 1 second before next attempt ({attempt + 1}/{max_attempts})")
+            time.sleep(1)
     return False
 
 def cleanup():
