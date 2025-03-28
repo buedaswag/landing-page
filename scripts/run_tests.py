@@ -36,29 +36,21 @@ def run_command(cmd, cwd=None, timeout=60):
         log(f"Error output: {e.stderr}")
         return None
 
-def wait_for_server(url="http://localhost:4444", max_attempts=10):
+def wait_for_server(url="http://localhost:4444"):
     """Wait for the server to be ready."""
     import requests
-    for attempt in range(max_attempts):
-        try:
-            log(f"Attempting to connect to {url}...")
-            response = requests.get(url, timeout=2)
-            if response.status_code == 200:
-                log("Server is ready!")
-                return True
-            else:
-                log(f"Server returned status code: {response.status_code}")
-        except requests.exceptions.ConnectionError as e:
-            log(f"Connection error: {str(e)}")
-        except requests.exceptions.Timeout as e:
-            log(f"Timeout error: {str(e)}")
-        except Exception as e:
-            log(f"Unexpected error: {str(e)}")
-        
-        if attempt < max_attempts - 1:
-            log(f"Waiting 2 seconds before next attempt ({attempt + 1}/{max_attempts})")
-            time.sleep(2)
-    return False
+    log(f"Checking if server is ready at {url}...")
+    try:
+        response = requests.get(url, timeout=2)
+        if response.status_code == 200:
+            log("Server is ready!")
+            return True
+        else:
+            log(f"Server returned status code: {response.status_code}")
+            return False
+    except requests.exceptions.RequestException as e:
+        log(f"Server not ready: {str(e)}")
+        return False
 
 def cleanup():
     """Clean up Docker containers."""
@@ -86,26 +78,29 @@ def main():
         log("Stopping existing containers...")
         run_command("docker compose down", cwd=project_root, timeout=5)
 
-        # Build and start the containers with a 60-second timeout
-        log("Building and starting containers (timeout: 60s)...")
+        # Build and start the containers
+        log("Building and starting containers...")
         build_output = run_command("docker compose up --build -d", cwd=project_root, timeout=60)
         if not build_output:
-            log("Failed to build and start containers within 60 seconds")
+            log("Failed to build and start containers")
             cleanup()
             sys.exit(1)
 
-        # Wait a bit for the container to fully start
-        log("Waiting for container to fully start...")
-        time.sleep(5)
+        # Wait for container logs to indicate readiness
+        log("Waiting for container logs to indicate readiness...")
+        logs_output = run_command("docker compose logs -f", cwd=project_root, timeout=10)
+        if not logs_output or "Server is running at" not in logs_output:
+            log("Server startup message not found in logs")
+            cleanup()
+            sys.exit(1)
 
-        # Wait for the server to be ready
-        log("Waiting for server to be ready...")
+        # Verify server is responding
         if not wait_for_server():
-            log("Server failed to start")
+            log("Server failed to respond")
             cleanup()
             sys.exit(1)
 
-        # Run the tests sequentially
+        # Run the tests
         log("Running tests...")
         test_output = run_command("pytest tests/ -v", cwd=project_root, timeout=10)
         if not test_output:
@@ -125,4 +120,12 @@ def main():
         sys.exit(1)
 
 if __name__ == "__main__":
-    main() 
+    # Main function that runs the pre-push test suite
+    # - Stops any existing Docker containers
+    # - Builds and starts containers with timeouts
+    # - Waits for container logs to indicate readiness
+    # - Verifies server is responding
+    # - Runs pytest tests
+    # - Cleans up containers on completion or failure
+    # - Exits with status code 0 on success, 1 on failure
+    main()
