@@ -32,3 +32,4 @@ This method works best for capturing entire web pages without manually stitching
 
 ## Git Hook Testing
 This line was added to test the git pre-push hook functionality.
+This is a second test to verify the git hook is working properly.
