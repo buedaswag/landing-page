@@ -29,3 +29,6 @@ This method works best for capturing entire web pages without manually stitching
 * the date feild in the articles should be extracted from te doc name
 * add the testemonial from Mark
 * create backlinks for pages, especially about VSM, etcz`
+
+## Git Hook Testing
+This line was added to test the git pre-push hook functionality.
