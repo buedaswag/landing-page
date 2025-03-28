@@ -5,6 +5,6 @@ cd "$(git rev-parse --show-toplevel)"
 cp githooks/pre-push .git/hooks/pre-push 
 
 echo "Running tests"
-python -m unittest tests
+python -m unittest 
 
 echo "Pre-push checks completed."
