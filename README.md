@@ -6,21 +6,30 @@
 docker compose up --build
 ```
 
-## Development Setup
+## Development
 
-### Git Hooks
-This project uses git hooks to ensure code quality before pushing. To set up the hooks:
+### Test Suite
 
+The project includes a comprehensive test suite that verifies:
+- Homepage loading
+- Calendly link presence and accessibility
+- All internal pages loading
+- All images in articles loading
+
+To run the tests:
 ```bash
-# Install Python dependencies
+# Install dependencies
 pip install -r requirements.txt
 
-# Install git hooks
-python scripts/setup_hooks.py
+# Run tests
+pytest tests/test_site.py -v
 ```
 
-The hooks will run automatically when you push code. Currently implemented hooks:
-- `pre-push`: Runs the test suite before allowing a push
+### Git Hooks
+
+The project includes a pre-push git hook that automatically runs the test suite before allowing pushes. This ensures that all changes are tested before being pushed to the repository.
+
+The hook is located in `hooks/pre-push` and is automatically installed when you clone the repository.
 
 ## How to Take a Scrolling Screenshot on Mac
 
@@ -45,7 +54,3 @@ This method works best for capturing entire web pages without manually stitching
 * the date feild in the articles should be extracted from te doc name
 * add the testemonial from Mark
 * create backlinks for pages, especially about VSM, etcz`
-
-## Git Hook Testing
-This line was added to test the git pre-push hook functionality.
-This is a second test to verify the git hook is working properly.

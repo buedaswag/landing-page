@@ -1,25 +1,10 @@
 #!/bin/bash
 
 # Get the project root directory
-PROJECT_ROOT="$(git rev-parse --show-toplevel)"
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-# Run the test script in the background with a timeout
-"$PROJECT_ROOT/scripts/run_tests.py" &
-TEST_PID=$!
+# Run the test suite
+python3 scripts/run_tests.py
 
-# Wait for the test process with a timeout of 30 seconds
-TIMEOUT=30
-COUNTER=0
-while kill -0 $TEST_PID 2>/dev/null; do
-    if [ $COUNTER -ge $TIMEOUT ]; then
-        echo "Test suite timed out after ${TIMEOUT} seconds"
-        kill -9 $TEST_PID 2>/dev/null
-        exit 1
-    fi
-    sleep 1
-    COUNTER=$((COUNTER + 1))
-done
-
-# Get the exit status of the test process
-wait $TEST_PID
+# Exit with the test suite's exit code
 exit $? 
