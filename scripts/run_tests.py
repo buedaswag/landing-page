@@ -56,8 +56,8 @@ def wait_for_server(url="http://localhost:4444", max_attempts=10):
             log(f"Unexpected error: {str(e)}")
         
         if attempt < max_attempts - 1:
-            log(f"Waiting 1 second before next attempt ({attempt + 1}/{max_attempts})")
-            time.sleep(1)
+            log(f"Waiting 2 seconds before next attempt ({attempt + 1}/{max_attempts})")
+            time.sleep(2)
     return False
 
 def cleanup():
@@ -106,6 +106,10 @@ def main():
             log("Failed to build and start containers within 60 seconds")
             cleanup()
             sys.exit(1)
+
+        # Wait a bit for the container to fully start
+        log("Waiting for container to fully start...")
+        time.sleep(5)
 
         # Wait for the server to be ready
         log("Waiting for server to be ready...")
