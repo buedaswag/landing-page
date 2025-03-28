@@ -6,6 +6,22 @@
 docker compose up --build
 ```
 
+## Development Setup
+
+### Git Hooks
+This project uses git hooks to ensure code quality before pushing. To set up the hooks:
+
+```bash
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Install git hooks
+python scripts/setup_hooks.py
+```
+
+The hooks will run automatically when you push code. Currently implemented hooks:
+- `pre-push`: Runs the test suite before allowing a push
+
 ## How to Take a Scrolling Screenshot on Mac
 
 ### Using Chrome DevTools:

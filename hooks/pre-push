@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Get the project root directory
+PROJECT_ROOT="$(git rev-parse --show-toplevel)"
+
+# Run the test script
+"$PROJECT_ROOT/scripts/run_tests.py"
+
+# Exit with the test script's exit code
+exit $? 
