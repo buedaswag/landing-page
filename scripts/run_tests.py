@@ -82,19 +82,6 @@ def main():
         # Get the project root directory
         project_root = Path(__file__).parent.parent
 
-        # Install Python dependencies first
-        log("Installing Python dependencies...")
-        # Try to use a virtual environment if it exists
-        venv_pip = os.path.join(project_root, "venv", "bin", "pip")
-        if os.path.exists(venv_pip):
-            pip_cmd = f"{venv_pip} install -r requirements.txt"
-        else:
-            pip_cmd = "pip install -r requirements.txt"
-        
-        if not run_command(pip_cmd, cwd=project_root, timeout=30):
-            log("Failed to install Python dependencies")
-            sys.exit(1)
-
         # Stop any existing containers
         log("Stopping existing containers...")
         run_command("docker compose down", cwd=project_root, timeout=5)
