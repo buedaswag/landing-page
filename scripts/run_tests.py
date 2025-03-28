@@ -73,6 +73,10 @@ def main():
         # Get the project root directory
         project_root = Path(__file__).parent.parent
 
+        # Install Python dependencies first
+        log("Installing Python dependencies...")
+        run_command("pip install -r requirements.txt", cwd=project_root, timeout=10)
+
         # Stop any existing containers
         log("Stopping existing containers...")
         run_command("docker compose down", cwd=project_root, timeout=5)
@@ -91,10 +95,6 @@ def main():
             log("Server failed to start")
             cleanup()
             sys.exit(1)
-
-        # Install Python dependencies if needed
-        log("Installing Python dependencies...")
-        run_command("pip install -r requirements.txt", cwd=project_root, timeout=10)
 
         # Run the tests sequentially
         log("Running tests...")
