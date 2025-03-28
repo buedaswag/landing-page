@@ -14,7 +14,7 @@ def log(message):
     print(f"[{timestamp}] {message}")
     print(f"[{timestamp}] {'='*50}\n")
 
-def run_command(cmd, cwd=None, timeout=10):
+def run_command(cmd, cwd=None, timeout=60):
     """Run a command and return its output."""
     try:
         log(f"Running command: {cmd}")
@@ -77,11 +77,11 @@ def main():
         log("Stopping existing containers...")
         run_command("docker compose down", cwd=project_root, timeout=5)
 
-        # Build and start the containers
-        log("Building and starting containers...")
-        build_output = run_command("docker compose up --build -d", cwd=project_root, timeout=15)
+        # Build and start the containers with a 60-second timeout
+        log("Building and starting containers (timeout: 60s)...")
+        build_output = run_command("docker compose up --build -d", cwd=project_root, timeout=60)
         if not build_output:
-            log("Failed to build and start containers")
+            log("Failed to build and start containers within 60 seconds")
             cleanup()
             sys.exit(1)
 
@@ -96,7 +96,7 @@ def main():
         log("Installing Python dependencies...")
         run_command("pip install -r requirements.txt", cwd=project_root, timeout=10)
 
-        # Run the tests
+        # Run the tests sequentially
         log("Running tests...")
         test_output = run_command("pytest tests/ -v", cwd=project_root, timeout=10)
         if not test_output:
