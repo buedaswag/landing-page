@@ -6,30 +6,12 @@
 docker compose up --build
 ```
 
-## Development
+## Install git hooks
 
-### Test Suite
-
-The project includes a comprehensive test suite that verifies:
-- Homepage loading
-- Calendly link presence and accessibility
-- All internal pages loading
-- All images in articles loading
-
-To run the tests:
+Copy the pre-push hook to enable automatic testing before pushing:
 ```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Run tests
-pytest tests/test_site.py -v
+cp githooks/pre-push .git/hooks/pre-push
 ```
-
-### Git Hooks
-
-The project includes a pre-push git hook that automatically runs the test suite before allowing pushes. This ensures that all changes are tested before being pushed to the repository.
-
-The hook is located in `hooks/pre-push` and is automatically installed when you clone the repository.
 
 ## How to Take a Scrolling Screenshot on Mac
 
@@ -52,5 +34,7 @@ This method works best for capturing entire web pages without manually stitching
 ## TODO
 
 * the date feild in the articles should be extracted from te doc name
-* add the testemonial from Mark
-* create backlinks for pages, especially about VSM, etcz`
+* add the testimonial from Mark
+* create backlinks for pages, especially about VSM, etc
+* make the blog button more prominent because its a significant part of my website and i want users to find it. maybe its a good thing if i add the carrousel of my top 3 articles, that will give more visibility to the blog. 
+* a newsletter 
