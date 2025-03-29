@@ -6,6 +6,13 @@
 docker compose up --build
 ```
 
+## Install git hooks
+
+Copy the pre-push hook to enable automatic testing before pushing:
+```bash
+cp githooks/pre-push .git/hooks/pre-push
+```
+
 ## How to Take a Scrolling Screenshot on Mac
 
 ### Using Chrome DevTools:
@@ -27,5 +34,7 @@ This method works best for capturing entire web pages without manually stitching
 ## TODO
 
 * the date feild in the articles should be extracted from te doc name
-* add the testemonial from Mark
-* create backlinks for pages, especially about VSM, etcz`
+* add the testimonial from Mark
+* create backlinks for pages, especially about VSM, etc
+* make the blog button more prominent because its a significant part of my website and i want users to find it. maybe its a good thing if i add the carrousel of my top 3 articles, that will give more visibility to the blog. 
+* a newsletter 
