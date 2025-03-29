@@ -33,8 +33,13 @@ This method works best for capturing entire web pages without manually stitching
 
 ## TODO
 
-* the date feild in the articles should be extracted from te doc name
 * add the testimonial from Mark
-* create backlinks for pages, especially about VSM, etc
+* needs to look good on mobile
 * make the blog button more prominent because its a significant part of my website and i want users to find it. maybe its a good thing if i add the carrousel of my top 3 articles, that will give more visibility to the blog. 
+* the date feild in the articles should be extracted from te doc name
 * a newsletter 
+
+
+## DONE
+
+* create backlinks for pages, especially about VSM, etc
