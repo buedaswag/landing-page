@@ -2,7 +2,7 @@
 
 echo "Syncing the pre-push hook"
 cd "$(git rev-parse --show-toplevel)"
-cp githooks/pre-push .git/hooks/pre-push 
+cp git-hooks/pre-push .git/hooks/pre-push 
 
 echo "Running tests"
 python -m unittest 
