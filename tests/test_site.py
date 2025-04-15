@@ -218,7 +218,7 @@ class TestSite(unittest.TestCase):
         testimonial_authors = [card.find(string=lambda text: text and person in text) 
                               for card, person in zip(testimonial_cards, 
                                                     ["Jukka Palosaari", "Iker Garagarza", 
-                                                     "Mark", "Mika Schafroth"])]
+                                                     "Mark Sadler", "Mika Schafroth"])]
         
         # Verify all authors are found
         for i, author in enumerate(["Jukka", "Iker", "Mark", "Mika"]):

@@ -39,8 +39,8 @@ function Testimonials() {
               "Miguel has a strong background and fantastic knowledge of DevOps, Data Engineering and Analytics. He used this effectively in bringing teams together and conducting Value Stream mapping and helping to identify how we could reduce process cycle times and implement process improvement. Miguel was always very professional, friendly and a great team player."
             </blockquote>
             <div className="testimonial-author">
-              <h3>Mark</h3>
-              <p>Director of Engineering, Relex Solutions</p>
+              <h3>Mark Sadler</h3>
+              <p>Program Director, Relex Solutions</p>
             </div>
             <a href="#" className="testimonial-link">Read Full Testimonial →</a>
           </div>
