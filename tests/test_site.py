@@ -206,22 +206,26 @@ class TestSite(unittest.TestCase):
         response = requests.get(self.BASE_URL, timeout=10)
         soup = BeautifulSoup(response.text, "html.parser")
         
-        # Find testimonial cards
-        testimonial_cards = soup.find_all("div", class_="testimonial-card")
+        # Find testimonials section by ID
+        testimonials_section = soup.find("section", id="testimonial")
+        self.assertIsNotNone(testimonials_section, "Testimonials section not found")
         
-        # Check we have at least one testimonial
-        self.assertTrue(len(testimonial_cards) > 0, "No testimonials found")
+        # Find all testimonial quotes (paragraphs with quotes)
+        quotes = testimonials_section.find_all("p")
+        self.assertTrue(len(quotes) > 0, "No testimonial quotes found")
         
-        for card in testimonial_cards:
-            # Check testimonial has text
-            quote = card.find("blockquote")
-            self.assertIsNotNone(quote, "Testimonial missing quote")
-            self.assertTrue(len(quote.text.strip()) > 0, "Empty testimonial found")
-            
-            # Check "Read Full Testimonial" link exists and is valid
-            link = card.find("a", class_="testimonial-link")
-            self.assertIsNotNone(link, "Testimonial missing 'Read Full' link")
-            self.assertTrue(len(link["href"]) > 0, "Empty testimonial link found")
+        # Find all authors
+        authors = testimonials_section.find_all("cite")
+        self.assertTrue(len(authors) > 0, "No testimonial authors found")
+        
+        # Check links to full testimonials
+        links = testimonials_section.find_all("a", href=lambda x: x and "/blog/" in x)
+        self.assertTrue(len(links) > 0, "No links to full testimonials found")
+        
+        # Check each link is valid
+        for link in links:
+            response = requests.get(f"{self.BASE_URL}{link['href']}", timeout=10)
+            self.assertEqual(response.status_code, 200, f"Failed to load testimonial at {link['href']}")
 
 if __name__ == '__main__':
     unittest.main() 
