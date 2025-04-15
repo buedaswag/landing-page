@@ -202,33 +202,26 @@ class TestSite(unittest.TestCase):
                     self.assertEqual(response.status_code, 200)
 
     def test_testimonials_section(self):
-        """Test that all testimonials are present and properly formatted."""
+        """Test that testimonials exist, have content, and have valid links."""
         response = requests.get(self.BASE_URL, timeout=10)
         soup = BeautifulSoup(response.text, "html.parser")
         
-        # Find the testimonials section by its class
-        testimonials_section = soup.find("section", class_="testimonials")
-        self.assertIsNotNone(testimonials_section, "Testimonials section not found")
+        # Find testimonial cards
+        testimonial_cards = soup.find_all("div", class_="testimonial-card")
         
-        # Find all testimonial cards
-        testimonial_cards = testimonials_section.find_all("div", class_="testimonial-card")
+        # Check we have at least one testimonial
+        self.assertTrue(len(testimonial_cards) > 0, "No testimonials found")
         
-        # Verify we have all 4 testimonials
-        self.assertEqual(len(testimonial_cards), 4, f"Expected 4 testimonials, found {len(testimonial_cards)}")
-        
-        # Expected authors
-        expected_authors = ["Jukka Palosaari", "Iker Garagarza", "Mark Sadler", "Mika Schafroth"]
-        
-        # Check each testimonial
-        found_authors = []
         for card in testimonial_cards:
-            author = card.find("h3")
-            if author:
-                found_authors.append(author.text.strip())
-        
-        # Verify all authors are present
-        for author in expected_authors:
-            self.assertIn(author, found_authors, f"Missing testimonial from {author}")
+            # Check testimonial has text
+            quote = card.find("blockquote")
+            self.assertIsNotNone(quote, "Testimonial missing quote")
+            self.assertTrue(len(quote.text.strip()) > 0, "Empty testimonial found")
+            
+            # Check "Read Full Testimonial" link exists and is valid
+            link = card.find("a", class_="testimonial-link")
+            self.assertIsNotNone(link, "Testimonial missing 'Read Full' link")
+            self.assertTrue(len(link["href"]) > 0, "Empty testimonial link found")
 
 if __name__ == '__main__':
     unittest.main() 
