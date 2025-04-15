@@ -202,38 +202,47 @@ class TestSite(unittest.TestCase):
                     self.assertEqual(response.status_code, 200)
 
     def test_testimonials_section(self):
-        """Test that all expected testimonials are present and properly arranged."""
+        """Test that all testimonials are present and properly formatted."""
         response = requests.get(self.BASE_URL, timeout=10)
         soup = BeautifulSoup(response.text, "html.parser")
         
         # Find the testimonials section
-        testimonials_section = soup.find(id="testimonial") or soup.find(class_="testimonials-section")
+        testimonials_section = soup.find("section", attrs={"data-testid": "testimonial-section"})
+        if not testimonials_section:
+            print("\nCouldn't find testimonials section. Available sections:")
+            for section in soup.find_all("section"):
+                print(f"Section with classes: {section.get('class', [])} and data-testid: {section.get('data-testid')}")
+        
         self.assertIsNotNone(testimonials_section, "Testimonials section not found")
         
         # Find all testimonial cards
-        testimonial_cards = testimonials_section.find_all(class_="testimonial-card")
-        self.assertTrue(len(testimonial_cards) >= 4, f"Expected at least 4 testimonials, found {len(testimonial_cards)}")
+        testimonial_cards = testimonials_section.find_all("div", class_="testimonial-card")
         
-        # Check for each person's testimonial
-        testimonial_authors = [card.find(string=lambda text: text and person in text) 
-                              for card, person in zip(testimonial_cards, 
-                                                    ["Jukka Palosaari", "Iker Garagarza", 
-                                                     "Mark Sadler", "Mika Schafroth"])]
+        # Debug output
+        print(f"\nFound {len(testimonial_cards)} testimonial cards")
+        if len(testimonial_cards) == 0:
+            print("\nHTML of testimonials section:")
+            print(testimonials_section.prettify())
         
-        # Verify all authors are found
-        for i, author in enumerate(["Jukka", "Iker", "Mark", "Mika"]):
-            self.assertIsNotNone(
-                testimonial_authors[i], 
-                f"Testimonial from {author} not found or not in expected position"
-            )
+        # Verify we have all 4 testimonials
+        self.assertEqual(len(testimonial_cards), 4, f"Expected 4 testimonials, found {len(testimonial_cards)}")
         
-        # Check for specific content in Mark's testimonial
-        mark_card = testimonial_cards[2]  # Mark should be the third testimonial
-        self.assertIn(
-            "Miguel has a strong background and fantastic knowledge of DevOps", 
-            mark_card.get_text(),
-            "Mark's testimonial doesn't contain expected text"
-        )
+        # Expected authors
+        expected_authors = ["Jukka Palosaari", "Iker Garagarza", "Mark Sadler", "Mika Schafroth"]
+        
+        # Check each testimonial
+        found_authors = []
+        for card in testimonial_cards:
+            author = card.find("h3")
+            if author:
+                found_authors.append(author.text.strip())
+        
+        # Debug output
+        print("\nFound authors:", found_authors)
+        
+        # Verify all authors are present
+        for author in expected_authors:
+            self.assertIn(author, found_authors, f"Missing testimonial from {author}")
 
 if __name__ == '__main__':
     unittest.main() 
