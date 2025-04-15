@@ -30,6 +30,14 @@ const process = [
 
 const testimonials = [
   {
+    name: "Jukka Palosaari",
+    role: "Director of Engineering, Relex Solutions",
+    postSlug: "2025-02-19-jukka-palosaari-testimonial",
+    quote: [
+      "Miguel organized everything for us, we just had to join the workshops and get immediate value from them. We invested a bit, but the outcome is huge. Even if no further actions are taken, simply doing the workshops shows you what the bottlenecks are, what's slowing you down, and what is hurting the processes.",
+    ]
+  },
+  {
     name: "Iker Garagarza",
     role: "Director of Engineering, Relex Solutions",
     postSlug: "2025-02-17-iker-garagarza-testimonial",
@@ -38,19 +46,19 @@ const testimonials = [
     ]
   },
   {
+    name: "Mark",
+    role: "Director of Engineering, Relex Solutions",
+    postSlug: "2025-02-20-mark-testimonial",
+    quote: [
+      "Miguel has a strong background and fantastic knowledge of DevOps, Data Engineering and Analytics. He used this effectively in bringing teams together and conducting Value Stream mapping and helping to identify how we could reduce process cycle times and implement process improvement. Miguel was always very professional, friendly and a great team player.",
+    ]
+  },
+  {
     name: "Mika Schafroth",
     role: "Director of Engineering, Relex Solutions",
     postSlug: "2025-02-17-mika-schafroth-testimonial",
     quote: [
       "The value stream mapping Miguel organized for our Identity Service team had several impacts. On one side, a tremendous potential was unveiled how the process of deploying changes can be improved. On the other, it was a great team building exercise.",
-    ]
-  },
-  {
-    name: "Jukka Palosaari",
-    role: "Director of Engineering, Relex Solutions",
-    postSlug: "2025-02-19-jukka-palosaari-testimonial",
-    quote: [
-      "Miguel organized everything for us, we just had to join the workshops and get immediate value from them. We invested a bit, but the outcome is huge. Even if no further actions are taken, simply doing the workshops shows you what the bottlenecks are, what's slowing you down, and what is hurting the processes.",
     ]
   }
 ];
@@ -113,8 +121,8 @@ const testimonials = [
     <section id="testimonial" class="py-20 px-4 bg-[rgb(240,242,245)]">
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[rgb(33,48,118)]">What Clients Say</h2>
-        <div class="grid md:grid-cols-2 gap-8 mb-8">
-          {testimonials.slice(0, 2).map(testimonial => (
+        <div class="grid md:grid-cols-2 gap-8">
+          {testimonials.map(testimonial => (
             <blockquote class="bg-white p-8 rounded-lg shadow-md">
               <div class="text-gray-600 mb-6 text-lg italic">
                 <p>"{testimonial.quote[0]}</p>
@@ -138,30 +146,6 @@ const testimonials = [
               </footer>
             </blockquote>
           ))}
-        </div>
-        <div class="md:w-[calc(50%-1rem)] mx-auto">
-          <blockquote class="bg-white p-8 rounded-lg shadow-md">
-            <div class="text-gray-600 mb-6 text-lg italic">
-              <p>"{testimonials[2].quote[0]}</p>
-              {testimonials[2].quote.slice(1).map(paragraph => (
-                <p class="mt-4">{paragraph}{paragraph === testimonials[2].quote[testimonials[2].quote.length - 1] ? '"' : ''}</p>
-              ))}
-            </div>
-            <footer class="space-y-4">
-              <div class="flex items-center gap-4">
-                <div>
-                  <cite class="text-[rgb(33,48,118)] font-bold not-italic">{testimonials[2].name}</cite>
-                  <p class="text-gray-500">{testimonials[2].role}</p>
-                </div>
-              </div>
-              <a
-                href={`/blog/${testimonials[2].postSlug}`}
-                class="inline-block text-[rgb(67,97,238)] hover:text-[rgb(67,97,238)]/90 font-medium transition-colors"
-              >
-                Read Full Testimonial →
-              </a>
-            </footer>
-          </blockquote>
         </div>
       </div>
     </section>

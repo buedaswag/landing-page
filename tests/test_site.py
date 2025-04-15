@@ -201,5 +201,39 @@ class TestSite(unittest.TestCase):
                     response = requests.head(img_url, timeout=10)
                     self.assertEqual(response.status_code, 200)
 
+    def test_testimonials_section(self):
+        """Test that all expected testimonials are present and properly arranged."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+        
+        # Find the testimonials section
+        testimonials_section = soup.find(id="testimonial") or soup.find(class_="testimonials-section")
+        self.assertIsNotNone(testimonials_section, "Testimonials section not found")
+        
+        # Find all testimonial cards
+        testimonial_cards = testimonials_section.find_all(class_="testimonial-card")
+        self.assertTrue(len(testimonial_cards) >= 4, f"Expected at least 4 testimonials, found {len(testimonial_cards)}")
+        
+        # Check for each person's testimonial
+        testimonial_authors = [card.find(string=lambda text: text and person in text) 
+                              for card, person in zip(testimonial_cards, 
+                                                    ["Jukka Palosaari", "Iker Garagarza", 
+                                                     "Mark", "Mika Schafroth"])]
+        
+        # Verify all authors are found
+        for i, author in enumerate(["Jukka", "Iker", "Mark", "Mika"]):
+            self.assertIsNotNone(
+                testimonial_authors[i], 
+                f"Testimonial from {author} not found or not in expected position"
+            )
+        
+        # Check for specific content in Mark's testimonial
+        mark_card = testimonial_cards[2]  # Mark should be the third testimonial
+        self.assertIn(
+            "Miguel has a strong background and fantastic knowledge of DevOps", 
+            mark_card.get_text(),
+            "Mark's testimonial doesn't contain expected text"
+        )
+
 if __name__ == '__main__':
     unittest.main() 
