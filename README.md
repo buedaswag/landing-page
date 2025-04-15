@@ -8,9 +8,11 @@ docker compose up --build
 
 ## Install git hooks
 
-Copy the pre-push hook to enable automatic testing before pushing:
+Use git's "half-arsed-builtin" version control for git hooks (this is too verbose?)
 ```bash
-cp githooks/pre-push .git/hooks/pre-push
+git config core.hooksPath .githooks
+touch .githooks/pre-push
+chmod +x .githooks/pre-push
 ```
 
 ## How to Take a Scrolling Screenshot on Mac
