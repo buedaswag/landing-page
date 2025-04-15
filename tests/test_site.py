@@ -206,23 +206,12 @@ class TestSite(unittest.TestCase):
         response = requests.get(self.BASE_URL, timeout=10)
         soup = BeautifulSoup(response.text, "html.parser")
         
-        # Find the testimonials section
-        testimonials_section = soup.find("section", attrs={"data-testid": "testimonial-section"})
-        if not testimonials_section:
-            print("\nCouldn't find testimonials section. Available sections:")
-            for section in soup.find_all("section"):
-                print(f"Section with classes: {section.get('class', [])} and data-testid: {section.get('data-testid')}")
-        
+        # Find the testimonials section by its class
+        testimonials_section = soup.find("section", class_="testimonials")
         self.assertIsNotNone(testimonials_section, "Testimonials section not found")
         
         # Find all testimonial cards
         testimonial_cards = testimonials_section.find_all("div", class_="testimonial-card")
-        
-        # Debug output
-        print(f"\nFound {len(testimonial_cards)} testimonial cards")
-        if len(testimonial_cards) == 0:
-            print("\nHTML of testimonials section:")
-            print(testimonials_section.prettify())
         
         # Verify we have all 4 testimonials
         self.assertEqual(len(testimonial_cards), 4, f"Expected 4 testimonials, found {len(testimonial_cards)}")
@@ -236,9 +225,6 @@ class TestSite(unittest.TestCase):
             author = card.find("h3")
             if author:
                 found_authors.append(author.text.strip())
-        
-        # Debug output
-        print("\nFound authors:", found_authors)
         
         # Verify all authors are present
         for author in expected_authors:
