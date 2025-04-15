@@ -10,9 +10,9 @@ docker compose up --build
 
 Use git's "half-arsed-builtin" version control for git hooks (this is too verbose?)
 ```bash
-git config core.hooksPath .githooks
 touch .githooks/pre-push
 chmod +x .githooks/pre-push
+git config core.hooksPath .githooks
 ```
 
 ## How to Take a Scrolling Screenshot on Mac
