@@ -8,14 +8,14 @@ COPY package.json ./
 # Install dependencies
 RUN npm install
 
-# Copy the rest of the application
-COPY . .
-
-# Set proper permissions
+# Set proper permissions for the app directory
 RUN chown -R node:node /app
 
 # Switch to non-root user
 USER node
+
+# Copy the rest of the application
+COPY --chown=node:node . .
 
 EXPOSE 4444
 
