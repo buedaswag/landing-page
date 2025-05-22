@@ -1,0 +1,107 @@
+---
+title: "Practicing Value Stream Mapping: A Workshop Exercise"
+description: |
+  A walkthrough of a hands-on Value Stream Mapping exercise for technology teams: identifying constraints, analyzing cycle times, and discussing improvement opportunities through a practical example of a software delivery lifecycle.
+date: "2025-05-22"
+image: "/images/2025-05-22/1.jpeg"
+---
+
+![Overview](/images/2025-05-22/1.jpeg)
+
+## Experimenting ahead of the upcoming Intro to Value Stream Mapping Workshops
+
+Yesterday I practiced the main exercise in my [upcoming workshops](#upcoming-intro-to-value-stream-mapping-workshops). Leaving it here in case you're curious or want to try it.
+
+This exercise includes
+
+- Align on our common goal
+- Map the Value Stream
+- Find the constraint
+- Discuss…
+    - …contributing factors for the constraint
+    - …experiments to improve the constraint
+
+### Align on our common goal
+
+Improve our software delivery value stream by:
+
+- cut total lead time in half 
+- maintain quality
+
+<img src="/images/2025-05-22/8.png" width="50%" alt="Goal" />
+
+### Map the Value Stream
+
+Our Value Stream: a classic Software Delivery Lifecycle
+
+- Plan
+- Design
+- Build
+- Test
+- Deploy
+- Release
+
+(below I provide a digital version for better readability)
+
+![Overview](/images/2025-05-22/2.jpg)
+
+![Overview](/images/2025-05-22/3.png)
+
+#### We added time estimations 
+
+- cycle time for each step
+- wait time in between steps
+
+![Overview](/images/2025-05-22/4.png)
+
+![Overview](/images/2025-05-22/5.png)
+
+![Overview](/images/2025-05-22/6.png)
+
+### Find the constraint
+
+The longest cycle/wait times are around the test step, so we think the constraint is the Test step. The group asked clarifying questions to better understand what we can influence in this area.
+
+### Discuss…
+
+![Overview](/images/2025-05-22/7.png)
+
+- does it signal lack of test automation?
+- The Build step only takes 1H vs 10H for Test: 
+    - can we ask for capacity from the Build team?
+    - are builders throwing it over the wall to testers?
+    - quality is everyone's job, can both teams collaborate?
+
+#### Other Highlights
+
+- Design is the second longest step taking 9H
+- Can we deliver simpler / smaller designs? 
+- Will that help reduce Design cycle time + make it simpler to test?
+
+- Wait time between Deploy and Release is 8H 
+  - this is not necessarily a problem, but worth it to ask the teams
+  - is it due to canary deployments? Shadow deployments?
+  - do we need all this time to observe the deployment before we release it? (We might!)
+
+## Takeaways
+
+Even though the cycle and wait times are all random, we still got to ask questions and have conversations about 
+
+- our goal (measurable)
+- the current state of the value stream
+- possible steps to get closer to our goal
+
+If you're curious about what this could look like for your teams, reach out ([calendly link](https://calendly.com/migueldiaseu/30min)). 
+
+## Upcoming Intro to Value Stream Mapping Workshops
+
+- [online, May 27th](https://www.meetup.com/berlin-value-stream-mapping/events/307676843/)
+- [In-person, in Berlin, June 3rd](https://www.meetup.com/domain-driven-design-berlin/events/307915609/)
+- [online, June 17th](https://www.meetup.com/berlin-value-stream-mapping/events/307808691/)
+
+Thank you to [Javier Perez](https://www.linkedin.com/in/javier-perez-coach/), [Konrad Pogorzala](https://www.linkedin.com/in/konradpogorzala/), [Russell Hill](https://www.linkedin.com/in/russellhill/) and the people at the [Kanban meetup](https://www.meetup.com/kanban-flight-klub/photos/35358928) for providing the space for this and other interesting topics!
+
+## Inspiration
+
+* [THE FLOW ENGINEERING GAME](https://itrevolution.com/wp-content/uploads/2023/12/The-Flow-Engineering-Game.pdf)
+* [Flow Retreat 2025: Practicing the Work Behind the Work](https://medium.com/@rethinkyourunderstanding/flow-retreat-2025-practicing-the-work-behind-the-work-24edeeca762d)

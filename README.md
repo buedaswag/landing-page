@@ -1,5 +1,9 @@
 # Landing Page
 
+## TODO
+
+* check out the RSS feed - is it working? can peopl subscribe to it?
+
 ## Run locally
 
 ```bash
@@ -33,21 +37,3 @@ git config core.hooksPath .githooks
 
 This method works best for capturing entire web pages without manually stitching screenshots together.
 
-## TODO
-
-* add the testimonial from Mark
-  * lets shift jukka's testemonial do the left, put mark's testemonial bellow Iker's (extract one paragraph from mark's)
-
-"I worked with Miguel in RELEX, and we worked together on multiple projects. However, our main collaboration saw us work together on value stream mapping. I always found Miguel excellent to work with and he added value whenever he was involved. He was always passionate with a great drive and took ownership of the work he was responsible for. He communicated very well with stakeholders at all levels and led meetings confidently and in a very organised manner. Miguel has a strong background and fantastic knowledge of DevOps, Data Engineering and Analytics. He used this effectively in bringing teams together and conducting Value Stream mapping and helping to identify how we could reduce process cycle times and implement process improvement. Miguel was always very professional, friendly and a great team player. He was also to fun to work with. Nothing was ever too much trouble, and he developed very strong relationships with internal team members and customers."
-
-* have the tests also run on the github actins pipeline before the site is deployed
-* add to the prod health checks: Real-Time Checks that each main component (contact, clanedly, all testemonials ar displayed correclty, blog, etc)
-* needs to look good on mobile
-* make the blog button more prominent because its a significant part of my website and i want users to find it. maybe its a good thing if i add the carrousel of my top 3 articles, that will give more visibility to the blog. 
-* the date feild in the articles should be extracted from te doc name
-* a newsletter 
-
-
-## DONE
-
-* create backlinks for pages, especially about VSM, etc
