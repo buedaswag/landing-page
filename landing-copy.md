@@ -8,7 +8,7 @@
 
 #### Sub-Headline:
 
-- I help organizations deploy software more often, with higher quality and fewer problems with Value Stream Mapping and DevOps.
+- I help teams deploy software more often, with higher quality and fewer problems with Value Stream Mapping and DevOps.
 
 #### Primary Call to Action:
 
