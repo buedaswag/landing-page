@@ -2,18 +2,24 @@
 title: "Suboptimization: When Local Improvements Harm the Whole System"
 description: "Exploring how isolated improvements can negatively impact overall system performance, with real-world examples of how value stream mapping helps prevent these pitfalls by providing a holistic view."
 date: "2025-05-19"
-image: "/images/2025-05-19/2025-05-19.jpeg"
+image: "/images/2025-05-19/sub-large.png"
 ---
 
-![Current State Mapping](/images/2025-05-19/2025-05-19.jpeg)
+![Suboptimization](/images/2025-05-19/sub.png)
+
+"If we can only improve what we can see and we can only see a subset of the overall flow of work, all our effort could be wasted in comparison to addressing the weakest link in the chain of activities. If our visibility is limited to a subset of the work process, we will direct improvement efforts there. But if we fail to address the real constraint, our targeted improvements won’t matter at best and could make things worse."
+
+![Suboptimization](/images/2025-05-19/org-sub.png)
+
+> *[Flow Engineering](https://flowengineering.org/)* by [Steve Pereira](https://www.linkedin.com/in/devopsto/) and [Andrew Davis](https://www.linkedin.com/in/andrewdavis-io/).
 
 "Suboptimization occurs when you make an improvement to one part of a system while ignoring the effects of that change on the other components. A seemingly important improvement could cause the overall work system to perform more poorly. For example, if one department successfully improves turnaround time, but the faster output merely causes a larger queue and/or more work for the downstream department, the improvement may have a negative impact on the performance of the overall system"
 
-"Value stream maps provide an effective means to establish a strategic direction for making improvement. The inclination to jump into the weeds and design micro-level improvements before the entire work system—the macro picture—is fully understood, is a key contributor to suboptimization."
+"The inclination to jump into the weeds and design micro-level improvements before the entire work system—the macro picture—is fully understood, is a key contributor to suboptimization."
 
-*[Value Stream Mapping](https://tkmg.com/books/value-stream-mapping/)* by [Karen Martin](https://www.linkedin.com/in/karenmartinopex/) and [Mike Osterling](https://www.linkedin.com/in/mikeosterling/).
+> *[Value Stream Mapping](https://tkmg.com/books/value-stream-mapping/)* by [Karen Martin](https://www.linkedin.com/in/karenmartinopex/) and [Mike Osterling](https://www.linkedin.com/in/mikeosterling/).
 
 
-I’ve seen this happen multiple times, for example: an infrastructure team automates deployments to reduce rollout time from weeks to days, but doesn't update the monitoring and rollback systems accordingly, or introduce alerts, resulting in critical bugs staying in production longer before being detected and corrected, negatively impacting the customer, and creating unplanned work for the team.
+Have you seen this in the wild? An infrastructure team automated deployments to reduce rollout time from weeks to days, but didn't update the monitoring and rollback systems accordingly, or introduce alerts, resulting in critical bugs staying in production longer before being detected and corrected, negatively impacting the customer, and creating unplanned work for the team.
 
-The production problems are an unplanned investment, and can be a positive outcome, if the team learns from it, continues investing in monitoring, alerting, and making the automated deployments more robust. It's not a reason not to automate deployments. Manual deployments are more error prone, slower, leading to bigger batches, which lead to more errors which are harder to fix, more unplanned work for the team and ultimately worse customer outcomes.
+The production problems are  not a reason not to automate deployments. Manual deployments are slower, more error prone, leading to bigger batches, which makes errors harder to fix, leading to more unplanned work for the team and ultimately worse customer outcomes.
