@@ -10,6 +10,19 @@
 
 - I help teams deploy software more often, with higher quality and fewer problems with Value Stream Mapping and DevOps.
 
+Weekly invites to
+10 - VP Engineering
+10 - Director of Engineering
+10 - Head of Engineering
+10 - Head of Product
+10 - CTO
+10 - Product Owners
+10 - Product Managers
+10 - Program Managers
+10 - Engineering Managers
+
+
+
 #### Primary Call to Action:
 
 [Let's Talk About Improvements]
