@@ -34,7 +34,7 @@ const currentYear = new Date().getFullYear();
         <h3 class="font-bold text-[rgb(33,48,118)] mb-4">Contact</h3>
         <ul class="space-y-2">
           <li><a href="/contact" class="text-gray-600 hover:text-[rgb(67,97,238)]">Get in Touch</a></li>
-          <li><a href="https://calendly.com/migueldiaseu" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-[rgb(67,97,238)]">Book a Call</a></li>
+          <li><a href="https://calendly.com/migueldiaseu" target="_blank" rel="noopener noreferrer" data-track-book-call="footer" class="text-gray-600 hover:text-[rgb(67,97,238)]">Book a Call</a></li>
         </ul>
       </div>
 
@@ -56,9 +56,12 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <!-- Bottom Info -->
-    <div class="flex flex-col md:flex-row justify-between items-center">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-2">
       <p class="text-gray-600">© {currentYear} Miguel Dias</p>
-      <a href="/privacy" class="text-gray-600 hover:text-[rgb(67,97,238)]">Privacy Policy</a>
+      <div class="flex items-center gap-4">
+        <button id="manage-cookies" class="text-gray-600 hover:text-[rgb(67,97,238)] text-sm cursor-pointer bg-transparent border-none p-0">Manage Cookies</button>
+        <a href="/privacy" class="text-gray-600 hover:text-[rgb(67,97,238)]">Privacy Policy</a>
+      </div>
     </div>
   </div>
 </footer>

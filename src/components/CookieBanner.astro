@@ -1,0 +1,135 @@
+---
+const GA_MEASUREMENT_ID = 'G-Q3XS8CD6CN';
+---
+
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-50 hidden">
+  <div class="bg-[rgb(33,48,118)] text-white p-4 md:p-6 shadow-lg">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="text-sm md:text-base text-center md:text-left">
+        <p>
+          This website uses cookies to analyze traffic and improve your experience.
+          See our <a href="/privacy" class="underline hover:text-white/80">Privacy Policy</a> for details.
+        </p>
+      </div>
+      <div class="flex gap-3 shrink-0">
+        <button
+          id="cookie-decline"
+          class="px-5 py-2 text-sm font-medium border border-white/40 rounded-lg hover:bg-white/10 transition-colors"
+        >
+          Decline
+        </button>
+        <button
+          id="cookie-accept"
+          class="px-5 py-2 text-sm font-medium bg-white text-[rgb(33,48,118)] rounded-lg hover:bg-white/90 transition-colors"
+        >
+          Accept
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ GA_MEASUREMENT_ID }}>
+  const COOKIE_CONSENT_KEY = 'cookie_consent';
+
+  function getConsent() {
+    return localStorage.getItem(COOKIE_CONSENT_KEY);
+  }
+
+  function setConsent(value) {
+    localStorage.setItem(COOKIE_CONSENT_KEY, value);
+    // Also set a cookie so the server can read it if needed
+    const maxAge = 365 * 24 * 60 * 60; // 1 year
+    document.cookie = `${COOKIE_CONSENT_KEY}=${value}; max-age=${maxAge}; path=/; SameSite=Lax`;
+  }
+
+  function isLocalhost() {
+    const host = window.location.hostname;
+    return host === 'localhost' || host === '127.0.0.1' || host === '0.0.0.0' || host.startsWith('172.') || host.startsWith('192.168.');
+  }
+
+  function loadGoogleAnalytics() {
+    if (document.getElementById('gtag-script')) return;
+
+    // Never send real analytics data from local/dev environments
+    if (isLocalhost()) {
+      console.log('[Analytics] Skipping GA on localhost');
+      // Still set up tracking listeners so tests can verify they exist
+      setupBookCallTracking();
+      return;
+    }
+
+    // Load gtag.js
+    const script = document.createElement('script');
+    script.id = 'gtag-script';
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    document.head.appendChild(script);
+
+    // Initialize gtag
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_MEASUREMENT_ID);
+
+    // Set up click tracking for "Book a Call" buttons
+    setupBookCallTracking();
+  }
+
+  function setupBookCallTracking() {
+    document.querySelectorAll('a[data-track-book-call]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'book_call_click', {
+            event_category: 'engagement',
+            event_label: link.getAttribute('data-track-book-call') || 'unknown',
+            transport_type: 'beacon',
+          });
+        }
+      });
+    });
+  }
+
+  function showBanner() {
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.classList.remove('hidden');
+  }
+
+  function hideBanner() {
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.classList.add('hidden');
+  }
+
+  // Check consent on page load
+  const consent = getConsent();
+
+  if (consent === 'accepted') {
+    loadGoogleAnalytics();
+  } else if (consent === 'declined') {
+    // Do nothing, user already declined
+  } else {
+    // No consent recorded yet, show banner
+    showBanner();
+  }
+
+  // Handle accept
+  document.getElementById('cookie-accept')?.addEventListener('click', function () {
+    setConsent('accepted');
+    hideBanner();
+    loadGoogleAnalytics();
+  });
+
+  // Handle decline
+  document.getElementById('cookie-decline')?.addEventListener('click', function () {
+    setConsent('declined');
+    hideBanner();
+  });
+
+  // Handle "Manage Cookies" footer link — reset consent and re-show banner
+  document.getElementById('manage-cookies')?.addEventListener('click', function () {
+    localStorage.removeItem(COOKIE_CONSENT_KEY);
+    document.cookie = `${COOKIE_CONSENT_KEY}=; max-age=0; path=/; SameSite=Lax`;
+    showBanner();
+  });
+</script>
