@@ -227,5 +227,70 @@ class TestSite(unittest.TestCase):
             response = requests.get(f"{self.BASE_URL}{link['href']}", timeout=10)
             self.assertEqual(response.status_code, 200, f"Failed to load testimonial at {link['href']}")
 
+    # --- Cookie Banner & Analytics Tests ---
+
+    def test_cookie_banner_present(self):
+        """Test that the cookie banner HTML is present on all main pages."""
+        pages = ['/', '/about', '/contact', '/privacy', '/blog']
+        for page in pages:
+            response = requests.get(f"{self.BASE_URL}{page}", timeout=10)
+            soup = BeautifulSoup(response.text, "html.parser")
+            banner = soup.find(id="cookie-banner")
+            self.assertIsNotNone(banner, f"Cookie banner not found on {page}")
+            accept_btn = soup.find(id="cookie-accept")
+            decline_btn = soup.find(id="cookie-decline")
+            self.assertIsNotNone(accept_btn, f"Accept button not found on {page}")
+            self.assertIsNotNone(decline_btn, f"Decline button not found on {page}")
+
+    def test_google_analytics_not_loaded_by_default(self):
+        """Test that GA script tag is NOT present in initial page HTML (loaded only after consent)."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+        ga_scripts = soup.find_all("script", src=lambda s: s and "googletagmanager.com" in s)
+        self.assertEqual(len(ga_scripts), 0,
+            "Google Analytics script should not be in the initial HTML — it must only load after consent")
+
+    def test_book_call_buttons_have_tracking_attribute(self):
+        """Test that all Book a Call links pointing to Calendly have the data-track-book-call attribute."""
+        pages_with_book_call = {
+            '/': ['hero', 'ready-to-improve'],
+            '/about': ['about'],
+            '/contact': ['contact'],
+        }
+        for page, expected_labels in pages_with_book_call.items():
+            response = requests.get(f"{self.BASE_URL}{page}", timeout=10)
+            soup = BeautifulSoup(response.text, "html.parser")
+            tracked_links = soup.find_all("a", attrs={"data-track-book-call": True})
+            found_labels = [link.get("data-track-book-call") for link in tracked_links]
+            for label in expected_labels:
+                self.assertIn(label, found_labels,
+                    f"Missing data-track-book-call='{label}' on {page}. Found: {found_labels}")
+
+    def test_footer_has_tracking_on_book_call(self):
+        """Test that the footer Book a Call link has tracking on every page."""
+        pages = ['/', '/about', '/contact', '/blog']
+        for page in pages:
+            response = requests.get(f"{self.BASE_URL}{page}", timeout=10)
+            soup = BeautifulSoup(response.text, "html.parser")
+            footer_tracked = soup.find("a", attrs={"data-track-book-call": "footer"})
+            self.assertIsNotNone(footer_tracked,
+                f"Footer 'Book a Call' link missing data-track-book-call='footer' on {page}")
+
+    def test_manage_cookies_link_in_footer(self):
+        """Test that a 'Manage Cookies' button exists in the footer for consent withdrawal."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+        manage_btn = soup.find(id="manage-cookies")
+        self.assertIsNotNone(manage_btn, "Manage Cookies button not found in footer")
+
+    def test_privacy_page_mentions_cookies(self):
+        """Test that the privacy page contains required cookie-related information."""
+        response = requests.get(f"{self.BASE_URL}/privacy", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+        text = soup.get_text().lower()
+        self.assertIn("google analytics", text, "Privacy page must mention Google Analytics")
+        self.assertIn("cookie_consent", text, "Privacy page must mention the consent cookie")
+        self.assertIn("manage cookies", text, "Privacy page must explain how to withdraw consent")
+
 if __name__ == '__main__':
-    unittest.main() 
+    unittest.main()
