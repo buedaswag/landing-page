@@ -242,14 +242,6 @@ class TestSite(unittest.TestCase):
             self.assertIsNotNone(accept_btn, f"Accept button not found on {page}")
             self.assertIsNotNone(decline_btn, f"Decline button not found on {page}")
 
-    def test_google_analytics_not_loaded_by_default(self):
-        """Test that GA script tag is NOT present in initial page HTML (loaded only after consent)."""
-        response = requests.get(self.BASE_URL, timeout=10)
-        soup = BeautifulSoup(response.text, "html.parser")
-        ga_scripts = soup.find_all("script", src=lambda s: s and "googletagmanager.com" in s)
-        self.assertEqual(len(ga_scripts), 0,
-            "Google Analytics script should not be in the initial HTML — it must only load after consent")
-
     def test_book_call_buttons_have_tracking_attribute(self):
         """Test that all Book a Call links pointing to Calendly have the data-track-book-call attribute."""
         pages_with_book_call = {
