@@ -1,5 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const aboutImages = [
+  '/images/about/IMG_3142.jpg',
+  '/images/about/IMG-20250709-WA0017.jpg',
+  '/images/about/IMG20250516100017.jpg',
+  '/images/about/IMG20251013185120.jpg',
+  '/images/about/IMG20251118113649.jpg',
+];
 ---
 
 <Layout title="About - Miguel Dias">
@@ -8,7 +16,7 @@ import Layout from '../layouts/Layout.astro';
     <section class="py-20 px-4 bg-white">
       <div class="max-w-4xl mx-auto">
         <!-- Profile Image -->
-        <div class="flex justify-center items-center mb-8">
+        <div class="flex justify-center items-center mb-10">
           <div class="flex flex-col items-center">
             <div class="w-48 h-48 rounded-full overflow-hidden mb-4 mx-auto">
               <img
@@ -17,25 +25,62 @@ import Layout from '../layouts/Layout.astro';
                 class="w-full h-full object-cover object-[center_35%]"
               />
             </div>
-            <h1 class="text-2xl font-bold text-[rgb(33,48,118)] text-center">Miguel Dias - DevOps Consultant</h1>
+            <h1 class="text-2xl font-bold text-[rgb(33,48,118)] text-center">Miguel Dias</h1>
+            <p class="text-gray-600 text-center">DevOps & Value Stream Mapping</p>
           </div>
         </div>
 
         <div class="text-gray-600 space-y-6 max-w-2xl mx-auto">
-          <p>
-            I'm a Software Engineer with over five years of experience, building and scaling systems for large companies, startups, and a nonprofit.
+          <p class="text-lg text-gray-700">
+            I help busy teams deliver software faster, with higher quality and minimal time investment.
           </p>
           <p>
-            I spent 2024 leading Value Stream Mapping initiatives at Relex, a global SaaS company, involving individual teams, multiple teams, and an entire technology department.
+            In 2024, I helped 5 teams to deliver software faster (60%+ lead time improvement, from monthly to weekly deployments) with higher quality (introduced canary deployments, eliminated major incidents, helped multiple teams see why 25–50% of daily time spent on customer problems).
           </p>
           <p>
-            I've partnered with these teams to increase revenue by onboarding customers faster, preventing service disruptions, delivering value more often, and wasting less time.
+            In 2025, I launched my consulting practice, helping a client compress an 8-week project into 2 weeks by mapping their value stream first.
           </p>
           <p>
-            A thought leader in the Value Stream Mapping and DevOps space, I'm actively engaged with the international community, and currently launching my own consultancy in Berlin.
+            Built a community for engineering leaders 280+ members strong, ran 12 expert-led workshops across Lisbon, London, Berlin, and online.
           </p>
 
+          <h2 class="text-xl font-bold text-[rgb(33,48,118)] pt-4">Common challenges I address</h2>
+          <ul class="list-disc list-inside space-y-2 text-gray-700">
+            <li>Releases cause expensive disruptions, losing customers</li>
+            <li>Slow customer onboarding loses deals</li>
+            <li>Can't deliver features fast enough to stay competitive, close deals</li>
+            <li>25–50% of team time spent fixing customer problems</li>
+            <li>Teams have too much work and too little capacity</li>
+          </ul>
 
+          <p class="pt-4">
+            I'm active on LinkedIn,sharing about value stream mapping, DevOps, and software delivery, and I'm happy to connect there.
+          </p>
+          <a
+            href="https://www.linkedin.com/in/migueldiaseu/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-lg bg-[#0A66C2] px-5 py-2.5 text-white font-semibold shadow-md transition-all hover:bg-[#004182] hover:shadow-lg"
+          >
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            Connect on LinkedIn
+          </a>
+        </div>
+
+        <!-- Photos -->
+        <div class="mt-14 grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-3xl mx-auto" aria-label="Photos">
+          {aboutImages.map((src, i) => (
+            <div class="aspect-square overflow-hidden rounded-xl shadow-md">
+              <img
+                src={src}
+                alt=""
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>
