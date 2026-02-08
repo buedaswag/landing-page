@@ -4,48 +4,54 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Contact - Miguel Dias">
   <main>
-    <section class="py-24 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-8 text-[rgb(33,48,118)]">Book a Call</h1>
+    <section class="py-20 px-4">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
 
-        <div class="space-y-12">
-          <!-- Calendly -->
+          <!-- Left: context + photo -->
           <div>
-            <h2 class="text-2xl font-bold mb-4 text-[rgb(33,48,118)]">Schedule a Call</h2>
+            <h1 class="text-3xl md:text-4xl font-bold text-[rgb(33,48,118)] mb-4">Let's talk</h1>
+            <p class="text-gray-700 text-lg mb-6">
+              Whether you want to book a training for your team or discuss your software delivery challenges, I'm happy to help.
+            </p>
+            <div class="w-40 h-40 rounded-full overflow-hidden shadow-lg">
+              <img
+                src="/images/about/profile-helsinki-1000.png"
+                alt="Miguel Dias"
+                class="w-full h-full object-cover object-[center_35%]"
+              />
+            </div>
+          </div>
+
+          <!-- Right: contact card -->
+          <div class="rounded-xl bg-[rgb(240,242,245)] p-8 md:p-10">
+            <!-- Primary CTA -->
+            <h2 class="text-xl font-bold text-[rgb(33,48,118)] mb-2">Schedule a 30-minute call</h2>
+            <p class="text-gray-600 text-sm mb-6">Pick a time that works for you.</p>
             <a
               href="https://calendly.com/migueldiaseu"
               target="_blank"
               rel="noopener noreferrer"
               data-track-book-call="contact"
-              class="inline-block bg-[rgb(67,97,238)] hover:bg-[rgb(67,97,238)]/90 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors"
+              class="inline-block w-full text-center bg-[rgb(67,97,238)] hover:bg-[rgb(67,97,238)]/90 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors mb-8"
             >
               Book a Call
             </a>
+
+            <!-- Secondary: email + LinkedIn -->
+            <div class="border-t border-gray-300 pt-6 space-y-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-3">Or reach out directly</p>
+              <a href="mailto:miguel@migueldias.eu" class="flex items-center gap-3 text-gray-700 hover:text-[rgb(67,97,238)] transition-colors">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span>miguel@migueldias.eu</span>
+              </a>
+              <a href="https://www.linkedin.com/in/migueldiaseu/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-gray-700 hover:text-[rgb(67,97,238)] transition-colors">
+                <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <span>Miguel Dias on LinkedIn</span>
+              </a>
+            </div>
           </div>
 
-          <!-- Email -->
-          <div>
-            <h2 class="text-2xl font-bold mb-4 text-[rgb(33,48,118)]">Email Me</h2>
-            <a href="mailto:miguel@migueldias.eu" class="text-[rgb(67,97,238)] text-xl hover:text-[rgb(67,97,238)]/90 transition-colors">
-              miguel@migueldias.eu
-            </a>
-          </div>
-
-          <!-- LinkedIn -->
-          <div>
-            <h2 class="text-2xl font-bold mb-4 text-[rgb(33,48,118)]">Connect on LinkedIn</h2>
-            <a
-              href="https://www.linkedin.com/in/migueldiaseu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 text-[rgb(67,97,238)] hover:text-[rgb(67,97,238)]/90 transition-colors"
-            >
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-              <span class="text-lg">Miguel Dias</span>
-            </a>
-          </div>
         </div>
       </div>
     </section>
