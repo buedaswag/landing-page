@@ -22,7 +22,8 @@ Then wait for http://localhost:4444 to respond before testing.
 
 ## TDD
 
-first run the tests, run them and watch them fail due to missing functionality, then add the functionality. Tests live in `tests/test_site.py`.
+First run the tests, run them and watch them fail due to missing functionality, then add the functionality. Tests in `tests/test_site.py`.
+Run the tests inside the
 
 ```bash
 python -m unittest discover tests/
