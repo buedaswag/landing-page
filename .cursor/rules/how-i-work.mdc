@@ -31,9 +31,9 @@ python -m unittest discover tests/
 Tests run against the live Docker container using requests + BeautifulSoup.
 Use `data-*` attributes on HTML elements to make them testable.
 
-## Small Batches
+## Work in Small Batches
 
-One focused change at a time. Don't bundle unrelated work.
+One piece flow.
 
 ## CI
 
