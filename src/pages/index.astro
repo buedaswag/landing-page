@@ -1,33 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const process = [
-  {
-    title: "Planning & Alignment",
-    steps: [
-      "We clarify your improvement needs, objectives, where the biggest constraints lie, and involve key stakeholders from the start."
-    ]
-  },
-  {
-    title: "Workshop Sessions",
-    steps: [
-      "Visualize and measure your workflows, spotting bottlenecks and dependencies, enabling powerful conversations about how to improve."
-    ]
-  },
-  {
-    title: "Improvement Roadmap",
-    steps: [
-      "Prioritize Initiatives: Your teams build a plan with clear actions, owners, timelines, and measurable goals."
-    ]
-  },
-  {
-    title: "Implementation & Ongoing Support",
-    steps: [
-      "Regular Check-ins: We review progress, address blockers, and refine actions as needed."
-    ]
-  }
-];
-
 const testimonials = [
   {
     name: "Jukka Palosaari",
@@ -104,7 +77,7 @@ const testimonials = [
               <p class="text-sm font-medium text-[rgb(67,97,238)] mb-2">1h30 training</p>
               <h3 class="text-xl font-bold text-[rgb(33,48,118)] mb-3 group-hover:text-[rgb(67,97,238)] transition-colors">Introduction to Value Stream Mapping for Leaders</h3>
               <p class="text-gray-600 mb-6">Map your delivery, spot bottlenecks, leave with a plan. Hands-on session for engineering and product leaders.</p>
-              <span data-cta class="inline-block bg-[rgb(67,97,238)] hover:bg-[rgb(67,97,238)]/90 text-white font-semibold py-2 px-4 rounded-lg text-sm transition-colors">Learn More</span>
+              <span data-cta class="inline-block bg-[rgb(67,97,238)] hover:bg-[rgb(67,97,238)]/90 text-white font-semibold py-2 px-4 rounded-lg text-sm transition-colors">Learn more</span>
             </div>
           </a>
           <a
@@ -192,57 +165,12 @@ const testimonials = [
             </a>
           </div>
 
-          <!-- Navigation arrows (desktop) -->
-          <button
-            id="carousel-prev"
-            class="hidden md:flex absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-10"
-            aria-label="Previous"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-          </button>
-          <button
-            id="carousel-next"
-            class="hidden md:flex absolute -right-5 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-10"
-            aria-label="Next"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-          </button>
         </div>
-
-        <script>
-          const track = document.getElementById('carousel-track');
-          const prev = document.getElementById('carousel-prev');
-          const next = document.getElementById('carousel-next');
-          if (track && prev && next) {
-            const scrollAmount = () => track.querySelector('a')?.offsetWidth + 24 || 300;
-            prev.addEventListener('click', () => track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
-            next.addEventListener('click', () => track.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
-          }
-        </script>
 
         <style>
           .scrollbar-hide::-webkit-scrollbar { display: none; }
           .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
         </style>
-
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">How We Work</h2>
-        <div class="grid md:grid-cols-2 gap-12">
-          {process.map((step, index) => (
-            <div class="bg-[#001C46]/20 p-8 rounded-lg border border-white/10">
-              <div class="flex items-center gap-4 mb-4">
-                <span class="w-8 h-8 flex items-center justify-center bg-white text-[#001C46] rounded-full font-bold">
-                  {index + 1}
-                </span>
-                <h3 class="text-xl font-bold text-white">{step.title}</h3>
-              </div>
-              <ul class="space-y-3">
-                {step.steps.map(item => (
-                  <li class="text-white/80">{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
 
