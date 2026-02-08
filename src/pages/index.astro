@@ -66,19 +66,52 @@ const testimonials = [
 
 <Layout title="Miguel Dias - DevOps & Value Stream Mapping">
   <main>
-    <!-- Hero Section -->
-    <section class="hero py-24 flex items-center justify-center bg-white text-[rgb(33,48,118)] px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">
-          Improve Your Software<br />
-          Delivery
-        </h1>
-        <p class="text-lg md:text-xl mb-6 text-[rgb(33,48,118)]/90 max-w-2xl mx-auto">
-          I help teams deliver software faster and with higher quality with Value Stream Mapping and DevOps.
-        </p>
-        <a href="https://calendly.com/migueldiaseu" target="_blank" rel="noopener noreferrer" data-track-book-call="hero" class="inline-block bg-[rgb(67,97,238)] hover:bg-[rgb(67,97,238)]/90 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors">
-          Book a Call
-        </a>
+    <!-- Hero + Work With Me: one flow, no banding -->
+    <section id="offerings" class="py-16 md:py-24 px-4 bg-white text-[rgb(33,48,118)]">
+      <div class="max-w-6xl mx-auto">
+        <!-- Hero: headline + subtitle only, optional small Book a call -->
+        <div class="text-center mb-14 md:mb-16">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4">
+            Improve Your Software<br />
+            Delivery
+          </h1>
+          <p class="text-lg md:text-xl text-[rgb(33,48,118)]/90 max-w-2xl mx-auto">
+            I help teams deliver software faster and with higher quality with Value Stream Mapping and DevOps.
+          </p>
+        </div>
+
+        <!-- Service cards: clear CTAs by intent -->
+        <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+          <a
+            href="/workshops/intro"
+            data-offering="short-workshop"
+            class="block bg-[rgb(240,242,245)] p-6 md:p-8 rounded-xl hover:shadow-md transition-shadow border border-transparent hover:border-[rgb(67,97,238)]/20 group"
+          >
+            <p class="text-sm font-medium text-[rgb(67,97,238)] mb-2">1h30 training</p>
+            <h3 class="text-xl font-bold text-[rgb(33,48,118)] mb-3 group-hover:text-[rgb(67,97,238)] transition-colors">Introduction to Value Stream Mapping for Leaders</h3>
+            <p class="text-gray-600 mb-6">Map your delivery, spot bottlenecks, leave with a plan. Hands-on session for engineering and product leaders.</p>
+            <span class="text-[rgb(67,97,238)] font-medium">See details →</span>
+          </a>
+          <a
+            href="/workshops/facilitation"
+            data-offering="facilitation-training"
+            class="block bg-[rgb(240,242,245)] p-6 md:p-8 rounded-xl hover:shadow-md transition-shadow border border-transparent hover:border-[rgb(67,97,238)]/20 group"
+          >
+            <p class="text-sm font-medium text-[rgb(67,97,238)] mb-2">5 sessions × 1h30</p>
+            <h3 class="text-xl font-bold text-[rgb(33,48,118)] mb-3 group-hover:text-[rgb(67,97,238)] transition-colors">VSM & Flow Engineering Facilitation Training</h3>
+            <p class="text-gray-600 mb-6">Learn to run full VSM workshops yourself. Templates, coaching, and your team’s real challenges.</p>
+            <span class="text-[rgb(67,97,238)] font-medium">See curriculum →</span>
+          </a>
+          <a
+            href="/contact"
+            data-offering="consulting"
+            class="block bg-[rgb(240,242,245)] p-6 md:p-8 rounded-xl hover:shadow-md transition-shadow border border-transparent hover:border-[rgb(67,97,238)]/20 group"
+          >
+            <h3 class="text-xl font-bold text-[rgb(33,48,118)] mb-3 group-hover:text-[rgb(67,97,238)] transition-colors">Consulting</h3>
+            <p class="text-gray-600 mb-6">Custom workshops or ongoing support. Book a call to align on your goals.</p>
+            <span class="inline-block bg-[rgb(67,97,238)] hover:bg-[rgb(67,97,238)]/90 text-white font-semibold py-2 px-4 rounded-lg text-sm transition-colors">Book a call</span>
+          </a>
+        </div>
       </div>
     </section>
 

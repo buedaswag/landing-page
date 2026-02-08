@@ -109,6 +109,9 @@ class TestSite(unittest.TestCase):
             "/about": "Header About link",
             "/blog": "Header Blog link + Footer Latest Posts link",
             "/contact": "Header Contact link + Footer Get in Touch link",
+            # Offerings section
+            "/workshops/intro": "Offerings Short workshop link",
+            "/workshops/facilitation": "Offerings Facilitation training link",
             
             # Main Navigation/Content
             "/#case-study": "Case Study link",
@@ -227,11 +230,74 @@ class TestSite(unittest.TestCase):
             response = requests.get(f"{self.BASE_URL}{link['href']}", timeout=10)
             self.assertEqual(response.status_code, 200, f"Failed to load testimonial at {link['href']}")
 
+    # --- Offerings (Short workshop, Facilitation, Consulting) & Workshop Pages ---
+
+    def test_main_page_offerings_section(self):
+        """Homepage has an offerings section with 3 items: short workshop, facilitation training, consulting (contact)."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        self.assertEqual(response.status_code, 200)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        section = soup.find("section", id="offerings")
+        self.assertIsNotNone(section, "Homepage must have a section with id='offerings'")
+
+        # Each item must be a link (or contain a link) with the right data-offering and href
+        short = section.find("a", attrs={"data-offering": "short-workshop"})
+        self.assertIsNotNone(short, "Offerings section must have a link with data-offering='short-workshop'")
+        self.assertEqual(short.get("href"), "/workshops/intro",
+            f"Short workshop link must point to /workshops/intro. Got: {short.get('href')}")
+
+        facilitation = section.find("a", attrs={"data-offering": "facilitation-training"})
+        self.assertIsNotNone(facilitation, "Offerings section must have a link with data-offering='facilitation-training'")
+        self.assertEqual(facilitation.get("href"), "/workshops/facilitation",
+            f"Facilitation training link must point to /workshops/facilitation. Got: {facilitation.get('href')}")
+
+        consulting = section.find("a", attrs={"data-offering": "consulting"})
+        self.assertIsNotNone(consulting, "Offerings section must have a link with data-offering='consulting'")
+        self.assertEqual(consulting.get("href"), "/contact",
+            f"Consulting link must point to /contact. Got: {consulting.get('href')}")
+
+    def test_short_workshop_page_exists_and_links_to_flowtopia(self):
+        """Short workshop page (/workshops/intro) exists and has a register link to Flowtopia."""
+        intro_url = "https://www.flowtopia.io/c/events/introduction-to-value-stream-mapping"
+        response = requests.get(f"{self.BASE_URL}/workshops/intro", timeout=10)
+        self.assertEqual(response.status_code, 200,
+            f"/workshops/intro must return 200. Got: {response.status_code}")
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        register_link = soup.find("a", attrs={"data-workshop-register": "intro"})
+        self.assertIsNotNone(register_link,
+            "Short workshop page must have a register link with data-workshop-register='intro'")
+        self.assertEqual(register_link.get("href"), intro_url,
+            f"Intro register link must point to Flowtopia. Got: {register_link.get('href')}")
+
+        # Flowtopia link must be reachable
+        try:
+            head_resp = requests.head(intro_url, timeout=10, allow_redirects=True)
+            self.assertIn(head_resp.status_code, [200, 301, 302],
+                f"Flowtopia intro URL must be reachable. Got status {head_resp.status_code}")
+        except requests.exceptions.RequestException as e:
+            self.fail(f"Flowtopia intro URL must be loadable: {e}")
+
+    def test_facilitation_training_page_exists_and_links_to_contact(self):
+        """Facilitation training page (/workshops/facilitation) exists and has a CTA linking to Calendly (private training)."""
+        calendly_url = "https://calendly.com/migueldiaseu"
+        response = requests.get(f"{self.BASE_URL}/workshops/facilitation", timeout=10)
+        self.assertEqual(response.status_code, 200,
+            f"/workshops/facilitation must return 200. Got: {response.status_code}")
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        register_link = soup.find("a", attrs={"data-workshop-register": "facilitation"})
+        self.assertIsNotNone(register_link,
+            "Facilitation page must have a register/CTA link with data-workshop-register='facilitation'")
+        self.assertIn(calendly_url, register_link.get("href", ""),
+            f"Facilitation CTA must point to Calendly. Got: {register_link.get('href')}")
+
     # --- Cookie Banner & Analytics Tests ---
 
     def test_cookie_banner_present(self):
         """Test that the cookie banner HTML is present on all main pages."""
-        pages = ['/', '/about', '/contact', '/privacy', '/blog']
+        pages = ['/', '/about', '/contact', '/privacy', '/blog', '/workshops/intro', '/workshops/facilitation']
         for page in pages:
             response = requests.get(f"{self.BASE_URL}{page}", timeout=10)
             soup = BeautifulSoup(response.text, "html.parser")
@@ -245,7 +311,7 @@ class TestSite(unittest.TestCase):
     def test_book_call_buttons_have_tracking_attribute(self):
         """Test that all Book a Call links pointing to Calendly have the data-track-book-call attribute."""
         pages_with_book_call = {
-            '/': ['hero', 'ready-to-improve'],
+            '/': ['ready-to-improve'],
             '/about': ['about'],
             '/contact': ['contact'],
         }
@@ -260,7 +326,7 @@ class TestSite(unittest.TestCase):
 
     def test_footer_has_tracking_on_book_call(self):
         """Test that the footer Book a Call link has tracking on every page."""
-        pages = ['/', '/about', '/contact', '/blog']
+        pages = ['/', '/about', '/contact', '/blog', '/workshops/intro', '/workshops/facilitation']
         for page in pages:
             response = requests.get(f"{self.BASE_URL}{page}", timeout=10)
             soup = BeautifulSoup(response.text, "html.parser")
