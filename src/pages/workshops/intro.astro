@@ -1,7 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
-const FLOWTOPIA_INTRO_URL = "https://www.flowtopia.io/c/events/introduction-to-value-stream-mapping";
+const COHORT_1_URL = "https://www.flowtopia.io/c/events/introduction-to-value-stream-mapping";
+const COHORT_2_URL = "https://www.flowtopia.io/c/events/introduction-to-value-stream-mapping-46f1c6";
 ---
 
 <Layout title="Introduction to Value Stream Mapping for Leaders - Miguel Dias">
@@ -12,6 +13,7 @@ const FLOWTOPIA_INTRO_URL = "https://www.flowtopia.io/c/events/introduction-to-v
       <header class="mb-12">
         <p class="text-[rgb(67,97,238)] font-medium mb-2">1h30 training</p>
         <h1 class="text-3xl md:text-4xl font-bold text-[rgb(33,48,118)] mb-4">Introduction to Value Stream Mapping for Leaders</h1>
+        <img src="/images/workshops/image3.jpg" alt="VSM workshop" class="w-full rounded-xl shadow-lg object-cover aspect-[16/9] mt-6" />
       </header>
 
       <!-- What You'll Learn (verbatim from PDF) -->
@@ -57,25 +59,36 @@ const FLOWTOPIA_INTRO_URL = "https://www.flowtopia.io/c/events/introduction-to-v
       <!-- Schedule -->
       <section class="mb-12">
         <h2 class="text-xl font-bold text-[rgb(33,48,118)] mb-4">Schedule</h2>
-        <p class="font-semibold text-gray-800">Public Training:</p>
-        <p class="text-gray-700 mb-2">4:00 p.m. London time</p>
-        <p class="text-gray-700 mb-4">March 4 and March 18</p>
-        <p class="font-semibold text-gray-800">Private Training:</p>
-        <p class="text-gray-700">Your choice of date and time.</p>
+        <p class="text-gray-700 mb-4">4:00 p.m. London time. Public cohorts below; private training: your choice of date and time.</p>
+        <div class="space-y-6">
+          <div class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+            <p class="font-semibold text-[rgb(33,48,118)] mb-1">Cohort 1</p>
+            <p class="text-gray-600 text-sm mb-3">1 spot left</p>
+            <a
+              href={COHORT_1_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-workshop-register="intro"
+              class="inline-block bg-[rgb(67,97,238)] hover:bg-[rgb(67,97,238)]/90 text-white font-bold py-2 px-4 rounded-lg text-sm transition-colors"
+            >
+              Register on Flowtopia
+            </a>
+          </div>
+          <div class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+            <p class="font-semibold text-[rgb(33,48,118)] mb-1">Cohort 2</p>
+            <p class="text-gray-600 text-sm mb-3">9 spots left</p>
+            <a
+              href={COHORT_2_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-workshop-register="intro-cohort-2"
+              class="inline-block bg-[rgb(67,97,238)] hover:bg-[rgb(67,97,238)]/90 text-white font-bold py-2 px-4 rounded-lg text-sm transition-colors"
+            >
+              Register on Flowtopia
+            </a>
+          </div>
+        </div>
       </section>
-
-      <!-- CTA -->
-      <div class="mb-16">
-        <a
-          href={FLOWTOPIA_INTRO_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-workshop-register="intro"
-          class="inline-block bg-[rgb(67,97,238)] hover:bg-[rgb(67,97,238)]/90 text-white font-bold py-3 px-6 rounded-lg transition-colors"
-        >
-          Register on Flowtopia
-        </a>
-      </div>
 
       <!-- About Miguel -->
       <section class="mb-12">
@@ -87,12 +100,14 @@ const FLOWTOPIA_INTRO_URL = "https://www.flowtopia.io/c/events/introduction-to-v
       <!-- Photos from Previous Workshops -->
       <section class="mb-12">
         <h2 class="text-xl font-bold text-[rgb(33,48,118)] mb-4">Photos from Previous Workshops</h2>
-        <blockquote class="border-l-4 border-[rgb(67,97,238)] pl-4 py-2 my-4 text-gray-700 italic">"Loved the focus on practical, live applications over theory"</blockquote>
-        <blockquote class="border-l-4 border-[rgb(67,97,238)] pl-4 py-2 my-4 text-gray-700 italic">"I'm very excited to start playing around with actually just doing it"</blockquote>
-        <p class="text-gray-600">— Joost Baars, Senior Agile coach at Booking.com</p>
-        <!-- Image placeholders: add workshop photos here when provided -->
-        <div class="mt-8 grid gap-4" aria-label="Workshop photos">
-          <p class="text-sm text-gray-500">Workshop photos: add images to <code class="bg-gray-100 px-1 rounded">public/images/workshops/</code> and reference here, or use the album: <a href="https://photos.app.goo.gl/KLmdC7QbFxu5jTQB6" target="_blank" rel="noopener noreferrer" class="text-[rgb(67,97,238)] hover:underline">Google Photos album</a></p>
+        <blockquote class="border-l-4 border-[rgb(67,97,238)] pl-4 py-2 my-4 text-gray-700 italic">"Loved the focus on practical, live applications over theory" — "I'm very excited to start playing around with actually just doing it"<br /><span class="text-sm not-italic text-gray-500">— Joost Baars, Senior Agile coach at Booking.com</span></blockquote>
+        <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3" aria-label="Workshop photos">
+          <div class="aspect-square overflow-hidden rounded-lg shadow-md"><img src="/images/workshops/image1.png" alt="VSM workshop" class="w-full h-full object-cover" /></div>
+          <div class="aspect-square overflow-hidden rounded-lg shadow-md"><img src="/images/workshops/image2.jpg" alt="VSM workshop" class="w-full h-full object-cover" /></div>
+          <div class="aspect-square overflow-hidden rounded-lg shadow-md"><img src="/images/workshops/image3.jpg" alt="VSM workshop" class="w-full h-full object-cover" /></div>
+          <div class="aspect-square overflow-hidden rounded-lg shadow-md"><img src="/images/workshops/image4.png" alt="VSM workshop" class="w-full h-full object-cover" /></div>
+          <div class="aspect-square overflow-hidden rounded-lg shadow-md"><img src="/images/workshops/image5.jpg" alt="VSM workshop" class="w-full h-full object-cover" /></div>
+          <div class="aspect-square overflow-hidden rounded-lg shadow-md"><img src="/images/workshops/image6.png" alt="VSM workshop" class="w-full h-full object-cover" /></div>
         </div>
       </section>
     </article>
