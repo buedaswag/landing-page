@@ -27,40 +27,70 @@ const CALENDLY_URL = "https://calendly.com/migueldiaseu";
       <!-- Workshop Agenda -->
       <section class="mb-12">
         <h2 class="text-xl font-bold text-[rgb(33,48,118)] mb-4">Workshop Agenda</h2>
-        <p class="text-gray-700 mb-6">Each session starts at 2pm London time and lasts for 1 hour.</p>
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div class="rounded-xl border border-gray-200 bg-[rgb(240,242,245)] p-5">
-            <p class="text-xs font-semibold uppercase tracking-wide text-[rgb(67,97,238)] mb-1">Monday</p>
-            <h3 class="font-bold text-[rgb(33,48,118)] mb-2">Introduction to VSM + Outcome Mapping</h3>
-            <p class="text-sm text-gray-700 mb-2"><strong>Result:</strong> Define improvement needs, goals, benefits, and next steps</p>
-            <p class="text-xs text-gray-600"><strong>Risk mitigated:</strong> Investing in irrelevant improvements</p>
+        <p class="text-gray-700 mb-8">Each session starts at 2pm London time and lasts for 1 hour.</p>
+
+        <!-- Vertical timeline -->
+        <div class="relative space-y-0">
+          <!-- Timeline line -->
+          <div class="absolute left-5 top-6 bottom-6 w-0.5 bg-[rgb(67,97,238)]/20"></div>
+
+          <!-- Day 1 -->
+          <div class="relative flex gap-5 pb-8">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[rgb(67,97,238)] text-white flex items-center justify-center font-bold text-sm z-10">1</div>
+            <div class="pt-1.5">
+              <p class="text-xs font-semibold uppercase tracking-wide text-[rgb(67,97,238)] mb-1">Monday</p>
+              <h3 class="font-bold text-[rgb(33,48,118)] mb-2">Introduction to VSM + Outcome Mapping</h3>
+              <p class="text-sm text-gray-700 mb-1"><strong>Result:</strong> Define improvement needs, goals, benefits, and next steps</p>
+              <p class="text-sm text-gray-500 italic">Risk mitigated: Investing in irrelevant improvements</p>
+            </div>
           </div>
-          <div class="rounded-xl border border-gray-200 bg-[rgb(240,242,245)] p-5">
-            <p class="text-xs font-semibold uppercase tracking-wide text-[rgb(67,97,238)] mb-1">Tuesday</p>
-            <h3 class="font-bold text-[rgb(33,48,118)] mb-2">Current State Value Stream Mapping</h3>
-            <p class="text-sm text-gray-700 mb-2"><strong>Result:</strong> Visualize delivery, find and measure key constraints</p>
-            <p class="text-xs text-gray-600"><strong>Risk mitigated:</strong> Optimizing a process with no impact on your Outcome</p>
+
+          <!-- Day 2 -->
+          <div class="relative flex gap-5 pb-8">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[rgb(67,97,238)] text-white flex items-center justify-center font-bold text-sm z-10">2</div>
+            <div class="pt-1.5">
+              <p class="text-xs font-semibold uppercase tracking-wide text-[rgb(67,97,238)] mb-1">Tuesday</p>
+              <h3 class="font-bold text-[rgb(33,48,118)] mb-2">Current State Value Stream Mapping</h3>
+              <p class="text-sm text-gray-700 mb-1"><strong>Result:</strong> Visualize delivery, find and measure key constraints</p>
+              <p class="text-sm text-gray-500 italic">Risk mitigated: Optimizing a process with no impact on your Outcome</p>
+            </div>
           </div>
-          <div class="rounded-xl border border-gray-200 bg-[rgb(240,242,245)] p-5">
-            <p class="text-xs font-semibold uppercase tracking-wide text-[rgb(67,97,238)] mb-1">Wednesday</p>
-            <h3 class="font-bold text-[rgb(33,48,118)] mb-2">Dependency Mapping</h3>
-            <p class="text-sm text-gray-700 mb-2"><strong>Result:</strong> Connect bottlenecks to dependencies</p>
-            <p class="text-xs text-gray-600"><strong>Risk mitigated:</strong> Insufficient understanding of the main constraints</p>
+
+          <!-- Day 3 -->
+          <div class="relative flex gap-5 pb-8">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[rgb(67,97,238)] text-white flex items-center justify-center font-bold text-sm z-10">3</div>
+            <div class="pt-1.5">
+              <p class="text-xs font-semibold uppercase tracking-wide text-[rgb(67,97,238)] mb-1">Wednesday</p>
+              <h3 class="font-bold text-[rgb(33,48,118)] mb-2">Dependency Mapping</h3>
+              <p class="text-sm text-gray-700 mb-1"><strong>Result:</strong> Connect bottlenecks to dependencies</p>
+              <p class="text-sm text-gray-500 italic">Risk mitigated: Insufficient understanding of the main constraints</p>
+            </div>
           </div>
-          <div class="rounded-xl border border-gray-200 bg-[rgb(240,242,245)] p-5">
-            <p class="text-xs font-semibold uppercase tracking-wide text-[rgb(67,97,238)] mb-1">Thursday</p>
-            <h3 class="font-bold text-[rgb(33,48,118)] mb-2">Future State Value Stream Mapping</h3>
-            <p class="text-sm text-gray-700 mb-2"><strong>Result:</strong> Team re-designs delivery for fast flow and high quality</p>
-            <p class="text-xs text-gray-600"><strong>Risk mitigated:</strong> Failing to create a visible target for change</p>
+
+          <!-- Day 4 -->
+          <div class="relative flex gap-5 pb-8">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[rgb(67,97,238)] text-white flex items-center justify-center font-bold text-sm z-10">4</div>
+            <div class="pt-1.5">
+              <p class="text-xs font-semibold uppercase tracking-wide text-[rgb(67,97,238)] mb-1">Thursday</p>
+              <h3 class="font-bold text-[rgb(33,48,118)] mb-2">Future State Value Stream Mapping</h3>
+              <p class="text-sm text-gray-700 mb-1"><strong>Result:</strong> Team re-designs delivery for fast flow and high quality</p>
+              <p class="text-sm text-gray-500 italic">Risk mitigated: Failing to create a visible target for change</p>
+            </div>
           </div>
-          <div class="rounded-xl border border-gray-200 bg-[rgb(240,242,245)] p-5 sm:col-span-2 lg:col-span-1">
-            <p class="text-xs font-semibold uppercase tracking-wide text-[rgb(67,97,238)] mb-1">Friday</p>
-            <h3 class="font-bold text-[rgb(33,48,118)] mb-2">Improvement Roadmap + Follow-up</h3>
-            <p class="text-sm text-gray-700 mb-2"><strong>Result:</strong> 3 month Roadmap to achieve the Outcome: owners and progress metrics</p>
-            <p class="text-xs text-gray-600"><strong>Risk mitigated:</strong> Failing to integrate improvements into each team's work</p>
+
+          <!-- Day 5 -->
+          <div class="relative flex gap-5">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[rgb(67,97,238)] text-white flex items-center justify-center font-bold text-sm z-10">5</div>
+            <div class="pt-1.5">
+              <p class="text-xs font-semibold uppercase tracking-wide text-[rgb(67,97,238)] mb-1">Friday</p>
+              <h3 class="font-bold text-[rgb(33,48,118)] mb-2">Improvement Roadmap + Follow-up</h3>
+              <p class="text-sm text-gray-700 mb-1"><strong>Result:</strong> 3 month Roadmap to achieve the Outcome: owners and progress metrics</p>
+              <p class="text-sm text-gray-500 italic">Risk mitigated: Failing to integrate improvements into each team's work</p>
+            </div>
           </div>
         </div>
-        <p class="text-gray-700 mt-6">I won't leave you hanging after the workshop: includes 1h VSM coaching and templates to support you in running your own workshop in your organization.</p>
+
+        <p class="text-gray-700 mt-8">I won't leave you hanging after the workshop: includes 1h VSM coaching and templates to support you in running your own workshop in your organization.</p>
       </section>
 
       <!-- Who Should Attend -->
