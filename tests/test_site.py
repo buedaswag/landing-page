@@ -325,6 +325,26 @@ class TestSite(unittest.TestCase):
         resp = requests.head(f"{self.BASE_URL}{img_url}", timeout=10)
         self.assertEqual(resp.status_code, 200, f"Image {img_url} must load")
 
+    def test_resources_carousel(self):
+        """Homepage has a resources carousel with 3 items: blog, short, talk."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        carousel = soup.find(attrs={"data-resources-carousel": True})
+        self.assertIsNotNone(carousel, "Homepage must have a resources carousel")
+
+        blog = carousel.find("a", attrs={"data-carousel-item": "blog"})
+        self.assertIsNotNone(blog, "Carousel must have a blog item")
+        self.assertIn("/blog/2025-05-19-what-is-vsm", blog.get("href", ""))
+
+        short = carousel.find("a", attrs={"data-carousel-item": "short"})
+        self.assertIsNotNone(short, "Carousel must have a short item")
+        self.assertIn("youtube.com/shorts/FGXKSSGeUX4", short.get("href", ""))
+
+        talk = carousel.find("a", attrs={"data-carousel-item": "talk"})
+        self.assertIsNotNone(talk, "Carousel must have a talk item")
+        self.assertIn("youtube.com/watch", talk.get("href", ""))
+
     def test_offerings_ctas_are_buttons(self):
         """Both offering cards have button-styled CTAs."""
         response = requests.get(self.BASE_URL, timeout=10)
