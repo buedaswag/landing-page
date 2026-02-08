@@ -1,0 +1,41 @@
+---
+description: How to work in this repo
+alwaysApply: true
+---
+
+# How I Work
+
+## Docker
+
+Everything runs in Docker. Never run npm install locally.
+
+- Node deps: add to `package.json` (installed via Dockerfile)
+- Python test deps: add to `requirements.txt` (installed locally with pip)
+
+To check if a change works:
+
+```bash
+docker compose down && docker compose up --build -d
+```
+
+Then wait for http://localhost:4444 to respond before testing.
+
+## TDD
+
+Write the test first, then make it pass. Tests live in `tests/test_site.py`.
+
+```bash
+python -m unittest discover tests/
+```
+
+Tests run against the live Docker container using requests + BeautifulSoup.
+Use `data-*` attributes on HTML elements to make them testable.
+
+## Small Batches
+
+One focused change at a time. Don't bundle unrelated work.
+
+## CI
+
+GitHub Actions deploys to GitHub Pages on push to main.
+Pre-push hook runs the full test suite -- if tests fail, the push is blocked.
