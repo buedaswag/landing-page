@@ -252,11 +252,6 @@ class TestSite(unittest.TestCase):
         self.assertEqual(facilitation.get("href"), "/workshops/facilitation",
             f"Facilitation training link must point to /workshops/facilitation. Got: {facilitation.get('href')}")
 
-        consulting = section.find("a", attrs={"data-offering": "consulting"})
-        self.assertIsNotNone(consulting, "Offerings section must have a link with data-offering='consulting'")
-        self.assertEqual(consulting.get("href"), "/contact",
-            f"Consulting link must point to /contact. Got: {consulting.get('href')}")
-
     def test_short_workshop_page_exists_and_links_to_flowtopia(self):
         """Short workshop page (/workshops/intro) exists and has a register link to Flowtopia."""
         intro_url = "https://www.flowtopia.io/c/events/introduction-to-value-stream-mapping"
@@ -292,6 +287,82 @@ class TestSite(unittest.TestCase):
             "Facilitation page must have a register/CTA link with data-workshop-register='facilitation'")
         self.assertIn(calendly_url, register_link.get("href", ""),
             f"Facilitation CTA must point to Calendly. Got: {register_link.get('href')}")
+
+    def test_social_proof_band(self):
+        """Homepage offerings section has a social proof band with quote and metric chips."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        section = soup.find("section", id="offerings")
+        self.assertIsNotNone(section)
+
+        band = section.find(attrs={"data-social-proof": True})
+        self.assertIsNotNone(band, "Social proof band must exist in offerings section")
+
+        text = band.get_text()
+        self.assertIn("deploying changes", text, "Social proof must contain the featured quote")
+        self.assertIn("Mika", text, "Social proof must contain the attribution")
+        self.assertIn("64%", text, "Social proof must contain 64% metric")
+
+    def test_workshop_cards_have_images(self):
+        """The first two workshop cards in the offerings section have images."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        section = soup.find("section", id="offerings")
+
+        short = section.find("a", attrs={"data-offering": "short-workshop"})
+        img = short.find("img")
+        self.assertIsNotNone(img, "Short workshop card must have an image")
+        img_url = img.get("src")
+        resp = requests.head(f"{self.BASE_URL}{img_url}", timeout=10)
+        self.assertEqual(resp.status_code, 200, f"Image {img_url} must load")
+
+        facilitation = section.find("a", attrs={"data-offering": "facilitation-training"})
+        img = facilitation.find("img")
+        self.assertIsNotNone(img, "Facilitation card must have an image")
+        img_url = img.get("src")
+        resp = requests.head(f"{self.BASE_URL}{img_url}", timeout=10)
+        self.assertEqual(resp.status_code, 200, f"Image {img_url} must load")
+
+    def test_offerings_ctas_are_buttons(self):
+        """Both offering cards have button-styled CTAs."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        section = soup.find("section", id="offerings")
+        cards = section.find_all("a", attrs={"data-offering": True})
+        self.assertEqual(len(cards), 2, "Must have exactly 2 offering cards")
+
+        for card in cards:
+            btn = card.find(attrs={"data-cta": True})
+            self.assertIsNotNone(btn,
+                f"Card {card.get('data-offering')} must have a CTA element with data-cta")
+
+    def test_intro_workshop_pricing_block(self):
+        """Intro workshop page has public and private pricing."""
+        response = requests.get(f"{self.BASE_URL}/workshops/intro", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        pricing = soup.find(attrs={"data-pricing": "intro"})
+        self.assertIsNotNone(pricing, "Intro page must have a pricing block with data-pricing='intro'")
+
+        text = pricing.get_text()
+        self.assertIn("50", text, "Must mention €50 price")
+        self.assertIn("1,000", text, "Must mention €1,000 private price")
+        self.assertIn("2,000", text, "Must mention €2,000 package")
+
+    def test_facilitation_pricing_block(self):
+        """Facilitation page has public and private pricing."""
+        response = requests.get(f"{self.BASE_URL}/workshops/facilitation", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        pricing = soup.find(attrs={"data-pricing": "facilitation"})
+        self.assertIsNotNone(pricing, "Facilitation page must have a pricing block with data-pricing='facilitation'")
+
+        text = pricing.get_text()
+        self.assertIn("500", text, "Must mention €500 public price")
+        self.assertIn("1,500", text, "Must mention €1,500 private price")
 
     # --- Cookie Banner & Analytics Tests ---
 

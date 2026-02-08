@@ -80,36 +80,45 @@ const testimonials = [
           </p>
         </div>
 
+        <!-- Social proof band -->
+        <div data-social-proof class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mb-10 md:mb-12 text-center md:text-left">
+          <p class="text-sm text-gray-600 italic max-w-md">
+            "A tremendous potential was unveiled how the process of deploying changes can be improved."
+            <span class="block not-italic font-semibold text-[rgb(33,48,118)] mt-1">&mdash; Mika Schafroth, Director of Engineering (Relex Solutions)</span>
+          </p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <span class="inline-block bg-[rgb(240,242,245)] text-[rgb(33,48,118)] font-semibold text-sm px-3 py-1.5 rounded-full">64% lead time reduction</span>
+            <span class="inline-block bg-[rgb(240,242,245)] text-[rgb(33,48,118)] font-semibold text-sm px-3 py-1.5 rounded-full">Monthly &rarr; Weekly deployments</span>
+          </div>
+        </div>
+
         <!-- Service cards: clear CTAs by intent -->
-        <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+        <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
           <a
             href="/workshops/intro"
             data-offering="short-workshop"
-            class="block bg-[rgb(240,242,245)] p-6 md:p-8 rounded-xl hover:shadow-md transition-shadow border border-transparent hover:border-[rgb(67,97,238)]/20 group"
+            class="block bg-[rgb(240,242,245)] rounded-xl overflow-hidden hover:shadow-md transition-shadow border border-transparent hover:border-[rgb(67,97,238)]/20 group"
           >
-            <p class="text-sm font-medium text-[rgb(67,97,238)] mb-2">1h30 training</p>
-            <h3 class="text-xl font-bold text-[rgb(33,48,118)] mb-3 group-hover:text-[rgb(67,97,238)] transition-colors">Introduction to Value Stream Mapping for Leaders</h3>
-            <p class="text-gray-600 mb-6">Map your delivery, spot bottlenecks, leave with a plan. Hands-on session for engineering and product leaders.</p>
-            <span class="text-[rgb(67,97,238)] font-medium">See details →</span>
+            <img src="/images/workshops/image3.jpg" alt="VSM intro workshop" class="w-full h-[130px] object-cover" />
+            <div class="p-6 md:p-8">
+              <p class="text-sm font-medium text-[rgb(67,97,238)] mb-2">1h30 training</p>
+              <h3 class="text-xl font-bold text-[rgb(33,48,118)] mb-3 group-hover:text-[rgb(67,97,238)] transition-colors">Introduction to Value Stream Mapping for Leaders</h3>
+              <p class="text-gray-600 mb-6">Map your delivery, spot bottlenecks, leave with a plan. Hands-on session for engineering and product leaders.</p>
+              <span data-cta class="inline-block bg-[rgb(67,97,238)] hover:bg-[rgb(67,97,238)]/90 text-white font-semibold py-2 px-4 rounded-lg text-sm transition-colors">Learn More</span>
+            </div>
           </a>
           <a
             href="/workshops/facilitation"
             data-offering="facilitation-training"
-            class="block bg-[rgb(240,242,245)] p-6 md:p-8 rounded-xl hover:shadow-md transition-shadow border border-transparent hover:border-[rgb(67,97,238)]/20 group"
+            class="block bg-[rgb(240,242,245)] rounded-xl overflow-hidden hover:shadow-md transition-shadow border border-transparent hover:border-[rgb(67,97,238)]/20 group"
           >
-            <p class="text-sm font-medium text-[rgb(67,97,238)] mb-2">5 sessions × 1h30</p>
-            <h3 class="text-xl font-bold text-[rgb(33,48,118)] mb-3 group-hover:text-[rgb(67,97,238)] transition-colors">VSM & Flow Engineering Facilitation Training</h3>
-            <p class="text-gray-600 mb-6">Learn to run full VSM workshops yourself. Templates, coaching, and your team’s real challenges.</p>
-            <span class="text-[rgb(67,97,238)] font-medium">See curriculum →</span>
-          </a>
-          <a
-            href="/contact"
-            data-offering="consulting"
-            class="block bg-[rgb(240,242,245)] p-6 md:p-8 rounded-xl hover:shadow-md transition-shadow border border-transparent hover:border-[rgb(67,97,238)]/20 group"
-          >
-            <h3 class="text-xl font-bold text-[rgb(33,48,118)] mb-3 group-hover:text-[rgb(67,97,238)] transition-colors">Consulting</h3>
-            <p class="text-gray-600 mb-6">Custom workshops or ongoing support. Book a call to align on your goals.</p>
-            <span class="inline-block bg-[rgb(67,97,238)] hover:bg-[rgb(67,97,238)]/90 text-white font-semibold py-2 px-4 rounded-lg text-sm transition-colors">Book a call</span>
+            <img src="/images/workshops/image2.jpg" alt="VSM facilitation workshop" class="w-full h-[130px] object-cover" />
+            <div class="p-6 md:p-8">
+              <p class="text-sm font-medium text-[rgb(67,97,238)] mb-2">5 sessions &times; 1h30</p>
+              <h3 class="text-xl font-bold text-[rgb(33,48,118)] mb-3 group-hover:text-[rgb(67,97,238)] transition-colors">VSM &amp; Flow Engineering Facilitation Training</h3>
+              <p class="text-gray-600 mb-6">Learn to run full VSM workshops yourself. Templates, coaching, and your team's real challenges.</p>
+              <span data-cta class="inline-block bg-[rgb(67,97,238)] hover:bg-[rgb(67,97,238)]/90 text-white font-semibold py-2 px-4 rounded-lg text-sm transition-colors">Learn more</span>
+            </div>
           </a>
         </div>
       </div>
@@ -180,7 +189,7 @@ const testimonials = [
                   href={`/blog/${testimonial.postSlug}`}
                   class="inline-block text-[rgb(67,97,238)] hover:text-[rgb(67,97,238)]/90 font-medium transition-colors"
                 >
-                  Read Full Testimonial →
+                  Read Full Testimonial &rarr;
                 </a>
               </footer>
             </blockquote>
@@ -208,7 +217,7 @@ const testimonials = [
 
           <h3 class="text-xl font-bold mb-4 text-[rgb(33,48,118)]">The Outcome</h3>
           <ul class="list-disc list-inside text-gray-600 space-y-2">
-            <li><strong>64% Lead Time Reduction</strong>: Time from code completion to live deployment dropped from 28 to 10 days — delivering value more often.</li>
+            <li><strong>64% Lead Time Reduction</strong>: Time from code completion to live deployment dropped from 28 to 10 days &mdash; delivering value more often.</li>
             <li><strong>Team Ownership</strong>: Every developer understands the deployment process and can execute it, removing single points of failure.</li>
             <li><strong>Fewer Surprises</strong>: Shifting quality checks earlier means potential issues are found sooner, reducing the cost of more expensive unplanned work.</li>
           </ul>
