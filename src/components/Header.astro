@@ -1,20 +1,122 @@
 ---
+const currentPath = Astro.url.pathname;
+const isActive = (path: string) => {
+  if (path === '/') return currentPath === '/';
+  return currentPath.startsWith(path);
+};
+
+const navLinks = [
+  { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/#offerings', label: 'Workshops', highlight: true },
+  { href: '/contact', label: 'Contact' },
+];
 ---
-<header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
-  <div class="max-w-7xl mx-auto px-4 h-[72px] flex items-center">
+
+<header class="fixed top-0 left-0 right-0 bg-white border-b border-[rgb(67,97,238)]/15 z-50">
+  <div class="max-w-7xl mx-auto px-4 h-[72px] flex items-center justify-between">
+    <!-- Logo -->
     <a href="/" class="text-[rgb(33,48,118)] text-2xl font-bold">Miguel Dias</a>
 
-    <nav class="flex-1 flex justify-center gap-8">
-      <a href="/about" class="text-[rgb(67,97,238)] hover:text-[rgb(67,97,238)]/90 transition-colors text-lg">About</a>
-      <a href="/blog" class="text-[rgb(67,97,238)] hover:text-[rgb(67,97,238)]/90 transition-colors text-lg">Blog</a>
-      <a href="/#offerings" class="text-[rgb(67,97,238)] hover:text-[rgb(67,97,238)]/90 transition-colors text-lg">Workshops</a>
-      <a href="/contact" class="text-[rgb(67,97,238)] hover:text-[rgb(67,97,238)]/90 transition-colors text-lg">Contact</a>
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-6">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class:list={[
+            'relative text-base font-medium transition-colors',
+            link.highlight
+              ? 'bg-[rgb(67,97,238)]/10 text-[rgb(67,97,238)] px-3 py-1.5 rounded-lg hover:bg-[rgb(67,97,238)]/20'
+              : [
+                  'py-1',
+                  isActive(link.href)
+                    ? 'text-[rgb(67,97,238)]'
+                    : 'text-[rgb(33,48,118)] hover:text-[rgb(67,97,238)]',
+                ],
+          ]}
+        >
+          {link.label}
+          {isActive(link.href) && !link.highlight && (
+            <span class="absolute left-0 right-0 -bottom-[1.35rem] h-0.5 bg-[rgb(67,97,238)]" />
+          )}
+        </a>
+      ))}
     </nav>
 
-    <a href="https://www.linkedin.com/in/migueldiaseu/" target="_blank" rel="noopener noreferrer" class="text-[rgb(67,97,238)] hover:text-[rgb(67,97,238)]/90 transition-colors">
-      <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-      </svg>
+    <!-- Desktop CTA -->
+    <a
+      href="https://calendly.com/migueldiaseu"
+      target="_blank"
+      rel="noopener noreferrer"
+      data-track-book-call="header"
+      class="hidden md:inline-block bg-[rgb(67,97,238)] hover:bg-[rgb(67,97,238)]/90 text-white font-semibold py-2 px-5 rounded-lg text-sm transition-colors"
+    >
+      Book a call
     </a>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden flex flex-col justify-center gap-1.5 w-8 h-8"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <span class="block w-6 h-0.5 bg-[rgb(33,48,118)] transition-all origin-center" id="bar1"></span>
+      <span class="block w-6 h-0.5 bg-[rgb(33,48,118)] transition-all" id="bar2"></span>
+      <span class="block w-6 h-0.5 bg-[rgb(33,48,118)] transition-all origin-center" id="bar3"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-100 px-4 pb-6 pt-4">
+    <nav class="flex flex-col gap-4">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class:list={[
+            'text-lg font-medium py-1 transition-colors',
+            isActive(link.href)
+              ? 'text-[rgb(67,97,238)]'
+              : 'text-[rgb(33,48,118)] hover:text-[rgb(67,97,238)]',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="https://calendly.com/migueldiaseu"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-track-book-call="header-mobile"
+        class="inline-block text-center bg-[rgb(67,97,238)] hover:bg-[rgb(67,97,238)]/90 text-white font-semibold py-2.5 px-5 rounded-lg text-base transition-colors mt-2"
+      >
+        Book a call
+      </a>
+    </nav>
   </div>
 </header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const bar1 = document.getElementById('bar1');
+  const bar2 = document.getElementById('bar2');
+  const bar3 = document.getElementById('bar3');
+
+  if (btn && menu && bar1 && bar2 && bar3) {
+    btn.addEventListener('click', () => {
+      const open = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', String(!open));
+      if (!open) {
+        bar1.style.transform = 'rotate(45deg) translate(2.5px, 2.5px)';
+        bar2.style.opacity = '0';
+        bar3.style.transform = 'rotate(-45deg) translate(2.5px, -2.5px)';
+      } else {
+        bar1.style.transform = '';
+        bar2.style.opacity = '';
+        bar3.style.transform = '';
+      }
+    });
+  }
+</script>

@@ -124,7 +124,7 @@ class TestSite(unittest.TestCase):
         
         # External links that should be present
         external_links = {
-            "https://www.linkedin.com/in/migueldiaseu/": "LinkedIn link Header = Footer",
+            "https://www.linkedin.com/in/migueldiaseu/": "LinkedIn link Footer",
             "https://calendly.com/migueldiaseu": "Footer Book a Call link",
         }
         
@@ -402,7 +402,7 @@ class TestSite(unittest.TestCase):
     def test_book_call_buttons_have_tracking_attribute(self):
         """Test that all Book a Call links pointing to Calendly have the data-track-book-call attribute."""
         pages_with_book_call = {
-            '/': ['ready-to-improve'],
+            '/': ['ready-to-improve', 'header'],
             '/about': ['about'],
             '/contact': ['contact'],
         }
