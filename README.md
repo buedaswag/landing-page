@@ -4,6 +4,19 @@
 
 * check out the RSS feed - is it working? can peopl subscribe to it?
 
+## Lean Coffee Email Signup
+
+The lean coffee page (`/lean-coffee`) has an email signup form powered by **Substack**. Currently the form `action` is a placeholder (`TODO_REPLACE_WITH_SUBSTACK_URL`) — **emails are not being collected yet**.
+
+To wire it up:
+
+1. Create a Substack publication at [substack.com](https://substack.com)
+2. Go to **Settings → Publication details** and grab your publication URL (e.g. `https://yourname.substack.com`)
+3. Get the embed form action URL from **Settings → Publishing → Embeds**
+4. Replace `TODO_REPLACE_WITH_SUBSTACK_URL` in `src/pages/lean-coffee.astro` with your Substack form action URL
+
+Substack handles double opt-in, unsubscribe, GDPR compliance, and bounce management. You can export your full subscriber list and posts at any time (Dashboard → Settings → Exports).
+
 ## Run locally
 
 ```bash

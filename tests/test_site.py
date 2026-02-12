@@ -1,4 +1,5 @@
 import unittest
+import os
 import requests
 from bs4 import BeautifulSoup
 from pathlib import Path
@@ -581,18 +582,28 @@ class TestSite(unittest.TestCase):
             "Page must link to Flowtopia")
 
     def test_lean_coffee_has_email_signup(self):
-        """Lean coffee page has an email signup form."""
+        """Lean coffee page has a Supascribe widget for email signup."""
         response = requests.get(f"{self.BASE_URL}/lean-coffee", timeout=10)
         soup = BeautifulSoup(response.text, "html.parser")
 
-        form = soup.find("form", attrs={"data-lean-coffee": "signup"})
-        self.assertIsNotNone(form, "Page must have an email signup form with data-lean-coffee='signup'")
+        signup = soup.find(attrs={"data-lean-coffee": "signup"})
+        self.assertIsNotNone(signup, "Page must have a signup section with data-lean-coffee='signup'")
 
-        email_input = form.find("input", attrs={"type": "email"})
-        self.assertIsNotNone(email_input, "Signup form must have an email input")
+        widget = signup.find(attrs={"data-supascribe-subscribe": True})
+        self.assertIsNotNone(widget, "Signup section must contain a Supascribe widget")
 
-        submit_btn = form.find("button", attrs={"type": "submit"})
-        self.assertIsNotNone(submit_btn, "Signup form must have a submit button")
+    @unittest.skipUnless(os.environ.get("FORCE_BUILD"), "Supascribe script test only runs on pre-push (FORCE_BUILD=1)")
+    def test_lean_coffee_supascribe_script_loads(self):
+        """Supascribe script is reachable."""
+        response = requests.get(f"{self.BASE_URL}/lean-coffee", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        script = soup.find("script", src=lambda s: s and "supascribe.com" in s)
+        self.assertIsNotNone(script, "Page must include the Supascribe script")
+
+        resp = requests.get(script["src"], timeout=10)
+        self.assertEqual(resp.status_code, 200,
+            f"Supascribe script must be reachable. Got status {resp.status_code}")
 
     def test_lean_coffee_community_links_have_tracking(self):
         """Lean coffee community links have data-track-lean-coffee for analytics."""
