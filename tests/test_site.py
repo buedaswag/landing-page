@@ -372,6 +372,22 @@ class TestSite(unittest.TestCase):
         self.assertIn("1,000", text, "Must mention €1,000 private price")
         self.assertIn("2,000", text, "Must mention €2,000 package")
 
+    def test_facilitation_mika_testimonial_links_to_post(self):
+        """Mika Schafroth testimonial on facilitation page links to her full testimonial post."""
+        response = requests.get(f"{self.BASE_URL}/workshops/facilitation", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        link = soup.find("a", attrs={"data-testimonial": "mika-schafroth"})
+        self.assertIsNotNone(link,
+            "Facilitation page must have a testimonial link with data-testimonial='mika-schafroth'")
+        self.assertEqual(link.get("href"), "/blog/2025-02-17-mika-schafroth-testimonial",
+            f"Mika testimonial must link to her blog post. Got: {link.get('href')}")
+
+        # Verify the linked page loads
+        resp = requests.get(f"{self.BASE_URL}{link['href']}", timeout=10)
+        self.assertEqual(resp.status_code, 200,
+            f"Testimonial post must load. Got status {resp.status_code}")
+
     def test_facilitation_pricing_block(self):
         """Facilitation page has public and private pricing."""
         response = requests.get(f"{self.BASE_URL}/workshops/facilitation", timeout=10)
