@@ -1,13 +1,14 @@
 #!/bin/sh
 
-echo "🔄 Pre-commit: running tests (no rebuild)..."
+echo "🔄 Post-commit: full rebuild + test..."
 
+export FORCE_BUILD=1
 python -m unittest discover tests/
 
 test_exit_code=$?
 
 if [ $test_exit_code -ne 0 ]; then
-    echo "❌ Tests failed. Commit blocked."
+    echo "❌ Tests failed after commit. Consider amending or fixing."
     exit 1
 fi
 

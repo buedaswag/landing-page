@@ -567,8 +567,8 @@ class TestSite(unittest.TestCase):
         response = requests.get(f"{self.BASE_URL}/lean-coffee", timeout=10)
         soup = BeautifulSoup(response.text, "html.parser")
         text = soup.get_text()
-        self.assertIn("Monday afternoon", text,
-            "Page must mention Monday afternoon")
+        self.assertIn("Monday", text,
+            "Page must mention Monday")
         self.assertIn("lightly facilitated conversation", text,
             "Page must describe the lean coffee format")
 

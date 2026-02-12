@@ -26,7 +26,7 @@ import Layout from '../layouts/Layout.astro';
       <section class="mb-16 rounded-xl bg-[rgb(33,48,118)] p-8 text-center">
         <h2 class="text-3xl font-bold text-white mb-2">Get on the List</h2>
         <p class="text-blue-200 mb-6">Sign up to receive the invite for the next session.</p>
-        <form data-lean-coffee="signup" action="TODO_REPLACE_WITH_SERVICE_URL" method="POST" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <form data-lean-coffee="signup" data-track-lean-coffee="signup" action="TODO_REPLACE_WITH_SERVICE_URL" method="POST" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
           <input
             type="email"
             name="email"
@@ -47,13 +47,13 @@ import Layout from '../layouts/Layout.astro';
       <section class="mb-4">
         <h2 class="text-2xl font-bold text-[rgb(33,48,118)] mb-4">Our Communities</h2>
         <div class="grid grid-cols-2 gap-4">
-          <a href="https://flowcollective.org/" target="_blank" rel="noopener noreferrer" class="flex flex-col rounded-xl border border-gray-200 bg-[rgb(240,242,245)] p-6 hover:shadow-md transition-shadow">
+          <a href="https://flowcollective.org/" target="_blank" rel="noopener noreferrer" data-track-lean-coffee="flow-collective" class="flex flex-col rounded-xl border border-gray-200 bg-[rgb(240,242,245)] p-6 hover:shadow-md transition-shadow">
             <div class="h-10 flex items-center mb-4">
               <img src="/images/lean-coffee/flow-collective-logo.png" alt="The Flow Collective" class="h-14 w-52 object-contain invert" />
             </div>
             <p class="text-gray-700 text-sm">A private peer network for professionals passionate about improving flow across organizations.</p>
           </a>
-          <a href="https://www.flowtopia.io/feed" target="_blank" rel="noopener noreferrer" class="flex flex-col rounded-xl border border-gray-200 bg-[rgb(240,242,245)] p-6 hover:shadow-md transition-shadow">
+          <a href="https://www.flowtopia.io/feed" target="_blank" rel="noopener noreferrer" data-track-lean-coffee="flowtopia" class="flex flex-col rounded-xl border border-gray-200 bg-[rgb(240,242,245)] p-6 hover:shadow-md transition-shadow">
             <div class="h-10 flex items-center mb-4">
               <img src="/images/lean-coffee/Flowtopia.png" alt="Flowtopia" class="h-10 w-40 object-contain rounded-xl" />
             </div>
