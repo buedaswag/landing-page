@@ -89,6 +89,30 @@ const GA_MEASUREMENT_ID = 'G-Q3XS8CD6CN';
         }
       });
     });
+
+    document.querySelectorAll('a[data-track-offering]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'offering_click', {
+            event_category: 'engagement',
+            event_label: link.getAttribute('data-track-offering') || 'unknown',
+            transport_type: 'beacon',
+          });
+        }
+      });
+    });
+
+    document.querySelectorAll('a[data-track-workshop-register]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'workshop_register_click', {
+            event_category: 'engagement',
+            event_label: link.getAttribute('data-track-workshop-register') || 'unknown',
+            transport_type: 'beacon',
+          });
+        }
+      });
+    });
   }
 
   function showBanner() {

@@ -437,6 +437,32 @@ class TestSite(unittest.TestCase):
             self.assertIsNotNone(footer_tracked,
                 f"Footer 'Book a Call' link missing data-track-book-call='footer' on {page}")
 
+    def test_offering_cards_have_tracking_attribute(self):
+        """Test that homepage workshop cards have data-track-offering for analytics."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        tracked = soup.find_all("a", attrs={"data-track-offering": True})
+        labels = [link.get("data-track-offering") for link in tracked]
+
+        self.assertIn("short-workshop", labels,
+            f"Missing data-track-offering='short-workshop'. Found: {labels}")
+        self.assertIn("facilitation-training", labels,
+            f"Missing data-track-offering='facilitation-training'. Found: {labels}")
+
+    def test_workshop_register_links_have_tracking_attribute(self):
+        """Test that workshop register CTAs have data-track-workshop-register for analytics."""
+        response = requests.get(f"{self.BASE_URL}/workshops/intro", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        tracked = soup.find_all("a", attrs={"data-track-workshop-register": True})
+        labels = [link.get("data-track-workshop-register") for link in tracked]
+
+        self.assertIn("intro", labels,
+            f"Missing data-track-workshop-register='intro' on /workshops/intro. Found: {labels}")
+        self.assertIn("intro-cohort-2", labels,
+            f"Missing data-track-workshop-register='intro-cohort-2' on /workshops/intro. Found: {labels}")
+
     def test_footer_work_together_links(self):
         """Footer Work Together section links to workshops and testimonials."""
         response = requests.get(self.BASE_URL, timeout=10)
@@ -457,6 +483,23 @@ class TestSite(unittest.TestCase):
         self.assertIn("/#testimonial", hrefs,
             f"Footer must link to /#testimonial. Found: {hrefs}")
 
+    def test_about_page_bio_content(self):
+        """About page has updated bio with background, 2024 results, and 2025 results."""
+        response = requests.get(f"{self.BASE_URL}/about", timeout=10)
+        self.assertEqual(response.status_code, 200)
+        text = response.text
+
+        self.assertIn("6+ years of experience", text,
+            "About page must mention years of experience")
+        self.assertIn("DevOps, Cloud Infrastructure, Data Engineering", text,
+            "About page must mention background areas")
+        self.assertIn("RELEX", text, "About page must mention RELEX")
+        self.assertIn("Bond Touch", text, "About page must mention Bond Touch")
+        self.assertIn("Lisbon Data Science Academy", text,
+            "About page must mention Lisbon Data Science Academy")
+        self.assertIn("Berlin VSM", text,
+            "About page must mention Berlin VSM community")
+
     def test_manage_cookies_link_in_footer(self):
         """Test that a 'Manage Cookies' button exists in the footer for consent withdrawal."""
         response = requests.get(self.BASE_URL, timeout=10)
@@ -472,6 +515,65 @@ class TestSite(unittest.TestCase):
         self.assertIn("google analytics", text, "Privacy page must mention Google Analytics")
         self.assertIn("cookie_consent", text, "Privacy page must mention the consent cookie")
         self.assertIn("manage cookies", text, "Privacy page must explain how to withdraw consent")
+
+    # --- Lean Coffee Page Tests ---
+
+    def test_lean_coffee_page_loads(self):
+        """Lean coffee page loads at /lean-coffee."""
+        response = requests.get(f"{self.BASE_URL}/lean-coffee", timeout=10)
+        self.assertEqual(response.status_code, 200,
+            f"/lean-coffee must return 200. Got: {response.status_code}")
+        self.assertIn("text/html", response.headers["content-type"])
+
+    def test_lean_coffee_has_cover_image(self):
+        """Lean coffee page has the cover image that loads successfully."""
+        response = requests.get(f"{self.BASE_URL}/lean-coffee", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        img = soup.find("img", attrs={"data-lean-coffee": "cover"})
+        self.assertIsNotNone(img, "Lean coffee page must have a cover image with data-lean-coffee='cover'")
+        img_url = img.get("src")
+        self.assertIn("lean-coffee", img_url, "Cover image src must reference lean-coffee folder")
+
+        resp = requests.head(f"{self.BASE_URL}{img_url}", timeout=10)
+        self.assertEqual(resp.status_code, 200, f"Cover image {img_url} must load")
+
+    def test_lean_coffee_has_description(self):
+        """Lean coffee page has the session description."""
+        response = requests.get(f"{self.BASE_URL}/lean-coffee", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+        text = soup.get_text()
+        self.assertIn("Monday afternoon", text,
+            "Page must mention Monday afternoon")
+        self.assertIn("lightly facilitated conversation", text,
+            "Page must describe the lean coffee format")
+
+    def test_lean_coffee_links_to_communities(self):
+        """Lean coffee page links to Flow Collective and Flowtopia."""
+        response = requests.get(f"{self.BASE_URL}/lean-coffee", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        flow_collective = soup.find("a", href="https://flowcollective.org/")
+        self.assertIsNotNone(flow_collective,
+            "Page must link to Flow Collective (https://flowcollective.org/)")
+
+        flowtopia = soup.find("a", href=lambda x: x and "flowtopia.io" in x)
+        self.assertIsNotNone(flowtopia,
+            "Page must link to Flowtopia")
+
+    def test_lean_coffee_has_email_signup(self):
+        """Lean coffee page has an email signup form."""
+        response = requests.get(f"{self.BASE_URL}/lean-coffee", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        form = soup.find("form", attrs={"data-lean-coffee": "signup"})
+        self.assertIsNotNone(form, "Page must have an email signup form with data-lean-coffee='signup'")
+
+        email_input = form.find("input", attrs={"type": "email"})
+        self.assertIsNotNone(email_input, "Signup form must have an email input")
+
+        submit_btn = form.find("button", attrs={"type": "submit"})
+        self.assertIsNotNone(submit_btn, "Signup form must have a submit button")
 
 if __name__ == '__main__':
     unittest.main()
