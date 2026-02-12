@@ -113,12 +113,8 @@ class TestSite(unittest.TestCase):
             "/workshops/intro": "Offerings Short workshop link",
             "/workshops/facilitation": "Offerings Facilitation training link",
             
-            # Main Navigation/Content
-            "/#case-study": "Case Study link",
-            "/#how-we-work": "How We Work link",
-            
             # Footer
-            "/#testimonial": "Footer Testimony link",
+            "/#testimonial": "Footer Testimonials link",
             "/privacy": "Footer Privacy Policy link",
         }
         
@@ -440,6 +436,26 @@ class TestSite(unittest.TestCase):
             footer_tracked = soup.find("a", attrs={"data-track-book-call": "footer"})
             self.assertIsNotNone(footer_tracked,
                 f"Footer 'Book a Call' link missing data-track-book-call='footer' on {page}")
+
+    def test_footer_work_together_links(self):
+        """Footer Work Together section links to workshops and testimonials."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        # Find the page-level footer (the last one, not blockquote footers)
+        footers = soup.find_all("footer")
+        footer = footers[-1]
+        self.assertIsNotNone(footer)
+
+        links = footer.find_all("a", href=True)
+        hrefs = [a["href"] for a in links]
+
+        self.assertIn("/workshops/intro", hrefs,
+            f"Footer must link to /workshops/intro. Found: {hrefs}")
+        self.assertIn("/workshops/facilitation", hrefs,
+            f"Footer must link to /workshops/facilitation. Found: {hrefs}")
+        self.assertIn("/#testimonial", hrefs,
+            f"Footer must link to /#testimonial. Found: {hrefs}")
 
     def test_manage_cookies_link_in_footer(self):
         """Test that a 'Manage Cookies' button exists in the footer for consent withdrawal."""
