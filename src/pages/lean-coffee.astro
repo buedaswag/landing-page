@@ -9,11 +9,7 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- Hero: headline + description + cover as one unit -->
       <header class="mb-10">
-        <h1 class="text-3xl md:text-4xl font-bold text-[rgb(33,48,118)] mb-2">Lean Coffee Sessions</h1>
-        <p class="text-xl text-gray-600 mb-4">What's on your mind lately?</p>
-        <p class="text-lg text-gray-700 leading-relaxed mb-6">
-          Join us on a Monday for a lightly facilitated conversation, the topics of which we'll decide together on the call.
-        </p>
+        <h1 class="text-3xl md:text-4xl font-bold text-[rgb(33,48,118)] mb-2 text-center">Lean Coffee Sessions</h1>
         <img
           src="/images/lean-coffee/cover.png"
           alt="Lean Coffee session"
@@ -22,30 +18,38 @@ import Layout from '../layouts/Layout.astro';
         />
       </header>
 
-      <!-- CTA: immediately after the hook -->
-      <section class="mb-16 rounded-xl bg-[rgb(33,48,118)] p-8 text-center">
-        <h2 class="text-3xl font-bold text-white mb-2">Get on the List</h2>
-        <p class="text-blue-200 mb-6">Sign up to receive the invite for the next session.</p>
-        <form data-lean-coffee="signup" data-track-lean-coffee="signup" action="TODO_REPLACE_WITH_SERVICE_URL" method="POST" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-          <input
-            type="email"
-            name="email"
-            placeholder="you@example.com"
-            required
-            class="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[rgb(67,97,238)]"
-          />
-          <button
-            type="submit"
-            class="bg-[rgb(67,97,238)] hover:bg-[rgb(67,97,238)]/90 text-white font-bold py-3 px-6 rounded-lg transition-colors whitespace-nowrap"
-          >
-            Join
-          </button>
-        </form>
-      </section>
+      <!-- Description + CTA side by side -->
+      <div class="grid grid-cols-2 gap-4 mb-16">
+        <div class="rounded-xl bg-[rgb(240,242,245)] p-6 flex flex-col justify-center">
+          <p class="text-xl text-gray-600 font-medium mb-3">What's on your mind lately?</p>
+          <p class="text-base text-gray-700 leading-relaxed">
+            Join us on a Monday for a lightly facilitated conversation, the topics of which we'll decide together on the call.
+          </p>
+        </div>
+        <div class="rounded-xl bg-[rgb(33,48,118)] p-6 flex flex-col justify-center text-center">
+          <h2 class="text-2xl font-bold text-white mb-2">Get on the List</h2>
+          <p class="text-blue-200 text-sm mb-4">Sign up to receive the invite for the next session.</p>
+          <form data-lean-coffee="signup" data-track-lean-coffee="signup" action="TODO_REPLACE_WITH_SERVICE_URL" method="POST" class="flex flex-col gap-3">
+            <input
+              type="email"
+              name="email"
+              placeholder="you@example.com"
+              required
+              class="px-4 py-3 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[rgb(67,97,238)]"
+            />
+            <button
+              type="submit"
+              class="bg-[rgb(67,97,238)] hover:bg-[rgb(67,97,238)]/90 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+            >
+              Join
+            </button>
+          </form>
+        </div>
+      </div>
 
       <!-- Communities: credibility, below the CTA -->
       <section class="mb-4">
-        <h2 class="text-2xl font-bold text-[rgb(33,48,118)] mb-4">Our Communities</h2>
+        <h2 class="text-2xl font-bold text-[rgb(33,48,118)] mb-4 text-center">Our Communities</h2>
         <div class="grid grid-cols-2 gap-4">
           <a href="https://flowcollective.org/" target="_blank" rel="noopener noreferrer" data-track-lean-coffee="flow-collective" class="flex flex-col rounded-xl border border-gray-200 bg-[rgb(240,242,245)] p-6 hover:shadow-md transition-shadow">
             <div class="h-10 flex items-center mb-4">
