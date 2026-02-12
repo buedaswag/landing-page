@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "🔄 Pre-push: full rebuild + test..."
+echo "🔄 Pre-commit: full rebuild + test..."
 
 export FORCE_BUILD=1
 python -m unittest discover tests/
@@ -8,7 +8,7 @@ python -m unittest discover tests/
 test_exit_code=$?
 
 if [ $test_exit_code -ne 0 ]; then
-    echo "❌ Tests failed. Push blocked."
+    echo "❌ Tests failed. Commit blocked."
     exit 1
 fi
 

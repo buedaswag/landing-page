@@ -5,6 +5,7 @@ from pathlib import Path
 import subprocess
 import json
 import time
+import os
 
 class TestSite(unittest.TestCase):
     @classmethod
@@ -12,20 +13,43 @@ class TestSite(unittest.TestCase):
         """Called once before all tests in this class"""
         cls.BASE_URL = "http://localhost:4444"
         cls.project_root = Path(__file__).parent.parent
-        
-        # Clean up any existing containers
-        subprocess.run(["docker", "compose", "down"], check=True)
-        
-        # Start containers
-        subprocess.run(["docker", "compose", "up", "--build", "-d"], check=True)
-        
+        cls._we_started_containers = False
+
+        force_build = os.environ.get("FORCE_BUILD") == "1"
+
+        if force_build:
+            print("FORCE_BUILD=1 — rebuilding containers from scratch...")
+            subprocess.run(["docker", "compose", "down"], check=True)
+            subprocess.run(["docker", "compose", "up", "--build", "-d"], check=True)
+            cls._we_started_containers = True
+        elif cls._is_server_running():
+            print("Docker Compose is already running — skipping build.")
+        else:
+            print("Server not running — starting Docker Compose...")
+            subprocess.run(["docker", "compose", "up", "--build", "-d"], check=True)
+            cls._we_started_containers = True
+
         # Wait for server to be ready
         cls._wait_for_server()
 
     @classmethod
     def tearDownClass(cls):
-        """Called once after all tests in this class"""
-        subprocess.run(["docker", "compose", "down"], check=True)
+        """Called once after all tests in this class.
+        Only tears down containers if we started them (FORCE_BUILD or fresh start).
+        Leaves them running when reusing an existing server for faster dev cycles."""
+        if cls._we_started_containers:
+            subprocess.run(["docker", "compose", "down"], check=True)
+        else:
+            print("Leaving containers running (we didn't start them).")
+
+    @classmethod
+    def _is_server_running(cls):
+        """Check if docker compose is already running and serving requests."""
+        try:
+            response = requests.get(cls.BASE_URL, timeout=3)
+            return response.status_code == 200
+        except requests.exceptions.RequestException:
+            return False
 
     @classmethod
     def _wait_for_server(cls, timeout=60):
@@ -33,9 +57,9 @@ class TestSite(unittest.TestCase):
         start_time = time.time()
         message_found = False
         server_responding = False
-        
+
         print(f"Waiting up to {timeout} seconds for server to start...")
-        
+
         while time.time() - start_time < timeout:
             # Check for startup message in logs
             if not message_found:
@@ -48,7 +72,7 @@ class TestSite(unittest.TestCase):
                 if "localhost:4444" in result.stdout:
                     message_found = True
                     print("Found server startup message in logs!")
-            
+
             # Check if server is responding
             if not server_responding:
                 try:
@@ -58,16 +82,16 @@ class TestSite(unittest.TestCase):
                         print("Server is responding to HTTP requests!")
                 except requests.exceptions.RequestException:
                     pass
-            
+
             # If both checks passed, we're good
             if message_found and server_responding:
                 print(f"Server is ready after {int(time.time() - start_time)} seconds")
                 return True
-                
+
             # Wait before trying again
             time.sleep(3)
             print(f"Still waiting... ({int(time.time() - start_time)}s elapsed)")
-        
+
         # Final check with detailed error messages
         if not message_found:
             result = subprocess.run(["docker", "compose", "logs"], capture_output=True, text=True, check=False)
@@ -76,7 +100,7 @@ class TestSite(unittest.TestCase):
                 f"Expected: 'localhost:4444' in logs\n"
                 f"Last 1000 chars of logs:\n{result.stdout[-1000:]}"
             )
-        
+
         if not server_responding:
             raise RuntimeError(f"Server not responding at {cls.BASE_URL} after {timeout} seconds")
 
@@ -92,7 +116,7 @@ class TestSite(unittest.TestCase):
         soup = BeautifulSoup(response.text, "html.parser")
         calendly_link = soup.find("a", href=lambda x: x and "calendly.com" in x)
         self.assertIsNotNone(calendly_link)
-        
+
         # Test the Calendly link
         calendly_url = calendly_link["href"]
         response = requests.head(calendly_url, timeout=10)
@@ -102,7 +126,7 @@ class TestSite(unittest.TestCase):
         """Test that all pages in the site load successfully."""
         response = requests.get(self.BASE_URL, timeout=10)
         soup = BeautifulSoup(response.text, "html.parser")
-        
+
         # Expected links that must be present
         expected_links = {
             # Header
@@ -112,60 +136,60 @@ class TestSite(unittest.TestCase):
             # Offerings section
             "/workshops/intro": "Offerings Short workshop link",
             "/workshops/facilitation": "Offerings Facilitation training link",
-            
+
             # Footer
             "/#testimonial": "Footer Testimonials link",
             "/privacy": "Footer Privacy Policy link",
         }
-        
+
         # External links that should be present
         external_links = {
             "https://www.linkedin.com/in/migueldiaseu/": "LinkedIn link Footer",
             "https://calendly.com/migueldiaseu": "Footer Book a Call link",
         }
-        
+
         # Find all links in the page
         all_links = soup.find_all("a", href=True)
         found_links = {a["href"]: a.text.strip() for a in all_links}
-        
+
         # Check internal links
         for expected_path, description in expected_links.items():
             self.assertIn(
-                expected_path, 
-                found_links, 
+                expected_path,
+                found_links,
                 f"\nExpected to find {description} with path '{expected_path}'\n"
                 f"Found these paths instead:\n"
                 f"{json.dumps(found_links, indent=2)}"
             )
-            
+
             # Test the page loads
             response = requests.get(f"{self.BASE_URL}{expected_path}", timeout=10)
-            
+
             self.assertEqual(
-                response.status_code, 
-                200, 
+                response.status_code,
+                200,
                 f"\nFailed to load {description} at path '{expected_path}'\n"
                 f"Status code: {response.status_code}\n"
                 f"Response text:\n{response.text[:500]}..."
             )
             self.assertIn(
-                "text/html", 
+                "text/html",
                 response.headers["content-type"],
                 f"\nWrong content type for {description} at path '{expected_path}'\n"
                 f"Expected: text/html\n"
                 f"Got: {response.headers['content-type']}"
             )
-        
+
         # Check external links
         for expected_url, description in external_links.items():
             self.assertIn(
-                expected_url, 
+                expected_url,
                 found_links,
                 f"\nExpected to find {description} with URL '{expected_url}'\n"
                 f"Found these URLs instead:\n"
                 f"{json.dumps(found_links, indent=2)}"
             )
-            
+
             # Just verify the link exists, but don't fail if it can't be accessed
             try:
                 response = requests.head(expected_url, timeout=10)
@@ -178,18 +202,18 @@ class TestSite(unittest.TestCase):
         """Test that all images in articles load successfully."""
         response = requests.get(f"{self.BASE_URL}/articles", timeout=10)
         soup = BeautifulSoup(response.text, "html.parser")
-        
+
         # Find all article links
         article_links = [
             a["href"] for a in soup.find_all("a", href=True)
             if "/articles/" in a["href"]
         ]
-        
+
         # Test each article
         for article_link in article_links:
             response = requests.get(f"{self.BASE_URL}{article_link}", timeout=10)
             soup = BeautifulSoup(response.text, "html.parser")
-            
+
             # Find all images in the article
             images = soup.find_all("img")
             for img in images:
@@ -204,23 +228,23 @@ class TestSite(unittest.TestCase):
         """Test that testimonials exist, have content, and have valid links."""
         response = requests.get(self.BASE_URL, timeout=10)
         soup = BeautifulSoup(response.text, "html.parser")
-        
+
         # Find testimonials section by ID
         testimonials_section = soup.find("section", id="testimonial")
         self.assertIsNotNone(testimonials_section, "Testimonials section not found")
-        
+
         # Find all testimonial quotes (paragraphs with quotes)
         quotes = testimonials_section.find_all("p")
         self.assertTrue(len(quotes) > 0, "No testimonial quotes found")
-        
+
         # Find all authors
         authors = testimonials_section.find_all("cite")
         self.assertTrue(len(authors) > 0, "No testimonial authors found")
-        
+
         # Check links to full testimonials
         links = testimonials_section.find_all("a", href=lambda x: x and "/blog/" in x)
         self.assertTrue(len(links) > 0, "No links to full testimonials found")
-        
+
         # Check each link is valid
         for link in links:
             response = requests.get(f"{self.BASE_URL}{link['href']}", timeout=10)
@@ -574,6 +598,21 @@ class TestSite(unittest.TestCase):
 
         submit_btn = form.find("button", attrs={"type": "submit"})
         self.assertIsNotNone(submit_btn, "Signup form must have a submit button")
+
+    def test_lean_coffee_community_links_have_tracking(self):
+        """Lean coffee community links have data-track-lean-coffee for analytics."""
+        response = requests.get(f"{self.BASE_URL}/lean-coffee", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        tracked = soup.find_all(attrs={"data-track-lean-coffee": True})
+        labels = [el.get("data-track-lean-coffee") for el in tracked]
+
+        self.assertIn("flow-collective", labels,
+            f"Missing data-track-lean-coffee='flow-collective'. Found: {labels}")
+        self.assertIn("flowtopia", labels,
+            f"Missing data-track-lean-coffee='flowtopia'. Found: {labels}")
+        self.assertIn("signup", labels,
+            f"Missing data-track-lean-coffee='signup'. Found: {labels}")
 
 if __name__ == '__main__':
     unittest.main()
