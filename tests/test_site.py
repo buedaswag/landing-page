@@ -34,13 +34,8 @@ class TestSite(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        """Called once after all tests in this class.
-        Only tears down containers if we started them (FORCE_BUILD or fresh start).
-        Leaves them running when reusing an existing server for faster dev cycles."""
-        if cls._we_started_containers:
-            subprocess.run(["docker", "compose", "down"], check=True)
-        else:
-            print("Leaving containers running (we didn't start them).")
+        """Leave containers running after tests for faster dev cycles."""
+        print("Leaving containers running.")
 
     @classmethod
     def _is_server_running(cls):
