@@ -4,16 +4,15 @@ import requests
 from bs4 import BeautifulSoup
 from pathlib import Path
 
+from tests.base import SiteTestCase
 
-class TestSecurity(unittest.TestCase):
+
+class TestSecurity(SiteTestCase):
     """Security tests for the landing page.
 
     Tests CSP headers, X-Content-Type-Options, Dockerfile Node version,
     and dependency pinning in requirements.txt.
     """
-
-    BASE_URL = "http://localhost:4444"
-    PROJECT_ROOT = Path(__file__).parent.parent
 
     # All pages that should have security meta tags
     ALL_PAGES = [
