@@ -271,6 +271,32 @@ class TestSite(SiteTestCase):
         self.assertIsNotNone(talk, "Carousel must have a talk item")
         self.assertIn("youtube.com/watch", talk.get("href", ""))
 
+    def test_results_section(self):
+        """Homepage has a results section with verbatim sales deck metrics."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        section = soup.find("section", id="results")
+        self.assertIsNotNone(section, "Homepage must have a section with id='results'")
+
+        text = section.get_text()
+        self.assertIn("+20% capacity", text, "Results must mention +20% capacity")
+        self.assertIn("+60% faster delivery", text, "Results must mention +60% faster delivery")
+        self.assertIn("20% production defects", text, "Results must mention -20% production defects")
+        self.assertIn("Release on demand", text, "Results must mention release on demand")
+
+    def test_intro_joost_testimonial_links_to_linkedin(self):
+        """Joost Baars testimonial on intro page links to the LinkedIn post."""
+        response = requests.get(f"{self.BASE_URL}/workshops/intro", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        # Find the link wrapping the Joost blockquote
+        link = soup.find("a", href=lambda x: x and "linkedin.com" in x and "7341374248667508736" in x)
+        self.assertIsNotNone(link,
+            "Intro page must have a link to the Joost Baars LinkedIn post")
+        text = link.get_text()
+        self.assertIn("Joost Baars", text, "LinkedIn link must contain Joost Baars attribution")
+
     def test_offerings_ctas_are_buttons(self):
         """Both offering cards have button-styled CTAs."""
         response = requests.get(self.BASE_URL, timeout=10)
@@ -368,7 +394,7 @@ class TestSite(SiteTestCase):
     def test_book_call_buttons_have_tracking_attribute(self):
         """Test that all Book a Call links pointing to Calendly have the data-track-book-call attribute."""
         pages_with_book_call = {
-            '/': ['ready-to-improve', 'header'],
+            '/': ['bottom-cta', 'header'],
             '/about': ['about'],
             '/contact': ['contact'],
         }

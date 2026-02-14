@@ -6,33 +6,25 @@ const testimonials = [
     name: "Jukka Palosaari",
     role: "Director of Engineering, Relex Solutions",
     postSlug: "2025-02-19-jukka-palosaari-testimonial",
-    quote: [
-      "Miguel organized everything for us, we just had to join the workshops and get immediate value from them. We invested a bit, but the outcome is huge. Even if no further actions are taken, simply doing the workshops shows you what the bottlenecks are, what's slowing you down, and what is hurting the processes.",
-    ]
+    quote: "Miguel organized everything for us, we just had to join the workshops and <strong>get immediate value from them</strong>. We invested a bit, but <strong>the outcome is huge</strong>. Even if no further actions are taken, simply doing the workshops shows you what the bottlenecks are, what's slowing you down, and what is hurting the processes.",
   },
   {
     name: "Iker Garagarza",
     role: "Director of Engineering, Relex Solutions",
     postSlug: "2025-02-17-iker-garagarza-testimonial",
-    quote: [
-      "All the workshops led us to the outcome we were expecting and got a good overview on areas we could improve to make the whole process more efficient. It was great to see the whole process, Miguel's facilitation skills as well as his VSM expertise.",
-    ]
+    quote: "All the workshops <strong>led us to the outcome we were expecting</strong> and got a good overview on areas we could improve to make the whole process more efficient. It was great to see the whole process, Miguel's facilitation skills as well as his VSM expertise.",
   },
   {
     name: "Mark Sadler",
     role: "Program Director, Relex Solutions",
     postSlug: "2025-03-06-mark-sadler-testimonial",
-    quote: [
-      "I always found Miguel excellent to work with and he added value whenever he was involved. He was always passionate with a great drive and took ownership of the work he was responsible for. He communicated very well with stakeholders at all levels and led meetings confidently and in a very organised manner.",
-    ]
+    quote: "I always found Miguel excellent to work with and <strong>he added value whenever he was involved</strong>. He was always passionate with a great drive and took ownership of the work he was responsible for. He <strong>communicated very well with stakeholders at all levels</strong> and led meetings confidently and in a very organised manner.",
   },
   {
     name: "Mika Schafroth",
     role: "Director of Engineering, Relex Solutions",
     postSlug: "2025-02-17-mika-schafroth-testimonial",
-    quote: [
-      "The value stream mapping Miguel organized for our Identity Service team had several impacts. On one side, a tremendous potential was unveiled how the process of deploying changes can be improved. On the other, it was a great team building exercise.",
-    ]
+    quote: "The value stream mapping Miguel organized for our Identity Service team had several impacts. On one side, <strong>a tremendous potential was unveiled</strong> how the process of deploying changes can be improved. On the other, it was <strong>a great team building exercise</strong>.",
   }
 ];
 ---
@@ -184,10 +176,7 @@ const testimonials = [
           {testimonials.map(testimonial => (
             <blockquote class="bg-white p-8 rounded-lg shadow-md">
               <div class="text-gray-600 mb-6 text-lg italic">
-                <p>"{testimonial.quote[0]}</p>
-                {testimonial.quote.slice(1).map(paragraph => (
-                  <p class="mt-4">{paragraph}{paragraph === testimonial.quote[testimonial.quote.length - 1] ? '"' : ''}</p>
-                ))}
+                <p set:html={`&ldquo;${testimonial.quote}&rdquo;`} />
               </div>
               <footer class="space-y-4">
                 <div class="flex items-center gap-4">
@@ -209,43 +198,45 @@ const testimonials = [
       </div>
     </section>
 
-    <!-- Case Study Section -->
-    <section id="case-study" class="py-20 px-4 bg-white">
+    <!-- Results Section -->
+    <section id="results" class="py-16 px-4 bg-white">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[rgb(33,48,118)]">Case Study</h2>
-        <div class="bg-[rgb(240,242,245)] p-8 rounded-lg">
-          <h3 class="text-xl font-bold mb-4 text-[rgb(33,48,118)]">The Challenge</h3>
-          <p class="text-gray-600 mb-8">
-            A platform engineering team struggled with long lead times of 28 days between code push and production deployment. An inter-team dependency slowed the team down and deployment feedback arrived later than desired. The team wanted to prevent issues from reaching the customer, and wanted faster feedback on deployments, so they could fix any issues faster.
-          </p>
-
-          <h3 class="text-xl font-bold mb-4 text-[rgb(33,48,118)]">Our Approach</h3>
-          <ul class="list-disc list-inside text-gray-600 mb-8 space-y-2">
-            <li>Held a Value Stream Mapping workshop to identify bottlenecks, collaboration gaps, and delayed handoffs.</li>
-            <li>Created a roadmap that empowered every developer to participate in deployments and detect potential issues earlier.</li>
-            <li>Collaborated with change management to set weekly deployment windows, so the team could plan effectively and integrate improvements gradually.</li>
-          </ul>
-
-          <h3 class="text-xl font-bold mb-4 text-[rgb(33,48,118)]">The Outcome</h3>
-          <ul class="list-disc list-inside text-gray-600 space-y-2">
-            <li><strong>64% Lead Time Reduction</strong>: Time from code completion to live deployment dropped from 28 to 10 days &mdash; delivering value more often.</li>
-            <li><strong>Team Ownership</strong>: Every developer understands the deployment process and can execute it, removing single points of failure.</li>
-            <li><strong>Fewer Surprises</strong>: Shifting quality checks earlier means potential issues are found sooner, reducing the cost of more expensive unplanned work.</li>
-          </ul>
-        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 text-[rgb(33,48,118)]">What You Can Achieve</h2>
+        <p class="text-center text-gray-600 mb-10">Quick wins in hours, not weeks</p>
+        <ul class="space-y-4 max-w-lg mx-auto">
+          <li class="flex items-start gap-3">
+            <span class="text-[rgb(67,97,238)] font-bold text-lg mt-0.5">&bull;</span>
+            <p class="text-lg text-[rgb(33,48,118)]"><strong>+20% capacity</strong> <span class="text-gray-600">(no hiring)</span></p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-[rgb(67,97,238)] font-bold text-lg mt-0.5">&bull;</span>
+            <p class="text-lg text-[rgb(33,48,118)]"><strong>+60% faster delivery</strong> <span class="text-gray-600">(prev. clients)</span></p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-[rgb(67,97,238)] font-bold text-lg mt-0.5">&bull;</span>
+            <p class="text-lg text-[rgb(33,48,118)]"><strong>&minus;20% production defects</strong></p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-[rgb(67,97,238)] font-bold text-lg mt-0.5">&bull;</span>
+            <p class="text-lg text-[rgb(33,48,118)]"><strong>Release on demand</strong> <span class="text-gray-600">(ex: monthly &gt; weekly)</span></p>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <!-- Ready to Improve Section -->
+    <!-- Bottom CTA Section -->
     <section id="contact" class="py-20 px-4 bg-[rgb(67,97,238)] text-white">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Improve Your Software Delivery?</h2>
-        <p class="text-xl mb-8">
-          Whether you're a small team or a large organization, I can help you deliver more often, discover problems earlier, and improve cross-team collaboration.
-        </p>
-        <a href="https://calendly.com/migueldiaseu" target="_blank" rel="noopener noreferrer" data-track-book-call="ready-to-improve" class="inline-block bg-white hover:bg-white/90 text-[rgb(67,97,238)] font-bold py-3 px-8 rounded-lg text-lg transition-colors">
-          Book a Call
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Start with a 1h30 Introduction to VSM</h2>
+        <p class="text-xl mb-2">Hands-on session for engineering and product leaders.</p>
+        <p class="text-white/80 text-lg mb-8">&euro;50 per person &middot; Only 10 spots per session</p>
+        <a href="/workshops/intro" data-bottom-cta="intro" class="inline-block bg-white hover:bg-white/90 text-[rgb(67,97,238)] font-bold py-3 px-8 rounded-lg text-lg transition-colors">
+          See details
         </a>
+        <p class="mt-6 text-white/70 text-sm">
+          Need something tailored?
+          <a href="https://calendly.com/migueldiaseu" target="_blank" rel="noopener noreferrer" data-track-book-call="bottom-cta" class="underline text-white hover:text-white/90">Book a call</a>
+        </p>
       </div>
     </section>
   </main>
