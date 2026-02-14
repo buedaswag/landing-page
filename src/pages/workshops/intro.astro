@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 
 const COHORT_1_URL = "https://www.flowtopia.io/c/events/introduction-to-value-stream-mapping";
 const COHORT_2_URL = "https://www.flowtopia.io/c/events/introduction-to-value-stream-mapping-46f1c6";
+const CALENDLY_URL = "https://calendly.com/migueldiaseu/30min";
 ---
 
 <Layout title="Introduction to Value Stream Mapping for Leaders - Miguel Dias">
@@ -46,27 +47,6 @@ const COHORT_2_URL = "https://www.flowtopia.io/c/events/introduction-to-value-st
           <li>Don't talk about invisible things: write it on the board, then talk about it</li>
           <li>Please be present on video and audio</li>
         </ul>
-      </section>
-
-      <!-- Pricing -->
-      <section class="mb-12" data-pricing="intro">
-        <h2 class="text-xl font-bold text-[rgb(33,48,118)] mb-4">Pricing</h2>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="rounded-xl border border-gray-200 bg-[rgb(240,242,245)] p-6">
-            <h3 class="font-bold text-[rgb(33,48,118)] mb-3">Public (Open seats)</h3>
-            <p class="text-2xl font-bold text-[rgb(33,48,118)] mb-1">&euro;50 per person</p>
-            <p class="text-sm text-gray-600">1h30</p>
-            <p class="text-sm text-gray-600">Seats limited (10)</p>
-          </div>
-          <div class="rounded-xl border border-gray-200 bg-[rgb(240,242,245)] p-6">
-            <h3 class="font-bold text-[rgb(33,48,118)] mb-3">Private (For teams)</h3>
-            <p class="text-2xl font-bold text-[rgb(33,48,118)] mb-1">&euro;2,000 package</p>
-            <p class="text-sm text-gray-600">&euro;1,000 per session (minimum 2 sessions)</p>
-            <p class="text-sm text-gray-600">90&ndash;120 min</p>
-            <p class="text-sm text-gray-600">Up to 10 participants</p>
-          </div>
-        </div>
-        <p class="text-gray-600 text-sm mt-4 italic">Want this inside your company? Private delivery is available and tailored to your value stream.</p>
       </section>
 
       <!-- Schedule -->
@@ -117,6 +97,42 @@ const COHORT_2_URL = "https://www.flowtopia.io/c/events/introduction-to-value-st
             </span>
           </a>
         </div>
+      </section>
+
+      <!-- Pricing -->
+      <section class="mb-12" data-pricing="intro">
+        <h2 class="text-xl font-bold text-[rgb(33,48,118)] mb-4">Pricing</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="rounded-xl border border-gray-200 bg-[rgb(240,242,245)] p-6">
+            <h3 class="font-bold text-[rgb(33,48,118)] mb-3">Public (Open seats)</h3>
+            <p class="text-2xl font-bold text-[rgb(33,48,118)] mb-1">&euro;50 per person</p>
+            <p class="text-sm text-gray-600">1h30</p>
+            <p class="text-sm text-gray-600">Seats limited (10)</p>
+          </div>
+          <div class="rounded-xl border border-gray-200 bg-[rgb(240,242,245)] p-6">
+            <h3 class="font-bold text-[rgb(33,48,118)] mb-3">Private (For teams)</h3>
+            <p class="text-2xl font-bold text-[rgb(33,48,118)] mb-1">&euro;2,000 package</p>
+            <p class="text-sm text-gray-600">&euro;1,000 per session (minimum 2 sessions)</p>
+            <p class="text-sm text-gray-600">90&ndash;120 min</p>
+            <p class="text-sm text-gray-600">Up to 10 participants</p>
+          </div>
+        </div>
+        <a
+          href={CALENDLY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-private-training-cta="intro"
+          data-track-book-call="workshops-intro-private"
+          class="mt-6 flex items-center justify-between rounded-xl border border-gray-200 bg-[rgb(240,242,245)] p-6 transition-all hover:border-[rgb(67,97,238)]/40 hover:shadow-md"
+        >
+          <div>
+            <p class="font-bold text-[rgb(33,48,118)]">Want this inside your company?</p>
+            <p class="text-sm text-gray-600">Private delivery is tailored to your value stream.</p>
+          </div>
+          <span class="flex-shrink-0 rounded-lg bg-[rgb(67,97,238)] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[rgb(67,97,238)]/90">
+            Book a Call →
+          </span>
+        </a>
       </section>
 
       <!-- Photos from Previous Workshops -->

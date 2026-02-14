@@ -326,6 +326,30 @@ class TestSite(SiteTestCase):
         self.assertIn("500", text, "Must mention €500 public price")
         self.assertIn("1,500", text, "Must mention €1,500 private price")
 
+    def test_intro_private_training_cta(self):
+        """Intro workshop private pricing card has a CTA linking to Calendly for private training."""
+        calendly_url = "https://calendly.com/migueldiaseu/30min"
+        response = requests.get(f"{self.BASE_URL}/workshops/intro", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        cta = soup.find("a", attrs={"data-private-training-cta": "intro"})
+        self.assertIsNotNone(cta,
+            "Intro private pricing card must have a CTA link with data-private-training-cta='intro'")
+        self.assertEqual(cta.get("href"), calendly_url,
+            f"Intro private training CTA must link to {calendly_url}. Got: {cta.get('href')}")
+
+    def test_facilitation_private_training_cta(self):
+        """Facilitation workshop private pricing card has a CTA linking to Calendly for private training."""
+        calendly_url = "https://calendly.com/migueldiaseu/30min"
+        response = requests.get(f"{self.BASE_URL}/workshops/facilitation", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        cta = soup.find("a", attrs={"data-private-training-cta": "facilitation"})
+        self.assertIsNotNone(cta,
+            "Facilitation private pricing card must have a CTA link with data-private-training-cta='facilitation'")
+        self.assertEqual(cta.get("href"), calendly_url,
+            f"Facilitation private training CTA must link to {calendly_url}. Got: {cta.get('href')}")
+
     # --- Cookie Banner & Analytics Tests ---
 
     def test_cookie_banner_present(self):
