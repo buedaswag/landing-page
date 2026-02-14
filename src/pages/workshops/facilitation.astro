@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
-const CALENDLY_URL = "https://calendly.com/migueldiaseu";
+const CALENDLY_URL = "https://calendly.com/migueldiaseu/30min";
 ---
 
 <Layout title="VSM & Flow Engineering Facilitation Training - Miguel Dias">
@@ -162,6 +162,22 @@ const CALENDLY_URL = "https://calendly.com/migueldiaseu";
             <p class="text-sm text-gray-600">Team cohort</p>
           </div>
         </div>
+        <a
+          href={CALENDLY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-private-training-cta="facilitation"
+          data-track-book-call="workshops-facilitation-private"
+          class="mt-6 flex items-center justify-between rounded-xl border border-gray-200 bg-[rgb(240,242,245)] p-6 transition-all hover:border-[rgb(67,97,238)]/40 hover:shadow-md"
+        >
+          <div>
+            <p class="font-bold text-[rgb(33,48,118)]">Want this for your team?</p>
+            <p class="text-sm text-gray-600">Private cohorts are tailored to your value stream.</p>
+          </div>
+          <span class="flex-shrink-0 rounded-lg bg-[rgb(67,97,238)] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[rgb(67,97,238)]/90">
+            Book a Call →
+          </span>
+        </a>
       </section>
 
       <!-- Schedule -->
