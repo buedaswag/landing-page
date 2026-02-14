@@ -26,6 +26,7 @@ We first add the tests and security checks then we make the code to make them pa
 First run the tests, run them and watch them fail due to missing functionality, then add the functionality. Tests in `tests/test_site.py`.
 if you make changes, commit often and the tests will run on commit
 so you're going to test some changes, just commit - keeps batches small and runs tests often
+Whenever you want to docker rebuild, just push, it rebuilds on push
 
 ```bash
 python -m unittest discover tests/

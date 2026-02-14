@@ -20,7 +20,7 @@ const base = import.meta.env.BASE_URL || '/';
             title={post.data.title}
             description={post.data.description}
             date={post.data.date}
-            url={`/blog/${post.slug}`}
+            url={`/blog/${post.id.replace(/\.mdx?$/, '')}`}
             image={post.data.image}
           />
         ))}
