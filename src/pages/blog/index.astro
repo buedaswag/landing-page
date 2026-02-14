@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import BlogPostPreview from '../../components/BlogPostPreview.astro';
+import ResourceCards from '../../components/ResourceCards.astro';
 
 const posts = await getCollection('posts');
 const sortedPosts = posts.sort((a, b) =>
@@ -12,6 +13,14 @@ const base = import.meta.env.BASE_URL || '/';
 
 <Layout title="Miguel Dias – Blog">
   <main>
+    <!-- Start Here section -->
+    <section class="py-12 px-4 bg-[#001C46]" data-start-here>
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 text-white">Start Here</h2>
+        <ResourceCards />
+      </div>
+    </section>
+
     <div class="blog-container">
       <section class="posts">
         {sortedPosts.map((post) => (

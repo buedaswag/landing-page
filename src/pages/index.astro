@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ResourceCards from '../components/ResourceCards.astro';
 
 const testimonials = [
   {
@@ -41,7 +42,7 @@ const testimonials = [
             Delivery
           </h1>
           <p class="text-lg md:text-xl text-[rgb(33,48,118)]/90 max-w-2xl mx-auto">
-            I help teams deliver software faster and with higher quality with Value Stream Mapping and DevOps.
+            Helping teams deliver software faster and with higher quality with Value Stream Mapping and DevOps.
           </p>
         </div>
 
@@ -97,74 +98,8 @@ const testimonials = [
         <!-- Resources Carousel -->
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 text-white">Resources</h2>
         <div class="relative mb-16" data-resources-carousel>
-          <!-- Carousel track -->
-          <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 -mx-4 px-4 md:px-0 md:mx-0 scrollbar-hide" id="carousel-track">
-            <!-- 1. Blog: What is VSM? -->
-            <a
-              href="/blog/2025-05-19-what-is-vsm/"
-              data-carousel-item="blog"
-              class="snap-start flex-shrink-0 w-[85vw] md:w-[calc(33.333%-1rem)] rounded-xl overflow-hidden bg-white/10 border border-white/10 hover:border-white/20 transition-all group"
-            >
-              <img src="/images/workshops/image3.jpg" alt="What is Value Stream Mapping?" class="w-full h-48 object-cover" />
-              <div class="p-5">
-                <p class="text-xs font-semibold uppercase tracking-wide text-[rgb(67,97,238)] mb-2">Article</p>
-                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-[rgb(67,97,238)] transition-colors">What is Value Stream Mapping?</h3>
-                <p class="text-white/70 text-sm mb-4">VSM helps teams achieve a specific business outcome by improving work processes. Teams visualize the flow of work, identify inefficiencies, and create a roadmap of measurable improvements.</p>
-                <span class="text-[rgb(67,97,238)] font-medium text-sm">Read article &rarr;</span>
-              </div>
-            </a>
-
-            <!-- 2. YouTube Short: Workshop Overview -->
-            <a
-              href="https://www.youtube.com/shorts/FGXKSSGeUX4"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-carousel-item="short"
-              class="snap-start flex-shrink-0 w-[85vw] md:w-[calc(33.333%-1rem)] rounded-xl overflow-hidden bg-white/10 border border-white/10 hover:border-white/20 transition-all group"
-            >
-              <div class="relative w-full h-48 overflow-hidden">
-                <img src="https://img.youtube.com/vi/FGXKSSGeUX4/hqdefault.jpg" alt="VSM Workshop Overview" class="w-full h-full object-cover" />
-                <div class="absolute inset-0 flex items-center justify-center bg-black/30">
-                  <svg class="w-14 h-14 text-white/90" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </div>
-              <div class="p-5">
-                <p class="text-xs font-semibold uppercase tracking-wide text-[rgb(67,97,238)] mb-2">Video &middot; 1 min</p>
-                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-[rgb(67,97,238)] transition-colors">Value Stream Mapping Workshop Overview</h3>
-                <p class="text-white/70 text-sm mb-4">A quick walkthrough of what happens in a Value Stream Mapping workshop and the outcomes teams can expect.</p>
-                <span class="text-[rgb(67,97,238)] font-medium text-sm">Watch &rarr;</span>
-              </div>
-            </a>
-
-            <!-- 3. YouTube: Full Workshop Recording -->
-            <a
-              href="https://www.youtube.com/watch?v=kii61nkkqfY"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-carousel-item="talk"
-              class="snap-start flex-shrink-0 w-[85vw] md:w-[calc(33.333%-1rem)] rounded-xl overflow-hidden bg-white/10 border border-white/10 hover:border-white/20 transition-all group"
-            >
-              <div class="relative w-full h-48 overflow-hidden">
-                <img src="https://img.youtube.com/vi/kii61nkkqfY/hqdefault.jpg" alt="VSM Workshop Talk" class="w-full h-full object-cover" />
-                <div class="absolute inset-0 flex items-center justify-center bg-black/30">
-                  <svg class="w-14 h-14 text-white/90" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </div>
-              <div class="p-5">
-                <p class="text-xs font-semibold uppercase tracking-wide text-[rgb(67,97,238)] mb-2">Talk &middot; 33 min</p>
-                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-[rgb(67,97,238)] transition-colors">How to Map the Value Stream to Deliver Software 2x Faster</h3>
-                <p class="text-white/70 text-sm mb-4">Erica Engelen and I break down how to map the value stream to deliver software 2x faster while maintaining quality.</p>
-                <span class="text-[rgb(67,97,238)] font-medium text-sm">Watch &rarr;</span>
-              </div>
-            </a>
-          </div>
-
+          <ResourceCards />
         </div>
-
-        <style>
-          .scrollbar-hide::-webkit-scrollbar { display: none; }
-          .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-        </style>
       </div>
     </section>
 

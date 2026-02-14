@@ -498,6 +498,31 @@ class TestSite(SiteTestCase):
 
     # --- Lean Coffee Page Tests ---
 
+    # --- Blog Start Here Section ---
+
+    def test_blog_start_here_section_exists(self):
+        """Blog page has a 'Start Here' section at the top with the 3 resource cards."""
+        response = requests.get(f"{self.BASE_URL}/blog", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        section = soup.find(attrs={"data-start-here": True})
+        self.assertIsNotNone(section, "Blog page must have a 'Start Here' section with data-start-here attribute")
+
+        # Must contain the same 3 items as the homepage resources carousel
+        blog = section.find("a", attrs={"data-carousel-item": "blog"})
+        self.assertIsNotNone(blog, "Start Here must have a blog item")
+        self.assertIn("/blog/2025-05-19-what-is-vsm", blog.get("href", ""))
+
+        short = section.find("a", attrs={"data-carousel-item": "short"})
+        self.assertIsNotNone(short, "Start Here must have a short item")
+        self.assertIn("youtube.com/shorts/FGXKSSGeUX4", short.get("href", ""))
+
+        talk = section.find("a", attrs={"data-carousel-item": "talk"})
+        self.assertIsNotNone(talk, "Start Here must have a talk item")
+        self.assertIn("youtube.com/watch", talk.get("href", ""))
+
+    # --- Lean Coffee Page Tests ---
+
     def test_lean_coffee_page_loads(self):
         """Lean coffee page loads at /lean-coffee."""
         response = requests.get(f"{self.BASE_URL}/lean-coffee", timeout=10)
