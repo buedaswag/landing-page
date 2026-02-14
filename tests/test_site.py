@@ -605,5 +605,105 @@ class TestSite(SiteTestCase):
         self.assertIn("signup", labels,
             f"Missing data-track-lean-coffee='signup'. Found: {labels}")
 
+    # --- Comprehensive Tracking Audit Tests ---
+
+    def test_resource_cards_have_tracking(self):
+        """Resource carousel items have data-track-resource for analytics."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        tracked = soup.find_all("a", attrs={"data-track-resource": True})
+        labels = [link.get("data-track-resource") for link in tracked]
+
+        self.assertIn("blog", labels,
+            f"Missing data-track-resource='blog'. Found: {labels}")
+        self.assertIn("short", labels,
+            f"Missing data-track-resource='short'. Found: {labels}")
+        self.assertIn("talk", labels,
+            f"Missing data-track-resource='talk'. Found: {labels}")
+
+    def test_workshops_hub_flowtopia_links_have_tracking(self):
+        """Workshops hub page Flowtopia registration links have tracking."""
+        response = requests.get(f"{self.BASE_URL}/workshops", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        tracked = soup.find_all("a", attrs={"data-track-workshop-register": True})
+        labels = [link.get("data-track-workshop-register") for link in tracked]
+
+        self.assertIn("workshops-session-1", labels,
+            f"Missing data-track-workshop-register='workshops-session-1'. Found: {labels}")
+        self.assertIn("workshops-session-2", labels,
+            f"Missing data-track-workshop-register='workshops-session-2'. Found: {labels}")
+
+    def test_all_calendly_links_have_tracking(self):
+        """Every Calendly link on every page must have data-track-book-call."""
+        pages = ['/', '/about', '/contact', '/workshops', '/workshops/intro', '/workshops/facilitation']
+        for page in pages:
+            response = requests.get(f"{self.BASE_URL}{page}", timeout=10)
+            soup = BeautifulSoup(response.text, "html.parser")
+
+            calendly_links = soup.find_all("a", href=lambda x: x and "calendly.com" in x)
+            for link in calendly_links:
+                self.assertTrue(link.get("data-track-book-call"),
+                    f"Calendly link without data-track-book-call on {page}: {link.get('href')}")
+
+    def test_linkedin_links_have_tracking(self):
+        """LinkedIn profile links have data-track-linkedin for analytics."""
+        pages_with_linkedin = {
+            '/about': 'about',
+            '/contact': 'contact',
+        }
+        for page, expected_label in pages_with_linkedin.items():
+            response = requests.get(f"{self.BASE_URL}{page}", timeout=10)
+            soup = BeautifulSoup(response.text, "html.parser")
+
+            tracked = soup.find_all("a", attrs={"data-track-linkedin": True})
+            labels = [link.get("data-track-linkedin") for link in tracked]
+
+            self.assertIn(expected_label, labels,
+                f"Missing data-track-linkedin='{expected_label}' on {page}. Found: {labels}")
+
+    def test_footer_linkedin_has_tracking(self):
+        """Footer LinkedIn link has tracking on every page."""
+        for page in ['/', '/about', '/contact']:
+            response = requests.get(f"{self.BASE_URL}{page}", timeout=10)
+            soup = BeautifulSoup(response.text, "html.parser")
+            footer_linkedin = soup.find("a", attrs={"data-track-linkedin": "footer"})
+            self.assertIsNotNone(footer_linkedin,
+                f"Footer LinkedIn link missing data-track-linkedin='footer' on {page}")
+
+    def test_testimonial_links_have_tracking(self):
+        """Homepage testimonial 'Read Full Testimonial' links have tracking."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        section = soup.find("section", id="testimonial")
+        tracked = section.find_all("a", attrs={"data-track-testimonial": True})
+
+        self.assertTrue(len(tracked) >= 4,
+            f"Expected at least 4 tracked testimonial links. Found: {len(tracked)}")
+
+    def test_mailto_links_have_tracking(self):
+        """Mailto links have data-track-mailto for analytics."""
+        response = requests.get(f"{self.BASE_URL}/contact", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        tracked = soup.find("a", attrs={"data-track-mailto": True})
+        self.assertIsNotNone(tracked,
+            "Contact page must have a mailto link with data-track-mailto")
+
+    def test_nav_links_have_tracking(self):
+        """Header navigation links have data-track-nav for analytics."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        header = soup.find("header")
+        tracked_nav = header.find_all("a", attrs={"data-track-nav": True})
+        labels = [link.get("data-track-nav") for link in tracked_nav]
+
+        for expected in ['about', 'blog', 'workshops', 'lean-coffee', 'contact']:
+            self.assertIn(expected, labels,
+                f"Missing data-track-nav='{expected}' in header. Found: {labels}")
+
 if __name__ == '__main__':
     unittest.main()

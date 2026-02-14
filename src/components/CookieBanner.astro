@@ -56,7 +56,7 @@ const GA_MEASUREMENT_ID = 'G-Q3XS8CD6CN';
     if (isLocalhost()) {
       console.log('[Analytics] Skipping GA on localhost');
       // Still set up tracking listeners so tests can verify they exist
-      setupBookCallTracking();
+      setupClickTracking();
       return;
     }
 
@@ -73,44 +73,53 @@ const GA_MEASUREMENT_ID = 'G-Q3XS8CD6CN';
     window.gtag('js', new Date());
     window.gtag('config', GA_MEASUREMENT_ID);
 
-    // Set up click tracking for "Book a Call" buttons
-    setupBookCallTracking();
+    // Set up click tracking for all tracked elements
+    setupClickTracking();
   }
 
-  function setupBookCallTracking() {
-    document.querySelectorAll('a[data-track-book-call]').forEach(function (link) {
-      link.addEventListener('click', function () {
+  function trackClicks(selector, eventName, category) {
+    document.querySelectorAll(selector).forEach(function (el) {
+      el.addEventListener('click', function () {
         if (typeof window.gtag === 'function') {
-          window.gtag('event', 'book_call_click', {
-            event_category: 'engagement',
-            event_label: link.getAttribute('data-track-book-call') || 'unknown',
+          window.gtag('event', eventName, {
+            event_category: category,
+            event_label: el.getAttribute(selector.replace(/[\[\]]/g, '').replace('a[', '').replace(']', '')) || el.getAttribute(selector.match(/data-[\w-]+/)?.[0]) || 'unknown',
             transport_type: 'beacon',
           });
         }
       });
     });
+  }
 
-    document.querySelectorAll('a[data-track-offering]').forEach(function (link) {
-      link.addEventListener('click', function () {
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'offering_click', {
-            event_category: 'engagement',
-            event_label: link.getAttribute('data-track-offering') || 'unknown',
-            transport_type: 'beacon',
-          });
-        }
-      });
-    });
+  function setupClickTracking() {
+    var trackers = [
+      ['[data-track-book-call]',          'book_call_click',          'conversion'],
+      ['[data-track-offering]',           'offering_click',           'engagement'],
+      ['[data-track-workshop-register]',  'workshop_register_click',  'conversion'],
+      ['[data-track-lean-coffee]',        'lean_coffee_click',        'engagement'],
+      ['[data-track-resource]',           'resource_click',           'engagement'],
+      ['[data-track-linkedin]',           'linkedin_click',           'engagement'],
+      ['[data-track-testimonial]',        'testimonial_click',        'engagement'],
+      ['[data-track-mailto]',             'mailto_click',             'conversion'],
+      ['[data-track-nav]',               'nav_click',                'navigation'],
+    ];
 
-    document.querySelectorAll('a[data-track-workshop-register]').forEach(function (link) {
-      link.addEventListener('click', function () {
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'workshop_register_click', {
-            event_category: 'engagement',
-            event_label: link.getAttribute('data-track-workshop-register') || 'unknown',
-            transport_type: 'beacon',
-          });
-        }
+    trackers.forEach(function (t) {
+      var selector = t[0];
+      var eventName = t[1];
+      var category = t[2];
+      var attr = selector.match(/data-[\w-]+/)[0];
+
+      document.querySelectorAll(selector).forEach(function (el) {
+        el.addEventListener('click', function () {
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', eventName, {
+              event_category: category,
+              event_label: el.getAttribute(attr) || 'unknown',
+              transport_type: 'beacon',
+            });
+          }
+        });
       });
     });
   }

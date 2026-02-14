@@ -122,6 +122,7 @@ const testimonials = [
                 </div>
                 <a
                   href={`/blog/${testimonial.postSlug}`}
+                  data-track-testimonial={testimonial.name.toLowerCase().replace(/\s+/g, '-')}
                   class="inline-block text-[rgb(67,97,238)] hover:text-[rgb(67,97,238)]/90 font-medium transition-colors"
                 >
                   Read Full Testimonial &rarr;
@@ -135,27 +136,72 @@ const testimonials = [
 
     <!-- Results Section -->
     <section id="results" class="py-16 px-4 bg-white">
-      <div class="max-w-4xl mx-auto">
+      <div class="max-w-5xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 text-[rgb(33,48,118)]">What You Can Achieve</h2>
         <p class="text-center text-gray-600 mb-10">Quick wins in hours, not weeks</p>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div class="text-center p-5 rounded-xl bg-[rgb(240,242,245)]">
-            <p class="text-3xl md:text-4xl font-bold text-[rgb(67,97,238)] mb-2">+20%</p>
-            <p class="font-semibold text-[rgb(33,48,118)] text-sm">capacity</p>
-            <p class="text-xs text-gray-500 mt-1">(no hiring)</p>
+
+        <!-- Desktop: photos | metrics | photos -->
+        <div class="hidden md:grid md:grid-cols-[1fr_2fr_1fr] gap-6 items-center">
+          <!-- Left photos -->
+          <div class="grid grid-cols-1 gap-3">
+            <div class="rounded-xl overflow-hidden aspect-[4/3]"><img src="/images/workshops/image1.png" alt="Workshop in action" class="w-full h-full object-cover" data-results-photo /></div>
+            <div class="rounded-xl overflow-hidden aspect-[4/3]"><img src="/images/workshops/image4.png" alt="Workshop collaboration" class="w-full h-full object-cover" data-results-photo /></div>
           </div>
-          <div class="text-center p-5 rounded-xl bg-[rgb(240,242,245)]">
-            <p class="text-3xl md:text-4xl font-bold text-[rgb(67,97,238)] mb-2">+60%</p>
-            <p class="font-semibold text-[rgb(33,48,118)] text-sm">faster delivery</p>
-            <p class="text-xs text-gray-500 mt-1">(prev. clients)</p>
+          <!-- Center metrics -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="text-center p-5 rounded-xl bg-[rgb(240,242,245)]">
+              <p class="text-3xl md:text-4xl font-bold text-[rgb(67,97,238)] mb-2">+20%</p>
+              <p class="font-semibold text-[rgb(33,48,118)] text-sm">capacity</p>
+              <p class="text-xs text-gray-500 mt-1">(no hiring)</p>
+            </div>
+            <div class="text-center p-5 rounded-xl bg-[rgb(240,242,245)]">
+              <p class="text-3xl md:text-4xl font-bold text-[rgb(67,97,238)] mb-2">+60%</p>
+              <p class="font-semibold text-[rgb(33,48,118)] text-sm">faster delivery</p>
+              <p class="text-xs text-gray-500 mt-1">(prev. clients)</p>
+            </div>
+            <div class="text-center p-5 rounded-xl bg-[rgb(240,242,245)]">
+              <p class="text-3xl md:text-4xl font-bold text-[rgb(67,97,238)] mb-2">&minus;20%</p>
+              <p class="font-semibold text-[rgb(33,48,118)] text-sm">production defects</p>
+            </div>
+            <div class="text-center p-5 rounded-xl bg-[rgb(240,242,245)]">
+              <p class="text-xl md:text-2xl font-bold text-[rgb(67,97,238)] mb-2">Release on demand</p>
+              <p class="text-xs text-gray-500 mt-1">(ex: monthly &gt; weekly)</p>
+            </div>
           </div>
-          <div class="text-center p-5 rounded-xl bg-[rgb(240,242,245)]">
-            <p class="text-3xl md:text-4xl font-bold text-[rgb(67,97,238)] mb-2">&minus;20%</p>
-            <p class="font-semibold text-[rgb(33,48,118)] text-sm">production defects</p>
+          <!-- Right photos -->
+          <div class="grid grid-cols-1 gap-3">
+            <div class="rounded-xl overflow-hidden aspect-[4/3]"><img src="/images/workshops/image5.jpg" alt="Workshop facilitation" class="w-full h-full object-cover" data-results-photo /></div>
+            <div class="rounded-xl overflow-hidden aspect-[4/3]"><img src="/images/workshops/image6.png" alt="Workshop participants" class="w-full h-full object-cover" data-results-photo /></div>
           </div>
-          <div class="text-center p-5 rounded-xl bg-[rgb(240,242,245)]">
-            <p class="text-xl md:text-2xl font-bold text-[rgb(67,97,238)] mb-2">Release on demand</p>
-            <p class="text-xs text-gray-500 mt-1">(ex: monthly &gt; weekly)</p>
+        </div>
+
+        <!-- Mobile: photo strip then metrics -->
+        <div class="md:hidden">
+          <div class="grid grid-cols-4 gap-2 mb-6">
+            <div class="rounded-lg overflow-hidden aspect-square"><img src="/images/workshops/image1.png" alt="Workshop" class="w-full h-full object-cover" data-results-photo /></div>
+            <div class="rounded-lg overflow-hidden aspect-square"><img src="/images/workshops/image4.png" alt="Workshop" class="w-full h-full object-cover" data-results-photo /></div>
+            <div class="rounded-lg overflow-hidden aspect-square"><img src="/images/workshops/image5.jpg" alt="Workshop" class="w-full h-full object-cover" data-results-photo /></div>
+            <div class="rounded-lg overflow-hidden aspect-square"><img src="/images/workshops/image6.png" alt="Workshop" class="w-full h-full object-cover" data-results-photo /></div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="text-center p-5 rounded-xl bg-[rgb(240,242,245)]">
+              <p class="text-3xl font-bold text-[rgb(67,97,238)] mb-2">+20%</p>
+              <p class="font-semibold text-[rgb(33,48,118)] text-sm">capacity</p>
+              <p class="text-xs text-gray-500 mt-1">(no hiring)</p>
+            </div>
+            <div class="text-center p-5 rounded-xl bg-[rgb(240,242,245)]">
+              <p class="text-3xl font-bold text-[rgb(67,97,238)] mb-2">+60%</p>
+              <p class="font-semibold text-[rgb(33,48,118)] text-sm">faster delivery</p>
+              <p class="text-xs text-gray-500 mt-1">(prev. clients)</p>
+            </div>
+            <div class="text-center p-5 rounded-xl bg-[rgb(240,242,245)]">
+              <p class="text-3xl font-bold text-[rgb(67,97,238)] mb-2">&minus;20%</p>
+              <p class="font-semibold text-[rgb(33,48,118)] text-sm">production defects</p>
+            </div>
+            <div class="text-center p-5 rounded-xl bg-[rgb(240,242,245)]">
+              <p class="text-lg font-bold text-[rgb(67,97,238)] mb-2">Release on demand</p>
+              <p class="text-xs text-gray-500 mt-1">(ex: monthly &gt; weekly)</p>
+            </div>
           </div>
         </div>
       </div>

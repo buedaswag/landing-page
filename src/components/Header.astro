@@ -24,6 +24,7 @@ const navLinks = [
       {navLinks.map(link => (
         <a
           href={link.href}
+          data-track-nav={link.label.toLowerCase().replace(/\s+/g, '-')}
           class:list={[
             'relative text-base font-medium transition-colors',
             link.highlight
