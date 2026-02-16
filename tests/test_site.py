@@ -230,6 +230,12 @@ class TestSite(SiteTestCase):
         self.assertIn("Mika", text, "Social proof must contain the attribution")
         self.assertIn("64%", text, "Social proof must contain 64% metric")
 
+        link = band.find("a", attrs={"data-testimonial": "mika-schafroth"})
+        self.assertIsNotNone(link,
+            "Social proof band must have a testimonial link with data-testimonial='mika-schafroth'")
+        self.assertEqual(link.get("href"), "/blog/2025-02-17-mika-schafroth-testimonial",
+            f"Mika testimonial must link to his blog post. Got: {link.get('href')}")
+
     def test_workshop_cards_have_images(self):
         """The first two workshop cards in the offerings section have images."""
         response = requests.get(self.BASE_URL, timeout=10)
