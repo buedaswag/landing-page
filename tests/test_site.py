@@ -686,8 +686,8 @@ class TestSite(SiteTestCase):
         section = soup.find("section", id="testimonial")
         tracked = section.find_all("a", attrs={"data-track-testimonial": True})
 
-        self.assertTrue(len(tracked) >= 4,
-            f"Expected at least 4 tracked testimonial links. Found: {len(tracked)}")
+        self.assertTrue(len(tracked) >= 5,
+            f"Expected at least 5 tracked testimonial links. Found: {len(tracked)}")
 
     def test_mailto_links_have_tracking(self):
         """Mailto links have data-track-mailto for analytics."""
@@ -710,6 +710,60 @@ class TestSite(SiteTestCase):
         for expected in ['about', 'blog', 'workshops', 'lean-coffee', 'contact']:
             self.assertIn(expected, labels,
                 f"Missing data-track-nav='{expected}' in header. Found: {labels}")
+
+    def test_phil_clark_testimonial(self):
+        """Phil Clark appears in the testimonials section with correct name and quote."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        section = soup.find("section", id="testimonial")
+        self.assertIsNotNone(section)
+
+        authors = section.find_all("cite")
+        author_names = [a.get_text() for a in authors]
+        self.assertIn("Phil Clark", author_names,
+            f"Phil Clark must appear in testimonials. Found: {author_names}")
+
+        text = section.get_text()
+        self.assertIn("productive rather than academic", text,
+            "Phil Clark's quote must appear in testimonials section")
+
+        link = section.find("a", href=lambda x: x and "phil-clark" in x)
+        self.assertIsNotNone(link,
+            "Phil Clark testimonial must link to his blog post")
+        resp = requests.get(f"{self.BASE_URL}{link['href']}", timeout=10)
+        self.assertEqual(resp.status_code, 200,
+            f"Phil Clark testimonial post must load. Got status {resp.status_code}")
+
+    def test_trust_bar_logos(self):
+        """Homepage has a trust bar with 4 company logos that load and link to company websites."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        bar = soup.find(attrs={"data-trust-bar": True})
+        self.assertIsNotNone(bar, "Homepage must have a trust bar with data-trust-bar")
+
+        expected_companies = {
+            "relex": "relexsolutions.com",
+            "productized": "productized.co",
+            "naviri": "naviri.com",
+            "nomidmdm": "nomidmdm.com",
+        }
+
+        for slug, domain in expected_companies.items():
+            logo_link = bar.find("a", attrs={"data-trust-logo": slug})
+            self.assertIsNotNone(logo_link,
+                f"Trust bar must have a link with data-trust-logo='{slug}'")
+            self.assertIn(domain, logo_link.get("href", ""),
+                f"Trust logo '{slug}' must link to {domain}. Got: {logo_link.get('href')}")
+
+            img = logo_link.find("img")
+            self.assertIsNotNone(img,
+                f"Trust logo '{slug}' must contain an img element")
+            img_url = img.get("src")
+            resp = requests.head(f"{self.BASE_URL}{img_url}", timeout=10)
+            self.assertEqual(resp.status_code, 200,
+                f"Trust logo image {img_url} must load. Got status {resp.status_code}")
 
 if __name__ == '__main__':
     unittest.main()

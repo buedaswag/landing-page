@@ -1,3 +1,5 @@
+import json
+import subprocess
 import unittest
 import re
 import requests
@@ -201,6 +203,48 @@ class TestSecurity(SiteTestCase):
                     f"Add an upper bound, e.g. {pkg}>=X.Y.Z,<X+1"
                 )
 
+    # --- Secret scanning ---
+
+    SECRETS_EXCLUDE_FILES = r"(package-lock\.json|\.min\.js$|\.secrets\.baseline)"
+
+    def test_no_secrets_in_working_tree(self):
+        """Working tree must not contain hardcoded secrets (API keys, tokens, passwords)."""
+        try:
+            result = subprocess.run(
+                [
+                    "detect-secrets", "scan",
+                    "--exclude-files", self.SECRETS_EXCLUDE_FILES,
+                ],
+                capture_output=True,
+                text=True,
+                cwd=self.PROJECT_ROOT,
+            )
+        except (FileNotFoundError, OSError):
+            self.fail(
+                "detect-secrets is not installed. "
+                "Install with: pip install detect-secrets"
+            )
+
+        try:
+            scan = json.loads(result.stdout)
+        except json.JSONDecodeError:
+            self.fail(
+                f"detect-secrets produced invalid JSON:\n{result.stdout[:500]}\n"
+                f"stderr: {result.stderr[:500]}"
+            )
+
+        findings = scan.get("results", {})
+        if findings:
+            summary = "\n".join(
+                f"  {path}: {', '.join(s['type'] + ' (line ' + str(s['line_number']) + ')' for s in secrets)}"
+                for path, secrets in findings.items()
+            )
+            self.fail(
+                f"detect-secrets found potential secrets:\n{summary}\n\n"
+                f"If these are false positives, add them to a .secrets.baseline file:\n"
+                f"  detect-secrets scan --exclude-files '{self.SECRETS_EXCLUDE_FILES}' > .secrets.baseline"
+            )
+
     # --- Helpers ---
 
     @staticmethod
@@ -216,6 +260,65 @@ class TestSecurity(SiteTestCase):
                 # Remove the directive name, return just the sources
                 return part[len(directive):].strip()
         return None
+
+
+class TestDependencyAudit(unittest.TestCase):
+    """Dependency vulnerability scanning — mirrors the CI security.yml jobs.
+
+    These tests do NOT need Docker; they run against lockfiles and manifests.
+    """
+
+    PROJECT_ROOT = Path(__file__).parent.parent
+
+    def test_npm_audit_no_moderate_or_higher_vulnerabilities(self):
+        """npm audit must find zero moderate+ vulnerabilities (mirrors CI npm-audit job)."""
+        result = subprocess.run(
+            ["npm", "audit", "--audit-level=moderate", "--json"],
+            capture_output=True,
+            text=True,
+            cwd=self.PROJECT_ROOT,
+        )
+        if result.returncode != 0:
+            try:
+                audit = json.loads(result.stdout)
+                vulns = audit.get("vulnerabilities", {})
+                summary = "\n".join(
+                    f"  - {name} ({info.get('severity', '?')}): "
+                    f"{', '.join(t.get('title', t) if isinstance(t, dict) else t for t in info.get('via', []))}"
+                    for name, info in vulns.items()
+                )
+            except (json.JSONDecodeError, AttributeError):
+                summary = result.stdout[:500]
+
+            self.fail(
+                f"npm audit found vulnerabilities (audit-level=moderate):\n{summary}\n\n"
+                f"Run 'npm audit' for details, then 'npm audit fix' to resolve."
+            )
+
+    def test_pip_audit_no_vulnerabilities(self):
+        """pip-audit must find zero vulnerabilities in requirements.txt (mirrors CI pip-audit job)."""
+        requirements = self.PROJECT_ROOT / "requirements.txt"
+        self.assertTrue(requirements.exists(), "requirements.txt not found")
+
+        try:
+            result = subprocess.run(
+                ["pip-audit", "-r", str(requirements)],
+                capture_output=True,
+                text=True,
+                cwd=self.PROJECT_ROOT,
+            )
+        except (FileNotFoundError, NotADirectoryError, OSError):
+            self.fail(
+                "pip-audit is not installed. "
+                "Install with: pip install pip-audit"
+            )
+
+        if result.returncode != 0:
+            self.fail(
+                f"pip-audit found vulnerabilities in requirements.txt:\n"
+                f"{result.stdout}\n{result.stderr}\n\n"
+                f"Run 'pip-audit -r requirements.txt' for details."
+            )
 
 
 if __name__ == "__main__":

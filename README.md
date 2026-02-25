@@ -35,6 +35,16 @@ chmod +x .githooks/pre-push
 git config core.hooksPath .githooks
 ```
 
+## Security
+
+Three layers prevent secrets from reaching production:
+
+1. **Pre-commit/pre-push hooks** — `detect-secrets` scans the working tree for hardcoded credentials as part of the test suite. Blocks the commit before secrets enter git history.
+2. **CI (GitHub Actions)** — `gitleaks` scans the full git history on every push to main. Catches anything committed in the past or if hooks were bypassed.
+3. **Deployment gate** — GitHub Pages deploy only runs after the Security Audit workflow passes (npm audit + pip audit + gitleaks). Failed security checks block deployment.
+
+Git hooks are the first line of defense but can be bypassed (`--no-verify`) or missed after a fresh clone. Make sure to run `git config core.hooksPath .githooks` after cloning.
+
 ## How to Take a Scrolling Screenshot on Mac
 
 ### Using Chrome DevTools:
