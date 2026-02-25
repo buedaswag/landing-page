@@ -686,8 +686,8 @@ class TestSite(SiteTestCase):
         section = soup.find("section", id="testimonial")
         tracked = section.find_all("a", attrs={"data-track-testimonial": True})
 
-        self.assertTrue(len(tracked) >= 5,
-            f"Expected at least 5 tracked testimonial links. Found: {len(tracked)}")
+        self.assertTrue(len(tracked) >= 6,
+            f"Expected at least 6 tracked testimonial links. Found: {len(tracked)}")
 
     def test_mailto_links_have_tracking(self):
         """Mailto links have data-track-mailto for analytics."""
@@ -764,6 +764,46 @@ class TestSite(SiteTestCase):
             resp = requests.head(f"{self.BASE_URL}{img_url}", timeout=10)
             self.assertEqual(resp.status_code, 200,
                 f"Trust logo image {img_url} must load. Got status {resp.status_code}")
+
+    def test_marco_locatelli_testimonial(self):
+        """Marco Locatelli appears in the testimonials section with correct name and quote."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        section = soup.find("section", id="testimonial")
+        self.assertIsNotNone(section)
+
+        authors = section.find_all("cite")
+        author_names = [a.get_text() for a in authors]
+        self.assertIn("Marco Locatelli", author_names,
+            f"Marco Locatelli must appear in testimonials. Found: {author_names}")
+
+        text = section.get_text()
+        self.assertIn("shipping features faster", text,
+            "Marco Locatelli's quote must appear in testimonials section")
+
+        link = section.find("a", href=lambda x: x and "marco-locatelli" in x)
+        self.assertIsNotNone(link,
+            "Marco Locatelli testimonial must link to his blog post")
+        resp = requests.get(f"{self.BASE_URL}{link['href']}", timeout=10)
+        self.assertEqual(resp.status_code, 200,
+            f"Marco Locatelli testimonial post must load. Got status {resp.status_code}")
+
+    def test_testimonial_headshots(self):
+        """Every testimonial on the homepage has a headshot image that loads."""
+        response = requests.get(self.BASE_URL, timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        section = soup.find("section", id="testimonial")
+        headshots = section.find_all("img", attrs={"data-headshot": True})
+        self.assertTrue(len(headshots) >= 6,
+            f"Expected at least 6 headshot images. Found: {len(headshots)}")
+
+        for img in headshots:
+            img_url = img.get("src")
+            resp = requests.head(f"{self.BASE_URL}{img_url}", timeout=10)
+            self.assertEqual(resp.status_code, 200,
+                f"Headshot image {img_url} must load. Got status {resp.status_code}")
 
 if __name__ == '__main__':
     unittest.main()

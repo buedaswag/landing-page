@@ -7,31 +7,43 @@ const testimonials = [
     name: "Jukka Palosaari",
     role: "Director of Engineering, Relex Solutions",
     postSlug: "2025-02-19-jukka-palosaari-testimonial",
+    headshot: "/images/headshots/headshot-jukka.png",
     quote: "Miguel organized everything for us, we just had to join the workshops and <strong>get immediate value from them</strong>. We invested a bit, but <strong>the outcome is huge</strong>. Even if no further actions are taken, simply doing the workshops shows you what the bottlenecks are, what's slowing you down, and what is hurting the processes.",
   },
   {
     name: "Iker Garagarza",
     role: "Director of Engineering, Relex Solutions",
     postSlug: "2025-02-17-iker-garagarza-testimonial",
+    headshot: "/images/headshots/headshot-iker.png",
     quote: "All the workshops <strong>led us to the outcome we were expecting</strong> and got a good overview on areas we could improve to make the whole process more efficient. It was great to see the whole process, Miguel's facilitation skills as well as his VSM expertise.",
   },
   {
     name: "Mark Sadler",
     role: "Program Director, Relex Solutions",
     postSlug: "2025-03-06-mark-sadler-testimonial",
+    headshot: "/images/headshots/headshot-mark.png",
     quote: "I always found Miguel excellent to work with and <strong>he added value whenever he was involved</strong>. He was always passionate with a great drive and took ownership of the work he was responsible for. He <strong>communicated very well with stakeholders at all levels</strong> and led meetings confidently and in a very organised manner.",
   },
   {
     name: "Mika Schafroth",
     role: "Director of Engineering, Relex Solutions",
     postSlug: "2025-02-17-mika-schafroth-testimonial",
+    headshot: "/images/headshots/headshot-mika.png",
     quote: "The value stream mapping Miguel organized for our Identity Service team had several impacts. On one side, <strong>a tremendous potential was unveiled</strong> how the process of deploying changes can be improved. On the other, it was <strong>a great team building exercise</strong>.",
   },
   {
     name: "Phil Clark",
     role: "VP Engineering",
     postSlug: "2026-02-25-phil-clark-testimonial",
+    headshot: "/images/headshots/headshot-phil.png",
     quote: "I've gotten to know Miguel both personally and professionally as a consultant. He's <strong>highly motivated, deeply knowledgeable</strong>, and he brings a common language that <strong>makes mapping sessions productive rather than academic</strong>.",
+  },
+  {
+    name: "Marco Locatelli",
+    role: "CEO, Naviri",
+    postSlug: "2026-02-25-marco-locatelli-testimonial",
+    headshot: "/images/headshots/headshot-marco.jpg",
+    quote: "Miguel helped us <strong>identify major bottlenecks in our feature delivery</strong> and improve the quality of our releases. Thanks to him, we streamlined our development flow and are now <strong>shipping features faster</strong>.",
   }
 ];
 ---
@@ -156,6 +168,7 @@ const testimonials = [
               </div>
               <footer class="space-y-4">
                 <div class="flex items-center gap-4">
+                  <img src={testimonial.headshot} alt={testimonial.name} class="w-12 h-12 rounded-full object-cover" data-headshot />
                   <div>
                     <cite class="text-[rgb(33,48,118)] font-bold not-italic">{testimonial.name}</cite>
                     <p class="text-gray-500">{testimonial.role}</p>
