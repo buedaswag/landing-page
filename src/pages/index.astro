@@ -110,25 +110,39 @@ const testimonials = [
     </section>
 
     <!-- Trusted By Section -->
-    <section class="py-12 px-4 bg-white" data-trust-bar>
+    <section class="py-16 px-4 bg-white" data-trust-bar>
       <div class="max-w-5xl mx-auto text-center">
-        <p class="text-sm font-medium text-gray-400 uppercase tracking-widest mb-8">Trusted by leaders at</p>
-        <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14">
-          <a href="https://www.relexsolutions.com" target="_blank" rel="noopener noreferrer" data-trust-logo="relex" class="grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
-            <img src="/images/logos/relex.svg" alt="Relex Solutions" class="h-8 w-auto" />
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[rgb(33,48,118)]">Trusted by Leaders At</h2>
+        <div class="flex flex-wrap items-center justify-center gap-10 md:gap-16">
+          <a href="https://www.relexsolutions.com" target="_blank" rel="noopener noreferrer" data-trust-logo="relex" class="hover:opacity-80 transition-opacity">
+            <img src="/images/logos/relex.svg" alt="Relex Solutions" class="h-12 w-auto" />
           </a>
-          <a href="https://productized.co" target="_blank" rel="noopener noreferrer" data-trust-logo="productized" class="grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
-            <img src="/images/logos/productized.png" alt="Productized" class="h-8 w-auto" />
+          <a href="https://productized.co" target="_blank" rel="noopener noreferrer" data-trust-logo="productized" class="hover:opacity-80 transition-opacity">
+            <img src="/images/logos/productized.png" alt="Productized" class="h-12 w-auto" />
           </a>
-          <a href="https://www.naviri.com" target="_blank" rel="noopener noreferrer" data-trust-logo="naviri" class="grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
-            <img src="/images/logos/naviri.svg" alt="Naviri" class="h-8 w-auto" />
+          <a href="https://www.naviri.com" target="_blank" rel="noopener noreferrer" data-trust-logo="naviri" class="hover:opacity-80 transition-opacity">
+            <img src="/images/logos/naviri.svg" alt="Naviri" class="h-12 w-auto" />
           </a>
-          <a href="https://www.nomidmdm.com/en" target="_blank" rel="noopener noreferrer" data-trust-logo="nomidmdm" class="grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
-            <img src="/images/logos/nomidmdm.svg" alt="Nomid/MDM" class="h-8 w-auto" />
+          <a href="https://www.nomidmdm.com/en" target="_blank" rel="noopener noreferrer" data-trust-logo="nomidmdm" class="flex flex-col items-center gap-1 hover:opacity-80 transition-opacity">
+            <img src="/images/logos/nomidmdm.svg" alt="Nomid/MDM" class="h-12 w-auto" />
+            <span class="nomid-label text-sm font-semibold text-[#0074E4]">Nomid</span>
           </a>
         </div>
       </div>
     </section>
+
+    <style>
+      @font-face {
+        font-family: 'Kanit';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url('/fonts/kanit-600.woff2') format('woff2');
+      }
+      .nomid-label {
+        font-family: 'Kanit', system-ui, sans-serif;
+      }
+    </style>
 
     <!-- What Clients Say Section -->
     <section id="testimonial" class="py-20 px-4 bg-[rgb(240,242,245)]">
