@@ -2,8 +2,10 @@
 
 echo "🔄 Pre-push: full rebuild + test..."
 
-export FORCE_BUILD=1
-python -m unittest discover tests/
+docker compose down
+docker compose up --build -d
+
+PRE_PUSH=1 python -m unittest discover tests/
 
 test_exit_code=$?
 

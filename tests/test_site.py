@@ -583,7 +583,7 @@ class TestSite(SiteTestCase):
         widget = signup.find(attrs={"data-supascribe-subscribe": True})
         self.assertIsNotNone(widget, "Signup section must contain a Supascribe widget")
 
-    @unittest.skipUnless(os.environ.get("FORCE_BUILD"), "Supascribe script test only runs on pre-push (FORCE_BUILD=1)")
+    @unittest.skipUnless(os.environ.get("PRE_PUSH"), "Supascribe script test only runs on pre-push")
     def test_lean_coffee_supascribe_script_loads(self):
         """Supascribe script is reachable."""
         response = requests.get(f"{self.BASE_URL}/lean-coffee", timeout=10)

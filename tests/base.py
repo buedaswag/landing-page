@@ -1,5 +1,4 @@
 import unittest
-import os
 import subprocess
 import time
 import requests
@@ -20,14 +19,7 @@ class SiteTestCase(unittest.TestCase):
         """Ensure Docker containers are running before tests."""
         cls._we_started_containers = False
 
-        force_build = os.environ.get("FORCE_BUILD") == "1"
-
-        if force_build:
-            print("FORCE_BUILD=1 — rebuilding containers from scratch...")
-            subprocess.run(["docker", "compose", "down"], check=True)
-            subprocess.run(["docker", "compose", "up", "--build", "-d"], check=True)
-            cls._we_started_containers = True
-        elif cls._is_server_running():
+        if cls._is_server_running():
             print("Docker Compose is already running — skipping build.")
         else:
             print("Server not running — starting Docker Compose...")

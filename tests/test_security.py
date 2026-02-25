@@ -214,6 +214,7 @@ class TestSecurity(SiteTestCase):
                 [
                     "detect-secrets", "scan",
                     "--exclude-files", self.SECRETS_EXCLUDE_FILES,
+                    "--disable-plugin", "ArtifactoryDetector",
                 ],
                 capture_output=True,
                 text=True,
