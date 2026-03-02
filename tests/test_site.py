@@ -326,9 +326,9 @@ class TestSite(SiteTestCase):
         self.assertIsNotNone(pricing, "Intro page must have a pricing block with data-pricing='intro'")
 
         text = pricing.get_text()
-        self.assertIn("50", text, "Must mention €50 price")
-        self.assertIn("1,000", text, "Must mention €1,000 private price")
-        self.assertIn("2,000", text, "Must mention €2,000 package")
+        self.assertIn("50", text, "Must mention €50 public price")
+        self.assertIn("2,000", text, "Must mention €2,000 online private price")
+        self.assertIn("3,000", text, "Must mention €3,000 in-person private price")
 
     def test_facilitation_mika_testimonial_links_to_post(self):
         """Mika Schafroth testimonial on facilitation page links to her full testimonial post."""
