@@ -20,9 +20,11 @@ class SiteTestCase(unittest.TestCase):
         cls._we_started_containers = False
 
         if cls._is_server_running():
-            print("Docker Compose is already running — skipping build.")
+            print("Server already responding — skipping build.")
+        elif cls._are_containers_up():
+            print("Containers up but server not ready yet — waiting...")
         else:
-            print("Server not running — starting Docker Compose...")
+            print("No containers running — starting Docker Compose...")
             subprocess.run(["docker", "compose", "up", "--build", "-d"], check=True)
             cls._we_started_containers = True
 
@@ -35,12 +37,21 @@ class SiteTestCase(unittest.TestCase):
 
     @classmethod
     def _is_server_running(cls):
-        """Check if docker compose is already running and serving requests."""
+        """Check if the server is responding to HTTP requests."""
         try:
             response = requests.get(cls.BASE_URL, timeout=3)
             return response.status_code == 200
         except requests.exceptions.RequestException:
             return False
+
+    @classmethod
+    def _are_containers_up(cls):
+        """Check if docker compose containers exist and are running."""
+        result = subprocess.run(
+            ["docker", "compose", "ps", "-q"],
+            capture_output=True, text=True, check=False,
+        )
+        return bool(result.stdout.strip())
 
     @classmethod
     def _wait_for_server(cls, timeout=60):
