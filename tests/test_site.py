@@ -805,5 +805,34 @@ class TestSite(SiteTestCase):
             self.assertEqual(resp.status_code, 200,
                 f"Headshot image {img_url} must load. Got status {resp.status_code}")
 
+    def test_vsm_origin_story_post_loads(self):
+        """VSM origin story post loads and contains expected content."""
+        url = f"{self.BASE_URL}/blog/2026-03-03-how-i-discovered-vsm"
+        response = requests.get(url, timeout=10)
+        self.assertEqual(response.status_code, 200,
+            f"VSM origin story post must load. Got status {response.status_code}")
+        soup = BeautifulSoup(response.text, "html.parser")
+        text = soup.get_text()
+        self.assertIn("DevOps Handbook", text,
+            "Post must mention The DevOps Handbook")
+        self.assertIn("platform engineer", text,
+            "Post must mention platform engineer")
+
+    def test_marco_testimonial_cover_image_loads(self):
+        """Marco Locatelli testimonial post cover image loads successfully."""
+        url = f"{self.BASE_URL}/blog/2026-02-25-marco-locatelli-testimonial"
+        response = requests.get(url, timeout=10)
+        self.assertEqual(response.status_code, 200,
+            f"Marco testimonial post must load. Got status {response.status_code}")
+        soup = BeautifulSoup(response.text, "html.parser")
+        img = soup.find("img", src=lambda x: x and "2026-02-25" in x)
+        self.assertIsNotNone(img,
+            "Marco testimonial post must have a cover image from the 2026-02-25 folder")
+        img_url = img["src"]
+        resp = requests.head(f"{self.BASE_URL}{img_url}", timeout=10)
+        self.assertEqual(resp.status_code, 200,
+            f"Marco testimonial cover image {img_url} must load. Got status {resp.status_code}")
+
+
 if __name__ == '__main__':
     unittest.main()
