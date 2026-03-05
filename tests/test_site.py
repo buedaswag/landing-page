@@ -303,6 +303,17 @@ class TestSite(SiteTestCase):
         text = link.get_text()
         self.assertIn("Joost Baars", text, "LinkedIn link must contain Joost Baars attribution")
 
+    def test_intro_dora_blockquote_links_to_blog(self):
+        """DORA report attribution on intro page links to the blog article about the report."""
+        response = requests.get(f"{self.BASE_URL}/workshops/intro", timeout=10)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        link = soup.find("a", href="/blog/2026-02-18-dora-2025-favourite-quotes")
+        self.assertIsNotNone(link,
+            "Intro page must have a link to the DORA blog article from the blockquote attribution")
+        self.assertIn("DORA", link.get_text(),
+            "DORA attribution link must contain DORA in its text")
+
     def test_offerings_ctas_are_buttons(self):
         """Both offering cards have button-styled CTAs."""
         response = requests.get(self.BASE_URL, timeout=10)
