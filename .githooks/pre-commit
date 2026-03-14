@@ -1,5 +1,17 @@
 #!/bin/sh
 
+echo "🔄 Pre-commit: running npm audit fix..."
+
+docker compose run --rm web npm audit fix 2>/dev/null || true
+
+if git diff --name-only | grep -qE '^package(-lock)?\.json$'; then
+  echo ""
+  echo "❌ npm audit fix modified package-lock.json (or package.json)."
+  echo "   Review the changes, then run: git add package.json package-lock.json"
+  echo "   Then commit again."
+  exit 1
+fi
+
 echo "🔄 Pre-commit: running tests (no rebuild)..."
 
 python -m unittest discover tests/
