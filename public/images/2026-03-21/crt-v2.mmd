@@ -1,0 +1,72 @@
+flowchart BT
+    NEXT(["Required next step: Find out what people are buying -- not what I think they need"])
+    CORE{{"CORE PROBLEM: I don't know what the market is willing to buy -- and what I've been selling isn't it"}}
+    ROOT["Leaders don't see delivery as a solvable problem"]
+    UDE16["UDE-16: AI creates more WIP but teams can't manage it"]
+    UDE15["UDE-15: Companies fail at delivery but don't fix it"]
+    UDE19["UDE-19: Kanban stripped to ceremonies"]
+    UDE17["UDE-17: AI spend has no visible ROI"]
+    UDE18["UDE-18: Leaders drowning in WIP"]
+    UDE20["UDE-20: German market saturated"]
+    UDE8["UDE-8: Budgets shifted to AI"]
+    UDE11["UDE-11: Macro fear / wars"]
+    UDE9["UDE-9: AI replaces trust in people"]
+    UDE10["UDE-10: DevOps interest fading"]
+    UDE7["UDE-7: Consulting market contracting"]
+    UDE14["UDE-14: Faster delivery pitch is dead"]
+    UDE12["UDE-12: VSM is unfamiliar to buyers"]
+    UDE4["UDE-4: No inbound demand"]
+    UDE5["UDE-5: Outreach neglected"]
+    UDE6["UDE-6: Messaging doesn't convert"]
+    UDE1["UDE-1: Business not sustainable"]
+
+    NEXT --> CORE
+    CORE -.-> ROOT
+    ROOT --> UDE16
+    UDE16 --> UDE15
+    UDE16 --> UDE19
+    UDE16 --> UDE17
+    UDE16 --> UDE18
+    UDE15 --> UDE7
+    UDE15 --> UDE14
+    UDE19 --> UDE14
+    UDE17 --> UDE8
+    UDE17 --> UDE14
+    UDE18 --> UDE9
+    UDE18 --> UDE14
+    UDE20 --> UDE7
+    UDE8 --> UDE7
+    UDE8 --> UDE4
+    UDE11 --> UDE7
+    UDE9 --> UDE5
+    UDE9 --> UDE6
+    UDE10 --> UDE12
+    UDE7 --> UDE4
+    UDE14 --> UDE4
+    UDE14 --> UDE6
+    UDE12 --> UDE4
+    UDE12 --> UDE6
+    UDE4 --> UDE1
+    UDE5 --> UDE1
+    UDE6 --> UDE1
+
+    style UDE1 fill:#f8d7da,stroke:#dc3545
+    style UDE4 fill:#f8d7da,stroke:#dc3545
+    style UDE5 fill:#f8d7da,stroke:#dc3545
+    style UDE6 fill:#f8d7da,stroke:#dc3545
+    style UDE7 fill:#fff3cd,stroke:#ffc107
+    style UDE14 fill:#fff3cd,stroke:#ffc107
+    style UDE12 fill:#fff3cd,stroke:#ffc107
+    style UDE8 fill:#cfe2ff,stroke:#0d6efd
+    style UDE11 fill:#cfe2ff,stroke:#0d6efd
+    style UDE20 fill:#cfe2ff,stroke:#0d6efd
+    style UDE9 fill:#d1e7dd,stroke:#198754
+    style UDE10 fill:#d1e7dd,stroke:#198754
+    style UDE17 fill:#fce4ec,stroke:#e91e63
+    style UDE18 fill:#fce4ec,stroke:#e91e63
+    style UDE15 fill:#ffcdd2,stroke:#c62828
+    style UDE19 fill:#ffcdd2,stroke:#c62828
+    style UDE16 fill:#c8e6c9,stroke:#2e7d32
+    style CORE fill:#f5c6cb,stroke:#721c24
+    style ROOT fill:#e2e3e5,stroke:#6c757d
+    style NEXT fill:#c8e6c9,stroke:#2e7d32
