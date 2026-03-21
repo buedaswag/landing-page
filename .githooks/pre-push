@@ -2,8 +2,8 @@
 
 echo "🔄 Pre-push: rebuild production artifact + test..."
 
-docker compose down 2>/dev/null
-docker compose --profile preview up --build -d
+docker compose --profile preview down 2>/dev/null
+docker compose --profile preview up --build -d preview
 
 PRE_PUSH=1 python -m unittest discover tests/
 
