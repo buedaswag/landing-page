@@ -45,13 +45,61 @@ chmod +x .githooks/pre-push
 git config core.hooksPath .githooks
 ```
 
+## Deployment Pipeline
+
+```mermaid
+graph LR
+    subgraph local ["Local"]
+        Dev["Dev server"] --> PreCommit["Pre-commit"]
+        PreCommit --> Commit
+        Commit --> PrePush["Pre-push"]
+        PrePush --> Push
+    end
+
+    subgraph ci ["CI (parallel)"]
+        Security["Security Audit"]
+        Test["Build + Test"]
+    end
+
+    Deploy
+
+    subgraph prod ["Production"]
+        CDN["GitHub Pages"]
+        Health["Health Check"]
+    end
+
+    Push --> Security
+    Push --> Test
+    Security --> Deploy
+    Test --> Deploy
+    Deploy --> CDN
+    Health -->|"every 30 min"| CDN
+```
+
+| Step | What it does |
+|------|-------------|
+| **Dev server** | `docker compose up --build` — drafts visible, HMR |
+| **Pre-commit** | Tests against running server, no rebuild |
+| **Pre-push** | Rebuilds production artifact, tests it, switches back to dev |
+| **Security Audit** | npm audit, pip audit, gitleaks |
+| **Build + Test** | Builds `dist/`, serves it, runs the Python test suite |
+| **Deploy** | Deploys the tested `dist/` to GitHub Pages |
+| **Health Check** | Curls migueldias.eu every 30 min |
+
+The pipeline follows continuous delivery principles:
+
+- **Build once, deploy many** — CI builds `dist/`, tests it, and deploys that same artifact. No second build.
+- **CI is the gate** — local hooks provide fast feedback but can be bypassed (`--no-verify`). CI catches anything that slips through. Nothing reaches production untested.
+- **Trunk-based development** — push directly to main in small batches. No PRs or feature branches. Smaller batches = smaller blast radius = cheaper to fix.
+- **Docker is for local portability** — change laptop, install Docker, `docker compose up --build`, done. Production is static files on a CDN, not a container.
+
 ## Security
 
 Three layers prevent secrets from reaching production:
 
 1. **Pre-commit/pre-push hooks** — `detect-secrets` scans the working tree for hardcoded credentials as part of the test suite. Blocks the commit before secrets enter git history.
 2. **CI (GitHub Actions)** — `gitleaks` scans the full git history on every push to main. Catches anything committed in the past or if hooks were bypassed.
-3. **Deployment gate** — GitHub Pages deploy only runs after the Security Audit workflow passes (npm audit + pip audit + gitleaks). Failed security checks block deployment.
+3. **Deployment gate** — GitHub Pages deploy only runs after both the Security Audit and Build+Test workflows pass. Failed checks block deployment.
 
 Git hooks are the first line of defense but can be bypassed (`--no-verify`) or missed after a fresh clone. Make sure to run `git config core.hooksPath .githooks` after cloning.
 
