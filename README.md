@@ -1,5 +1,15 @@
 # Landing Page
 
+```bash
+docker compose up --build
+```
+
+```bash
+http://localhost:4444
+```
+
+Draft posts are visible on localhost and hidden on the live site.
+
 ## TODO
 
 * check out the RSS feed - is it working? can peopl subscribe to it?
@@ -62,4 +72,3 @@ Git hooks are the first line of defense but can be bypassed (`--no-verify`) or m
   - **Shottr** (Free, lightweight)
 
 This method works best for capturing entire web pages without manually stitching screenshots together.
-
