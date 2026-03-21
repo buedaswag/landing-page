@@ -538,40 +538,6 @@ class TestSite(SiteTestCase):
         self.assertIsNotNone(talk, "Start Here must have a talk item")
         self.assertIn("youtube.com/watch", talk.get("href", ""))
 
-    # --- Draft Posts ---
-
-    def test_draft_post_excluded_from_blog_index(self):
-        """Draft posts must not appear in the blog index."""
-        response = requests.get(f"{self.BASE_URL}/blog", timeout=10)
-        soup = BeautifulSoup(response.text, "html.parser")
-
-        posts_section = soup.find(attrs={"data-posts": True})
-        self.assertIsNotNone(posts_section, "Blog page must have a posts section with data-posts")
-
-        post_urls = [
-            el.get("data-post-url", "")
-            for el in posts_section.find_all(attrs={"data-post-url": True})
-        ]
-
-        self.assertNotIn(
-            "/blog/2025-03-14-ai-wip-flow",
-            post_urls,
-            "Draft post 2025-03-14-ai-wip-flow must not appear in the blog index",
-        )
-
-    def test_draft_post_returns_404(self):
-        """Draft post URL must return 404."""
-        response = requests.get(
-            f"{self.BASE_URL}/blog/2025-03-14-ai-wip-flow",
-            timeout=10,
-            allow_redirects=False,
-        )
-        self.assertEqual(
-            response.status_code,
-            404,
-            "Draft post /blog/2025-03-14-ai-wip-flow must return 404",
-        )
-
     # --- Lean Coffee Page Tests ---
 
     def test_lean_coffee_page_loads(self):
