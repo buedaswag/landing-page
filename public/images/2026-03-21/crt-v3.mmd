@@ -1,0 +1,80 @@
+flowchart BT
+    NEXT(["Required next step<br>Find out what people are actually spending money on"])
+    CORE{{"CORE PROBLEM<br>I know the solution. The evidence backs me. But the market isn't buying."}}
+    ROOT["The problem-solution fit exists. The buying behavior doesn't.<br>DORA says VSM is a force multiplier for AI. The market still isn't buying it."]
+    UDE16["UDE-16: AI amplifies existing dysfunction (DORA 2025 + Faros AI)<br>90% adopted AI. Throughput up, but instability up too. Zero effect on burnout."]
+    UDE15["UDE-15: Companies fail at delivery but don't fix it<br>They know it. Watch departments fail. Still don't invest."]
+    UDE19["UDE-19: Kanban stripped to ceremonies<br>Lost WIP management purpose. Just status reporting."]
+    UDE17["UDE-17: AI spend has no visible ROI<br>80% of firms report no productivity impact (DORA 2025)."]
+    UDE18["UDE-18: Leaders drowning / burning out<br>40 action items/day. AI has zero effect on burnout (DORA 2025)."]
+    UDE20["UDE-20: German market saturated<br>Roles require German. -26% IT postings year-over-year."]
+    UDE8["UDE-8: Budgets shifted to AI<br>Learning and consulting cut first. ~2 year trend."]
+    UDE11["UDE-11: Macro fear / wars<br>Leaders cut costs, lean out, avoid discretionary spend"]
+    UDE9["UDE-9: AI replaces trust in people<br>Free, no pushback, always on, 24/7"]
+    UDE10["UDE-10: DevOps interest fading<br>Conferences dying. Category in decline."]
+    UDE7["UDE-7: Consulting market contracting<br>Firms laying off. Overall freelance market -20% since 2023."]
+    UDE14["UDE-14: Faster delivery pitch is dead<br>Every consultant says it. Trust is low. Undifferentiated."]
+    UDE12["UDE-12: VSM is unfamiliar to buyers<br>Nobody searches for it or budgets for it"]
+    UDE4["UDE-4: No inbound demand<br>Nobody searching for VSM services"]
+    UDE5["UDE-5: Outreach neglected<br>Not enough volume of conversations"]
+    UDE6["UDE-6: Messaging doesn't convert<br>Faster delivery is what every consultant says"]
+    UDE1["UDE-1: Business not sustainable<br>One paying client in the past year"]
+
+    NEXT --> CORE
+    CORE -.-> ROOT
+
+    ROOT --> UDE15
+    ROOT --> UDE19
+
+    UDE16 --> UDE15
+    UDE16 --> UDE19
+    UDE16 --> UDE17
+    UDE16 --> UDE18
+    UDE16 --> UDE8
+
+    UDE15 --> UDE17
+    UDE15 --> UDE18
+    UDE15 --> UDE14
+
+    UDE19 --> UDE18
+
+    UDE17 --> UDE8
+    UDE18 --> UDE9
+    UDE20 --> UDE10
+
+    UDE8 --> UDE7
+    UDE11 --> UDE7
+    UDE9 --> UDE14
+    UDE10 --> UDE14
+    UDE10 --> UDE12
+
+    UDE7 --> UDE4
+    UDE7 --> UDE5
+    UDE14 --> UDE5
+    UDE14 --> UDE6
+    UDE12 --> UDE4
+
+    UDE4 --> UDE1
+    UDE5 --> UDE1
+    UDE6 --> UDE1
+
+    style UDE1 fill:#FCEBEB,stroke:#A32D2D
+    style UDE4 fill:#FAECE7,stroke:#993C1D
+    style UDE5 fill:#FAECE7,stroke:#993C1D
+    style UDE6 fill:#FAECE7,stroke:#993C1D
+    style UDE7 fill:#FAEEDA,stroke:#854F0B
+    style UDE14 fill:#FAEEDA,stroke:#854F0B
+    style UDE12 fill:#FAEEDA,stroke:#854F0B
+    style UDE8 fill:#EEEDFE,stroke:#534AB7
+    style UDE11 fill:#EEEDFE,stroke:#534AB7
+    style UDE9 fill:#EEEDFE,stroke:#534AB7
+    style UDE10 fill:#EEEDFE,stroke:#534AB7
+    style UDE17 fill:#E1F5EE,stroke:#0F6E56
+    style UDE18 fill:#E1F5EE,stroke:#0F6E56
+    style UDE20 fill:#E1F5EE,stroke:#0F6E56
+    style UDE15 fill:#FBEAF0,stroke:#993556
+    style UDE19 fill:#FBEAF0,stroke:#993556
+    style UDE16 fill:#EAF3DE,stroke:#3B6D11
+    style CORE fill:#FCEBEB,stroke:#A32D2D
+    style ROOT fill:#F1EFE8,stroke:#5F5E5A
+    style NEXT fill:#EAF3DE,stroke:#3B6D11

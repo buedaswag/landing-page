@@ -1,0 +1,90 @@
+flowchart BT
+    subgraph outcomes ["Business outcomes suffering"]
+        O1["Delivery is unpredictable (OBSERVED)<br>Projects take same-day to 6 months to plan."]
+        O2["Throughput is low (OBSERVED)<br>Too much WIP. Little's Law. Slow flow."]
+        O3["Customer satisfaction declining (HYPOTHESIZED)<br>Late deliveries, missing features, quality issues."]
+        O4["Revenue at risk (HYPOTHESIZED)<br>Can't penetrate market. Lose deals."]
+    end
+
+    subgraph system ["Delivery system problems"]
+        S1["Planning is wildly inconsistent (OBSERVED)<br>Same-day to 6 months. Plans inflated. Missing pieces."]
+        S2["Too much WIP (OBSERVED)<br>Teams working on too many things at once."]
+        S3["Late discovery of missing pieces (OBSERVED)<br>Find out just before delivery that something is wrong."]
+        S4["AI increases instability (DORA 2025)<br>More PRs, more bugs, bigger changes, slower reviews."]
+    end
+
+    subgraph roots ["Root causes"]
+        R1["No WIP limits (OBSERVED)<br>Everything is a priority. Nothing gets finished."]
+        R2["No visibility into the value stream (HYPOTHESIZED)<br>Nobody sees the whole flow from idea to customer."]
+        R3["Work pushed in, not pulled (HYPOTHESIZED)<br>Leadership pushes projects without regard for capacity."]
+        R4["AI amplifies existing dysfunction (DORA 2025)<br>More output, same bottlenecks, more chaos."]
+    end
+
+    subgraph culture ["People and culture"]
+        C1["Everyone is too busy to fix the system (OBSERVED)<br>40+ items/day. No time for improvement work."]
+        C2["Delivery is seen as unfixable complexity (HYPOTHESIZED)<br>Leaders treat it as weather, not engineering."]
+        C3["Previous improvement attempts failed (HYPOTHESIZED)<br>Hired agile coaches. Tried Scrum. Didn't stick."]
+        C4["Kanban reduced to status reporting (DORA 2025)<br>WIP management purpose lost."]
+    end
+
+    C1 --> R1
+    C1 --> R3
+    C2 --> R2
+    C3 --> R2
+    C4 --> R1
+
+    R1 --> S2
+    R1 --> S1
+    R2 --> S3
+    R2 --> S1
+    R3 --> S2
+    R3 --> S1
+    R4 --> S4
+    R4 --> S2
+
+    S1 --> O1
+    S2 --> O1
+    S2 --> O2
+    S3 --> O2
+    S3 --> O3
+    S4 --> O2
+    S4 --> O3
+
+    subgraph buyingrisks ["Risks that prevent buying"]
+        B1["Budget risk<br>Fought to get budget. Can't waste it."]
+        B2["Reputation risk<br>If it fails, I look bad to leadership."]
+        B3["Generic advice risk<br>Consultant gives slides, not solutions."]
+        B4["AI is free, why pay?<br>Admitting AI isn't working is political."]
+        B5["No bandwidth<br>Too busy to onboard help."]
+    end
+
+    subgraph compset ["What they do instead"]
+        CS1["Do nothing<br>Pain is familiar. Known cost."]
+        CS2["Ask AI<br>Free, instant, low risk."]
+        CS3["Hire an engineer<br>Tangible output. Easy to justify."]
+        CS4["Buy a tool<br>Software feels safer than people."]
+        CS5["Task an EM internally<br>No external cost. Low risk."]
+    end
+
+    CLOUD["Customer's evaporating cloud<br>I need to fix delivery BUT I can't risk budget on something unproven"]
+
+    buyingrisks --> CLOUD
+    compset --> CLOUD
+
+    subgraph levers ["Unrefusable offer -- Goldratt's value levers"]
+        L1["Reduce lead time to value<br>Show value in 2 weeks, not 3 months."]
+        L2["Reduce risk / inventory<br>No big contract. Diagnostic first."]
+        L3["Increase throughput / value<br>Tie impact to their metrics (DORA, OKRs)."]
+        L4["Reduce operating expense<br>Your fee is tiny vs. the cost of broken delivery."]
+    end
+
+    CLOUD --> levers
+
+    style outcomes fill:#FCEBEB,stroke:#A32D2D
+    style system fill:#FAECE7,stroke:#993C1D
+    style roots fill:#FAEEDA,stroke:#854F0B
+    style culture fill:#EEEDFE,stroke:#534AB7
+    style buyingrisks fill:#E6F1FB,stroke:#185FA5
+    style compset fill:#E1F5EE,stroke:#0F6E56
+    style levers fill:#EAF3DE,stroke:#3B6D11
+    style CLOUD fill:#F8F7F5,stroke:#D3D1C7

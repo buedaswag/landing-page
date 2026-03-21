@@ -1,0 +1,56 @@
+flowchart TB
+    subgraph pain ["Their delivery pain"]
+        P1["Delivery is unpredictable"]
+        P2["AI tools didn't help as promised"]
+        P3["Teams are overwhelmed"]
+        P4["Quality problems compound"]
+        P5["Previous agile initiatives failed"]
+        P6["I'm drowning too"]
+    end
+
+    subgraph risks ["Their risks (why they don't hire)"]
+        R1["Budget risk"]
+        R2["Reputation risk"]
+        R3["Generic advice risk"]
+        R4["Team resistance risk"]
+        R5["Measurability risk"]
+        R6["Cost-cutting risk"]
+    end
+
+    subgraph comparison ["What they compare you against"]
+        C1["Do nothing"]
+        C2["Ask AI / ChatGPT"]
+        C3["Hire a full-time engineer"]
+        C4["Buy a platform tool"]
+        C5["Internal initiative"]
+    end
+
+    EC["The customer's evaporating cloud: I need to improve delivery BUT I can't risk budget on something unproven"]
+
+    pain --> EC
+    risks --> EC
+    comparison --> EC
+
+    subgraph offer ["Unrefusable offer requirements (Goldratt)"]
+        O1["Reduce their risk"]
+        O2["Address their felt pain, not yours"]
+        O3["Beat the comparison set"]
+    end
+
+    EC --> offer
+
+    subgraph levers ["Goldratt's value levers"]
+        L1["Reduce lead time to value"]
+        L2["Reduce inventory / risk"]
+        L3["Increase throughput / value"]
+        L4["Reduce operating expense"]
+    end
+
+    offer --> levers
+
+    style pain fill:#fff3cd,stroke:#ffc107
+    style risks fill:#cfe2ff,stroke:#0d6efd
+    style comparison fill:#e2e3e5,stroke:#6c757d
+    style offer fill:#d1e7dd,stroke:#198754
+    style levers fill:#f3e5f5,stroke:#7b1fa2
+    style EC fill:#f5c6cb,stroke:#721c24

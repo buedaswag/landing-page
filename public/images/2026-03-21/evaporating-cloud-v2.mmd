@@ -1,0 +1,43 @@
+flowchart TB
+    A["A: Objective<br>Build a sustainable business (money in the bank account)"]
+    B["B: Sell what I know is right<br>VSM, flow, WIP management -- DORA-backed, evidence-based"]
+    C["C: Sell what people will pay for<br>Whatever the market is actually spending money on right now"]
+    D["D: Keep positioning as VSM/flow expert<br>Lead with method, cite DORA, educate the market"]
+    Dprime["D': Sell something else entirely<br>Find what people buy, package around that"]
+
+    A --> B
+    A --> C
+    B --> D
+    C --> Dprime
+    D <-.->|"CONFLICT"| Dprime
+
+    subgraph assumptions ["Hidden assumptions to challenge"]
+        H1["B-D: If research supports it, people will eventually buy"]
+        H1a["A year of evidence says they won't. Research is not purchase orders."]
+        H2["B-D: I need to educate the market to create demand"]
+        H2a["Educating is a 3-5 year play. You need revenue now."]
+        H3["C-D': Selling what market buys means abandoning my skills"]
+        H3a["Your skills apply to many offerings."]
+        H4["C-D': I don't know what the market wants"]
+        H4a["This is the real blocker. The demand research answers it."]
+    end
+
+    subgraph injection ["Possible injection (UNVALIDATED)"]
+        OA["Option A: Repackage VSM as AI-delivery-gap consulting<br>Use DORA data as credibility, sell the pain not the method."]
+        OB["Option B: Pivot to DevOps/platform/AI gigs<br>Use technical background to take freelance projects."]
+        OC["Option C: Part-time job + part-time Flowtopia<br>Stabilize income, continue building the practice."]
+    end
+
+    WARNING{{"All three options require the same first step:<br>find out what the market is actually spending on"}}
+
+    Dprime -.-> injection
+    injection --> WARNING
+
+    style A fill:#EAF3DE,stroke:#3B6D11
+    style B fill:#E6F1FB,stroke:#185FA5
+    style C fill:#E1F5EE,stroke:#0F6E56
+    style D fill:#E6F1FB,stroke:#185FA5
+    style Dprime fill:#E1F5EE,stroke:#0F6E56
+    style assumptions fill:#F8F7F5,stroke:#D3D1C7
+    style injection fill:#EAF3DE,stroke:#3B6D11
+    style WARNING fill:#FAEEDA,stroke:#854F0B

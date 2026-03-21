@@ -1,0 +1,41 @@
+flowchart TB
+    A["A: Objective -- Build a sustainable business"]
+    B["B: Stay true to expertise -- Sell what I know deeply: VSM, flow, Kanban, DevOps"]
+    C["C: Meet market demand -- Sell what buyers are actually searching for and willing to pay for"]
+    D["D: Position as VSM/flow expert -- Lead with the method. Brand = VSM specialist."]
+    Dprime["D': Repackage around felt pain -- Lead with the outcome. Method stays invisible."]
+
+    A --> B
+    A --> C
+    B --> D
+    C --> Dprime
+    D <-.->|"CONFLICT"| Dprime
+
+    subgraph assumptions ["Hidden assumptions to challenge"]
+        H1["B-D: To sell VSM, I must lead with the term VSM"]
+        H1a["You can apply VSM without ever using the word"]
+        H2["B-D: My credibility requires being known as a VSM specialist"]
+        H2a["Credibility comes from solving problems, not method branding"]
+        H3["C-D': Meeting market demand means abandoning my expertise"]
+        H3a["A doctor who says 'I treat chest pain' hasn't abandoned cardiology"]
+    end
+
+    subgraph injection ["Injection (breaks the cloud)"]
+        I1["Lead with the pain AI creates:"]
+        I2["More WIP, bottlenecks absorbing gains, no ROI from AI spend"]
+        I3["Use VSM/flow as the delivery mechanism -- not the headline"]
+    end
+
+    WARNING{{"This injection is UNVALIDATED -- it's a hypothesis to test"}}
+
+    Dprime -.-> injection
+    injection --> WARNING
+
+    style A fill:#d1e7dd,stroke:#198754
+    style B fill:#cfe2ff,stroke:#0d6efd
+    style C fill:#cfe2ff,stroke:#0d6efd
+    style D fill:#fff3cd,stroke:#ffc107
+    style Dprime fill:#fff3cd,stroke:#ffc107
+    style assumptions fill:#f8f9fa,stroke:#6c757d
+    style injection fill:#d1e7dd,stroke:#198754
+    style WARNING fill:#fff3cd,stroke:#ffc107

@@ -1,0 +1,253 @@
+<svg width="1400" viewBox="0 0 1400 1720" xmlns="http://www.w3.org/2000/svg" style="background:#ffffff">
+<style>
+  text { font-family: 'Helvetica Neue', Arial, sans-serif; }
+  .th { font-size: 15px; font-weight: 600; }
+  .ts { font-size: 12px; font-weight: 400; fill: #555; }
+  .title { font-size: 20px; font-weight: 700; fill: #1a1a1a; }
+  .subtitle { font-size: 13px; font-weight: 400; fill: #666; }
+  .arr { stroke: #888; stroke-width: 1.2; }
+  .legend-text { font-size: 11px; fill: #444; }
+  .observed { font-size: 10px; font-weight: 600; fill: #0F6E56; }
+  .hypothesized { font-size: 10px; font-weight: 600; fill: #854F0B; }
+</style>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<text class="title" x="700" y="35" text-anchor="middle">Customer's current reality tree v2</text>
+<text class="subtitle" x="700" y="55" text-anchor="middle">Grounded in observed data (client engagement + DORA 2025). Hypothesized UDEs marked for validation.</text>
+
+<!-- ===== TIER 1: TOP BUSINESS PAIN ===== -->
+<text class="th" x="700" y="95" text-anchor="middle" fill="#791F1F">Business outcomes suffering</text>
+
+<rect x="60" y="115" width="320" height="62" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.8"/>
+<text class="observed" x="76" y="130">OBSERVED</text>
+<text class="th" x="220" y="148" text-anchor="middle" fill="#791F1F">Delivery is unpredictable</text>
+<text class="ts" x="220" y="164" text-anchor="middle" fill="#A32D2D">Projects take same-day to 6 months to plan. No consistency.</text>
+
+<rect x="420" y="115" width="320" height="62" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.8"/>
+<text class="observed" x="436" y="130">OBSERVED</text>
+<text class="th" x="580" y="148" text-anchor="middle" fill="#791F1F">Throughput is low</text>
+<text class="ts" x="580" y="164" text-anchor="middle" fill="#A32D2D">Too much WIP → Little's Law → slow flow.</text>
+
+<rect x="780" y="115" width="320" height="62" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.8"/>
+<text class="hypothesized" x="796" y="130">HYPOTHESIZED</text>
+<text class="th" x="940" y="148" text-anchor="middle" fill="#791F1F">Customer satisfaction declining</text>
+<text class="ts" x="940" y="164" text-anchor="middle" fill="#A32D2D">Late deliveries, missing features, quality issues.</text>
+
+<rect x="1140" y="115" width="220" height="62" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.8"/>
+<text class="hypothesized" x="1156" y="130">HYPOTHESIZED</text>
+<text class="th" x="1250" y="148" text-anchor="middle" fill="#791F1F">Revenue at risk</text>
+<text class="ts" x="1250" y="164" text-anchor="middle" fill="#A32D2D">Can't penetrate market. Lose deals.</text>
+
+<!-- ===== TIER 2: DELIVERY SYSTEM PROBLEMS ===== -->
+<text class="th" x="700" y="230" text-anchor="middle" fill="#712B13">Delivery system problems (what causes the business pain)</text>
+
+<rect x="60" y="250" width="300" height="62" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.8"/>
+<text class="observed" x="76" y="265">OBSERVED</text>
+<text class="th" x="210" y="283" text-anchor="middle" fill="#712B13">Planning is wildly inconsistent</text>
+<text class="ts" x="210" y="299" text-anchor="middle" fill="#993C1D">Same-day to 6 months. Plans inflated. Missing pieces.</text>
+
+<rect x="400" y="250" width="300" height="62" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.8"/>
+<text class="observed" x="416" y="265">OBSERVED</text>
+<text class="th" x="550" y="283" text-anchor="middle" fill="#712B13">Too much WIP</text>
+<text class="ts" x="550" y="299" text-anchor="middle" fill="#993C1D">Teams working on too many things at once.</text>
+
+<rect x="740" y="250" width="300" height="62" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.8"/>
+<text class="observed" x="756" y="265">OBSERVED</text>
+<text class="th" x="890" y="283" text-anchor="middle" fill="#712B13">Late discovery of missing pieces</text>
+<text class="ts" x="890" y="299" text-anchor="middle" fill="#993C1D">Find out just before delivery that something is wrong.</text>
+
+<rect x="1080" y="250" width="280" height="62" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.8"/>
+<text class="observed" x="1096" y="265">DORA 2025</text>
+<text class="th" x="1220" y="283" text-anchor="middle" fill="#712B13">AI increases instability</text>
+<text class="ts" x="1220" y="299" text-anchor="middle" fill="#993C1D">More PRs, more bugs, bigger changes, slower reviews.</text>
+
+<!-- Arrows tier 2 → tier 1 -->
+<line x1="210" y1="250" x2="220" y2="177" class="arr" marker-end="url(#arrow)"/>
+<line x1="550" y1="250" x2="220" y2="177" class="arr" marker-end="url(#arrow)"/>
+<line x1="550" y1="250" x2="580" y2="177" class="arr" marker-end="url(#arrow)"/>
+<line x1="890" y1="250" x2="580" y2="177" class="arr" marker-end="url(#arrow)"/>
+<line x1="890" y1="250" x2="940" y2="177" class="arr" marker-end="url(#arrow)"/>
+<line x1="1220" y1="250" x2="580" y2="177" class="arr" marker-end="url(#arrow)"/>
+<line x1="1220" y1="250" x2="940" y2="177" class="arr" marker-end="url(#arrow)"/>
+
+<!-- ===== TIER 3: ROOT CAUSES ===== -->
+<text class="th" x="700" y="370" text-anchor="middle" fill="#633806">Root causes (why the delivery system is broken)</text>
+
+<rect x="60" y="390" width="280" height="62" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
+<text class="observed" x="76" y="405">OBSERVED</text>
+<text class="th" x="200" y="423" text-anchor="middle" fill="#633806">No WIP limits</text>
+<text class="ts" x="200" y="439" text-anchor="middle" fill="#854F0B">Everything is a priority. Nothing gets finished.</text>
+
+<rect x="380" y="390" width="300" height="62" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
+<text class="hypothesized" x="396" y="405">HYPOTHESIZED</text>
+<text class="th" x="530" y="423" text-anchor="middle" fill="#633806">No visibility into the value stream</text>
+<text class="ts" x="530" y="439" text-anchor="middle" fill="#854F0B">Nobody sees the whole flow from idea to customer.</text>
+
+<rect x="720" y="390" width="300" height="62" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
+<text class="hypothesized" x="736" y="405">HYPOTHESIZED</text>
+<text class="th" x="870" y="423" text-anchor="middle" fill="#633806">Work pushed in, not pulled</text>
+<text class="ts" x="870" y="439" text-anchor="middle" fill="#854F0B">Leadership pushes projects without regard for capacity.</text>
+
+<rect x="1060" y="390" width="300" height="62" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
+<text class="observed" x="1076" y="405">DORA 2025</text>
+<text class="th" x="1210" y="423" text-anchor="middle" fill="#633806">AI amplifies existing dysfunction</text>
+<text class="ts" x="1210" y="439" text-anchor="middle" fill="#854F0B">More output, same bottlenecks, more chaos.</text>
+
+<!-- Arrows tier 3 → tier 2 -->
+<line x1="200" y1="390" x2="550" y2="312" class="arr" marker-end="url(#arrow)"/>
+<line x1="200" y1="390" x2="210" y2="312" class="arr" marker-end="url(#arrow)"/>
+<line x1="530" y1="390" x2="890" y2="312" class="arr" marker-end="url(#arrow)"/>
+<line x1="530" y1="390" x2="210" y2="312" class="arr" marker-end="url(#arrow)"/>
+<line x1="870" y1="390" x2="550" y2="312" class="arr" marker-end="url(#arrow)"/>
+<line x1="870" y1="390" x2="210" y2="312" class="arr" marker-end="url(#arrow)"/>
+<line x1="1210" y1="390" x2="1220" y2="312" class="arr" marker-end="url(#arrow)"/>
+<line x1="1210" y1="390" x2="550" y2="312" class="arr" marker-end="url(#arrow)"/>
+
+<!-- ===== TIER 4: PEOPLE / CULTURE ===== -->
+<text class="th" x="700" y="510" text-anchor="middle" fill="#3C3489">People and culture (why it doesn't get fixed)</text>
+
+<rect x="60" y="530" width="300" height="62" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.8"/>
+<text class="observed" x="76" y="545">OBSERVED</text>
+<text class="th" x="210" y="563" text-anchor="middle" fill="#3C3489">Everyone is too busy to fix the system</text>
+<text class="ts" x="210" y="579" text-anchor="middle" fill="#534AB7">40+ items/day. No time for improvement work.</text>
+
+<rect x="400" y="530" width="300" height="62" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.8"/>
+<text class="hypothesized" x="416" y="545">HYPOTHESIZED</text>
+<text class="th" x="550" y="563" text-anchor="middle" fill="#3C3489">Delivery is seen as unfixable complexity</text>
+<text class="ts" x="550" y="579" text-anchor="middle" fill="#534AB7">Leaders treat it as weather, not engineering.</text>
+
+<rect x="740" y="530" width="300" height="62" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.8"/>
+<text class="hypothesized" x="756" y="545">HYPOTHESIZED</text>
+<text class="th" x="890" y="563" text-anchor="middle" fill="#3C3489">Previous improvement attempts failed</text>
+<text class="ts" x="890" y="579" text-anchor="middle" fill="#534AB7">Hired agile coaches. Tried Scrum. Didn't stick.</text>
+
+<rect x="1080" y="530" width="280" height="62" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.8"/>
+<text class="observed" x="1096" y="545">DORA 2025</text>
+<text class="th" x="1220" y="563" text-anchor="middle" fill="#3C3489">Kanban reduced to status reporting</text>
+<text class="ts" x="1220" y="579" text-anchor="middle" fill="#534AB7">WIP management purpose lost.</text>
+
+<!-- Arrows tier 4 → tier 3 -->
+<line x1="210" y1="530" x2="200" y2="452" class="arr" marker-end="url(#arrow)"/>
+<line x1="210" y1="530" x2="870" y2="452" class="arr" marker-end="url(#arrow)"/>
+<line x1="550" y1="530" x2="530" y2="452" class="arr" marker-end="url(#arrow)"/>
+<line x1="890" y1="530" x2="530" y2="452" class="arr" marker-end="url(#arrow)"/>
+<line x1="1220" y1="530" x2="200" y2="452" class="arr" marker-end="url(#arrow)"/>
+
+<!-- ===== DIVIDER ===== -->
+<line x1="60" y1="640" x2="1340" y2="640" stroke="#D3D1C7" stroke-width="0.5" stroke-dasharray="4 4"/>
+<text class="subtitle" x="700" y="665" text-anchor="middle">Above: what the customer experiences. Below: why they don't hire help to fix it.</text>
+
+<!-- ===== TIER 5: BUYING RISKS ===== -->
+<text class="th" x="700" y="700" text-anchor="middle" fill="#0C447C">Risks that prevent buying (why they live with it instead of hiring)</text>
+
+<rect x="60" y="720" width="250" height="62" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.8"/>
+<text class="hypothesized" x="76" y="735">HYPOTHESIZED</text>
+<text class="th" x="185" y="753" text-anchor="middle" fill="#0C447C">Budget risk</text>
+<text class="ts" x="185" y="769" text-anchor="middle" fill="#185FA5">Fought to get budget. Can't waste it.</text>
+
+<rect x="340" y="720" width="250" height="62" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.8"/>
+<text class="hypothesized" x="356" y="735">HYPOTHESIZED</text>
+<text class="th" x="465" y="753" text-anchor="middle" fill="#0C447C">Reputation risk</text>
+<text class="ts" x="465" y="769" text-anchor="middle" fill="#185FA5">If it fails, I look bad to leadership.</text>
+
+<rect x="620" y="720" width="250" height="62" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.8"/>
+<text class="hypothesized" x="636" y="735">HYPOTHESIZED</text>
+<text class="th" x="745" y="753" text-anchor="middle" fill="#0C447C">Generic advice risk</text>
+<text class="ts" x="745" y="769" text-anchor="middle" fill="#185FA5">Consultant gives slides, not solutions.</text>
+
+<rect x="900" y="720" width="250" height="62" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.8"/>
+<text class="hypothesized" x="916" y="735">HYPOTHESIZED</text>
+<text class="th" x="1025" y="753" text-anchor="middle" fill="#0C447C">AI is free, why pay?</text>
+<text class="ts" x="1025" y="769" text-anchor="middle" fill="#185FA5">Admitting AI isn't working is political.</text>
+
+<rect x="1180" y="720" width="180" height="62" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.8"/>
+<text class="hypothesized" x="1196" y="735">HYPOTHESIZED</text>
+<text class="th" x="1270" y="753" text-anchor="middle" fill="#0C447C">No bandwidth</text>
+<text class="ts" x="1270" y="769" text-anchor="middle" fill="#185FA5">Too busy to onboard help.</text>
+
+<!-- ===== COMPARISON SET ===== -->
+<text class="th" x="700" y="840" text-anchor="middle" fill="#085041">What they do instead (your real competition)</text>
+
+<rect x="100" y="860" width="220" height="52" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
+<text class="th" x="210" y="882" text-anchor="middle" fill="#085041">Do nothing</text>
+<text class="ts" x="210" y="900" text-anchor="middle" fill="#0F6E56">Pain is familiar. Known cost.</text>
+
+<rect x="350" y="860" width="220" height="52" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
+<text class="th" x="460" y="882" text-anchor="middle" fill="#085041">Ask AI</text>
+<text class="ts" x="460" y="900" text-anchor="middle" fill="#0F6E56">Free, instant, low risk.</text>
+
+<rect x="600" y="860" width="220" height="52" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
+<text class="th" x="710" y="882" text-anchor="middle" fill="#085041">Hire an engineer</text>
+<text class="ts" x="710" y="900" text-anchor="middle" fill="#0F6E56">Tangible output. Easy to justify.</text>
+
+<rect x="850" y="860" width="220" height="52" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
+<text class="th" x="960" y="882" text-anchor="middle" fill="#085041">Buy a tool</text>
+<text class="ts" x="960" y="900" text-anchor="middle" fill="#0F6E56">Software feels safer than people.</text>
+
+<rect x="1100" y="860" width="220" height="52" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
+<text class="th" x="1210" y="882" text-anchor="middle" fill="#085041">Task an EM internally</text>
+<text class="ts" x="1210" y="900" text-anchor="middle" fill="#0F6E56">No external cost. Low risk.</text>
+
+<!-- ===== CUSTOMER'S CLOUD ===== -->
+<rect x="200" y="960" width="1000" height="70" rx="12" fill="#F8F7F5" stroke="#D3D1C7" stroke-width="1"/>
+<text class="th" x="700" y="988" text-anchor="middle" fill="#2C2C2A">The customer's evaporating cloud</text>
+<text class="ts" x="700" y="1008" text-anchor="middle" fill="#555">"I need to fix delivery (the pain is real) BUT I can't risk budget/reputation on something unproven."</text>
+
+<!-- ===== GOLDRATT VALUE LEVERS ===== -->
+<text class="th" x="700" y="1085" text-anchor="middle" fill="#27500A">What an unrefusable offer must do (Goldratt's value levers)</text>
+
+<rect x="60" y="1105" width="310" height="90" rx="10" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.8"/>
+<text class="th" x="215" y="1127" text-anchor="middle" fill="#27500A">Reduce lead time to value</text>
+<text class="ts" x="215" y="1147" text-anchor="middle" fill="#3B6D11">Show value in 2 weeks, not 3 months.</text>
+<text class="ts" x="215" y="1163" text-anchor="middle" fill="#3B6D11">Quick diagnostic → surface top bottleneck →</text>
+<text class="ts" x="215" y="1179" text-anchor="middle" fill="#3B6D11">one actionable fix immediately.</text>
+
+<rect x="400" y="1105" width="280" height="90" rx="10" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.8"/>
+<text class="th" x="540" y="1127" text-anchor="middle" fill="#27500A">Reduce risk / inventory</text>
+<text class="ts" x="540" y="1147" text-anchor="middle" fill="#3B6D11">No big contract. Diagnostic first.</text>
+<text class="ts" x="540" y="1163" text-anchor="middle" fill="#3B6D11">Pay-for-outcomes if possible.</text>
+<text class="ts" x="540" y="1179" text-anchor="middle" fill="#3B6D11">Proof before commitment.</text>
+
+<rect x="710" y="1105" width="310" height="90" rx="10" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.8"/>
+<text class="th" x="865" y="1127" text-anchor="middle" fill="#27500A">Increase throughput / value</text>
+<text class="ts" x="865" y="1147" text-anchor="middle" fill="#3B6D11">Tie impact to their metrics (DORA, OKRs).</text>
+<text class="ts" x="865" y="1163" text-anchor="middle" fill="#3B6D11">"What does 1 month of delay cost you?"</text>
+<text class="ts" x="865" y="1179" text-anchor="middle" fill="#3B6D11">Make the cost of inaction concrete.</text>
+
+<rect x="1050" y="1105" width="300" height="90" rx="10" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.8"/>
+<text class="th" x="1200" y="1127" text-anchor="middle" fill="#27500A">Reduce operating expense</text>
+<text class="ts" x="1200" y="1147" text-anchor="middle" fill="#3B6D11">Your fee is tiny vs. the cost of broken delivery.</text>
+<text class="ts" x="1200" y="1163" text-anchor="middle" fill="#3B6D11">Frame against the problem, not against</text>
+<text class="ts" x="1200" y="1179" text-anchor="middle" fill="#3B6D11">other consultants' rates.</text>
+
+<!-- ===== OPEN QUESTIONS ===== -->
+<rect x="150" y="1260" width="1100" height="170" rx="12" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
+<text class="th" x="700" y="1288" text-anchor="middle" fill="#633806">Validate through discovery calls (Section 6)</text>
+
+<text class="ts" x="180" y="1316" fill="#444">1. Which delivery UDEs are they actually experiencing? (planning chaos? WIP? AI instability? all of them?)</text>
+<text class="ts" x="180" y="1336" fill="#444">2. Which buying risks are the real blockers? (budget? reputation? burned before? no bandwidth?)</text>
+<text class="ts" x="180" y="1356" fill="#444">3. What did they do last time? (nothing? tool? internal? consultant who disappointed?)</text>
+<text class="ts" x="180" y="1376" fill="#444">4. "If you had budget for one external person, what problem would you point them at?"</text>
+<text class="ts" x="180" y="1396" fill="#444">5. What would make hiring feel safe? (short diagnostic? money-back? guaranteed metrics improvement?)</text>
+<text class="ts" x="180" y="1416" fill="#444">6. What budget line pays for this? (engineering? AI transformation? consulting? operations?)</text>
+
+<!-- ===== LEGEND ===== -->
+<text class="th" x="60" y="1500" fill="#333" font-size="13">Legend</text>
+<rect x="60" y="1515" width="16" height="16" rx="3" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.6"/>
+<text class="legend-text" x="82" y="1528">Business outcomes</text>
+<rect x="210" y="1515" width="16" height="16" rx="3" fill="#FAECE7" stroke="#993C1D" stroke-width="0.6"/>
+<text class="legend-text" x="232" y="1528">Delivery system</text>
+<rect x="340" y="1515" width="16" height="16" rx="3" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.6"/>
+<text class="legend-text" x="362" y="1528">Root causes</text>
+<rect x="450" y="1515" width="16" height="16" rx="3" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.6"/>
+<text class="legend-text" x="472" y="1528">People / culture</text>
+<rect x="570" y="1515" width="16" height="16" rx="3" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.6"/>
+<text class="legend-text" x="592" y="1528">Buying risks</text>
+<rect x="680" y="1515" width="16" height="16" rx="3" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.6"/>
+<text class="legend-text" x="702" y="1528">Comparison set</text>
+<rect x="800" y="1515" width="16" height="16" rx="3" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.6"/>
+<text class="legend-text" x="822" y="1528">Unrefusable offer levers</text>
+
+<text class="subtitle" x="700" y="1560" text-anchor="middle">OBSERVED = seen firsthand (client engagement) or confirmed by research (DORA 2025).</text>
+<text class="subtitle" x="700" y="1578" text-anchor="middle">HYPOTHESIZED = reasonable assumption to validate through discovery interviews.</text>
+</svg>
