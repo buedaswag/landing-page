@@ -33,6 +33,10 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
       <Content />
     </div>
   </article>
+
+  <div id="lightbox" class="lightbox">
+    <img id="lightbox-img" />
+  </div>
 </Layout>
 
 <style>
@@ -109,6 +113,29 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
     height: auto;
     margin: 2rem auto;
     display: block;
+    cursor: zoom-in;
+  }
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+  }
+
+  .lightbox.active {
+    display: flex;
+  }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    background: white;
   }
 
   .content :global(blockquote) {
@@ -118,3 +145,23 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
     font-style: italic;
   }
 </style>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+
+  document.querySelectorAll('.content img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = (img as HTMLImageElement).src;
+      lightbox?.classList.add('active');
+    });
+  });
+
+  lightbox?.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') lightbox?.classList.remove('active');
+  });
+</script>
