@@ -13,6 +13,7 @@ services:
       - /app/node_modules
     networks:
       - blog-net # Add a dedicated network for isolation
+    # Generate fresh package-lock.json before starting dev server
     command: >
       sh -c "npm install --package-lock-only && npm run build && npm run dev -- --host 0.0.0.0 --port 4444"
 
