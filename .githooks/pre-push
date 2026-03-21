@@ -2,15 +2,19 @@
 
 echo "🔄 Pre-push: rebuild production artifact + test..."
 
-docker compose down
-docker compose run --rm --service-ports -d web sh -c "npm run build && npm run preview -- --host 0.0.0.0 --port 4444"
+# Stop everything (web or preview, whatever is running)
+docker compose --profile preview down
+
+# Start only the preview container
+docker compose --profile preview up --build -d preview
 
 PRE_PUSH=1 python -m unittest discover tests/
 
 test_exit_code=$?
 
+# Stop preview, start dev
 echo "🔄 Switching back to dev mode..."
-docker compose down
+docker compose --profile preview down
 docker compose up -d
 
 if [ $test_exit_code -ne 0 ]; then
