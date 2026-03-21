@@ -3,7 +3,7 @@ title: "Miguel Dias Consulting market strategy — TOC thinking process + demand
 description: |
   A working document applying Theory of Constraints (Current Reality Tree, Evaporating Cloud) to market strategy, with demand research and validated learning experiments.
 date: "2026-03-21"
-image: "/images/2026-03-21/crt-v2.png"
+image: "/images/2026-03-21/crt-v3.png"
 draft: true
 ---
 
@@ -13,19 +13,22 @@ draft: true
 
 ## 1. Current reality tree
 
-![Current Reality Tree v2](/images/2026-03-21/crt-v2.png)
+![Current Reality Tree v4](/images/2026-03-21/crt-v3.png)
+<a href="https://www.figma.com/online-whiteboard/create-diagram/d1de8a58-7236-4198-a21b-2353403599d1?utm_source=cursor&utm_content=edit_in_figjam" target="_blank" rel="noopener noreferrer">View in FigJam</a>
 
-**Key causal chains not obvious from the diagram:**
+**Notes:**
 
-- UDE-16 (AI creates WIP) is the engine that drives most of the tree. It feeds upward into: leaders drowning (UDE-18), AI spend having no ROI (UDE-17), companies not fixing delivery (UDE-15), and Kanban being hollowed out (UDE-19). The Faros AI report confirms this: teams with high AI adoption produce +21% tasks and +98% PRs, but review time increases 91% and at company level there is zero correlation between AI adoption and throughput/DORA improvements.
-- UDE-15 (companies fail at delivery but don't fix it) is the most frustrating node. You've seen departments fail spectacularly and get shut down, yet companies still don't invest in fixing the underlying flow problem. This connects to the deep root cause: leaders don't perceive delivery as a solvable problem — they see it as inherent complexity.
-- The German market saturation signal (UDE-20) is that DevOps roles requiring German language skills indicates enough local candidates exist. Meanwhile, 26.2% fewer IT positions were posted year-over-year (16,500 fewer in absolute terms).
+- **The buyer's UDEs (blue section) are the key addition.** The tree now explains not just why I don't have clients, but why buyers don't hire even when they have the problem I solve. B-7 is the root: the perceived cost and risk of hiring exceeds their perceived pain of living with broken delivery. This explains the gap between problem-solution fit and actual revenue.
+- **B-1 through B-6 are hypothesized buyer fears** — consultants are expensive and hard to prove ROI on; they've been burned before by consultants who delivered slides not outcomes; AI is free so why pay a human; they have no bandwidth to onboard someone; external people won't understand their context (DORA's #1 barrier); and part-time people feel half-committed. These are testable in discovery calls (Experiment 3).
+- **B-3 is especially important.** Hiring a consultant to fix delivery implicitly admits the AI investment isn't working. That's politically dangerous for the leader who championed the AI spend.
+- **The confirmed dynamics section** cites DORA 2025 and Faros AI. The problem exists, the solution (VSM) is documented as a "force multiplier for AI." But none of that translates to purchase orders.
+- **The core problem is now sharper:** the market has the problem I solve, but the perceived risk/cost of hiring me exceeds their pain.
 
 ---
 
 ## 2. Evaporating cloud
 
-![Evaporating Cloud](/images/2026-03-21/evaporating-cloud.png)
+![Evaporating Cloud v2](/images/2026-03-21/evaporating-cloud-v2.png)
 
 **The injection in plain language:** stop selling VSM. Stop selling "faster delivery." Instead, sell the answer to the AI productivity paradox — "your AI tools are creating more work-in-progress but your delivery isn't getting faster, and I can show you where the bottleneck is and fix it." VSM and flow management are how you deliver this. But the buyer never hears the term unless they want to.
 
@@ -33,177 +36,200 @@ This lets both sides of the cloud coexist: you stay true to what you know (B), w
 
 **This injection is unvalidated.** The experiments below are designed to test it.
 
+**Key point:** All three injection options (repackage, pivot, hybrid) require the same first step — find out what people are actually spending money on. The demand research and experiments resolve the uncertainty blocking all paths.
+
+**What would overcome the buyer's UDEs?** This is what to listen for in discovery calls:
+- B-1 (expensive/risky): What if the offering is low-commitment? A diagnostic, not a retainer.
+- B-2 (burned before): What if there's a money-back guarantee or pay-for-outcomes model?
+- B-3 (why not AI): What if the pitch is "make your AI investment actually work" not "replace AI with me"?
+- B-4 (no bandwidth): What if onboarding is near-zero? Self-serve assessment or async delivery?
+- B-5 (context): What if the first step is mapping their context, which is inherently valuable by itself?
+- B-6 (part-time): What if part-time is framed as "fractional" (like fractional CTO) — a recognized model?
+- B-7 (cost > pain): What if the pain gets worse? AI adoption is accelerating. The dysfunction DORA documents will intensify. The question is whether leaders feel it enough to act.
+
 ---
 
-## 3. Demand research plan
+## 3. Customer's current reality tree
+
+![Customer CRT](/images/2026-03-21/customer-crt.png)
+
+**This is the missing piece from the Goldratt approach.** In *It's Not Luck*, the characters don't just map their own UDEs — they map the customer's UDEs and build the unrefusable offer around the customer's pain, not their own expertise.
+
+**Key insight:** The customer's evaporating cloud is: "I need to improve delivery (the pain is real) BUT I can't risk budget/reputation on something unproven." So they default to doing nothing, asking AI, or buying a tool — all lower-risk, lower-commitment options. Your real competition isn't other VSM consultants. It's inaction and free alternatives.
+
+**Goldratt's value levers applied to Miguel Dias Consulting:**
+- **Reduce lead time to value:** Can you show results in 2 weeks instead of 3 months? A quick diagnostic that surfaces their top bottleneck and gives them one actionable fix immediately.
+- **Reduce inventory/risk:** Minimize upfront commitment. No big contract. Diagnostic first. Pay-for-outcomes if possible.
+- **Increase throughput/value:** Tie your impact to metrics they already track (DORA metrics, OKRs, deployment frequency). Quantify the cost of their current state: "what does 1 month of delivery delay cost you?"
+- **Reduce operating expense:** Frame your fee against the cost of the problem, not against other consultants.
+
+**All customer UDEs and risks are hypothesized.** They need validation through Experiment 3 (outreach + discovery calls). The open questions at the bottom of the diagram are the agenda for those calls.
+
+---
+
+## 4. Where is the bottleneck in my funnel?
+
+My business funnel: **Visibility → Trust → Trigger → Offer → Conversion → Delivery → Referrals**
+
+There's evidence that the early stages are working. People spontaneously show up for workshops. Collaborations happen. Some business deals have closed. LinkedIn following is growing (4,000+ followers, 280+ engineering leaders). Trust is building. But it's not converting to revenue. So the bottleneck is somewhere between trust and conversion.
+
+**Hypotheses for where the constraint sits:**
+
+| Bottleneck hypothesis | Evidence for | Evidence against | How to test |
+|---|---|---|---|
+| **Trust exists but with wrong people** — peers and practitioners, not budget holders | Workshop attendees are mostly practitioners, not VPs/directors | Some leaders do engage (BeeHealthy, collaborators) | Check: of my 280+ engineering leaders, how many are director+ with budget authority? |
+| **Trust exists but no trigger to buy** — they like me but never think "I need Miguel NOW" | No urgency mechanism in my offering. VSM is "nice to have." | — | Experiment 2: does framing around AI crisis create urgency? Experiment 3: do leaders respond to a pain-point question? |
+| **Trust exists but offer isn't clear** — they don't connect their pain to what I do | "VSM" doesn't map to any pain they'd describe. "Faster delivery" is generic. | People who did engage understood the value after the workshop | Experiment 2: test different framing. Experiment 3: ask what they'd search for. |
+| **Trust exists but the ask is too big** — jumping from "attended a workshop" to "€10K+ engagement" | No intermediate step between free content and paid consulting | BeeHealthy started with a scoped offsite, not a retainer | Design a low-commitment entry point: diagnostic, assessment, half-day session |
+
+**The most likely answer:** it's a combination — mostly wrong audience (practitioners not buyers) + no trigger + too big a jump from trust to purchase. The demand research and outreach experiments will clarify which one dominates.
+
+**If marketing is the bottleneck** (not enough people know about me at all), then the 1,000-person outreach weeks and LinkedIn content experiments address it directly. **If it's conversion** (people know me but don't buy), then the customer CRT and unrefusable offer design are the fix. The experiments are designed to distinguish between these.
+
+---
+
+## 5. Demand research plan
 
 ### Objective
 
-Find out what the market is actually buying — not what we think they should buy.
+Find out what the market is actually spending money on.
 
 ### Data sources
 
-| Source | What it gives us | Time estimate |
-|--------|-----------------|---------------|
-| **freelancermap.com** | Active project listings in DACH: descriptions, skills, rates, duration, German requirement, remote/on-site | 2-3 hours |
-| **LinkedIn Jobs** | Permanent + contract roles in Berlin/Germany: skills, salary, company type, job description language | 2-3 hours |
-| **XING** | German-market-specific demand, Mittelstand companies, German-language roles | 1-2 hours |
-| **Berlin Startup Jobs** | Startup-specific demand, less likely to require German, more AI-native problems | 1 hour |
-| **GULP, Malt, tribeworks** (lower priority) | Enterprise gigs (GULP), consulting marketplace (Malt), AI-matched projects (tribeworks) | 1-2 hours |
+| Source | What it gives us | Time |
+|--------|-----------------|------|
+| **freelancermap.com** | Active project listings DACH: skills, rates, duration, German req, remote | 2-3 hrs |
+| **LinkedIn Jobs** | Permanent + contract roles Berlin/Germany: skills, salary, company type, language | 2-3 hrs |
+| **XING** | German-market demand, Mittelstand, German-language roles | 1-2 hrs |
+| **Berlin Startup Jobs** | Startup demand, less likely to require German | 1 hr |
+| **GULP, Malt, tribeworks** | Enterprise gigs, consulting marketplace, AI-matched projects | 1-2 hrs |
 
-### Search terms to run on each platform
+### Search terms (run on each platform, record: # results, sample titles, rate range, German req, remote, duration)
 
-Record for each: **# results, sample titles (3), rate range, German required (y/n), remote (y/n), typical duration.**
+**Current positioning:** "value stream", "agile coach"
 
-**Your current positioning:**
-- "value stream" / "value stream mapping"
-- "agile coach"
+**Adjacent:** "Scrum Master", "process improvement" / "Prozessoptimierung", "engineering effectiveness", "DORA metrics"
 
-**Adjacent categories:**
-- "Scrum Master"
-- "process improvement" / "Prozessoptimierung"
-- "engineering effectiveness" / "developer productivity"
-- "DORA metrics" / "engineering metrics"
+**Technical background:** "DevOps", "Kubernetes" / "Terraform", "platform engineering"
 
-**Your technical background:**
-- "DevOps"
-- "cloud infrastructure" / "Kubernetes" / "Terraform"
-- "platform engineering"
+**AI angle:** "AI adoption" / "KI-Einführung", "AI implementation"
 
-**The AI angle (testing the injection):**
-- "AI adoption" / "KI-Einführung"
-- "AI implementation"
-- "AI" + "software delivery"
+**Employment:** "engineering manager" / "VP engineering" / "head of engineering" Berlin, "fractional" / "part-time"
 
-**Employment-specific:**
-- "engineering manager" Berlin
-- "VP engineering" / "head of engineering" Berlin
-- "fractional" / "part-time" + any of the above
+### Outputs
 
-### Research outputs to compile
-
-1. **Demand heat map** — search term × platform × number of results
-2. **Language analysis** — actual words buyers use in descriptions, grouped by theme
-3. **Rate benchmarking** — what each category pays (baseline: management consulting €120/hr, AI/ML +20-30% premium)
-4. **German requirement rate** — % of roles requiring German, by category
-5. **Gap analysis** — high demand + your skills fit + lower competition
+1. Demand heat map (search term × platform × results count)
+2. Language analysis (actual buyer words from descriptions)
+3. Rate benchmarking by category
+4. German requirement rate by category
+5. Gap analysis (high demand + skills fit + lower competition)
 
 ---
 
-## 4. Validated learning experiments
-
-Each experiment is: hypothesis → test → metric → minimum success criteria → time box → connection to the CRT/cloud.
+## 6. Validated learning experiments
 
 ### Experiment 1: Demand mapping
 
 | | |
 |---|---|
-| **Hypothesis** | There are active, paying gigs on German freelance platforms that match my skills (DevOps + process improvement + flow) even if they don't mention VSM. |
-| **Test** | Complete the demand research plan above. |
-| **Metric** | Number of active listings I could credibly apply to, grouped by category. |
-| **Min. success** | ≥20 active listings across platforms that I'm qualified for. |
-| **Time box** | 1 week — complete by March 27 (before the trip). |
-| **CRT connection** | Directly addresses the **core problem** ("I don't know what the market is willing to buy"). If ≥20 listings found → the problem is positioning, not demand. If fewer than 20 → market contraction is severe, prioritize employment. |
+| **Hypothesis** | Active, paying gigs exist that match my skills even if they don't mention VSM. |
+| **Test** | Complete demand research above. |
+| **Min. success** | ≥20 active listings I could credibly apply to. |
+| **Time box** | By March 27. |
+| **CRT connection** | Addresses core problem. Also reveals whether buyer UDE B-1 (expensive) is overcome at certain price points. |
 
 ### Experiment 2: Reframed LinkedIn content
 
 | | |
 |---|---|
-| **Hypothesis** | Content framed around "the AI productivity paradox" gets significantly more engagement than content framed around VSM. |
-| **Test** | Publish two posts same week. Post A: standard VSM insight. Post B: same insight reframed around AI creating WIP + bottlenecks absorbing gains (using Faros AI data as hook). |
-| **Metric** | Impressions, engagement rate, and DMs/comments from leaders (director+). |
-| **Min. success** | Post B gets 2x engagement of Post A AND ≥1 DM or comment from a leader. |
+| **Hypothesis** | DORA/AI-paradox framing gets more engagement than VSM framing. |
+| **Test** | Two posts same week. Post A: VSM. Post B: AI instability + DORA data. |
+| **Min. success** | Post B gets 2x engagement + ≥1 leader DM. |
 | **Time box** | Publish by March 24. Measure by April 7. |
-| **CRT connection** | Tests the **evaporating cloud injection** — does leading with AI-induced pain resonate? Addresses UDE-6 (messaging doesn't land) and UDE-14 (undifferentiated pitch). |
+| **CRT connection** | Tests whether buyer UDE B-3 ("why not AI") can be flipped — "make your AI work" not "replace AI." |
 
-### Experiment 3: Outreach sprint to network
+### Experiment 3: Outreach sprint + discovery calls
 
 | | |
 |---|---|
-| **Hypothesis** | Targeted outreach framed around a specific pain point (not selling VSM) generates discovery calls. |
-| **Test** | Message 50 engineering leaders (directors, VPs, Heads of Eng) with: "I've been talking to leaders who say AI tools aren't translating into faster delivery — is that something you're seeing too?" No selling. Just a conversation. |
-| **Metric** | Response rate and calls booked. |
-| **Min. success** | 10% response rate (5 responses) + ≥2 discovery calls. |
-| **Time box** | Send all 50 within 1 week. Allow 2 weeks for responses. Complete by April 14. |
-| **CRT connection** | Tests whether the problem is outreach **volume** (UDE-5) or **messaging** (UDE-6) or both. Also generates qualitative data about what leaders actually experience — feeds back into the CRT and validates/invalidates the WIP hypothesis (UDE-16). |
+| **Hypothesis** | Targeted outreach generates calls AND reveals buyer UDEs firsthand. |
+| **Test** | Message 50 engineering leaders. Ask about their AI-delivery experience. |
+| **Min. success** | 5 responses, 2 calls. |
+| **Time box** | Send by end of March. Calls by April 14. |
+| **CRT connection** | **Most important experiment.** Validates or invalidates B-1 through B-7. Listen for: what are they worried about? What have they bought recently? What would make them say yes? |
 
 ### Experiment 4: Freelance platform applications
 
 | | |
 |---|---|
-| **Hypothesis** | I can get responses from freelance platforms if I position around DevOps/platform/process improvement rather than VSM. |
-| **Test** | Apply to 10 relevant projects on freelancermap (identified in Experiment 1) with reframed profile and pitch. |
-| **Metric** | Response rate and interview invitations. |
-| **Min. success** | ≥2 responses out of 10 applications. |
-| **Time box** | Applications within 1 week of completing Exp. 1. Allow 2 weeks for responses. |
-| **CRT connection** | Tests whether the **cloud injection** works in practice. Also tests the German language barrier (UDE-20) — if all interesting listings require German, that's critical data. |
+| **Hypothesis** | Reframed profile (DevOps/platform/process) gets responses on freelancermap. |
+| **Test** | Apply to 10 projects. |
+| **Min. success** | ≥2 responses. |
+| **Time box** | Within 1 week of Exp. 1. |
+| **CRT connection** | Tests Option B (pivot to what IS selling). Tests German barrier (UDE-20). |
 
 ### Experiment 5: Employment market test
 
 | | |
 |---|---|
-| **Hypothesis** | Part-time (60-80%) engineering roles exist in Berlin that don't require German and allow continued Miguel Dias Consulting work. |
-| **Test** | Search LinkedIn Jobs + Berlin Startup Jobs for part-time/contract/fractional roles. Apply to 5. |
-| **Metric** | Qualifying roles found + response rate. |
-| **Min. success** | ≥5 roles found that are part-time and don't require German. ≥1 interview from 5 applications. |
-| **Time box** | Search during Exp. 1. Apply within 1 week after. Results within 3 weeks. |
-| **CRT connection** | Addresses UDE-2 (job search splitting focus). Tests whether job search and business development use the same muscle — both require outreach, offering, and market understanding. |
+| **Hypothesis** | Part-time (60-80%) roles exist in Berlin without German requirement. |
+| **Test** | Search + apply to 5 roles. |
+| **Min. success** | ≥5 found, ≥1 interview. |
+| **Time box** | During Exp. 1 timeframe. |
+| **CRT connection** | Tests Option C (hybrid). Addresses buyer UDE B-6 by finding companies that value fractional. |
 
 ---
 
-## 5. Next steps checklist
+## 7. Next steps checklist
 
 ### Phase 1: Before the trip (by March 27)
 
-- [ ] Complete demand research on freelancermap (2-3 hrs)
-- [ ] Complete demand research on LinkedIn Jobs (2-3 hrs)
-- [ ] Quick scan of XING and Berlin Startup Jobs (2 hrs)
+- [ ] Demand research: freelancermap (2-3 hrs)
+- [ ] Demand research: LinkedIn Jobs (2-3 hrs)
+- [ ] Quick scan: XING + Berlin Startup Jobs (2 hrs)
 - [ ] Compile demand heat map spreadsheet
-- [ ] Write the two LinkedIn posts for Experiment 2 (1 hr)
-- [ ] Publish Post B (AI productivity paradox frame) by March 24
-- [ ] Update freelancermap profile with reframed positioning
-- [ ] Identify 50 engineering leaders for Experiment 3 outreach
+- [ ] Write + publish LinkedIn Post B (DORA frame) by March 24
+- [ ] Update freelancermap profile
+- [ ] Identify 50 engineering leaders for outreach
 
-### Phase 2: During the trip (March 28 — April 14)
+### Phase 2: Trip (March 28 — April 14)
 
-- [ ] Publish Post A (VSM frame) for comparison
-- [ ] Send outreach messages (Experiment 3) — can be done in batches
-- [ ] Apply to 10 freelance projects (Experiment 4)
-- [ ] Apply to 5 employment roles (Experiment 5)
-- [ ] Monitor responses and engagement daily (15 min/day)
-- [ ] Track all data in the spreadsheet
+- [ ] Publish LinkedIn Post A (VSM frame) for comparison
+- [ ] Send outreach messages in batches
+- [ ] Apply to 10 freelance projects
+- [ ] Apply to 5 employment roles
+- [ ] Monitor daily (15 min)
 
 ### Phase 3: After return (April 14+)
 
-- [ ] Compile results from all 5 experiments
-- [ ] Update this document with findings
-- [ ] Build **Future Reality Tree** based on what we've learned
-- [ ] Decide: double down on consulting with new positioning, pivot to employment, or hybrid
-- [ ] If consulting → build the "unrefusable offer" using Goldratt's market segmentation
-- [ ] If employment → optimize CV and interview prep for roles with most demand
-- [ ] If hybrid → design the split (e.g., 3 days employment + 2 days Miguel Dias Consulting)
+- [ ] Compile experiment results
+- [ ] Update this document
+- [ ] Build Future Reality Tree
+- [ ] Decide: Option A (repackage), B (pivot), or C (hybrid)
 
 ---
 
-## 6. Key market data collected so far
+## 8. Key market data
 
-**German freelance market (2025-2026):** Overall market slowed 20%+ since 2023. AI/ML demand nearly quadrupled in the same period. Top-paid: SAP (€111/hr), Management/IT Consulting (€120/hr). Highest-growth skills: Python + AI libraries, Cloud Security, Data Engineering, Compliance (GDPR/DORA). 56% of freelancers now acquire work through networks (up from 30%). Project acquisition is the #1 challenge for 60% of freelancers.
+**German freelance market (2025-2026):** Market slowed 20%+ since 2023. AI/ML demand nearly quadrupled. Top-paid: SAP €111/hr, Management/IT Consulting €120/hr. 56% acquire work through networks. Project acquisition is #1 challenge for 60%.
 
-**The AI productivity paradox (Faros AI):** Teams with high AI adoption: +21% tasks, +98% PRs merged. But: +91% review time, +9% bugs, +154% PR size. At company level: zero correlation between AI adoption and throughput/DORA/quality. Root cause: downstream bottlenecks absorb all gains.
+**DORA 2025 (n=4,916):** 90% use AI. 80%+ say it increased productivity. 30% don't trust AI-generated code. AI improves throughput BUT increases instability. Zero effect on burnout/friction. Higher expectations absorb capacity gains. "Without VSM, AI creates localized pockets of productivity lost to downstream chaos." VSM is "force multiplier for AI." 7 team archetypes; 40% are high performers.
 
-**AI adoption in Germany (empirical study, Jan 2026):** Experience level moderates benefits. Biggest barrier: limited awareness of project context. German orgs face additional GDPR + EU AI Act pressures. Mittelstand lacks resources for private AI infrastructure. Over 80% of firms across US/UK/Germany/Australia report no impact on productivity from AI despite 70% actively using it.
+**Faros AI:** +21% tasks, +98% PRs, +91% review time, +9% bugs, +154% PR size. Zero company-level correlation with throughput/DORA/quality.
 
----
-
-## 7. Open questions
-
-1. What specific words do German buyers use when experiencing the AI productivity paradox?
-2. Are Berlin companies hiring for "engineering effectiveness" or "developer experience" roles?
-3. What's the rate differential between "agile coach" and "AI adoption consultant" gigs?
-4. How many of the 280+ engineering leaders in my LinkedIn network are at companies investing in AI tools?
-5. Is there a "fractional VP of Engineering" market emerging in Berlin startups?
-6. What are successful consultants in adjacent spaces (not VSM) actually selling?
+**AI adoption in Germany (Jan 2026 study):** #1 barrier is limited awareness of project context. GDPR + EU AI Act pressures. 80% of firms report no productivity impact despite 70% using AI.
 
 ---
 
-*Living document. Update after each experiment with findings and revised hypotheses.*
+## 9. Open questions
+
+1. What specific words do German buyers use when experiencing DORA-documented problems?
+2. What buyer UDEs (B-1 to B-7) are strongest? Which can be overcome?
+3. What have leaders recently spent money on? What made them say yes?
+4. What's the rate differential between "agile coach" and "AI" gigs?
+5. Is "fractional VP of Engineering" a recognized model in Berlin?
+6. What are consultants who ARE making money actually selling?
+
+---
+
+*Living document. Update after each experiment.*
