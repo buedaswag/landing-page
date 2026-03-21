@@ -6,9 +6,11 @@ interface Props {
   url: string;
   image?: string;
   base: string;
+  draft?: boolean;
 }
 
-const { title, description, date, url, image, base } = Astro.props;
+const { title, description, date, url, image, base, draft } = Astro.props;
+const displayTitle = import.meta.env.DEV && draft ? `DRAFT: ${title}` : title;
 
 // Remove base from image path as it's causing issues
 const formattedImage = image;
@@ -21,7 +23,7 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 
 <article class="post-preview" data-post-url={url}>
   <a href={url} class="post-link">
-    <h2>{title}</h2>
+    <h2>{displayTitle}</h2>
     <time datetime={date}>{formattedDate}</time>
     {formattedImage && (
       <div class="image-container">
