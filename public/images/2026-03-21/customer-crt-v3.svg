@@ -23,22 +23,22 @@
 <rect x="60" y="115" width="300" height="62" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.8"/>
 <text class="confirmed" x="76" y="130">CONFIRMED</text>
 <text class="felt-pain" x="280" y="130">BUYING TRIGGER</text>
-<text class="th" x="210" y="148" text-anchor="middle" fill="#791F1F">Delivery is unpredictable</text>
+<text class="th" x="210" y="148" text-anchor="middle" fill="#791F1F">C1: Delivery is unpredictable</text>
 <text class="ts" x="210" y="164" text-anchor="middle" fill="#A32D2D">"What's getting in the way of predictable delivery?"</text>
 
 <rect x="400" y="115" width="280" height="62" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.8"/>
 <text class="confirmed" x="416" y="130">CONFIRMED</text>
-<text class="th" x="540" y="148" text-anchor="middle" fill="#791F1F">Throughput is low</text>
-<text class="ts" x="540" y="164" text-anchor="middle" fill="#A32D2D">Too much WIP í Little's Law í slow flow.</text>
+<text class="th" x="540" y="148" text-anchor="middle" fill="#791F1F">C2: Throughput is low</text>
+<text class="ts" x="540" y="164" text-anchor="middle" fill="#A32D2D">Too much WIP ù Little's Law ù slow flow.</text>
 
 <rect x="720" y="115" width="300" height="62" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.8"/>
 <text class="inferred" x="736" y="130">INFERRED</text>
-<text class="th" x="870" y="148" text-anchor="middle" fill="#791F1F">Customer satisfaction declining</text>
+<text class="th" x="870" y="148" text-anchor="middle" fill="#791F1F">C3: Customer satisfaction declining</text>
 <text class="ts" x="870" y="164" text-anchor="middle" fill="#A32D2D">Late deliveries, missing features, quality issues.</text>
 
 <rect x="1060" y="115" width="300" height="62" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.8"/>
 <text class="inferred" x="1076" y="130">INFERRED</text>
-<text class="th" x="1210" y="148" text-anchor="middle" fill="#791F1F">Revenue at risk</text>
+<text class="th" x="1210" y="148" text-anchor="middle" fill="#791F1F">C4: Revenue at risk</text>
 <text class="ts" x="1210" y="164" text-anchor="middle" fill="#A32D2D">Can't penetrate market. Lose deals.</text>
 
 <!-- ===== TIER 2: DELIVERY SYSTEM PROBLEMS ===== -->
@@ -46,25 +46,25 @@
 
 <rect x="60" y="250" width="300" height="62" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.8"/>
 <text class="confirmed" x="76" y="265">CONFIRMED</text>
-<text class="th" x="210" y="283" text-anchor="middle" fill="#712B13">Planning is wildly inconsistent</text>
+<text class="th" x="210" y="283" text-anchor="middle" fill="#712B13">C5: Planning is wildly inconsistent</text>
 <text class="ts" x="210" y="299" text-anchor="middle" fill="#993C1D">Same-day to 6 months. Plans inflated. Missing pieces.</text>
 
 <rect x="400" y="250" width="280" height="62" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.8"/>
 <text class="confirmed" x="416" y="265">CONFIRMED + WORKSHOP</text>
-<text class="th" x="540" y="283" text-anchor="middle" fill="#712B13">Too much WIP</text>
+<text class="th" x="540" y="283" text-anchor="middle" fill="#712B13">C6: Too much WIP</text>
 <text class="ts" x="540" y="299" text-anchor="middle" fill="#993C1D">Customer said: "Too much work." Teams on 5+ things.</text>
 
 <rect x="720" y="250" width="300" height="62" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.8"/>
 <text class="confirmed" x="736" y="265">CONFIRMED</text>
-<text class="th" x="870" y="283" text-anchor="middle" fill="#712B13">Late discovery of missing pieces</text>
+<text class="th" x="870" y="283" text-anchor="middle" fill="#712B13">C7: Late discovery of missing pieces</text>
 <text class="ts" x="870" y="299" text-anchor="middle" fill="#993C1D">Find out just before delivery that something is wrong.</text>
 
 <rect x="1060" y="250" width="300" height="62" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.8"/>
 <text class="confirmed" x="1076" y="265">DORA 2025</text>
-<text class="th" x="1210" y="283" text-anchor="middle" fill="#712B13">AI increases instability</text>
+<text class="th" x="1210" y="283" text-anchor="middle" fill="#712B13">C8: AI increases instability</text>
 <text class="ts" x="1210" y="299" text-anchor="middle" fill="#993C1D">More PRs, more bugs, bigger changes, slower reviews.</text>
 
-<!-- Arrows tier 2 í tier 1 -->
+<!-- Arrows tier 2 ù tier 1 -->
 <line x1="210" y1="250" x2="210" y2="177" class="arr" marker-end="url(#arrow)"/>
 <line x1="540" y1="250" x2="210" y2="177" class="arr" marker-end="url(#arrow)"/>
 <line x1="540" y1="250" x2="540" y2="177" class="arr" marker-end="url(#arrow)"/>
@@ -78,25 +78,25 @@
 
 <rect x="60" y="390" width="280" height="62" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
 <text class="confirmed" x="76" y="405">CONFIRMED + WORKSHOP</text>
-<text class="th" x="200" y="423" text-anchor="middle" fill="#633806">No WIP limits</text>
+<text class="th" x="200" y="423" text-anchor="middle" fill="#633806">C9: No WIP limits</text>
 <text class="ts" x="200" y="439" text-anchor="middle" fill="#854F0B">"Unclear prioritization." Everything is a priority.</text>
 
 <rect x="380" y="390" width="300" height="62" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
 <text class="confirmed" x="396" y="405">CONFIRMED + WORKSHOP</text>
-<text class="th" x="530" y="423" text-anchor="middle" fill="#633806">No visibility into the value stream</text>
+<text class="th" x="530" y="423" text-anchor="middle" fill="#633806">C10: No visibility into the value stream</text>
 <text class="ts" x="530" y="439" text-anchor="middle" fill="#854F0B">"Understand connections between modules." No e2e view.</text>
 
 <rect x="720" y="390" width="300" height="62" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
 <text class="confirmed" x="736" y="405">CONFIRMED + WORKSHOP</text>
-<text class="th" x="870" y="423" text-anchor="middle" fill="#633806">Work pushed in, not pulled</text>
+<text class="th" x="870" y="423" text-anchor="middle" fill="#633806">C11: Work pushed in, not pulled</text>
 <text class="ts" x="870" y="439" text-anchor="middle" fill="#854F0B">"Unclear prioritization." Leadership pushes without capacity check.</text>
 
 <rect x="1060" y="390" width="300" height="62" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
 <text class="confirmed" x="1076" y="405">DORA 2025 + FAROS</text>
-<text class="th" x="1210" y="423" text-anchor="middle" fill="#633806">AI amplifies existing dysfunction</text>
+<text class="th" x="1210" y="423" text-anchor="middle" fill="#633806">C12: AI amplifies existing dysfunction</text>
 <text class="ts" x="1210" y="439" text-anchor="middle" fill="#854F0B">More output, same bottlenecks, more chaos.</text>
 
-<!-- Arrows tier 3 í tier 2 -->
+<!-- Arrows tier 3 ù tier 2 -->
 <line x1="200" y1="390" x2="540" y2="312" class="arr" marker-end="url(#arrow)"/>
 <line x1="200" y1="390" x2="210" y2="312" class="arr" marker-end="url(#arrow)"/>
 <line x1="530" y1="390" x2="870" y2="312" class="arr" marker-end="url(#arrow)"/>
@@ -111,61 +111,65 @@
 
 <rect x="60" y="530" width="320" height="72" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.8"/>
 <text class="confirmed" x="76" y="545">DORA 2025 + FAROS</text>
-<text class="th" x="220" y="565" text-anchor="middle" fill="#3C3489">AI produces real local gains</text>
+<text class="th" x="220" y="565" text-anchor="middle" fill="#3C3489">C13: AI produces real local gains</text>
 <text class="ts" x="220" y="581" text-anchor="middle" fill="#534AB7">Individual throughput up. PRs +98%. Tasks +21%.</text>
 <text class="ts" x="220" y="595" text-anchor="middle" fill="#534AB7">These gains are real  but local, not system-level.</text>
 
 <rect x="420" y="530" width="320" height="72" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.8"/>
 <text class="inferred" x="436" y="545">INFERRED (90% adoption)</text>
-<text class="th" x="580" y="565" text-anchor="middle" fill="#3C3489">Board/CEO pressure to adopt AI</text>
+<text class="th" x="580" y="565" text-anchor="middle" fill="#3C3489">C14: Board/CEO pressure to adopt AI</text>
 <text class="ts" x="580" y="581" text-anchor="middle" fill="#534AB7">Career risk to NOT adopt. "We need an AI strategy."</text>
 <text class="ts" x="580" y="595" text-anchor="middle" fill="#534AB7">AI is legible to boards; flow management is not.</text>
 
 <rect x="780" y="530" width="320" height="72" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.8"/>
 <text class="confirmed" x="796" y="545">DORA 2025</text>
 <text class="felt-pain" x="1020" y="545">BUYING TRIGGER</text>
-<text class="th" x="940" y="565" text-anchor="middle" fill="#3C3489">Local gains mask system problems</text>
+<text class="th" x="940" y="565" text-anchor="middle" fill="#3C3489">C15: Local gains mask system problems</text>
 <text class="ts" x="940" y="581" text-anchor="middle" fill="#534AB7">80% report no company-level productivity impact.</text>
-<text class="ts" x="940" y="595" text-anchor="middle" fill="#534AB7">More WIP at the bottleneck í more chaos, not less.</text>
+<text class="ts" x="940" y="595" text-anchor="middle" fill="#534AB7">More WIP at the bottleneck ù more chaos, not less.</text>
 
 <rect x="1140" y="530" width="220" height="72" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.8"/>
 <text class="confirmed" x="1156" y="545">DORA 2025</text>
 <text class="felt-pain" x="1280" y="545">BUYING TRIGGER</text>
-<text class="th" x="1250" y="565" text-anchor="middle" fill="#3C3489">Leaders drowning</text>
+<text class="th" x="1250" y="565" text-anchor="middle" fill="#3C3489">C16: Leaders drowning</text>
 <text class="ts" x="1250" y="581" text-anchor="middle" fill="#534AB7">40+ action items/day. AI has zero</text>
 <text class="ts" x="1250" y="595" text-anchor="middle" fill="#534AB7">effect on burnout (DORA 2025).</text>
 
-<!-- Arrows tier 4 í tier 3 -->
+<!-- Arrows tier 4 ù tier 3 -->
 <line x1="220" y1="530" x2="1210" y2="452" class="arr" marker-end="url(#arrow)"/>
 <line x1="580" y1="530" x2="1210" y2="452" class="arr" marker-end="url(#arrow)"/>
 <line x1="940" y1="530" x2="200" y2="452" class="arr" marker-end="url(#arrow)"/>
 <line x1="940" y1="530" x2="530" y2="452" class="arr" marker-end="url(#arrow)"/>
 <line x1="1250" y1="530" x2="870" y2="452" class="arr" marker-end="url(#arrow)"/>
+<!-- NEW: C13 (AI local gains) ? C15 (local gains mask system problems) -->
+<line x1="380" y1="566" x2="780" y2="566" class="arr" marker-end="url(#arrow)" stroke="#534AB7" stroke-width="1.4"/>
+<!-- NEW: C20 (Kanban stripped) ? C15 (local gains mask system problems) -->
+<line x1="1220" y1="680" x2="940" y2="602" class="arr" marker-end="url(#arrow)" stroke="#534AB7" stroke-width="1.4" stroke-dasharray="5 3"/>
 
 <!-- ===== TIER 5: CULTURE ===== -->
 <text class="th" x="700" y="660" text-anchor="middle" fill="#085041">People and culture (why it doesn't get fixed)</text>
 
 <rect x="60" y="680" width="300" height="62" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
 <text class="confirmed" x="76" y="695">CONFIRMED + DORA</text>
-<text class="th" x="210" y="713" text-anchor="middle" fill="#085041">Everyone is too busy to fix the system</text>
+<text class="th" x="210" y="713" text-anchor="middle" fill="#085041">C17: Everyone is too busy to fix the system</text>
 <text class="ts" x="210" y="729" text-anchor="middle" fill="#0F6E56">40+ items/day. No time for improvement work.</text>
 
 <rect x="400" y="680" width="300" height="62" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
 <text class="hypothesized" x="416" y="695">HYPOTHESIZED</text>
-<text class="th" x="550" y="713" text-anchor="middle" fill="#085041">Delivery is seen as unfixable</text>
+<text class="th" x="550" y="713" text-anchor="middle" fill="#085041">C18: Delivery is seen as unfixable</text>
 <text class="ts" x="550" y="729" text-anchor="middle" fill="#0F6E56">Leaders treat it as weather, not engineering.</text>
 
 <rect x="740" y="680" width="300" height="62" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
 <text class="hypothesized" x="756" y="695">HYPOTHESIZED</text>
-<text class="th" x="890" y="713" text-anchor="middle" fill="#085041">Previous attempts failed</text>
+<text class="th" x="890" y="713" text-anchor="middle" fill="#085041">C19: Previous attempts failed</text>
 <text class="ts" x="890" y="729" text-anchor="middle" fill="#0F6E56">Hired agile coaches. Tried Scrum. Didn't stick.</text>
 
 <rect x="1080" y="680" width="280" height="62" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
 <text class="confirmed" x="1096" y="695">DORA 2025</text>
-<text class="th" x="1220" y="713" text-anchor="middle" fill="#085041">Kanban stripped to ceremonies</text>
+<text class="th" x="1220" y="713" text-anchor="middle" fill="#085041">C20: Kanban stripped to ceremonies</text>
 <text class="ts" x="1220" y="729" text-anchor="middle" fill="#0F6E56">WIP management purpose lost.</text>
 
-<!-- Arrows tier 5 í tier 4 + tier 3 -->
+<!-- Arrows tier 5 ù tier 4 + tier 3 -->
 <line x1="210" y1="680" x2="200" y2="452" class="arr" marker-end="url(#arrow)"/>
 <line x1="210" y1="680" x2="870" y2="452" class="arr" marker-end="url(#arrow)"/>
 <line x1="550" y1="680" x2="530" y2="452" class="arr" marker-end="url(#arrow)"/>
@@ -178,7 +182,7 @@
 <text class="th" x="700" y="832" text-anchor="middle" fill="#501313" font-size="16">CORE PROBLEM: Nobody manages the flow of work through the system</text>
 <text class="ts" x="700" y="850" text-anchor="middle" fill="#791F1F">All root causes trace here. All consultants address symptoms. Addressing THIS = dominant competitive edge.</text>
 
-<!-- Arrows core problem í root causes -->
+<!-- Arrows core problem ù root causes -->
 <line x1="700" y1="800" x2="200" y2="452" class="arr" marker-end="url(#arrow)"/>
 <line x1="700" y1="800" x2="530" y2="452" class="arr" marker-end="url(#arrow)"/>
 <line x1="700" y1="800" x2="870" y2="452" class="arr" marker-end="url(#arrow)"/>
@@ -195,27 +199,27 @@
 
 <rect x="60" y="1000" width="250" height="62" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.8"/>
 <text class="hypothesized" x="76" y="1015">HYPOTHESIZED</text>
-<text class="th" x="185" y="1033" text-anchor="middle" fill="#0C447C">Budget risk</text>
+<text class="th" x="185" y="1033" text-anchor="middle" fill="#0C447C">B1: Budget risk</text>
 <text class="ts" x="185" y="1049" text-anchor="middle" fill="#185FA5">Fought to get budget. Can't waste it.</text>
 
 <rect x="340" y="1000" width="250" height="62" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.8"/>
 <text class="hypothesized" x="356" y="1015">HYPOTHESIZED</text>
-<text class="th" x="465" y="1033" text-anchor="middle" fill="#0C447C">Reputation risk</text>
+<text class="th" x="465" y="1033" text-anchor="middle" fill="#0C447C">B2: Reputation risk</text>
 <text class="ts" x="465" y="1049" text-anchor="middle" fill="#185FA5">If it fails, I look bad to leadership.</text>
 
 <rect x="620" y="1000" width="250" height="62" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.8"/>
 <text class="hypothesized" x="636" y="1015">HYPOTHESIZED</text>
-<text class="th" x="745" y="1033" text-anchor="middle" fill="#0C447C">Generic advice risk</text>
+<text class="th" x="745" y="1033" text-anchor="middle" fill="#0C447C">B3: Generic advice risk</text>
 <text class="ts" x="745" y="1049" text-anchor="middle" fill="#185FA5">Consultant gives slides, not solutions.</text>
 
 <rect x="900" y="1000" width="250" height="62" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.8"/>
 <text class="hypothesized" x="916" y="1015">HYPOTHESIZED</text>
-<text class="th" x="1025" y="1033" text-anchor="middle" fill="#0C447C">AI is free, why pay?</text>
+<text class="th" x="1025" y="1033" text-anchor="middle" fill="#0C447C">B4: AI is free, why pay?</text>
 <text class="ts" x="1025" y="1049" text-anchor="middle" fill="#185FA5">Admitting AI isn't working is political.</text>
 
 <rect x="1180" y="1000" width="180" height="62" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.8"/>
 <text class="hypothesized" x="1196" y="1015">HYPOTHESIZED</text>
-<text class="th" x="1270" y="1033" text-anchor="middle" fill="#0C447C">No bandwidth</text>
+<text class="th" x="1270" y="1033" text-anchor="middle" fill="#0C447C">B5: No bandwidth</text>
 <text class="ts" x="1270" y="1049" text-anchor="middle" fill="#185FA5">Too busy to onboard help.</text>
 
 <!-- ===== COMPARISON SET ===== -->
@@ -252,7 +256,7 @@
 <rect x="60" y="1395" width="310" height="90" rx="10" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.8"/>
 <text class="th" x="215" y="1417" text-anchor="middle" fill="#27500A">Reduce lead time to value</text>
 <text class="ts" x="215" y="1437" text-anchor="middle" fill="#3B6D11">Show value in 2 weeks, not 3 months.</text>
-<text class="ts" x="215" y="1453" text-anchor="middle" fill="#3B6D11">Quick diagnostic í surface top bottleneck í</text>
+<text class="ts" x="215" y="1453" text-anchor="middle" fill="#3B6D11">Quick diagnostic ù surface top bottleneck ù</text>
 <text class="ts" x="215" y="1469" text-anchor="middle" fill="#3B6D11">one actionable fix immediately.</text>
 
 <rect x="400" y="1395" width="280" height="90" rx="10" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.8"/>
