@@ -16,19 +16,6 @@ services:
     command: >
       sh -c "npm install --package-lock-only && npm run dev -- --host 0.0.0.0 --port 4444"
 
-  preview:
-    build: .
-    profiles: ["preview"]
-    ports:
-      - "4444:4444"
-    volumes:
-      - .:/app
-      - /app/node_modules
-    networks:
-      - blog-net
-    command: >
-      sh -c "npm install --package-lock-only && npm run build && npm run preview -- --host 0.0.0.0 --port 4444"
-
 networks:
   blog-net:
     driver: bridge
