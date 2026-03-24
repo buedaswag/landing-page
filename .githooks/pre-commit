@@ -12,8 +12,14 @@ if git diff --name-only | grep -qE '^package(-lock)?\.json$'; then
   exit 1
 fi
 
-echo "🔄 Pre-commit: running tests (no rebuild)..."
+echo "🔄 Pre-commit: ensuring server is running..."
+python scripts/ensure_server.py
+if [ $? -ne 0 ]; then
+    echo "❌ Failed to start server. Commit blocked."
+    exit 1
+fi
 
+echo "🔄 Pre-commit: running tests..."
 python -m unittest discover tests/
 
 test_exit_code=$?
