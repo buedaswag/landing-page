@@ -25,5 +25,5 @@ class SiteTestCase(unittest.TestCase):
         except requests.exceptions.RequestException as e:
             raise RuntimeError(
                 f"Server not responding at {cls.BASE_URL}. "
-                f"Run: python scripts/ensure_server.py"
+                f"Run: python scripts/ensure_server.py pre-commit"
             ) from e

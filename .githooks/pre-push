@@ -2,11 +2,11 @@
 
 echo "🔄 Pre-push: rebuild production artifact + test..."
 
-# Stop everything (web or preview, whatever is running)
-docker compose --profile preview down
-
-# Start only the preview container
-docker compose --profile preview up --build -d preview
+python scripts/ensure_server.py pre-push
+if [ $? -ne 0 ]; then
+    echo "❌ Failed to start preview server. Push blocked."
+    exit 1
+fi
 
 PRE_PUSH=1 python -m unittest discover tests/
 
