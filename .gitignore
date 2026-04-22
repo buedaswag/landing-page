@@ -1,5 +1,8 @@
 .DS_Store
 
+# Claude Code: local settings + isolated worktrees (large, machine-specific)
+.claude/
+
 # Build output
 dist/
 

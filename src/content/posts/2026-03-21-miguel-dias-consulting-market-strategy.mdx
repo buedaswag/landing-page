@@ -69,7 +69,7 @@ v1 had a single injection: "lead with the pain AI creates, use VSM/flow as the d
 
 ## 3. Customer's current reality tree
 
-![Customer CRT v3](/images/2026-03-21/customer-crt-v3.svg)
+<img src="/images/2026-03-21/customer-crt-v3.svg" alt="Customer CRT v3" width="1400" height="2020" />
 <a href="https://www.figma.com/online-whiteboard/create-diagram/0a6f568f-ed3f-4163-b8d9-388a71d6e17c?utm_source=cursor&utm_content=edit_in_figjam" target="_blank" rel="noopener noreferrer">View in FigJam</a>
 
 **This tree is grounded in real data.** The top half (delivery pain, system problems, root causes, culture) comes from two sources: firsthand observations from two years of mapping delivery flows with engineering organizations, and DORA 2025 research (n=4,916). Each node is tagged by evidence level: CONFIRMED (observed firsthand or research-backed), CONFIRMED + WORKSHOP (customer said it unprompted), INFERRED (strong inference from data), or HYPOTHESIZED (needs validation).
@@ -161,17 +161,37 @@ v1 was structured around generic buyer pain categories (delivery unpredictable, 
 
 ## 4. Methodology note — how we're applying Goldratt's thinking process
 
-### The five TOC thinking process tools
+### How to build each tree
 
-Goldratt's Thinking Process answers three questions: *What to change? What to change to? How to cause the change?*
+**Current Reality Tree (CRT)** — *What to change?*
+1. List 5-10 UDEs (undesirable effects) you're experiencing
+2. Connect them with "if... then..." cause-effect arrows
+3. Keep asking "why?" and adding causes below
+4. Look for where multiple arrows converge — that's your core problem
 
-| Tool | Question it answers | What it does |
-|---|---|---|
-| **Current Reality Tree (CRT)** | What to change? | Maps cause-and-effect from observable UDEs (undesirable effects) down to the core problem. Read bottom-up: causes flow upward to effects. |
-| **Evaporating Cloud (EC)** | What to change to? | Surfaces the underlying conflict that perpetuates the core problem. Generates injections (breakthrough ideas) by challenging the assumptions behind each arrow. |
-| **Future Reality Tree (FRT)** | Does the injection work? | Tests whether the injections actually eliminate the UDEs. Uses Negative Branch Reservations (NBRs) to find unintended consequences and add trimming injections. |
-| **Prerequisite Tree (PRT)** | What stands in the way? | Maps obstacles between the current state and the desired injection. Each obstacle becomes an intermediate objective. |
-| **Transition Tree (TT)** | How to cause the change? | Detailed action plan with cause-effect logic for each step. Each action has a reason (from the PRT) and an expected effect. |
+**Evaporating Cloud (EC)** — *What to change to?*
+1. State the conflict: "I need A, but I also need B, and they contradict"
+2. Write the objective both sides serve
+3. For each arrow, ask: "what assumption makes this seem necessary?"
+4. Challenge each assumption — the broken one is your injection (breakthrough)
+
+**Future Reality Tree (FRT)** — *Does the injection work?*
+1. Take the injection from the EC
+2. Map it forward with "if injection, then..." cause-effect
+3. Check: does it eliminate the original UDEs?
+4. For each new effect, ask: "could this cause something bad?" (Negative Branch Reservation). If yes, add a trimming injection.
+
+**Prerequisite Tree (PRT)** — *What stands in the way?*
+1. State the injection you want to implement
+2. List every obstacle between here and there
+3. For each obstacle, define an intermediate objective that overcomes it
+4. Sequence the intermediate objectives by dependency
+
+**Transition Tree (TT)** — *How to cause the change?*
+1. Take the sequenced objectives from the PRT
+2. For each objective, define the specific action
+3. State the expected effect of each action
+4. Verify: does each action's effect enable the next action?
 
 ### Where we are in this sequence
 

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 420" width="720" height="420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Value stream map showing the agent loop: decompose, assign, commit in small batches, capture outcomes, feed back. Supported by platform engineering, DevOps, and continuous delivery as table stakes.">
+  <defs>
+    <marker id="arrowAccent" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b8391f"/>
+    </marker>
+    <marker id="arrowMute" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1a1814"/>
+    </marker>
+    <marker id="arrowDash" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L8,4 L0,8 z" fill="#8a8680"/>
+    </marker>
+  </defs>
+
+  <path d="M 640 150 C 640 40, 80 40, 80 150" fill="none" stroke="#b8391f" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrowAccent)"/>
+  <text x="360" y="32" text-anchor="middle" font-family="'Fraunces', serif" font-style="italic" font-size="15" fill="#b8391f">close the loop &#8212; and start again</text>
+
+  <line x1="104" y1="175" x2="168" y2="175" stroke="#1a1814" stroke-width="1.25" marker-end="url(#arrowMute)"/>
+  <line x1="244" y1="175" x2="308" y2="175" stroke="#1a1814" stroke-width="1.25" marker-end="url(#arrowMute)"/>
+  <line x1="384" y1="175" x2="448" y2="175" stroke="#1a1814" stroke-width="1.25" marker-end="url(#arrowMute)"/>
+  <line x1="524" y1="175" x2="588" y2="175" stroke="#1a1814" stroke-width="1.25" marker-end="url(#arrowMute)"/>
+
+  <circle cx="80" cy="175" r="24" fill="#f5f1e8" stroke="#1a1814" stroke-width="1.5"/>
+  <text x="80" y="180" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="14" fill="#1a1814">1</text>
+  <text x="80" y="222" text-anchor="middle" font-size="12" font-weight="500" fill="#1a1814">Decompose</text>
+  <text x="80" y="238" text-anchor="middle" font-size="10" fill="#8a8680">task &#8594; pieces</text>
+
+  <circle cx="220" cy="175" r="24" fill="#f5f1e8" stroke="#1a1814" stroke-width="1.5"/>
+  <text x="220" y="180" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="14" fill="#1a1814">2</text>
+  <text x="220" y="222" text-anchor="middle" font-size="12" font-weight="500" fill="#1a1814">Assign</text>
+  <text x="220" y="238" text-anchor="middle" font-size="10" fill="#8a8680">one agent per piece</text>
+
+  <circle cx="360" cy="175" r="24" fill="#b8391f" stroke="#b8391f" stroke-width="1.5"/>
+  <text x="360" y="180" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="14" fill="#f5f1e8">3</text>
+  <text x="360" y="222" text-anchor="middle" font-size="12" font-weight="500" fill="#1a1814">Commit small</text>
+  <text x="360" y="238" text-anchor="middle" font-size="10" fill="#8a8680">flags + TDD, to trunk</text>
+
+  <circle cx="500" cy="175" r="24" fill="#b8391f" stroke="#b8391f" stroke-width="1.5"/>
+  <text x="500" y="180" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="14" fill="#f5f1e8">4</text>
+  <text x="500" y="222" text-anchor="middle" font-size="12" font-weight="500" fill="#1a1814">Capture outcomes</text>
+  <text x="500" y="238" text-anchor="middle" font-size="10" fill="#8a8680">usage, reliability, $</text>
+
+  <circle cx="640" cy="175" r="24" fill="#f5f1e8" stroke="#1a1814" stroke-width="1.5"/>
+  <text x="640" y="180" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="14" fill="#1a1814">5</text>
+  <text x="640" y="222" text-anchor="middle" font-size="12" font-weight="500" fill="#1a1814">Feed back</text>
+  <text x="640" y="238" text-anchor="middle" font-size="10" fill="#8a8680">learning &#8594; next loop</text>
+
+  <line x1="40" y1="280" x2="680" y2="280" stroke="#d8d2c2" stroke-width="1"/>
+  <text x="40" y="302" font-family="'IBM Plex Mono', monospace" font-size="10" letter-spacing="2" fill="#8a8680">TABLE STAKES</text>
+
+  <rect x="80" y="328" width="168" height="54" rx="2" fill="#f5f1e8" stroke="#d8d2c2" stroke-width="1"/>
+  <text x="164" y="352" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="14" fill="#1a1814">Platform engineering</text>
+  <text x="164" y="369" text-anchor="middle" font-size="10" fill="#8a8680">self-serve envs, evals, CI</text>
+
+  <rect x="276" y="328" width="168" height="54" rx="2" fill="#f5f1e8" stroke="#d8d2c2" stroke-width="1"/>
+  <text x="360" y="352" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="14" fill="#1a1814">Good DevOps</text>
+  <text x="360" y="369" text-anchor="middle" font-size="10" fill="#8a8680">trunk, small batches, fast feedback</text>
+
+  <rect x="472" y="328" width="168" height="54" rx="2" fill="#f5f1e8" stroke="#d8d2c2" stroke-width="1"/>
+  <text x="556" y="352" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="14" fill="#1a1814">Continuous delivery</text>
+  <text x="556" y="369" text-anchor="middle" font-size="10" fill="#8a8680">every commit a candidate</text>
+
+  <line x1="164" y1="326" x2="164" y2="262" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrowDash)"/>
+  <line x1="360" y1="326" x2="360" y2="262" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrowDash)"/>
+  <line x1="556" y1="326" x2="556" y2="262" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrowDash)"/>
+</svg>

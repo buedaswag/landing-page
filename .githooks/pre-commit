@@ -1,8 +1,27 @@
 #!/bin/sh
 
-echo "🔄 Pre-commit: running npm audit fix..."
+echo "🔄 Pre-commit: ensuring server is running..."
+python scripts/ensure_server.py pre-commit
+if [ $? -ne 0 ]; then
+    echo "❌ Failed to start server. Commit blocked."
+    exit 1
+fi
 
-docker compose run --rm web npm audit fix 2>/dev/null || true
+echo "🔄 Pre-commit: running npm audit fix..."
+# Prefer `exec` against the running web service (fast, node_modules populated).
+# Fall back to a throwaway container that installs deps first — the previous
+# hook ran `docker compose run --rm web npm audit fix`, which bypasses the
+# service's default `npm install` command and left node_modules empty, so
+# `npm audit fix` silently no-oped.
+if docker compose ps --services --filter status=running 2>/dev/null | grep -qx web; then
+    audit_cmd="docker compose exec -T web npm audit fix"
+else
+    audit_cmd="docker compose run --rm web sh -c 'npm install --no-audit --no-fund && npm audit fix'"
+fi
+# `npm audit fix` returns non-zero when vulnerabilities remain after patching.
+# That's expected and is handled by the high-gated test below; we only care
+# that the command itself could execute.
+eval "$audit_cmd" || true
 
 if git diff --name-only | grep -qE '^package(-lock)?\.json$'; then
   echo ""
@@ -12,13 +31,20 @@ if git diff --name-only | grep -qE '^package(-lock)?\.json$'; then
   exit 1
 fi
 
-echo "🔄 Pre-commit: ensuring server is running..."
-python scripts/ensure_server.py pre-commit
-if [ $? -ne 0 ]; then
-    echo "❌ Failed to start server. Commit blocked."
-    exit 1
+# Non-blocking visibility on moderate+ vulns. The hook's hard gate is `high`
+# (see tests/test_security.py). Dependabot surfaces these in the Security
+# tab too; this just puts them in front of the human on every commit.
+echo ""
+echo "🔎 Pre-commit: remaining moderate+ vulnerabilities (non-blocking)..."
+if audit_output=$(npm audit --audit-level=moderate 2>/dev/null); then
+    echo "   None."
+else
+    echo "$audit_output" | sed 's/^/   /'
+    echo ""
+    echo "   ⚠ Non-blocking — only high+ blocks commits. Track via GitHub Dependabot."
 fi
 
+echo ""
 echo "🔄 Pre-commit: running tests..."
 python -m unittest discover tests/
 
