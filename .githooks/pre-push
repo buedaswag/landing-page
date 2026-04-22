@@ -1,26 +1,4 @@
 #!/bin/sh
-
-echo "🔄 Pre-push: rebuild production artifact + test..."
-
-python scripts/ensure_server.py pre-push
-if [ $? -ne 0 ]; then
-    echo "❌ Failed to start preview server. Push blocked."
-    exit 1
-fi
-
+trap 'python scripts/ensure_server.py post-push' EXIT
+python scripts/ensure_server.py pre-push || exit 1
 PRE_PUSH=1 python -m unittest discover tests/
-
-test_exit_code=$?
-
-# Stop preview, start dev
-echo "🔄 Switching back to dev mode..."
-docker compose --profile preview down
-docker compose up -d
-
-if [ $test_exit_code -ne 0 ]; then
-    echo "❌ Tests failed. Push blocked."
-    exit 1
-fi
-
-echo "✅ All checks passed!"
-exit 0
