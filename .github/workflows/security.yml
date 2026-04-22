@@ -8,6 +8,10 @@ on:
   workflow_dispatch:
 
 jobs:
+  # NOTE: npm-audit, pip-audit, and gitleaks below are duplicated in
+  # deploy.yml. Keep them in sync — audit levels, tool versions, and
+  # Node/Python versions must match. If this starts drifting, extract
+  # into a reusable workflow (workflow_call).
   npm-audit:
     name: npm audit
     runs-on: ubuntu-latest
