@@ -21,6 +21,12 @@
     A day of listening at an AI engineering conference. Five problems people kept naming, three patterns I'd push back on — and the real question underneath, which isn't only mine: I keep hearing the same signal from colleagues far more experienced than me — technology consultants, agile and Kanban coaches, DevOps experts. What <em>are</em> they buying? For which problems? And why, when the answer looks obvious, is the cheque still so hard to get?
   </p>
 
+  <!-- COVER IMAGE -->
+  <figure class="editorial-figure">
+    <img src="/images/2026-04-16/prompt-2026-audience.png" alt="Audience at Prompt 2026, Merantix AI Campus Berlin" loading="lazy" />
+    <figcaption>Audience at Prompt 2026 · Merantix AI Campus Berlin</figcaption>
+  </figure>
+
   <!-- SECTION 1 — CHALLENGES -->
   <section>
     <div class="section-header">
@@ -80,6 +86,11 @@
         <p class="section-dek">My take, not consensus. I'd love to be wrong on any of them.</p>
       </div>
     </div>
+
+    <figure class="editorial-figure">
+      <img src="/images/2026-04-16/prompt-2026-panel.png" alt="Keynotes panel at Prompt 2026" loading="lazy" />
+      <figcaption>Keynotes panel · Prompt 2026</figcaption>
+    </figure>
 
     <div class="red-flags">
 
@@ -675,6 +686,36 @@
   .lede::first-line {
     font-variant-caps: small-caps;
     letter-spacing: 0.05em;
+  }
+
+  /* ============ EDITORIAL FIGURE ============ */
+  .editorial-figure {
+    margin: 0 0 72px;
+    padding: 0;
+  }
+
+  .editorial-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    background: var(--paper-warm);
+  }
+
+  .editorial-figure figcaption {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-mute);
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  section > .editorial-figure {
+    margin-top: 8px;
+    margin-bottom: 48px;
   }
 
   /* ============ SECTION ============ */

@@ -9,6 +9,7 @@ const posts = defineCollection({
     date: z.string(),
     image: z.string().startsWith('/'),
     draft: z.boolean().optional().default(false),
+    bareHtml: z.boolean().optional().default(false),
   }),
 });
 
