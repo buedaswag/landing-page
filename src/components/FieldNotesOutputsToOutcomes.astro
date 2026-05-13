@@ -1,0 +1,2050 @@
+---
+// no props
+---
+<main class="page">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-left">
+      <div class="kicker">v3 deck &middot; Merantix Berlin</div>
+      <h1>Going from Outputs <em>to Outcomes.</em></h1>
+    </div>
+    <div class="masthead-right">
+      <strong>Miguel Dias</strong><br>
+      Independent VSM consultant<br>
+      12 May 2026
+    </div>
+  </header>
+
+  <!-- LEDE -->
+  <p class="lede">
+    AI multiplies output, but it's not multiplying outcomes. How do we close the gap?
+  </p>
+
+  <!-- COVER IMAGE -->
+  <figure class="editorial-figure">
+    <img src="/images/2026-05-12/outputs-to-outcomes.jpg" alt="Miguel Dias presenting outputs to outcomes at Merantix Berlin" loading="lazy" />
+    <figcaption>Outputs to Outcomes &middot; Merantix Berlin</figcaption>
+  </figure>
+
+  <!-- ===================================================== -->
+  <!-- SLIDE 01 — THE FIVE PROBLEMS                          -->
+  <!-- ===================================================== -->
+  <section id="s01">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div>
+        <div class="section-title">The five problems <em>nobody stopped talking about.</em></div>
+        <p class="section-dek">Across the panel, the talks, and the coffee-line conversations at <a href="https://luma.com/prompt2026" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 1px;">Prompt 2026</a>. Ranked loosely by how often they surfaced.</p>
+      </div>
+    </div>
+
+    <div class="challenges">
+
+      <div class="challenge featured">
+        <div class="challenge-label"><span class="dot"></span>Most cited</div>
+        <h3>Output is multiplying. Outcomes aren&rsquo;t.</h3>
+        <p>An engineer shipped five microservices with AI instead of one. Nobody pays per microservice. How do we know we&rsquo;re building the right things?</p>
+        <p style="margin-top: 10px; font-size: 12px; font-style: italic; color: var(--ink-mute);">The exception that proved the rule: Intercom was the only talk that tied engineering effort to a single business metric &mdash; support cases resolved with the user&rsquo;s problem actually solved.</p>
+      </div>
+
+      <div class="challenge">
+        <div class="challenge-label"><span class="dot"></span>Recurring</div>
+        <h3>Picking what to build.</h3>
+        <p>Getting the why and the what before the how. Working closer with customers to decide what actually matters.</p>
+      </div>
+
+      <div class="challenge">
+        <div class="challenge-label"><span class="dot"></span>Recurring</div>
+        <h3>Burnout and overload.</h3>
+        <p>Context switching is up. More agents, more concurrent work. One CEO prescribed longer hours. Others pushed back.</p>
+      </div>
+
+      <div class="challenge">
+        <div class="challenge-label"><span class="dot"></span>Recurring</div>
+        <h3>Harness engineering <em style="font-weight: 400;">(the weeds of agents, PRs, CD).</em></h3>
+        <p>Everyone is building a version of this: orchestration, guardrails, feature flags, evals, the loop that keeps agents shipping safely. Different names, same problem.</p>
+      </div>
+
+      <div class="challenge">
+        <div class="challenge-label"><span class="dot"></span>Open problem</div>
+        <h3>Quality is degrading.</h3>
+        <p>More code, more bugs. Speakers named agents addressing quality <em>in production</em> as an unsolved problem.</p>
+      </div>
+
+    </div>
+
+    <p class="challenges-footer">Everyone agreed outcomes matter more than output. Nobody said <em>how.</em><br><strong>But how do we get better outcomes?</strong></p>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- SLIDE 02 — WHAT YOUR CTO WILL ASK NEXT QUARTER        -->
+  <!-- ===================================================== -->
+  <section id="s02">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div>
+        <div class="section-title">First of all, What will your CTO ask <em>end of quarter?</em></div>
+        <p class="section-dek">Three-month window. The questions you&rsquo;ll get &mdash; and what you now have answers for.</p>
+      </div>
+    </div>
+
+    <div class="accountability-map">
+      <div class="am-row">
+        <div class="am-target">&ldquo;Show me the AI ROI.&rdquo;</div>
+        <div class="am-serves">More code &ne; more revenue. What&rsquo;s the conversion mechanism we&rsquo;re building?</div>
+      </div>
+      <div class="am-row">
+        <div class="am-target">&ldquo;Are we delivering on our commitments?&rdquo;</div>
+        <div class="am-serves">Can we ship what we promised to our biggest customers, on time? If not &mdash; where is it stuck, and why?</div>
+      </div>
+      <div class="am-row am-open">
+        <div class="am-target">&ldquo;_______________________?&rdquo;</div>
+        <div class="am-serves">What&rsquo;s your CTO actually asking? The right row beats both.</div>
+      </div>
+    </div>
+
+    <p class="am-caveat">Best guess at your CTO&rsquo;s quarterly. The point of the last row is the one we haven&rsquo;t guessed.</p>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- SLIDE 03 — TWO ECONOMIES, ONE BUDGET                  -->
+  <!-- ===================================================== -->
+  <section id="s03">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div>
+        <div class="section-title">Output vs Outcome Economics</div>
+        <p class="section-dek">Local optimisation lives on Outputs. CTO targets are Outcomes.</p>
+      </div>
+    </div>
+
+    <div class="economy-cols">
+      <div class="economy-col output">
+        <div class="economy-label">Output economics</div>
+        <ul>
+          <li>code shipped</li>
+          <li>PRs merged</li>
+          <li>deploys / week</li>
+          <li>dev velocity</li>
+        </ul>
+      </div>
+      <div class="economy-col outcome">
+        <div class="economy-label">Outcome economics</div>
+        <ul>
+          <li>revenue-bearing features</li>
+          <li>bad bets killed early</li>
+          <li>end-to-end TTM</li>
+          <li>quality (fewer incidents, faster recovery)</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="closing-line"><strong>&#9656; This deck moves the conversation to the right.</strong></p>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- SLIDE 04 — THE SCENARIO                               -->
+  <!-- ===================================================== -->
+  <section id="s04">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div>
+        <div class="section-title">Example scenario, B2C</div>
+        <p class="section-dek">Feature hit rate &mdash; what % of your bets paid off?</p>
+      </div>
+    </div>
+
+    <ul class="scenario-list">
+      <li>~700 engineers &times; ~&euro;100k fully-loaded &asymp; <strong>~&euro;70M / yr</strong></li>
+      <li>~100 features shipped per year</li>
+      <li>~<strong>5&ndash;10</strong> generate significant revenue</li>
+      <li>Lead time idea-to-production: <strong>???</strong> &mdash; Why&rsquo;s is this the single most outcome-predicting metric?</li>
+    </ul>
+
+    <div class="scenario-impact">
+      <div class="si-question"><em>Now &mdash; what if 5&ndash;10 became 15?</em></div>
+      <div class="si-formula">5&ndash;10 extra winners &times; &euro;500k&ndash;1.5M each</div>
+      <div class="si-number">&asymp; &euro;2.5M &ndash; &euro;15M / yr upside</div>
+      <p class="si-note">Same team. Same budget. <strong>That&rsquo;s the prize this deck is chasing.</strong></p>
+    </div>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- SLIDE 05 — THREE WAYS TO MOVE THE NUMBER              -->
+  <!-- ===================================================== -->
+  <section id="s05">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <div>
+        <div class="section-title">Three ways to <em>move feature hit rate.</em></div>
+        <p class="section-dek">What % of your bets paid off? What can we do to increase it?</p>
+      </div>
+    </div>
+
+    <div class="options">
+
+      <div class="option">
+        <div class="option-letter">a.</div>
+        <div>
+          <h3>Hire more capacity.</h3>
+          <ul>
+            <li>coordination tax goes up</li>
+            <li>Brooks ramp &mdash; new hires get worse before better</li>
+            <li>onboarding dip on the team carrying them</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="option">
+        <div class="option-letter">b.</div>
+        <div>
+          <h3>Same capacity &mdash; raise hit-rate and time to market.</h3>
+          <ul>
+            <li>moves the outcomes</li>
+            <li>more money coming in, same capacity</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="option open-question">
+        <div class="option-letter">c.</div>
+        <div>
+          <h3><em>Something else?</em></h3>
+          <ul>
+            <li>massive restructuring, team redesign&hellip;</li>
+          </ul>
+          <span class="punchline">&mdash; left open. Tell us what&rsquo;s on the table.</span>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="option-footnote">
+      Option (c) is the one we don&rsquo;t want to assume. Reorgs and restructuring often show up at growth-stage companies but rarely make the slide. Worth naming what&rsquo;s actually in scope before this conversation closes.
+    </p>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- SLIDE 06 — TWO LEVERS                                 -->
+  <!-- ===================================================== -->
+  <section id="s06">
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <div>
+        <div class="section-title">What it takes to increase feature hit-rate:</div>
+        <p class="section-dek">Same capacity, raise hit-rate and throughput = more revenue-bearing features. Two things need to move at the same time.</p>
+      </div>
+    </div>
+
+    <div class="economy-cols">
+      <div class="economy-col">
+        <div class="economy-label">Lever 1: Faster time to market</div>
+        <ul>
+          <li>faster product discovery to experiment results</li>
+          <li>engineering enables product leaders to experiment faster</li>
+          <li>Look at: lead time from idea to production</li>
+        </ul>
+      </div>
+      <div class="economy-col outcome">
+        <div class="economy-label">Lever 2: Quality</div>
+        <ul>
+          <li>more code = more quality problems</li>
+          <li>no way around it except improve the system</li>
+          <li>Look at: incidents, time to recover, rework eating capacity</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="closing-line">Both are measurable. Both respond to the same intervention: <strong>seeing the value stream clearly and managing it together.</strong></p>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- SLIDE 07 — 2-WEEK CADENCE INJECTS WASTE (Lever 1)     -->
+  <!-- ===================================================== -->
+  <section id="s07">
+    <div class="section-header">
+      <div class="section-num">07</div>
+      <div>
+        <div class="section-title">Example &mdash; how a <em>2-week cadence</em> injects waste.</div>
+        <p class="section-dek">Lever 1 in action. One pattern &mdash; yours may be different. Mapping the value stream is how you find out.</p>
+      </div>
+    </div>
+
+    <div class="gantt-wrap">
+      <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gantt chart illustrating how a two-week sprint cadence injects waste: features stall at sprint boundaries between phases." style="font-family: 'IBM Plex Sans', sans-serif;">
+        <defs>
+          <marker id="arrowMuteG" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L8,4 L0,8 z" fill="#4a4640"/>
+          </marker>
+        </defs>
+
+        <!-- Sprint labels -->
+        <text x="150" y="20" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9.5" fill="#8a8680" letter-spacing="2">SPRINT 1</text>
+        <text x="250" y="20" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9.5" fill="#8a8680" letter-spacing="2">SPRINT 2</text>
+        <text x="350" y="20" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9.5" fill="#8a8680" letter-spacing="2">SPRINT 3</text>
+        <text x="450" y="20" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9.5" fill="#8a8680" letter-spacing="2">SPRINT 4</text>
+        <text x="550" y="20" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9.5" fill="#8a8680" letter-spacing="2">SPRINT 5</text>
+        <text x="650" y="20" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9.5" fill="#8a8680" letter-spacing="2">SPRINT 6</text>
+
+        <!-- Time axis -->
+        <line x1="100" y1="32" x2="700" y2="32" stroke="#4a4640" stroke-width="1" marker-end="url(#arrowMuteG)"/>
+        <text x="704" y="36" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#8a8680">t</text>
+
+        <!-- Sprint boundary dashed lines -->
+        <line x1="200" y1="40" x2="200" y2="220" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="300" y1="40" x2="300" y2="220" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="400" y1="40" x2="400" y2="220" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="500" y1="40" x2="500" y2="220" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="600" y1="40" x2="600" y2="220" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 4"/>
+
+        <!-- LANE 1: idea -->
+        <text x="92" y="62" text-anchor="end" font-size="12" fill="#1a1814">idea</text>
+        <rect x="100" y="50" width="50" height="18" fill="#1a1814" opacity="0.88"/>
+        <rect x="150" y="50" width="50" height="18" fill="none" stroke="#8a8680" stroke-width="0.75" stroke-dasharray="2 2"/>
+
+        <!-- LANE 2: spec -->
+        <text x="92" y="90" text-anchor="end" font-size="12" fill="#1a1814">spec</text>
+        <rect x="200" y="78" width="70" height="18" fill="#1a1814" opacity="0.88"/>
+        <rect x="270" y="78" width="30" height="18" fill="none" stroke="#8a8680" stroke-width="0.75" stroke-dasharray="2 2"/>
+
+        <!-- LANE 3: build -->
+        <text x="92" y="118" text-anchor="end" font-size="12" fill="#1a1814">build</text>
+        <rect x="300" y="106" width="60" height="18" fill="#1a1814" opacity="0.88"/>
+        <rect x="360" y="106" width="40" height="18" fill="none" stroke="#8a8680" stroke-width="0.75" stroke-dasharray="2 2"/>
+
+        <!-- LANE 4: release -->
+        <text x="92" y="146" text-anchor="end" font-size="12" fill="#1a1814">release</text>
+        <rect x="400" y="134" width="40" height="18" fill="#1a1814" opacity="0.88"/>
+        <rect x="440" y="134" width="60" height="18" fill="none" stroke="#8a8680" stroke-width="0.75" stroke-dasharray="2 2"/>
+
+        <!-- LANE 5: measure -->
+        <text x="92" y="174" text-anchor="end" font-size="12" fill="#1a1814">measure</text>
+        <rect x="500" y="162" width="60" height="18" fill="#1a1814" opacity="0.88"/>
+        <rect x="560" y="162" width="40" height="18" fill="none" stroke="#8a8680" stroke-width="0.75" stroke-dasharray="2 2"/>
+
+        <!-- LANE 6: decide (killed late) -->
+        <text x="92" y="202" text-anchor="end" font-size="12" fill="#1a1814">decide</text>
+        <rect x="600" y="190" width="60" height="18" fill="#b8391f"/>
+        <text x="666" y="203" font-family="'Fraunces', serif" font-style="italic" font-size="11" fill="#b8391f">&larr; killed</text>
+
+        <!-- ANNOTATIONS -->
+        <path d="M 175 230 L 175 240" fill="none" stroke="#8a8680" stroke-width="0.75"/>
+        <text x="175" y="252" text-anchor="middle" font-family="'Fraunces', serif" font-style="italic" font-size="11" fill="#8a8680">"waiting for next sprint"</text>
+
+        <path d="M 470 230 L 470 240" fill="none" stroke="#8a8680" stroke-width="0.75"/>
+        <text x="470" y="252" text-anchor="middle" font-family="'Fraunces', serif" font-style="italic" font-size="11" fill="#8a8680">"CAB on Thursday"</text>
+
+        <path d="M 630 218 L 630 240" fill="none" stroke="#b8391f" stroke-width="0.75"/>
+        <text x="630" y="252" text-anchor="middle" font-family="'Fraunces', serif" font-style="italic" font-size="11" fill="#b8391f">killed at month 3</text>
+
+        <!-- Legend -->
+        <line x1="40" y1="278" x2="680" y2="278" stroke="#d8d2c2" stroke-width="1"/>
+        <rect x="100" y="288" width="16" height="10" fill="#1a1814" opacity="0.88"/>
+        <text x="122" y="297" font-size="10.5" fill="#4a4640">active work</text>
+        <rect x="220" y="288" width="16" height="10" fill="none" stroke="#8a8680" stroke-width="0.75" stroke-dasharray="2 2"/>
+        <text x="242" y="297" font-size="10.5" fill="#4a4640">waiting (sprint boundary)</text>
+        <rect x="430" y="288" width="16" height="10" fill="#b8391f"/>
+        <text x="452" y="297" font-size="10.5" fill="#4a4640">killed late</text>
+      </svg>
+    </div>
+
+    <p class="gantt-caption">
+      One pattern. Yours may be different &mdash; <strong>mapping the value stream is how you find out</strong> which structural waste is actually costing you. <strong>Local dev speed is not the bottleneck;</strong> the cadence between phases is a cross-stream constraint.
+    </p>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- SLIDE 08 — RELEASED FROM CADENCE + STACK BAND         -->
+  <!-- ===================================================== -->
+  <section id="s08">
+    <div class="section-header">
+      <div class="section-num">08</div>
+      <div>
+        <div class="section-title">Same stream &mdash; <em>released from the cadence.</em></div>
+        <p class="section-dek">Same items, no sprint trap. Below the Gantt: where the measurement hooks would attach to a generic delivery stack.</p>
+      </div>
+    </div>
+
+    <div class="gantt-wrap">
+      <svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Compressed Gantt chart showing the same value stream released from sprint cadence, with measurement hooks at each transition." style="font-family: 'IBM Plex Sans', sans-serif;">
+        <defs>
+          <marker id="arrowMuteG2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L8,4 L0,8 z" fill="#4a4640"/>
+          </marker>
+          <marker id="arrowAccentG2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L8,4 L0,8 z" fill="#b8391f"/>
+          </marker>
+        </defs>
+
+        <!-- TOP: COMPRESSED GANTT -->
+        <text x="100" y="20" font-family="'IBM Plex Mono', monospace" font-size="9.5" fill="#8a8680" letter-spacing="2">CONTINUOUS FLOW</text>
+        <line x1="100" y1="32" x2="700" y2="32" stroke="#4a4640" stroke-width="1" marker-end="url(#arrowMuteG2)"/>
+        <text x="704" y="36" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#8a8680">t</text>
+
+        <text x="92" y="62" text-anchor="end" font-size="12" fill="#1a1814">idea</text>
+        <rect x="100" y="50" width="34" height="18" fill="#1a1814" opacity="0.88"/>
+
+        <text x="92" y="90" text-anchor="end" font-size="12" fill="#1a1814">spec</text>
+        <rect x="134" y="78" width="50" height="18" fill="#1a1814" opacity="0.88"/>
+
+        <text x="92" y="118" text-anchor="end" font-size="12" fill="#1a1814">build</text>
+        <rect x="184" y="106" width="34" height="18" fill="#1a1814" opacity="0.88"/>
+
+        <text x="92" y="146" text-anchor="end" font-size="12" fill="#1a1814">release</text>
+        <rect x="218" y="134" width="34" height="18" fill="#1a1814" opacity="0.88"/>
+
+        <text x="92" y="174" text-anchor="end" font-size="12" fill="#1a1814">measure</text>
+        <rect x="252" y="162" width="22" height="18" fill="#1a1814" opacity="0.88"/>
+
+        <text x="92" y="202" text-anchor="end" font-size="12" fill="#1a1814">decide</text>
+        <rect x="274" y="190" width="16" height="18" fill="#b8391f"/>
+        <text x="298" y="203" font-family="'Fraunces', serif" font-style="italic" font-size="12" fill="#b8391f">&larr; kill at week 1</text>
+
+        <!-- DIVIDER -->
+        <line x1="40" y1="232" x2="680" y2="232" stroke="#d8d2c2" stroke-width="1"/>
+        <text x="40" y="252" font-family="'IBM Plex Mono', monospace" font-size="10.5" fill="#8a8680" letter-spacing="2">YOUR DELIVERY STACK</text>
+
+        <!-- STACK BAND -->
+        <text x="100" y="282" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="15" fill="#1a1814">Idea</text>
+        <text x="100" y="298" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#8a8680" letter-spacing="1.5">tool</text>
+        <line x1="125" y1="290" x2="175" y2="290" stroke="#1a1814" stroke-width="1.25" marker-end="url(#arrowMuteG2)"/>
+
+        <text x="200" y="282" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="15" fill="#1a1814">Spec</text>
+        <text x="200" y="298" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#8a8680" letter-spacing="1.5">tool</text>
+        <line x1="225" y1="290" x2="275" y2="290" stroke="#1a1814" stroke-width="1.25" marker-end="url(#arrowMuteG2)"/>
+
+        <text x="300" y="282" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="15" fill="#1a1814">Build</text>
+        <text x="300" y="298" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#8a8680" letter-spacing="1.5">tool</text>
+        <line x1="325" y1="290" x2="375" y2="290" stroke="#1a1814" stroke-width="1.25" marker-end="url(#arrowMuteG2)"/>
+
+        <text x="400" y="282" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="15" fill="#1a1814">Deploy</text>
+        <text x="400" y="298" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#8a8680" letter-spacing="1.5">tool</text>
+        <line x1="425" y1="290" x2="475" y2="290" stroke="#1a1814" stroke-width="1.25" marker-end="url(#arrowMuteG2)"/>
+
+        <text x="500" y="282" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="15" fill="#1a1814">Measure</text>
+        <text x="500" y="298" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#8a8680" letter-spacing="1.5">tool</text>
+        <line x1="525" y1="290" x2="575" y2="290" stroke="#1a1814" stroke-width="1.25" marker-end="url(#arrowMuteG2)"/>
+
+        <text x="600" y="282" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="15" fill="#1a1814">Decide</text>
+        <text x="600" y="298" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#8a8680" letter-spacing="1.5">tool</text>
+
+        <!-- HOOKS -->
+        <line x1="150" y1="318" x2="150" y2="338" stroke="#b8391f" stroke-width="1" stroke-dasharray="3 2" marker-end="url(#arrowAccentG2)"/>
+        <text x="150" y="356" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#b8391f" letter-spacing="1.5">hook</text>
+
+        <line x1="250" y1="318" x2="250" y2="338" stroke="#b8391f" stroke-width="1" stroke-dasharray="3 2" marker-end="url(#arrowAccentG2)"/>
+        <text x="250" y="356" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#b8391f" letter-spacing="1.5">hook</text>
+
+        <line x1="350" y1="318" x2="350" y2="338" stroke="#b8391f" stroke-width="1" stroke-dasharray="3 2" marker-end="url(#arrowAccentG2)"/>
+        <text x="350" y="356" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#b8391f" letter-spacing="1.5">hook</text>
+
+        <line x1="450" y1="318" x2="450" y2="338" stroke="#b8391f" stroke-width="1" stroke-dasharray="3 2" marker-end="url(#arrowAccentG2)"/>
+        <text x="450" y="356" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#b8391f" letter-spacing="1.5">hook</text>
+
+        <line x1="550" y1="318" x2="550" y2="338" stroke="#b8391f" stroke-width="1" stroke-dasharray="3 2" marker-end="url(#arrowAccentG2)"/>
+        <text x="550" y="356" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#b8391f" letter-spacing="1.5">hook</text>
+
+        <text x="640" y="356" font-family="'Fraunces', serif" font-style="italic" font-size="11" fill="#b8391f">&larr; measure</text>
+      </svg>
+    </div>
+
+    <p class="gantt-caption">
+      Start by talking to teams about what data matters and how to collect it (this will change over time and is never finished). You&rsquo;ll likely need to build custom aggregations on top of the tools you already have. Improve them continuously. Start small. Big-bang adoption fails.
+    </p>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- SLIDE 09 — WHERE QUALITY DEGRADES (Lever 2)           -->
+  <!-- ===================================================== -->
+  <section id="s09">
+    <div class="section-header">
+      <div class="section-num">09</div>
+      <div>
+        <div class="section-title">Example &mdash; where <em>quality degrades.</em></div>
+        <p class="section-dek">Lever 2 in action. How more AI-generated code, without system-level feedback, leads to more incidents and harder recovery.</p>
+      </div>
+    </div>
+
+    <div class="gantt-wrap">
+      <svg viewBox="0 0 620 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vicious circle: more AI code leads to more defects, harder to catch, more incidents, rework eats capacity, batch sizes grow, feedback slows, quality degrades further, loop repeats." style="font-family: 'IBM Plex Sans', sans-serif;">
+        <defs>
+          <marker id="arrowCircle" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,1 L8,5 L0,9 z" fill="#b8391f"/>
+          </marker>
+        </defs>
+
+        <!-- Centre label -->
+        <text x="310" y="232" text-anchor="middle" font-family="'Fraunces', serif" font-style="italic" font-size="14" fill="#b8391f">vicious</text>
+        <text x="310" y="252" text-anchor="middle" font-family="'Fraunces', serif" font-style="italic" font-size="14" fill="#b8391f">circle</text>
+
+        <!-- Arc 1: 12 -> 2 -->
+        <path d="M 340 72 C 400 72, 448 108, 458 148" fill="none" stroke="#b8391f" stroke-width="1.5" marker-end="url(#arrowCircle)"/>
+        <!-- Arc 2: 2 -> 4 -->
+        <path d="M 468 178 C 488 230, 488 290, 468 322" fill="none" stroke="#b8391f" stroke-width="1.5" marker-end="url(#arrowCircle)"/>
+        <!-- Arc 3: 4 -> 6 -->
+        <path d="M 448 352 C 420 395, 365 420, 340 418" fill="none" stroke="#b8391f" stroke-width="1.5" marker-end="url(#arrowCircle)"/>
+        <!-- Arc 4: 6 -> 8 -->
+        <path d="M 280 418 C 230 415, 178 385, 162 348" fill="none" stroke="#b8391f" stroke-width="1.5" marker-end="url(#arrowCircle)"/>
+        <!-- Arc 5: 8 -> 10 -->
+        <path d="M 152 318 C 132 270, 132 200, 152 162" fill="none" stroke="#b8391f" stroke-width="1.5" marker-end="url(#arrowCircle)"/>
+        <!-- Arc 6: 10 -> 12 -->
+        <path d="M 172 132 C 200 90, 255 68, 280 65" fill="none" stroke="#b8391f" stroke-width="1.5" marker-end="url(#arrowCircle)"/>
+
+        <!-- NODE 1 (12 o'clock): More code from AI -->
+        <rect x="220" y="38" width="180" height="44" rx="3" fill="#b8391f"/>
+        <text x="310" y="58" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="13" fill="#f5f1e8">More code from AI</text>
+        <text x="310" y="74" text-anchor="middle" font-size="10.5" fill="#f5f1e8" opacity="0.8">more surface area for defects</text>
+
+        <!-- NODE 2 (2 o'clock): Harder to catch -->
+        <rect x="470" y="120" width="148" height="56" rx="3" fill="#ede7d8" stroke="#d8d2c2" stroke-width="1"/>
+        <text x="544" y="141" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="12.5" fill="#1a1814">Harder to catch</text>
+        <text x="544" y="157" text-anchor="middle" font-size="10" fill="#4a4640">engineers didn&rsquo;t</text>
+        <text x="544" y="170" text-anchor="middle" font-size="10" fill="#4a4640">write it</text>
+
+        <!-- NODE 3 (4 o'clock): More incidents -->
+        <rect x="470" y="304" width="148" height="56" rx="3" fill="#ede7d8" stroke="#d8d2c2" stroke-width="1"/>
+        <text x="544" y="325" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="12.5" fill="#1a1814">More incidents</text>
+        <text x="544" y="341" text-anchor="middle" font-size="10" fill="#4a4640">longer recovery,</text>
+        <text x="544" y="354" text-anchor="middle" font-size="10" fill="#4a4640">rework eats capacity</text>
+
+        <!-- NODE 4 (6 o'clock): Batch sizes grow -->
+        <rect x="220" y="400" width="180" height="44" rx="3" fill="#ede7d8" stroke="#d8d2c2" stroke-width="1"/>
+        <text x="310" y="420" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="12.5" fill="#1a1814">Batch sizes grow</text>
+        <text x="310" y="436" text-anchor="middle" font-size="10" fill="#4a4640">rework delays everything</text>
+
+        <!-- NODE 5 (8 o'clock): Feedback loops slow -->
+        <rect x="2" y="304" width="148" height="56" rx="3" fill="#ede7d8" stroke="#d8d2c2" stroke-width="1"/>
+        <text x="76" y="325" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="12.5" fill="#1a1814">Feedback slows</text>
+        <text x="76" y="341" text-anchor="middle" font-size="10" fill="#4a4640">loops break down,</text>
+        <text x="76" y="354" text-anchor="middle" font-size="10" fill="#4a4640">learning stops</text>
+
+        <!-- NODE 6 (10 o'clock): Quality degrades -->
+        <rect x="2" y="120" width="148" height="56" rx="3" fill="#ede7d8" stroke="#b8391f" stroke-width="1.5"/>
+        <text x="76" y="141" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="12.5" fill="#b8391f">Quality degrades</text>
+        <text x="76" y="157" text-anchor="middle" font-size="10" fill="#4a4640">customers feel it,</text>
+        <text x="76" y="170" text-anchor="middle" font-size="10" fill="#4a4640">churn rises</text>
+      </svg>
+    </div>
+
+    <p class="cc-close" style="border-top: 1px solid var(--ink);">
+      This is a system problem. You can&rsquo;t fix it by reviewing harder. You fix it by making the system visible: <strong>where defects enter, how long they take to find, what the rework costs.</strong> That&rsquo;s a value stream conversation.
+    </p>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- SLIDE 10 — B2B EXAMPLE: BOTH LEVERS                   -->
+  <!-- ===================================================== -->
+  <section id="s10">
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <div>
+        <div class="section-title">A B2B example: where <em>both levers show up.</em></div>
+        <p class="section-dek">A real company. Complex release involving six teams in sequence. Touch time per stage is a few hours. Cycle time per stage is weeks. That gap is the waste.</p>
+      </div>
+    </div>
+
+    <div class="gantt-wrap">
+      <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gantt chart showing a B2B release train: six teams in sequence, each with hours of actual work surrounded by weeks of waiting. A rework loop shows 25-50 percent of capacity consumed by fixing customer problems." style="font-family: 'IBM Plex Sans', sans-serif;">
+        <defs>
+          <marker id="arrowMuteB" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L8,4 L0,8 z" fill="#4a4640"/>
+          </marker>
+          <marker id="arrowAccentB" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L8,4 L0,8 z" fill="#b8391f"/>
+          </marker>
+        </defs>
+
+        <!-- Sprint labels -->
+        <text x="143" y="18" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#8a8680" letter-spacing="1.5">S1</text>
+        <text x="229" y="18" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#8a8680" letter-spacing="1.5">S2</text>
+        <text x="315" y="18" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#8a8680" letter-spacing="1.5">S3</text>
+        <text x="401" y="18" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#8a8680" letter-spacing="1.5">S4</text>
+        <text x="487" y="18" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#8a8680" letter-spacing="1.5">S5</text>
+        <text x="573" y="18" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#8a8680" letter-spacing="1.5">S6</text>
+        <text x="659" y="18" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#8a8680" letter-spacing="1.5">S7</text>
+
+        <!-- Time axis -->
+        <line x1="100" y1="28" x2="702" y2="28" stroke="#4a4640" stroke-width="1" marker-end="url(#arrowMuteB)"/>
+
+        <!-- Sprint boundaries (dashed) -->
+        <line x1="186" y1="36" x2="186" y2="192" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="272" y1="36" x2="272" y2="192" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="358" y1="36" x2="358" y2="192" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="444" y1="36" x2="444" y2="192" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="530" y1="36" x2="530" y2="192" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="616" y1="36" x2="616" y2="192" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 4"/>
+
+        <!-- LANE 1: App Team A -->
+        <text x="92" y="56" text-anchor="end" font-size="11" fill="#1a1814">App Team A</text>
+        <rect x="100" y="46" width="172" height="16" fill="#ede7d8" stroke="#d8d2c2" stroke-width="0.75"/>
+        <rect x="108" y="46" width="8" height="16" fill="#1a1814" opacity="0.88"/>
+
+        <!-- LANE 2: App Team B -->
+        <text x="92" y="84" text-anchor="end" font-size="11" fill="#1a1814">App Team B</text>
+        <rect x="143" y="74" width="186" height="16" fill="#ede7d8" stroke="#d8d2c2" stroke-width="0.75"/>
+        <rect x="240" y="74" width="8" height="16" fill="#1a1814" opacity="0.88"/>
+
+        <!-- LANE 3: Operations -->
+        <text x="92" y="112" text-anchor="end" font-size="11" fill="#1a1814">Operations</text>
+        <rect x="272" y="102" width="186" height="16" fill="#ede7d8" stroke="#d8d2c2" stroke-width="0.75"/>
+        <rect x="378" y="102" width="8" height="16" fill="#1a1814" opacity="0.88"/>
+
+        <!-- LANE 4: QA & Perf Test -->
+        <text x="92" y="140" text-anchor="end" font-size="11" fill="#1a1814">QA & Perf Test</text>
+        <rect x="358" y="130" width="202" height="16" fill="#ede7d8" stroke="#d8d2c2" stroke-width="0.75"/>
+        <rect x="498" y="130" width="8" height="16" fill="#1a1814" opacity="0.88"/>
+
+        <!-- LANE 5: Impl. Consultants -->
+        <text x="92" y="168" text-anchor="end" font-size="11" fill="#1a1814">Implementation Consultants</text>
+        <rect x="444" y="158" width="258" height="16" fill="#ede7d8" stroke="#d8d2c2" stroke-width="0.75"/>
+        <rect x="632" y="158" width="8" height="16" fill="#1a1814" opacity="0.88"/>
+
+        <!-- Annotation: testing at the END -->
+        <line x1="502" y1="148" x2="502" y2="204" stroke="#8a8680" stroke-width="0.5"/>
+        <text x="502" y="216" text-anchor="middle" font-family="'Fraunces', serif" font-style="italic" font-size="10" fill="#8a8680">testing at the END</text>
+
+        <!-- REWORK LOOP -->
+        <path d="M 694 166 C 712 195, 712 225, 600 230 L 140 230 C 90 230, 88 210, 88 195 L 88 60" fill="none" stroke="#b8391f" stroke-width="1.25" stroke-dasharray="4 3" marker-end="url(#arrowAccentB)"/>
+        <text x="400" y="248" text-anchor="middle" font-family="'Fraunces', serif" font-style="italic" font-size="11" fill="#b8391f">firefighting: 25&ndash;50% of every sprint</text>
+
+        <!-- Legend -->
+        <line x1="40" y1="270" x2="680" y2="270" stroke="#d8d2c2" stroke-width="1"/>
+        <rect x="100" y="280" width="8" height="10" fill="#1a1814" opacity="0.88"/>
+        <text x="114" y="289" font-size="10.5" fill="#4a4640">actual work (hours)</text>
+        <rect x="260" y="280" width="24" height="10" fill="#ede7d8" stroke="#d8d2c2" stroke-width="0.75"/>
+        <text x="290" y="289" font-size="10.5" fill="#4a4640">waiting / queue / rework (weeks)</text>
+        <rect x="430" y="280" width="16" height="10" fill="#b8391f"/>
+        <text x="452" y="289" font-size="10.5" fill="#4a4640">killed late</text>
+      </svg>
+    </div>
+
+    <div class="causal-chain">
+      <div class="cc-block">
+        <div class="cc-label">Why</div>
+        <div class="cc-leaves">
+          <div class="cc-leaf">
+            <div class="cc-marker">&middot;</div>
+            <div class="cc-leaf-body">
+              <strong>No production-like test environments or test data.</strong>
+            </div>
+          </div>
+          <div class="cc-leaf">
+            <div class="cc-marker">&middot;</div>
+            <div class="cc-leaf-body">
+              <strong>No continuous testing</strong> <span class="sub">&mdash; testing happens at the END, not throughout.</span>
+            </div>
+          </div>
+          <div class="cc-leaf">
+            <div class="cc-marker">&middot;</div>
+            <div class="cc-leaf-body">
+              <strong>Big-batch release train:</strong> <span class="sub">high error surface, impossible to isolate which change caused the defect.</span>
+            </div>
+          </div>
+          <div class="cc-leaf">
+            <div class="cc-marker">&middot;</div>
+            <div class="cc-leaf-body">
+              <strong>Last-minute features</strong> <span class="sub">pushed by business &rarr; product &rarr; devs &rarr; shipped untested.</span>
+            </div>
+          </div>
+          <div class="cc-leaf">
+            <div class="cc-marker">&middot;</div>
+            <div class="cc-leaf-body">
+              <strong>Technical debt</strong> <span class="sub">dragging every team down.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-metrics">
+      <div class="sm-item">
+        <div class="sm-value">100 days</div>
+        <div class="sm-label">Total lead time</div>
+      </div>
+      <div class="sm-item">
+        <div class="sm-value">&lt; 1 day</div>
+        <div class="sm-label">Total work time</div>
+      </div>
+      <div class="sm-item">
+        <div class="sm-value">&lt; 1%</div>
+        <div class="sm-label">Activity ratio</div>
+      </div>
+    </div>
+
+    <p class="gantt-caption">
+      Business complains: <strong>&ldquo;development and testing take too long.&rdquo;</strong> <strong>&ldquo;Deployments always go wrong.&rdquo;</strong> But we are all causing the problems we complain about.
+    </p>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- SLIDE 11 — MANAGE THE VALUE STREAM AS A TEAM          -->
+  <!-- ===================================================== -->
+  <section id="s11">
+    <div class="section-header">
+      <div class="section-num">11</div>
+      <div>
+        <div class="section-title">Manage the value stream &mdash; <em>as a team.</em></div>
+        <p class="section-dek">Why we invite all these teams to talk to each other.</p>
+      </div>
+    </div>
+
+    <p class="scenario-lens" style="margin-bottom: 32px;">Each team optimizing locally was hurting the whole company &mdash; despite seemingly helping themselves.</p>
+
+    <div class="accountability-map">
+      <div class="am-row">
+        <div class="am-target">Business saw</div>
+        <div class="am-serves">How last-minute feature pressure caused the quality problems they complained about.</div>
+      </div>
+      <div class="am-row">
+        <div class="am-target">Product saw</div>
+        <div class="am-serves">How skipping testing created the rework that made &ldquo;development takes too long&rdquo; true.</div>
+      </div>
+      <div class="am-row">
+        <div class="am-target">Engineering saw</div>
+        <div class="am-serves">How the lack of tech investment (test envs, test data, continuous testing) was the root cause of customer churn.</div>
+      </div>
+      <div class="am-row">
+        <div class="am-target">Everyone saw</div>
+        <div class="am-serves">One day of work. One hundred days of waiting. The constraint isn&rsquo;t speed &mdash; it&rsquo;s the system.</div>
+      </div>
+    </div>
+
+    <div class="economy-cols">
+      <div class="economy-col">
+        <div class="economy-label">Lever 1: Faster TTM</div>
+        <ul>
+          <li>faster feedback</li>
+          <li>kill bad bets earlier</li>
+          <li>team time goes to features, not firefighting</li>
+        </ul>
+      </div>
+      <div class="economy-col outcome">
+        <div class="economy-label">Lever 2: Better quality</div>
+        <ul>
+          <li>fewer production incidents</li>
+          <li>less rework eating capacity</li>
+          <li>happier, returning customers</li>
+          <li>necessary tech investments become visible + justified</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="closing-line">
+      <strong>Siloed visibility:</strong> each team thinks they&rsquo;re doing fine.<br>
+      <strong>End-to-end visibility:</strong> teams pursuing local goals are hurting each other and the company.
+    </p>
+
+    <p class="cc-close">
+      Value stream metrics + talking to your teams show you where the problems are &mdash; and help teams find the solutions. <strong>I&rsquo;m not a product coach.</strong> You need to get great at product discovery. But the value stream shows you where to look.
+    </p>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- SLIDE 12 — FROM CONVERSATION TO RECEIPTS              -->
+  <!-- ===================================================== -->
+  <section id="s12">
+    <div class="section-header">
+      <div class="section-num">12</div>
+      <div>
+        <div class="section-title">From conversation to <em>receipts.</em></div>
+        <p class="section-dek">The path from a VSM conversation with your teams to the numbers your CTO is asking about.</p>
+      </div>
+    </div>
+
+    <div class="cascade">
+      <div class="cascade-box">
+        <strong>VSM conversation</strong>
+        with the teams doing the work
+        <span class="sub">handoffs, waits, rework &mdash; named together</span>
+      </div>
+      <div class="cascade-arrow">&rarr;</div>
+      <div class="cascade-box">
+        <strong>Flow metrics</strong>
+        cycle time, batch, hit-rate
+        <span class="sub">leading indicators that change weekly, not yearly</span>
+      </div>
+      <div class="cascade-arrow">&rarr;</div>
+      <div class="cascade-box">
+        <strong>Revenue + hit-rate</strong>
+        % features generating revenue
+        <span class="sub">lagging, 12-month window &mdash; the number your CTO already cares about</span>
+      </div>
+    </div>
+
+    <div class="takeaway">
+      <div class="label">The Steer</div>
+      <p>
+        Flow metrics aren&rsquo;t a dashboard you admire. They&rsquo;re how you <em>kill bad bets earlier</em>, ship the good ones faster, and walk into the quarterly review with the receipts.
+      </p>
+    </div>
+
+    <p class="timebox">
+      <strong>Two phases to instrument first.</strong> Let&rsquo;s pick them before our next session.
+    </p>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- SLIDE 13 — WHAT WORKING TOGETHER LOOKS LIKE           -->
+  <!-- ===================================================== -->
+  <section id="s13">
+    <div class="section-header">
+      <div class="section-num">13</div>
+      <div>
+        <div class="section-title">What <em>working together</em> looks like.</div>
+        <p class="section-dek">Two modes. A 90-day shape. How outcomes get measured. No price on this slide &mdash; that&rsquo;s a conversation.</p>
+      </div>
+    </div>
+
+    <div class="offer-modes">
+      <div class="offer-mode">
+        <div class="om-label">Mode 1</div>
+        <div class="om-mode">Workshop<span class="om-sub">knowledge work &middot; days</span></div>
+        <ul>
+          <li>remap one stream with your team</li>
+          <li>agree the hooks together</li>
+          <li>define what gets measured</li>
+        </ul>
+      </div>
+      <div class="offer-mode">
+        <div class="om-label">Mode 2</div>
+        <div class="om-mode">Embedded<span class="om-sub">outsourced work &middot; weeks</span></div>
+        <ul>
+          <li>~3 days/week in your standups</li>
+          <li>instrument the hooks across your stack</li>
+          <li>run the loop with one team &middot; handoff at the end</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="offer-timeline">
+      <div class="ot-heading">90-day shape <em>(illustrative)</em></div>
+      <div class="ot-row">
+        <div class="ot-week">Week 1</div>
+        <div class="ot-phase">Workshop</div>
+        <div class="ot-what">remap one stream &middot; agree hooks &middot; define what gets measured</div>
+      </div>
+      <div class="ot-row">
+        <div class="ot-week">Weeks 2&ndash;12</div>
+        <div class="ot-phase">Embedded</div>
+        <div class="ot-what">instrument hooks across your delivery stack &middot; run the loop with one team</div>
+      </div>
+      <div class="ot-row">
+        <div class="ot-week">Week 13</div>
+        <div class="ot-phase">Handoff</div>
+        <div class="ot-what">metrics live in your tools, owned by your team</div>
+      </div>
+    </div>
+
+    <p class="offer-measure"><strong>Outcomes measured by:</strong></p>
+    <ul class="offer-measure-list">
+      <li>Lead time idea-to-production <em>(leading)</em></li>
+      <li>Quality: incident rate, time to recovery <em>(leading)</em></li>
+      <li>% features generating revenue <em>(lagging, 12-month window)</em></li>
+      <li>The band of hooks itself <em>(the artifact you keep)</em></li>
+    </ul>
+
+    <p class="offer-footnote">No price on the slide. The conversation about scope, sequence, and commercials lives in the call.</p>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- SLIDE 14 — THE LOOP (VSM figure, anchor close)        -->
+  <!-- ===================================================== -->
+  <section id="s14">
+    <div class="section-header">
+      <div class="section-num">14</div>
+      <div>
+        <div class="section-title">The loop that turns <em>output</em> into <em>outcome.</em></div>
+        <p class="section-dek">Closing figure &mdash; the mechanism slide 02 promised, drawn. Step 4 is the bridge.</p>
+      </div>
+    </div>
+
+    <figure style="margin: 24px 0 8px; padding: 0;">
+      <div style="background: var(--paper-warm); border: 1px solid var(--rule); border-radius: 2px; padding: 32px 24px 24px; overflow: hidden;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-mute); margin-bottom: 18px; text-align: center;">
+          Value stream map <span style="color: var(--ink-soft);">&middot; idea &rarr; production &rarr; learning &rarr; idea</span>
+        </div>
+        <svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Value stream map showing the agent loop: decompose, assign, commit in small batches, capture outcomes (the bridge from output to outcome), feed back. Supported by platform engineering, DevOps, and continuous delivery as table stakes." style="width: 100%; height: auto; display: block; font-family: 'IBM Plex Sans', sans-serif;">
+          <defs>
+            <marker id="arrowAccent14" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#b8391f"/>
+            </marker>
+            <marker id="arrowMute14" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#1a1814"/>
+            </marker>
+            <marker id="arrowDash14" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M0,0 L8,4 L0,8 z" fill="#8a8680"/>
+            </marker>
+          </defs>
+
+          <!-- LOOP-BACK ARC -->
+          <path d="M 640 150 C 640 40, 80 40, 80 150" fill="none" stroke="#b8391f" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrowAccent14)"/>
+          <text x="360" y="32" text-anchor="middle" font-family="'Fraunces', serif" font-style="italic" font-size="15" fill="#b8391f">close the loop &mdash; and start again</text>
+
+          <!-- HORIZONTAL CONNECTING LINES -->
+          <line x1="104" y1="175" x2="168" y2="175" stroke="#1a1814" stroke-width="1.25" marker-end="url(#arrowMute14)"/>
+          <line x1="244" y1="175" x2="308" y2="175" stroke="#1a1814" stroke-width="1.25" marker-end="url(#arrowMute14)"/>
+          <line x1="384" y1="175" x2="444" y2="175" stroke="#1a1814" stroke-width="1.25" marker-end="url(#arrowMute14)"/>
+          <line x1="528" y1="175" x2="588" y2="175" stroke="#1a1814" stroke-width="1.25" marker-end="url(#arrowMute14)"/>
+
+          <!-- STEP 1: DECOMPOSE -->
+          <circle cx="80" cy="175" r="24" fill="#f5f1e8" stroke="#1a1814" stroke-width="1.5"/>
+          <text x="80" y="180" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="14" fill="#1a1814">1</text>
+          <text x="80" y="222" text-anchor="middle" font-size="12" font-weight="500" fill="#1a1814">Decompose</text>
+          <text x="80" y="238" text-anchor="middle" font-size="10" fill="#8a8680">task &rarr; pieces</text>
+
+          <!-- STEP 2: ASSIGN -->
+          <circle cx="220" cy="175" r="24" fill="#f5f1e8" stroke="#1a1814" stroke-width="1.5"/>
+          <text x="220" y="180" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="14" fill="#1a1814">2</text>
+          <text x="220" y="222" text-anchor="middle" font-size="12" font-weight="500" fill="#1a1814">Assign</text>
+          <text x="220" y="238" text-anchor="middle" font-size="10" fill="#8a8680">one agent per piece</text>
+
+          <!-- STEP 3: COMMIT -->
+          <circle cx="360" cy="175" r="24" fill="#b8391f" stroke="#b8391f" stroke-width="1.5"/>
+          <text x="360" y="180" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="14" fill="#f5f1e8">3</text>
+          <text x="360" y="222" text-anchor="middle" font-size="12" font-weight="500" fill="#1a1814">Commit small</text>
+          <text x="360" y="238" text-anchor="middle" font-size="10" fill="#8a8680">flags + TDD, to trunk</text>
+
+          <!-- STEP 4: CAPTURE (the bridge) -->
+          <circle cx="500" cy="175" r="34" fill="none" stroke="#b8391f" stroke-width="1" opacity="0.55"/>
+          <circle cx="500" cy="175" r="28" fill="#b8391f" stroke="#b8391f" stroke-width="1.5"/>
+          <text x="500" y="181" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="16" fill="#f5f1e8">4</text>
+          <text x="500" y="222" text-anchor="middle" font-size="12" font-weight="500" fill="#1a1814">Capture outcomes</text>
+          <text x="500" y="238" text-anchor="middle" font-size="10" fill="#8a8680">usage, reliability, $</text>
+          <text x="500" y="254" text-anchor="middle" font-family="'Fraunces', serif" font-style="italic" font-size="11" fill="#b8391f">the bridge</text>
+
+          <!-- STEP 5: FEED BACK -->
+          <circle cx="640" cy="175" r="24" fill="#f5f1e8" stroke="#1a1814" stroke-width="1.5"/>
+          <text x="640" y="180" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="14" fill="#1a1814">5</text>
+          <text x="640" y="222" text-anchor="middle" font-size="12" font-weight="500" fill="#1a1814">Feed back</text>
+          <text x="640" y="238" text-anchor="middle" font-size="10" fill="#8a8680">learning &rarr; next loop</text>
+
+          <!-- DIVIDER -->
+          <line x1="40" y1="280" x2="680" y2="280" stroke="#d8d2c2" stroke-width="1"/>
+          <text x="40" y="302" font-family="'IBM Plex Mono', monospace" font-size="10" letter-spacing="2" fill="#8a8680">TABLE STAKES</text>
+
+          <!-- PILLARS -->
+          <rect x="80" y="328" width="168" height="54" rx="2" fill="#f5f1e8" stroke="#d8d2c2" stroke-width="1"/>
+          <text x="164" y="352" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="14" fill="#1a1814">Platform engineering</text>
+          <text x="164" y="369" text-anchor="middle" font-size="10" fill="#8a8680">self-serve envs, evals, CI</text>
+
+          <rect x="276" y="328" width="168" height="54" rx="2" fill="#f5f1e8" stroke="#d8d2c2" stroke-width="1"/>
+          <text x="360" y="352" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="14" fill="#1a1814">DevOps</text>
+          <text x="360" y="369" text-anchor="middle" font-size="10" fill="#8a8680">flow, feedback, continuous learning</text>
+
+          <rect x="472" y="328" width="168" height="54" rx="2" fill="#f5f1e8" stroke="#d8d2c2" stroke-width="1"/>
+          <text x="556" y="352" text-anchor="middle" font-family="'Fraunces', serif" font-weight="500" font-size="14" fill="#1a1814">Continuous delivery</text>
+          <text x="556" y="369" text-anchor="middle" font-size="10" fill="#8a8680">trunk, small batches, fast feedback</text>
+
+          <!-- DASHED UPWARD SUPPORT ARROWS -->
+          <line x1="164" y1="326" x2="164" y2="262" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrowDash14)"/>
+          <line x1="360" y1="326" x2="360" y2="262" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrowDash14)"/>
+          <line x1="556" y1="326" x2="556" y2="262" stroke="#8a8680" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrowDash14)"/>
+        </svg>
+      </div>
+      <figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ink-mute); margin-top: 10px; text-align: center;">
+        Output is steps 1&ndash;3. Outcome is step 4. The loop closes at step 5.
+      </figcaption>
+    </figure>
+
+  </section>
+
+  <!-- COLOPHON -->
+  <footer class="colophon">
+    <div>
+      <div class="signature">&mdash; Miguel</div>
+      Independent VSM consultant &middot; <a href="https://migueldias.eu">migueldias.eu</a> &middot; <a href="https://calendly.com/migueldiaseu/">calendly.com/migueldiaseu</a>
+    </div>
+    <div class="colophon-right">
+      Fourteen slides, one idea each<br>
+      Held lightly &mdash; conclusions, more lightly still
+    </div>
+  </footer>
+
+</main>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+  :root {
+    --ink: #1a1814;
+    --ink-soft: #4a4640;
+    --ink-mute: #8a8680;
+    --paper: #f5f1e8;
+    --paper-warm: #ede7d8;
+    --rule: #d8d2c2;
+    --accent: #b8391f;
+    --accent-soft: #e8d4cc;
+    --highlight: #f0e4b8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(184, 57, 31, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(26, 24, 20, 0.02) 0%, transparent 50%);
+  }
+
+  .page {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 72px 48px 120px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 32px;
+    margin-bottom: 56px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+  }
+
+  .masthead-left .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .masthead h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 52px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .masthead h1 em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .masthead-right {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-mute);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  .masthead-right strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ============ LEDE ============ */
+  .lede {
+    font-family: 'Fraunces', serif;
+    font-size: 21px;
+    line-height: 1.5;
+    color: var(--ink);
+    font-weight: 400;
+    margin-bottom: 24px;
+    max-width: 640px;
+  }
+
+  .lede em { font-style: italic; }
+
+  .lede-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-mute);
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    margin-bottom: 72px;
+    max-width: 640px;
+  }
+
+  .lede-meta a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+  }
+
+  /* ============ EDITORIAL FIGURE ============ */
+  .editorial-figure {
+    margin: 0 0 72px;
+    padding: 0;
+  }
+
+  .editorial-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    background: var(--paper-warm);
+  }
+
+  .editorial-figure figcaption {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-mute);
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  /* ============ SECTION ============ */
+  section {
+    margin-bottom: 88px;
+    scroll-margin-top: 24px;
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    align-items: baseline;
+    margin-bottom: 32px;
+    border-top: 1px solid var(--ink);
+    padding-top: 24px;
+  }
+
+  .section-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 36px;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .section-title em { font-style: italic; font-weight: 400; }
+
+  .section-dek {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+    max-width: 580px;
+    line-height: 1.6;
+  }
+
+  /* ============ COLOPHON ============ */
+  .colophon {
+    margin-top: 96px;
+    padding-top: 32px;
+    border-top: 1px solid var(--ink);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-mute);
+  }
+
+  .colophon a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px;
+  }
+
+  .colophon-right {
+    text-align: right;
+    line-height: 1.9;
+  }
+
+  .signature {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink);
+    text-transform: none;
+    letter-spacing: 0;
+    margin-bottom: 4px;
+  }
+
+  /* ============ SLIDE 01 — challenges grid ============ */
+  .challenges {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+    margin: 8px 0 0;
+  }
+
+  .challenge {
+    padding: 20px 22px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper);
+  }
+
+  .challenge.featured {
+    grid-column: 1 / -1;
+    background: var(--paper-warm);
+  }
+
+  .challenge-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .challenge.featured .challenge-label {
+    color: var(--accent);
+  }
+
+  .challenge-label .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .challenge h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.25;
+    margin-bottom: 6px;
+    letter-spacing: -0.005em;
+  }
+
+  .challenge.featured h3 {
+    font-size: 19px;
+  }
+
+  .challenge p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .challenges-footer {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    padding-top: 24px;
+    max-width: 620px;
+  }
+
+  .challenges-footer strong {
+    color: var(--ink);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  /* ============ SCENARIO LIST ============ */
+  .scenario-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 32px;
+    display: grid;
+    gap: 16px;
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .scenario-list li {
+    padding-left: 24px;
+    position: relative;
+  }
+
+  .scenario-list li::before {
+    content: "\00b7";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .scenario-list strong {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .scenario-lens {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    max-width: 620px;
+  }
+
+  /* scenario — the upside block */
+  .scenario-impact {
+    margin-top: 36px;
+    padding: 24px 26px;
+    background: var(--paper-warm);
+    border-left: 2px solid var(--accent);
+    border-radius: 2px;
+    max-width: 620px;
+  }
+
+  .si-question {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+
+  .si-question em { font-style: italic; }
+
+  .si-formula {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+
+  .si-number {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 32px;
+    color: var(--accent);
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+  }
+
+  .si-note {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .si-note strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ============ ECONOMY COLUMNS ============ */
+  .economy-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    margin: 8px 0 28px;
+    padding: 28px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .economy-col {
+    display: grid;
+    gap: 12px;
+    align-content: start;
+  }
+
+  .economy-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 6px;
+  }
+
+  .economy-col.outcome .economy-label {
+    color: var(--accent);
+  }
+
+  .economy-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+
+  .economy-col ul li {
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .economy-col ul li::before {
+    content: "\00b7";
+    position: absolute;
+    left: 0;
+    color: var(--ink-mute);
+  }
+
+  .economy-col.outcome ul li::before {
+    color: var(--accent);
+  }
+
+  .closing-line {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 8px 0 0;
+    max-width: 620px;
+  }
+
+  .closing-line strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ============ THREE OPTIONS ============ */
+  .options {
+    display: grid;
+    gap: 26px;
+    margin: 8px 0 24px;
+  }
+
+  .option {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 18px;
+    align-items: baseline;
+    padding: 18px 22px;
+    border-left: 2px solid var(--rule);
+    background: transparent;
+  }
+
+  .option.open-question {
+    border-left-style: dashed;
+    border-left-color: var(--accent);
+    background: transparent;
+  }
+
+  .option.open-question .option-letter {
+    color: var(--accent);
+  }
+
+  .option.open-question h3 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .option-letter {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 26px;
+    color: var(--ink-mute);
+    line-height: 1;
+    padding-top: 2px;
+  }
+
+  .option h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+
+  .option ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 4px;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .option ul li {
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .option ul li::before {
+    content: "\00b7";
+    position: absolute;
+    left: 0;
+    color: var(--ink-mute);
+  }
+
+  .option .punchline {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 15.5px;
+    color: var(--accent);
+    margin-top: 8px;
+    letter-spacing: 0.005em;
+  }
+
+  .option-footnote {
+    font-size: 13.5px;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--ink-mute);
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    max-width: 620px;
+  }
+
+  /* ============ GANTT WRAP ============ */
+  .gantt-wrap {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 28px 24px;
+    margin: 8px 0 20px;
+    overflow: hidden;
+  }
+
+  .gantt-wrap svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .gantt-caption {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-top: 8px;
+    max-width: 640px;
+  }
+
+  .gantt-caption strong {
+    color: var(--ink);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  /* ============ CAUSAL CHAIN ============ */
+  .causal-chain {
+    display: grid;
+    margin: 8px 0 20px;
+  }
+
+  .cc-block {
+    padding: 26px 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .cc-block:first-child {
+    padding-top: 8px;
+    border-top: none;
+  }
+
+  .cc-block:last-child {
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .cc-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .cc-body {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink);
+    max-width: 640px;
+  }
+
+  .cc-body strong {
+    font-weight: 500;
+  }
+
+  .cc-leaves {
+    display: grid;
+    gap: 18px;
+  }
+
+  .cc-leaf {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 14px;
+  }
+
+  .cc-leaf .cc-marker {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--accent);
+    line-height: 1.1;
+  }
+
+  .cc-leaf-body strong {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--ink);
+  }
+
+  .cc-leaf-body .sub {
+    display: block;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+
+  .cc-close {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--ink);
+    max-width: 640px;
+  }
+
+  .cc-close strong {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ============ ACCOUNTABILITY MAP ============ */
+  .accountability-map {
+    border-top: 1px solid var(--rule);
+    margin: 8px 0 16px;
+  }
+
+  .accountability-map .am-row {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 32px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+
+  .accountability-map .am-target {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+
+  .accountability-map .am-serves {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .am-caveat {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13.5px;
+    color: var(--ink-mute);
+    margin: 16px 0 0;
+    max-width: 620px;
+  }
+
+  .accountability-map .am-row.am-open {
+    border-bottom-style: dashed;
+  }
+
+  .accountability-map .am-row.am-open .am-target {
+    color: var(--accent);
+  }
+
+  .accountability-map .am-row.am-open .am-serves {
+    color: var(--ink-mute);
+    font-style: italic;
+  }
+
+  /* ============ CASCADE BOXES + TAKEAWAY + TIME-BOX ============ */
+  .cascade {
+    display: grid;
+    grid-template-columns: 1fr 24px 1fr 24px 1fr;
+    gap: 10px;
+    align-items: stretch;
+    margin: 8px 0 32px;
+  }
+
+  .cascade-box {
+    padding: 22px 18px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    background: var(--paper-warm);
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+
+  .cascade-box strong {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .cascade-box .sub {
+    display: block;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  .cascade-arrow {
+    align-self: center;
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--accent);
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .takeaway {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 28px 32px;
+    border-radius: 2px;
+    margin: 28px 0;
+  }
+
+  .takeaway .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--highlight);
+    margin-bottom: 12px;
+  }
+
+  .takeaway p {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    line-height: 1.45;
+    font-weight: 400;
+  }
+
+  .takeaway p em {
+    font-style: italic;
+    color: var(--highlight);
+  }
+
+  .timebox {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    max-width: 640px;
+  }
+
+  .timebox strong {
+    font-style: normal;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ============ OFFER ============ */
+  .offer-modes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 8px 0 28px;
+  }
+
+  .offer-mode {
+    padding: 24px 22px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    background: var(--paper-warm);
+  }
+
+  .offer-mode .om-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .offer-mode .om-mode {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+    margin-bottom: 4px;
+  }
+
+  .offer-mode .om-sub {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 13.5px;
+    color: var(--ink-mute);
+    margin-bottom: 14px;
+  }
+
+  .offer-mode ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 6px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  .offer-mode ul li {
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .offer-mode ul li::before {
+    content: "\00b7";
+    position: absolute;
+    left: 0;
+    color: var(--ink-mute);
+  }
+
+  .offer-timeline {
+    padding: 24px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 28px;
+  }
+
+  .ot-heading {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 17px;
+    margin-bottom: 14px;
+    letter-spacing: -0.005em;
+  }
+
+  .ot-row {
+    display: grid;
+    grid-template-columns: 110px 100px 1fr;
+    gap: 18px;
+    font-size: 15px;
+    line-height: 1.55;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--rule);
+    align-items: baseline;
+  }
+
+  .ot-row:last-child {
+    border-bottom: none;
+  }
+
+  .ot-week {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+  }
+
+  .ot-phase {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .ot-what {
+    color: var(--ink-soft);
+  }
+
+  .offer-measure {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .offer-measure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 22px;
+    display: grid;
+    gap: 6px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+
+  .offer-measure-list li {
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .offer-measure-list li::before {
+    content: "\00b7";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .offer-footnote {
+    font-size: 13.5px;
+    font-style: italic;
+    color: var(--ink-mute);
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ============ SUMMARY METRICS (slide 09) ============ */
+  .summary-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin: 24px 0;
+    padding: 24px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sm-item {
+    text-align: center;
+  }
+
+  .sm-value {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 36px;
+    color: var(--accent);
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .sm-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-mute);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 720px) {
+    .page { padding: 48px 24px 80px; }
+    .masthead {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .masthead-right { text-align: left; }
+    .masthead h1 { font-size: 38px; }
+    .lede { font-size: 18px; }
+    .section-header {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+    .section-title { font-size: 24px; }
+
+    .challenges { grid-template-columns: 1fr; }
+    .challenge.featured { grid-column: auto; }
+
+    .economy-cols {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .accountability-map .am-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+
+    .options { gap: 18px; }
+    .option { padding: 16px 16px; }
+
+    .cascade {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .cascade-arrow {
+      transform: rotate(90deg);
+      padding: 4px 0;
+    }
+
+    .offer-modes {
+      grid-template-columns: 1fr;
+    }
+    .ot-row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+      padding-bottom: 10px;
+    }
+
+    .summary-metrics {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .takeaway { padding: 22px; }
+    .takeaway p { font-size: 17px; }
+
+    .colophon {
+      grid-template-columns: 1fr;
+    }
+    .colophon-right { text-align: left; }
+  }
+
+  @media print {
+    body { background: white; }
+    .page { padding: 0; max-width: 100%; }
+    section { page-break-after: always; margin-bottom: 0; padding-bottom: 24px; }
+    section:last-of-type { page-break-after: auto; }
+  }
+</style>
