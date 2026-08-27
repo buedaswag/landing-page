@@ -66,3 +66,11 @@ graph LR
     Deploy --> CDN
     Health -->|"every 30 min"| CDN
 ```
+
+## Backlog
+
+- **Upgrade astro 5 → 7 (breaking).** Astro 5 and its transitive `sharp` have open high-severity advisories (XSS, SSRF, libvips CVEs) whose only fix is `npm audit fix --force`, which installs astro@7.2.8 — a breaking change requiring a test pass. Until then the npm-audit gate is relaxed to `critical` in `tests/test_security.py`, `.github/workflows/security.yml`, and `.github/workflows/deploy.yml` (keep in sync). Restore it to `high` once the migration lands. Consider a package.json `override` to bump `sharp` on its own in the meantime.
+- Pre-push waits ~60s before failing — should fail fast (shorter timeout).
+- Make `git push` faster (parallelize tests, skip checks CI already runs).
+- `requirements.txt` hand-pins the full transitive dependency tree, so removing a direct dep (e.g. selenium) leaves orphaned sub-deps behind as dead weight and unnecessary attack surface. Fix: declare only direct deps in a `requirements.in` and generate a locked `requirements.txt` with `uv`/`pip-compile` (`--generate-hashes`), so transitive deps and version hashes are managed automatically.
+- Automate the security vulnerability scan: run it periodically (scheduled GitHub Action) and have it open — and, when checks pass, auto-merge — a PR with the fixes, à la Steve Yegge's auto-maintenance workflow for his open-source projects. Could combine Dependabot/`npm audit fix` with an agent-driven step plus auto-merge on green CI.

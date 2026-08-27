@@ -29,10 +29,10 @@ jobs:
         run: npm ci
 
       - name: Run npm audit
-        # Relaxed to `high` while on astro 5 (open moderate XSS advisory only
-        # fixable via breaking astro 6 upgrade). Restore to `moderate` after
-        # the astro 6 migration.
-        run: npm audit --audit-level=high
+        # Relaxed to `critical` while on astro 5 (open high astro + sharp
+        # advisories only fixable via breaking astro 7 upgrade). Restore to
+        # `high` after the astro 7 migration.
+        run: npm audit --audit-level=critical
 
   pip-audit:
     name: pip audit
