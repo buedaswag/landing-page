@@ -1,7 +1,10 @@
 .DS_Store
 
-# Claude Code: local settings + isolated worktrees (large, machine-specific)
-.claude/
+# Claude Code: local settings + isolated worktrees (large, machine-specific).
+# Shared config and plans are tracked; everything else under .claude/ is not.
+.claude/*
+!.claude/settings.json
+!.claude/plans/
 
 # Build output
 dist/

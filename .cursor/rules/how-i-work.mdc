@@ -20,6 +20,19 @@ docker compose down && docker compose up --build -d
 
 Then wait for http://localhost:4444 to respond before testing.
 
+This is enforced, not just documented: `scripts/claude_guard.py` is a `PreToolUse` hook that
+regex-matches every Bash command before it reaches the permission prompt. `npm install` is
+denied outright; any other `npm`/`npx`/`astro` call is rewritten to the README's
+`docker compose up --build` and runs instead. No prompt, no LLM call. Commands already
+containing `docker` pass through untouched.
+
+## Plans
+
+Plans live in `.claude/plans/`, one file per piece of work.
+
+A plan is one page. If it doesn't fit on one page, the problem isn't understood well enough to
+be described succinctly yet — go back and understand it, don't write more.
+
 ## TDD
 
 We first add the tests and security checks then we make the code to make them pass
