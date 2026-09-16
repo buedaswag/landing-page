@@ -4,6 +4,9 @@
 Subcommands:
     pre-commit   Ensure compose `web` is running + serving, run npm audit fix,
                  block if package(-lock).json changed, show remaining vulns.
+                 The lockfile check is the only blocking one -- a server that
+                 will not come up warns and returns 0, because at commit time
+                 the suite is advisory. See `.githooks/pre-commit`.
     pre-push     Rebuild and start compose `preview` cleanly.
     post-push    Switch back to dev mode (preview down, web up). Designed to
                  be called from the pre-push hook's EXIT trap so it runs even
@@ -115,12 +118,17 @@ def show_remaining_vulns():
         return
     for line in (r.stdout or "").splitlines():
         print(f"   {line}")
-    print("   Non-blocking — only high+ blocks commits. Track via Dependabot.")
+    print("   Non-blocking — only high+ blocks, and only at push. Track via Dependabot.")
 
 
 def pre_commit():
+    # Server-not-ready is an infrastructure problem, not a fact about this
+    # commit, so it no longer blocks -- the tests it would have run are
+    # advisory at commit time anyway (see .githooks/pre-commit). They will
+    # fail loudly a second later, and pre-push still rebuilds and blocks.
     if not ensure("web", ["docker", "compose", "up", "-d", "web"]):
-        return 1
+        print("Continuing without the server -- the suite below will fail.")
+        return 0
     npm_audit_fix()
     if lockfile_changed():
         print(

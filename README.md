@@ -66,15 +66,32 @@ chmod +x .githooks/pre-push
 git config core.hooksPath .githooks
 ```
 
+### Where the gates are
+
+A commit is a local save point. A push is the release boundary — `deploy.yml` fires on
+push to `main`. The gates follow that split:
+
+| Stage | Runs | Blocks? |
+| ----- | ---- | ------- |
+| pre-commit | `ensure_server.py pre-commit` — lockfile policy | **yes** — it's about this commit's content, and it's instant |
+| pre-commit | full `unittest` suite | no — prints a loud banner and exits 0 |
+| pre-push | full suite against a clean preview build | **yes** |
+| CI | full suite + security audits | **yes** |
+
+Blocking the commit caught no defect that pre-push and CI didn't already catch; it only
+grew the uncommitted worktree — harder to review, harder to bisect, nothing to roll back
+to, and worse still with several agents checkpointing into one tree. Relaxing it is *not*
+a licence for `--no-verify`: the aim is to leave no reason to reach for it.
+
 ## Deployment Pipeline
 
 ```mermaid
 graph LR
     subgraph local ["Local"]
         Dev["Dev server"] --> PreCommit["Pre-commit"]
-        PreCommit --> Commit
+        PreCommit -->|"tests report, never block"| Commit
         Commit --> PrePush["Pre-push"]
-        PrePush --> Push
+        PrePush -->|"tests block"| Push
     end
 
     subgraph ci ["CI (parallel)"]
@@ -114,4 +131,5 @@ graph LR
 - Make `git push` faster (parallelize tests, skip checks CI already runs).
 - `requirements.txt` hand-pins the full transitive dependency tree, so removing a direct dep (e.g. selenium) leaves orphaned sub-deps behind as dead weight and unnecessary attack surface. Fix: declare only direct deps in a `requirements.in` and generate a locked `requirements.txt` with `uv`/`pip-compile` (`--generate-hashes`), so transitive deps and version hashes are managed automatically.
 - Static check on worktree size after each LLM call, wired as a `PostToolUse`/`Stop` hook. Diff size (files changed + lines) accumulates silently across an agent session until the working tree is too big to review or revert cleanly. The hook would measure `git status --porcelain` / `git diff --stat` against a threshold and fire an alert into the transcript so the agent knows it's time to commit. Natural extension, and consistent with continuous delivery: once the threshold trips, commit automatically (small, frequent, always-green commits) rather than just warning — gated on the existing pre-commit checks passing, so a red tree alerts instead of committing.
+- **Cap unpushed commits (batch-size limit, ~3).** Now that pre-commit only reports, the pressure that kept batches small is gone — commits can pile up locally instead of the worktree piling up. Same inventory, one stage later. Fix: a static check counting `git rev-list --count @{u}..HEAD`; at the limit, stop and push, or push automatically. Auto-push is safe *because* pre-push blocks on red — a failing suite means the push simply doesn't happen, and you're told why. Open questions: which hook fires it (`post-commit` can't refuse a commit that already exists, so it's alert-or-push, not gate); what to do on no upstream or a detached HEAD; whether an auto-push on `main` is wanted given `deploy.yml` fires on it; and whether the limit should count commits or lines. Pairs with the worktree-size hook above — same idea (bound the unreviewed/unreleased batch), different stage.
 - Automate the security vulnerability scan: run it periodically (scheduled GitHub Action) and have it open — and, when checks pass, auto-merge — a PR with the fixes, à la Steve Yegge's auto-maintenance workflow for his open-source projects. Could combine Dependabot/`npm audit fix` with an agent-driven step plus auto-merge on green CI.
