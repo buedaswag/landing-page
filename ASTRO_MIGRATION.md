@@ -21,12 +21,14 @@ itself is atomic — dropping `tailwind()` leaves the site unstyled until
 - [x] **3. Per-route health tests** — `tests/test_page_health.py`. Every route
       renders, no error page, no blank shell; previously only `/` was checked.
 
-- [ ] **4. Read the upgrade guides** — free, zero-risk, and the only
-      unknown-unknown left. Findings can change every box below, so it goes first.
-      - Astro 6, then Astro 7.
-      - `@astrojs/mdx` 5 → 8.
-      *Done when:* anything found is written into box 7 as a numbered action, and
-      that edit is committed.
+- [x] **4. Read the upgrade guides** — Astro 6, Astro 7, `@astrojs/mdx` 5 → 8.
+      Four findings apply; they are actions 5–8 in box 7. Everything else in
+      those guides misses this repo: no adapter, no View Transitions, no
+      `Astro.glob`, no `src/fetch.ts`, no remark/rehype/recma plugins, no
+      Container API, no `@astrojs/db`, no i18n, no images through `astro:assets`.
+      Node 25.6.1 clears the ≥22.12 floor, and `content.config.ts` is already in
+      the v5 shape (new path, `loader`, no `type:`), so the Content Layer
+      migration v6 forces on legacy collections is a no-op here.
 
 - [ ] **5. Make `common.css` the Tailwind entry** — one commit; the parts do not
       work alone. A bare import 500s, because `@layer base` (line 57) is only
@@ -51,7 +53,7 @@ itself is atomic — dropping `tailwind()` leaves the site unstyled until
       applying them now would change rendering. They belong in box 7.
       `space-y-*` (15) changes selector only; verify after the bump, no rewrite.
 
-- [ ] **7. The bump** — one commit, four changes.
+- [ ] **7. The bump** — one commit, eight changes. 5–8 come from box 4.
       1. Deps: `astro` ^7.3.2, `@astrojs/mdx` ^8.0.1, `tailwindcss` ^4,
          `@tailwindcss/typography` ^0.5.16+. Add `@tailwindcss/vite`, remove
          `@astrojs/tailwind`. Node ≥22.12 already satisfied.
@@ -61,9 +63,28 @@ itself is atomic — dropping `tailwind()` leaves the site unstyled until
          `theme.extend`; only the typography registration matters, replaced below.
       4. `common.css`: replace the box-5 directives with `@import "tailwindcss";`
          and `@plugin "@tailwindcss/typography";` Apply the two renames from box 6.
+      5. `src/content.config.ts:1`: `z` is no longer exported from
+         `astro:content` — `import { z } from 'astro/zod'`. The schema itself is
+         Zod-4 clean: `.startsWith('/')` survives, and the two
+         `.optional().default(false)` defaults already match their output type.
+      6. `astro.config.mjs`: set `compressHTML: true`. The v7 default becomes
+         `'jsx'`, which strips whitespace between inline elements — this repo is
+         dense with `<strong>`/`<em>`/`<br>` runs inside prose, so keep the old
+         behaviour in the bump and change it deliberately later, if ever.
+      7. Nothing to do for the Rust compiler, recorded so it isn't re-argued: it
+         errors on unclosed non-void tags instead of repairing them, and a
+         tag-balance scan of all 20 `.astro` files is clean. The `<br>` runs in
+         the two FieldNotes components are void elements and stay legal.
+      8. Nothing to do for Sätteri either. It replaces remark/rehype as the
+         default Markdown pipeline and `@astrojs/mdx` 8 needs no config change,
+         but no plugins are configured for it to drop — so the risk is silent
+         rendering drift across the 41 `.mdx` posts, not a build break.
       *Done when:* `npm run build` passes, the full suite is green, and `prose` on
       `blog/[...slug]`, tables on `/privacy`, and the cookie banner
       (`CookieBanner.astro:33`, the one `define:vars` use) all look right.
+      *Watch:* v6 renders styles in declaration order rather than reversed, so
+      confirm `Layout.astro`'s `is:global` `:root` block still wins over the
+      `common.css` box 5 imports above it.
 
 ---
 
