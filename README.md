@@ -38,12 +38,14 @@ docker compose up --build -d
 
 ## Agent guardrails
 
-How to work in this repo — Docker-only, TDD, small batches — is written down in
-[`.cursor/rules/how-i-work.mdc`](.cursor/rules/how-i-work.mdc).
+How to work in this repo is in [`CLAUDE.md`](CLAUDE.md); how I work everywhere — plans, TDD,
+small batches — is in `~/.claude/CLAUDE.md`, mirrored in
+[`dev-setup`](https://github.com/buedaswag/dev-setup).
 
-The Docker-only part is enforced rather than trusted. `scripts/claude_guard.py` is a
-`PreToolUse` hook (registered in `.claude/settings.json`) that checks every Bash command an
-agent proposes, statically, before the permission prompt appears:
+The Docker-only part is enforced rather than trusted. The guard engine lives in `dev-setup`
+and is shared across projects; this repo supplies [`guard-rules.json`](guard-rules.json) and
+registers the hook in `.claude/settings.json`. It checks every Bash command an agent proposes,
+statically, before the permission prompt appears:
 
 | Command                              | What happens                                                    |
 | ------------------------------------ | --------------------------------------------------------------- |
@@ -52,8 +54,8 @@ agent proposes, statically, before the permission prompt appears:
 | anything containing `docker`         | Untouched.                                                        |
 
 No prompt to answer and no LLM in the loop — it's a regex table in one file. The run command at
-the top of this README is the source of truth; if it changes there, change `DOCKER_UP` in the
-script to match. Tests: `tests/test_claude_guard.py`.
+the top of this README is the source of truth; if it changes there, change `rewrite_to` in
+`guard-rules.json` to match. Tests live with the engine, in `dev-setup`.
 
 Plans for non-trivial work go in [`.claude/plans/`](.claude/plans/), one page each.
 

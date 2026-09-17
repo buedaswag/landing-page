@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$CLAUDE_PROJECT_DIR/scripts/claude_guard.py\""
+            "command": "python3 \"$HOME/ws/dev-setup/claude/guards/command_guard.py\" 2>/dev/null || true"
           }
         ]
       }
