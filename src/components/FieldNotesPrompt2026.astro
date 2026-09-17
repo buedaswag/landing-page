@@ -957,11 +957,21 @@
     font-weight: 500;
   }
 
+  /* This table is ruled by its own horizontal lines and nothing else. Now that
+     common.css reaches every page, `article table` and `article th, article td`
+     apply here too and the shorthand paints the three sides we never set. Say
+     `border: 0` first, then re-declare the one edge we want. */
   .pain-table {
     width: 100%;
+    border: 0;
     border-collapse: collapse;
     font-size: 14px;
     margin-bottom: 24px;
+  }
+
+  .pain-table thead th,
+  .pain-table tbody td {
+    border: 0;
   }
 
   .pain-table thead th {

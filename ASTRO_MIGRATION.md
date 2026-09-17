@@ -30,18 +30,18 @@ itself is atomic — dropping `tailwind()` leaves the site unstyled until
       the v5 shape (new path, `loader`, no `type:`), so the Content Layer
       migration v6 forces on legacy collections is a no-op here.
 
-- [ ] **5. Make `common.css` the Tailwind entry** — one commit; the parts do not
-      work alone. A bare import 500s, because `@layer base` (line 57) is only
-      legal in an entry file.
-      - Add `@tailwind base; @tailwind components; @tailwind utilities;` to the
-        top of `common.css`.
-      - Set `tailwind({ applyBaseStyles: false })` in `astro.config.mjs` so
-        Tailwind is not injected twice.
-      - Import `common.css` in `Layout.astro`.
-      *Done when:* site returns 200, CSS back to ~45KB, the 10 red
-      `test_common_css_reaches_every_page` subtests are green — **and** the visual
-      delta is reviewed. This activates ~80 lines of never-shipped CSS: site-wide
-      `body { color:#333 }`, table borders on `/privacy` and `FieldNotesPrompt2026`.
+- [x] **5. Make `common.css` the Tailwind entry** — directives at the top of
+      `common.css`, `tailwind({ applyBaseStyles: false })`, imported in
+      `Layout.astro`. All 10 subtests green, shared bundle 34KB (the ~45KB
+      estimate was high), suite green against a clean preview build.
+      The visual delta was one real regression, caught only by reading computed
+      styles — screenshots missed it. `FieldNotesPrompt2026`'s `.pain-table` is
+      ruled by horizontal lines alone and declares only `border-bottom`, so the
+      newly-live `article th, article td { border: 2px solid #333 }` shorthand
+      painted the other three sides; the component now says `border: 0` before
+      re-declaring the edge it wants. `/privacy` has no table — the plan was
+      wrong about that. The markdown tables that these rules were written for
+      are in `goldratt-evaporating-cloud` and `consulting-market-strategy`.
 
 - [ ] **6. Pin the v4-sensitive classes** — 34 uses that render identically in v3
       and v4, so v4 cannot change them silently. Counts are a floor: static scan
