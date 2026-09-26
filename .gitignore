@@ -9,6 +9,10 @@
 # that matter live in ~/.claude/settings.json, and the guard hook with them.
 .claude/*
 !.claude/plans/
+# The guard's rules must stay tracked: the engine exits clean when it finds no
+# rules file, so an untracked one would disarm the guard on a fresh clone with
+# nothing to show for it. Tracked, its removal at least turns up in a diff.
+!.claude/guard-rules.json
 
 # Build output
 dist/

@@ -13,7 +13,7 @@ import unittest
 from dataclasses import replace
 from pathlib import Path
 
-from scripts.pipeline_diagram import END, START, main, render
+from scripts.pipeline_diagram import OUTPUT, main, render
 from scripts.pipeline_scan import Group, Stage, Step, scan
 
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -22,21 +22,22 @@ README = PROJECT_ROOT / "README.md"
 
 class TestDiagramIsCurrent(unittest.TestCase):
 
-    def test_readme_matches_the_pipeline(self):
+    def test_diagram_matches_the_pipeline(self):
         """The whole point. Change a hook, regenerate, or this fails.
 
             python scripts/pipeline_diagram.py
         """
         self.assertEqual(
             main(["--check"]), 0,
-            "README.md's diagram no longer matches the hooks and workflows. "
-            "Run `python scripts/pipeline_diagram.py` and commit the result.",
+            f"{OUTPUT.name} no longer matches the hooks and workflows. Run "
+            "`python scripts/pipeline_diagram.py` and commit the result.",
         )
 
-    def test_markers_are_present(self):
-        text = README.read_text()
-        self.assertIn(START, text)
-        self.assertIn(END, text)
+    def test_the_readme_points_at_it(self):
+        """A generated file nobody links to is a file nobody reads."""
+        self.assertIn(
+            str(OUTPUT.relative_to(PROJECT_ROOT)), README.read_text()
+        )
 
     def test_check_notices_a_changed_pipeline(self):
         """Proof the check isn't vacuous: perturb the model, lose the match."""
@@ -50,7 +51,7 @@ class TestDiagramIsCurrent(unittest.TestCase):
             )
         ])
         self.assertNotEqual(current, perturbed)
-        self.assertNotIn(perturbed, README.read_text())
+        self.assertNotEqual(perturbed, OUTPUT.read_text())
 
 
 class TestRendering(unittest.TestCase):

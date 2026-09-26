@@ -178,6 +178,25 @@ class TestCommandExtraction(PipelineScanTestCase):
             ],
         )
 
+    def test_multiline_quoted_strings_are_not_commands(self):
+        """A commit message body is prose that happens to span lines.
+
+        `post-commit` writes a multi-line `-m "..."`; without this its message
+        showed up in the diagram as three more steps the pipeline runs.
+        """
+        write(self.hooks / "pre-commit", """
+            #!/bin/sh
+            # pipeline: advisory
+            git commit -m "Regenerate the diagram
+
+            python this line is the message, not a command."
+            echo done
+        """)
+        self.assertEqual(
+            self.stage("pre-commit").commands,
+            ['git commit -m "Regenerate the diagram', "echo done"],
+        )
+
     def test_heredoc_bodies_are_not_commands(self):
         """Prose inside a heredoc is text, not pipeline steps.
 

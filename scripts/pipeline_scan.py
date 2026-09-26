@@ -122,6 +122,9 @@ HEREDOC = re.compile(r"<<-?\s*(['\"]?)([A-Za-z_][A-Za-z0-9_]*)\1")
 # Control flow, not a step worth drawing.
 BARE_EXIT = re.compile(r"^exit\s+\d+$")
 
+# Where the shared guard engine looks for a project's rules, in its order.
+RULE_LOCATIONS = (".claude/guard-rules.json", "guard-rules.json")
+
 HOOK_GROUPS = {
     "pre-commit": Group.COMMIT,
     "commit-msg": Group.COMMIT,
@@ -153,27 +156,20 @@ def _agent(root: Path) -> list[Stage]:
     guarding, because the engine exits clean when it finds none. The map going
     quiet about stage 0 is the only signal there is.
     """
-    rules_path = root / "guard-rules.json"
-    if not rules_path.exists():
+    rules_path = next(
+        (root / name for name in RULE_LOCATIONS if (root / name).exists()), None
+    )
+    if rules_path is None:
         return []
 
-    rules = json.loads(rules_path.read_text())
-    target = rules.get("rewrite_to", "")
-    # Summarised, not quoted: the patterns are the guard's business, and a raw
-    # regex in a diagram box is noise. What a reader needs is that a gate
-    # exists here and where its rules are declared.
-    commands = []
-    if "deny" in rules:
-        commands.append("denies host package installs")
-    if "rewrite" in rules:
-        commands.append(f"rewrites npm/npx/astro to `{target}`")
-
+    # The file is referenced, not parsed. What it denies and rewrites is the
+    # guard's business and is already written out in the README; the diagram's
+    # job is to say a gate exists here and point at where it is declared.
     return [
         Stage(
             name="command guard",
             group=Group.AGENT,
-            source="guard-rules.json",
-            steps=[Step(command=c, blocks=True) for c in commands],
+            source=str(rules_path.relative_to(root)),
         )
     ]
 
@@ -229,11 +225,17 @@ def _steps(script: str, source: Path) -> list[Step]:
     steps = []
     mode = None
     closing = None
+    quoted = False
     for line in script.splitlines():
         stripped = line.strip()
         if closing is not None:
             if stripped == closing:
                 closing = None
+            continue
+        if quoted:
+            # Inside a multi-line quoted string -- a commit message body, not
+            # commands. Same rule as the heredoc above: text is not code.
+            quoted = line.count('"') % 2 == 0
             continue
 
         declared = ANNOTATION.match(stripped)
@@ -255,6 +257,7 @@ def _steps(script: str, source: Path) -> list[Step]:
                 f"or `# pipeline: advisory` above the command it describes."
             )
         steps.append(Step(command=stripped, blocks=mode == "blocks"))
+        quoted = stripped.count('"') % 2 == 1
     return steps
 
 
