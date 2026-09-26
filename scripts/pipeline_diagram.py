@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -32,6 +33,13 @@ from scripts.pipeline_scan import Group, Stage, scan  # noqa: E402
 # its file; the README links to it.
 OUTPUT = PROJECT_ROOT / "docs" / "pipeline.md"
 
+# The bare graph, for mermaid-cli to turn into the SVG the README embeds.
+# GitHub renders a ```mermaid fence natively, but only in the file that holds
+# it -- an image is the only way to show the diagram somewhere it isn't
+# written. So: one model, three artifacts, all from the same scan.
+SOURCE = PROJECT_ROOT / "docs" / "pipeline.mmd"
+IMAGE = PROJECT_ROOT / "docs" / "pipeline.svg"
+
 # The README gets a second, smaller rendering of the same model: the shape of
 # the pipeline, without the per-command detail. Two views, one scan, so they
 # cannot disagree. This one *is* a marked region inside hand-written prose,
@@ -39,6 +47,16 @@ OUTPUT = PROJECT_ROOT / "docs" / "pipeline.md"
 README = PROJECT_ROOT / "README.md"
 START = "<!-- pipeline:start -->"
 END = "<!-- pipeline:end -->"
+
+# Rendered in Docker so nothing is installed on the host -- the same rule the
+# command guard enforces for everything else here.
+MERMAID_CLI = [
+    "docker", "run", "--rm", "-v", f"{PROJECT_ROOT}:/data",
+    "minlag/mermaid-cli:latest",
+    "-i", f"/data/{SOURCE.relative_to(PROJECT_ROOT)}",
+    "-o", f"/data/{IMAGE.relative_to(PROJECT_ROOT)}",
+    "-b", "transparent",
+]
 
 HEADER = """# Deployment Pipeline
 
@@ -75,8 +93,15 @@ LIVE = "live"
 MAX_LABEL = 80
 
 
+def render_graph(stages: list[Stage]) -> str:
+    """The bare mermaid graph, no fence -- what mermaid-cli takes as input."""
+    fenced = render(stages)
+    start = fenced.index("```mermaid") + len("```mermaid\n")
+    return fenced[start : fenced.rindex("```")]
+
+
 def render(stages: list[Stage]) -> str:
-    """The full README block: banner, fence, graph."""
+    """The full document: header, fence, graph."""
     lines = ["```mermaid", "graph TD"]
     grouped = {group: [s for s in stages if s.group is group] for group in Group}
 
@@ -98,13 +123,22 @@ def render(stages: list[Stage]) -> str:
 
 
 def render_overview(stages: list[Stage]) -> str:
-    """One box per phase, naming what is in it. No commands.
+    """What goes in the README: the rendered image, then the shape in text.
 
-    The README's job is to show the shape and hand you the link; the detail
-    belongs in docs/pipeline.md, one click away.
+    The image is the full diagram, so the README shows everything without a
+    click. The small mermaid graph below it is the fallback -- anywhere the
+    SVG doesn't load, the shape still reads.
     """
+    image = IMAGE.relative_to(PROJECT_ROOT)
+    detail = OUTPUT.relative_to(PROJECT_ROOT)
+    head = (
+        f"[![Deployment pipeline]({image})]({detail})\n\n"
+        f"<sub>Generated from the hooks and workflows. "
+        f"Full detail: [`{detail}`]({detail}).</sub>\n"
+    )
+
     grouped = {group: [s for s in stages if s.group is group] for group in Group}
-    lines = ["```mermaid", "graph LR"]
+    lines = ["", "<details><summary>Shape, in text</summary>", "", "```mermaid", "graph LR"]
 
     present = [group for group in SPINE if grouped[group]]
     for group in present:
@@ -119,8 +153,8 @@ def render_overview(stages: list[Stage]) -> str:
     ]
     if any(s.deploys for s in stages) and present:
         lines.append(f"    {present[-1].value} --> {LIVE}([Live site])")
-    lines.append("```")
-    return "\n".join(lines)
+    lines += ["```", "", "</details>"]
+    return head + "\n".join(lines)
 
 
 def _node(stage: Stage) -> str:
@@ -244,22 +278,38 @@ def _readme_block(overview: str) -> str:
     return f"{START}\n{overview}\n{END}"
 
 
-def is_current(document: str, overview: str) -> bool:
+def is_current(document: str, overview: str, graph: str) -> bool:
     return (
         OUTPUT.exists()
         and OUTPUT.read_text() == document
+        and SOURCE.exists()
+        and SOURCE.read_text() == graph
+        and IMAGE.exists()
         and _readme_block(overview) in README.read_text()
     )
 
 
-def update(document: str, overview: str) -> bool:
-    """Write both renderings. Returns whether anything changed."""
+def render_image() -> None:
+    """Turn the .mmd into the SVG the README embeds, via Docker."""
+    subprocess.run(MERMAID_CLI, check=True, capture_output=True, text=True)
+
+
+def update(document: str, overview: str, graph: str) -> bool:
+    """Write every rendering. Returns whether anything changed."""
     changed = False
 
     if not OUTPUT.exists() or OUTPUT.read_text() != document:
         OUTPUT.parent.mkdir(parents=True, exist_ok=True)
         OUTPUT.write_text(document)
         changed = True
+
+    if not SOURCE.exists() or SOURCE.read_text() != graph:
+        SOURCE.parent.mkdir(parents=True, exist_ok=True)
+        SOURCE.write_text(graph)
+        changed = True
+
+    if changed or not IMAGE.exists():
+        render_image()
 
     text = README.read_text()
     block = _readme_block(overview)
@@ -292,10 +342,12 @@ def main(argv=None):
     args = parser.parse_args(argv)
 
     stages = scan(PROJECT_ROOT)
-    document, overview = render(stages), render_overview(stages)
+    document = render(stages)
+    overview = render_overview(stages)
+    graph = render_graph(stages)
 
     if args.check:
-        if is_current(document, overview):
+        if is_current(document, overview, graph):
             return 0
         print(
             "The pipeline diagram is out of date -- the hooks or workflows "
@@ -305,7 +357,7 @@ def main(argv=None):
         )
         return 1
 
-    print("Updated." if update(document, overview) else "Already current.")
+    print("Updated." if update(document, overview, graph) else "Already current.")
     return 0
 
 

@@ -85,6 +85,12 @@ Everything from a command an agent proposes to the live site. **Full detail, wit
 command each stage runs: [`docs/pipeline.md`](docs/pipeline.md).**
 
 <!-- pipeline:start -->
+[![Deployment pipeline](docs/pipeline.svg)](docs/pipeline.md)
+
+<sub>Generated from the hooks and workflows. Full detail: [`docs/pipeline.md`](docs/pipeline.md).</sub>
+
+<details><summary>Shape, in text</summary>
+
 ```mermaid
 graph LR
     agent["<b>Agent</b><br/>command guard"]
@@ -96,6 +102,8 @@ graph LR
     push --> ci
     ci --> live([Live site])
 ```
+
+</details>
 <!-- pipeline:end -->
 
 Both views are **generated from the pipeline itself** — the git hooks, the workflow files and

@@ -32,7 +32,7 @@ git diff --quiet -- README.md || {
 python scripts/pipeline_diagram.py >/dev/null
 
 # pipeline: advisory
-git add docs/pipeline.md README.md && git commit --no-verify --quiet -m "Regenerate the pipeline diagram
+git add docs/ README.md && git commit --no-verify --quiet -m "Regenerate the pipeline diagram
 
 The hooks or workflows changed. Written by .githooks/post-commit from
 scripts/pipeline_diagram.py -- do not edit the diagram by hand."
