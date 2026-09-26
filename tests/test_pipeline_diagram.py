@@ -13,7 +13,7 @@ import unittest
 from dataclasses import replace
 from pathlib import Path
 
-from scripts.pipeline_diagram import OUTPUT, main, render
+from scripts.pipeline_diagram import OUTPUT, main, render, render_overview
 from scripts.pipeline_scan import Group, Stage, Step, scan
 
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -38,6 +38,16 @@ class TestDiagramIsCurrent(unittest.TestCase):
         self.assertIn(
             str(OUTPUT.relative_to(PROJECT_ROOT)), README.read_text()
         )
+
+    def test_the_readme_carries_the_overview_diagram(self):
+        """The shape has to be visible without clicking through.
+
+        GitHub renders mermaid in any markdown file, so the README gets its
+        own smaller rendering of the same model rather than a picture of one.
+        """
+        text = README.read_text()
+        self.assertIn(render_overview(scan(PROJECT_ROOT)), text)
+        self.assertIn("```mermaid", text)
 
     def test_check_notices_a_changed_pipeline(self):
         """Proof the check isn't vacuous: perturb the model, lose the match."""

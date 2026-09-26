@@ -44,7 +44,7 @@ small batches — is in `~/.claude/CLAUDE.md`, mirrored in
 
 The Docker-only part is enforced rather than trusted. The guard engine lives in `dev-setup`
 and is shared across projects, registered as a `PreToolUse` hook in `~/.claude/settings.json`;
-this repo supplies only [`guard-rules.json`](guard-rules.json). It checks every Bash command an
+this repo supplies only [`.claude/guard-rules.json`](.claude/guard-rules.json). It checks every Bash command an
 agent proposes, statically, before the permission prompt appears:
 
 | Command                              | What happens                                                    |
@@ -81,10 +81,24 @@ a licence for `--no-verify`: the aim is to leave no reason to reach for it.
 
 ## Deployment Pipeline
 
-**→ [`docs/pipeline.md`](docs/pipeline.md)** — everything from a command an agent proposes
-to the live site.
+Everything from a command an agent proposes to the live site. **Full detail, with every
+command each stage runs: [`docs/pipeline.md`](docs/pipeline.md).**
 
-That file is **generated from the pipeline itself** — the git hooks, the workflow files and
+<!-- pipeline:start -->
+```mermaid
+graph LR
+    agent["<b>Agent</b><br/>command guard"]
+    commit["<b>git commit</b><br/>pre-commit, post-commit (1 of 2 gate)"]
+    push["<b>git push</b><br/>pre-push"]
+    ci["<b>CI — on push to main</b><br/>npm-audit, pip-audit, gitleaks, build-and-test, deploy (4 of 5 gate)"]
+    agent --> commit
+    commit --> push
+    push --> ci
+    ci --> live([Live site])
+```
+<!-- pipeline:end -->
+
+Both views are **generated from the pipeline itself** — the git hooks, the workflow files and
 `.claude/guard-rules.json` — by `scripts/pipeline_diagram.py`. None of it is written by hand,
 which is the point: the pipeline used to be described in five places and they drifted apart.
 
@@ -112,3 +126,8 @@ commit — but the drift check is a test, so pre-push and CI both refuse it.
 - Static check on worktree size after each LLM call, wired as a `PostToolUse`/`Stop` hook. Diff size (files changed + lines) accumulates silently across an agent session until the working tree is too big to review or revert cleanly. The hook would measure `git status --porcelain` / `git diff --stat` against a threshold and fire an alert into the transcript so the agent knows it's time to commit. Natural extension, and consistent with continuous delivery: once the threshold trips, commit automatically (small, frequent, always-green commits) rather than just warning — gated on the existing pre-commit checks passing, so a red tree alerts instead of committing.
 - **Cap unpushed commits (batch-size limit, ~3).** Now that pre-commit only reports, the pressure that kept batches small is gone — commits can pile up locally instead of the worktree piling up. Same inventory, one stage later. Fix: a static check counting `git rev-list --count @{u}..HEAD`; at the limit, stop and push, or push automatically. Auto-push is safe *because* pre-push blocks on red — a failing suite means the push simply doesn't happen, and you're told why. Open questions: which hook fires it (`post-commit` can't refuse a commit that already exists, so it's alert-or-push, not gate); what to do on no upstream or a detached HEAD; whether an auto-push on `main` is wanted given `deploy.yml` fires on it; and whether the limit should count commits or lines. Pairs with the worktree-size hook above — same idea (bound the unreviewed/unreleased batch), different stage.
 - Automate the security vulnerability scan: run it periodically (scheduled GitHub Action) and have it open — and, when checks pass, auto-merge — a PR with the fixes, à la Steve Yegge's auto-maintenance workflow for his open-source projects. Could combine Dependabot/`npm audit fix` with an agent-driven step plus auto-merge on green CI.
+- **`docs/pipeline.md` stops at deploy — carry it on into production monitoring.** The diagram ends where the release does, so nothing in it says how I find out the site is broken, or whether anyone visited. Two things to add, and they are not the same kind of work:
+  - **`health-check.yml`** — `curl` against `https://migueldias.eu` every 30 min, failing the run on any non-200. It is already a workflow file, so `scripts/pipeline_diagram.py` can reach it; it is missing because the generator walks the push→deploy chain and this one hangs off `schedule`, not `push`. Needs a second entry point, not a new data source.
+  - **GA4 visitor analytics** — `gtag` in `src/layouts/Layout.astro`, consent-gated by `CookieBanner.astro`. This one *is* a new data source: it lives in page source, not in a hook, a workflow, or `.claude/guard-rules.json`, so the generator has nothing to read it from today.
+
+  Keep the generated-not-hand-written property while doing it — a hand-added monitoring box is exactly the drift the generator exists to prevent.

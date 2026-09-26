@@ -9,9 +9,10 @@
 #
 # Two things keep it from misbehaving:
 #
-#   1. docs/pipeline.md is wholly machine-owned, so staging the whole file can
-#      never sweep in hand-written prose. That is why the diagram lives in its
-#      own file rather than inside README.md.
+#   1. It stages README.md, which is mostly hand-written -- `git add` takes the
+#      whole file, so it would sweep your in-progress prose into a commit
+#      labelled "regenerate the diagram". Hence the check below: if README has
+#      edits of its own, redraw but leave the committing to you.
 #   2. The follow-up commit skips the hooks. It is machine-generated content
 #      that --check has already verified, and running the suite again here
 #      would double every commit's cost. post-commit still fires for it, finds
@@ -21,10 +22,17 @@
 python scripts/pipeline_diagram.py --check >/dev/null 2>&1 && exit 0
 
 # pipeline: advisory
+git diff --quiet -- README.md || {
+    python scripts/pipeline_diagram.py >/dev/null
+    echo "Pipeline diagram redrawn, but README.md has edits of its own -- commit it yourself." >&2
+    exit 0
+}
+
+# pipeline: advisory
 python scripts/pipeline_diagram.py >/dev/null
 
 # pipeline: advisory
-git add docs/pipeline.md && git commit --no-verify --quiet -m "Regenerate the pipeline diagram
+git add docs/pipeline.md README.md && git commit --no-verify --quiet -m "Regenerate the pipeline diagram
 
 The hooks or workflows changed. Written by .githooks/post-commit from
 scripts/pipeline_diagram.py -- do not edit the diagram by hand."

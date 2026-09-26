@@ -17,7 +17,7 @@ graph TD
     end
     subgraph commit["git commit"]
         pre_commit["<div style='text-align:left'><b>pre-commit</b><br/><i>.githooks/pre-commit</i><br/>runs:<br/>• python scripts/ensure_server.py pre-commit #124;#124; exit 1<br/>◦ python -m unittest discover tests/ && exit 0</div>"]
-        post_commit["<div style='text-align:left'><b>post-commit</b><br/><i>.githooks/post-commit</i><br/>runs:<br/>◦ python scripts/pipeline_diagram.py --check >/dev/null 2>&1 && exit 0<br/>◦ python scripts/pipeline_diagram.py >/dev/null<br/>◦ git add docs/pipeline.md && git commit --no-verify --quiet -m 'Regenerate the p…<br/>◦ echo 'Pipeline diagram regenerated in a follow-up commit.' >&2</div>"]
+        post_commit["<div style='text-align:left'><b>post-commit</b><br/><i>.githooks/post-commit</i><br/>runs:<br/>◦ python scripts/pipeline_diagram.py --check >/dev/null 2>&1 && exit 0<br/>◦ git diff --quiet -- README.md #124;#124; #123;<br/>◦ python scripts/pipeline_diagram.py >/dev/null<br/>◦ echo 'Pipeline diagram redrawn, but README.md has edits of its own -- commit it…<br/>◦ #125;<br/>◦ python scripts/pipeline_diagram.py >/dev/null<br/>◦ git add docs/pipeline.md README.md && git commit --no-verify --quiet -m 'Regene…<br/>◦ echo 'Pipeline diagram regenerated in a follow-up commit.' >&2</div>"]
     end
     subgraph push["git push"]
         pre_push["<div style='text-align:left'><b>pre-push</b><br/><i>.githooks/pre-push</i><br/>runs:<br/>◦ trap 'python scripts/ensure_server.py post-push' EXIT<br/>• python scripts/ensure_server.py pre-push #124;#124; exit 1<br/>• PRE_PUSH=1 python -m unittest discover tests/</div>"]
