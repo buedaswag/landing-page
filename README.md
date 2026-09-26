@@ -99,28 +99,28 @@ hook, on a `# pipeline:` line next to the command it describes, and
 ```mermaid
 graph TD
     subgraph agent["Agent"]
-        command_guard["<b>command guard</b><br/><i>guard-rules.json</i>"]
+        command_guard["<div style='text-align:left'><b>command guard</b><br/><i>guard-rules.json</i></div>"]
     end
     subgraph commit["git commit"]
-        pre_commit["<b>pre-commit</b><br/><i>.githooks/pre-commit</i><br/>python scripts/ensure_server.py pre-commit &#124;&#124; exit 1<br/>python scripts/pipeline_diagram.py --fix-or-fail &#124;&#124; exit 1<br/>◦ python -m unittest discover tests/ &amp;&amp; exit 0"]
+        pre_commit["<div style='text-align:left'><b>pre-commit</b><br/><i>.githooks/pre-commit</i><br/>runs:<br/>• python scripts/ensure_server.py pre-commit &#124;&#124; exit 1<br/>• python scripts/pipeline_diagram.py --fix-or-fail &#124;&#124; exit 1<br/>◦ python -m unittest discover tests/ &amp;&amp; exit 0</div>"]
     end
     subgraph push["git push"]
-        pre_push["<b>pre-push</b><br/><i>.githooks/pre-push</i><br/>◦ trap 'python scripts/ensure_server.py post-push' EXIT<br/>python scripts/ensure_server.py pre-push &#124;&#124; exit 1<br/>PRE_PUSH=1 python -m unittest discover tests/"]
+        pre_push["<div style='text-align:left'><b>pre-push</b><br/><i>.githooks/pre-push</i><br/>runs:<br/>◦ trap 'python scripts/ensure_server.py post-push' EXIT<br/>• python scripts/ensure_server.py pre-push &#124;&#124; exit 1<br/>• PRE_PUSH=1 python -m unittest discover tests/</div>"]
     end
     subgraph ci["CI — on push to main"]
-        deploy_npm_audit["<b>npm-audit</b><br/><i>.github/workflows/deploy.yml</i><br/><i>reports, does not block</i>"]
-        deploy_pip_audit["<b>pip-audit</b><br/><i>.github/workflows/deploy.yml</i>"]
-        deploy_gitleaks["<b>gitleaks</b><br/><i>.github/workflows/deploy.yml</i>"]
-        deploy_build_and_test["<b>build-and-test</b><br/><i>.github/workflows/deploy.yml</i>"]
-        deploy_deploy["<b>deploy</b><br/><i>.github/workflows/deploy.yml</i>"]
+        deploy_npm_audit["<div style='text-align:left'><b>npm-audit</b><br/><i>.github/workflows/deploy.yml</i><br/><i>reports, does not block</i></div>"]
+        deploy_pip_audit["<div style='text-align:left'><b>pip-audit</b><br/><i>.github/workflows/deploy.yml</i></div>"]
+        deploy_gitleaks["<div style='text-align:left'><b>gitleaks</b><br/><i>.github/workflows/deploy.yml</i></div>"]
+        deploy_build_and_test["<div style='text-align:left'><b>build-and-test</b><br/><i>.github/workflows/deploy.yml</i></div>"]
+        deploy_deploy["<div style='text-align:left'><b>deploy</b><br/><i>.github/workflows/deploy.yml</i></div>"]
     end
     subgraph pr["CI — on pull request"]
-        security_npm_audit["<b>npm-audit</b><br/><i>.github/workflows/security.yml</i><br/><i>reports, does not block</i>"]
-        security_pip_audit["<b>pip-audit</b><br/><i>.github/workflows/security.yml</i>"]
-        security_gitleaks["<b>gitleaks</b><br/><i>.github/workflows/security.yml</i>"]
+        security_npm_audit["<div style='text-align:left'><b>npm-audit</b><br/><i>.github/workflows/security.yml</i><br/><i>reports, does not block</i></div>"]
+        security_pip_audit["<div style='text-align:left'><b>pip-audit</b><br/><i>.github/workflows/security.yml</i></div>"]
+        security_gitleaks["<div style='text-align:left'><b>gitleaks</b><br/><i>.github/workflows/security.yml</i></div>"]
     end
     subgraph scheduled["Scheduled"]
-        health_check_health_check["<b>health-check</b><br/><i>.github/workflows/health-check.yml</i>"]
+        health_check_health_check["<div style='text-align:left'><b>health-check</b><br/><i>.github/workflows/health-check.yml</i></div>"]
     end
     live(["Live site"])
     command_guard --> pre_commit

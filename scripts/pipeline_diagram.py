@@ -93,15 +93,20 @@ def _node(stage: Stage) -> str:
     The exception is a hook whose steps disagree about gating: that difference
     is the thing worth seeing, so it is drawn.
     """
+    # For a hook the name *is* the file name; for a CI job it is the job, and
+    # bolding the workflow file instead would title five boxes "deploy.yml".
     parts = [f"<b>{_escape(stage.name)}</b>", f"<i>{_escape(stage.source)}</i>"]
     if _mixed(stage):
+        parts.append("runs:")
         for step in stage.steps:
-            parts.append(
-                ("" if step.blocks else "◦ ") + _escape(_shorten(step.command))
-            )
+            bullet = "•" if step.blocks else "◦"
+            parts.append(f"{bullet} {_escape(_shorten(step.command))}")
     elif not stage.blocks:
         parts.append("<i>reports, does not block</i>")
-    return f'{_id(stage.key)}["{"<br/>".join(parts)}"]'
+    # Mermaid centres label lines; a list of shell commands only reads as a
+    # list when its bullets line up, hence the explicit left alignment.
+    body = "<br/>".join(parts)
+    return f'{_id(stage.key)}["<div style=\'text-align:left\'>{body}</div>"]'
 
 
 def _mixed(stage: Stage) -> bool:
