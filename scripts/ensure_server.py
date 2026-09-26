@@ -141,8 +141,13 @@ def pre_commit():
 
 
 def pre_push():
-    print("Stopping preview profile (clean slate for rebuild)...")
+    # `down` with no profile flag also stops `web`. Both services publish 4444,
+    # so leaving the dev server up made `preview` fail to bind -- the push then
+    # died after a 60s wait with "Service 'preview' not ready", which reads like
+    # a slow build rather than the port clash it is. post_push brings `web` back.
+    print("Stopping dev and preview containers (clean slate for rebuild)...")
     sh(["docker", "compose", "--profile", "preview", "down"])
+    sh(["docker", "compose", "down"])
     up_cmd = [
         "docker", "compose", "--profile", "preview",
         "up", "--build", "-d", "preview",
