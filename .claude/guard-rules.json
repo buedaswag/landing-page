@@ -10,6 +10,8 @@
     "reason": "Blocked by the command guard: never install packages on the host. Add the dependency to package.json (or requirements.txt for Python) and let the Dockerfile install it on the next `{rewrite_to}`. See CLAUDE.md."
   },
 
+  "batch": {"check": "python3 scripts/ensure_server.py pre-commit && python3 -m unittest discover tests/", "commit_at": 3, "push_at": 5},
+
   "rewrite": {
     "pattern": "(?:npm|npx|yarn|pnpm|astro)\\b",
     "reason": "Blocked by the command guard: this repo builds and runs in Docker only. Rewritten to the command in the README: `{rewrite_to}`. See CLAUDE.md."
