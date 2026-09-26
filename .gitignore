@@ -1,9 +1,13 @@
 .DS_Store
 
-# Claude Code: local settings + isolated worktrees (large, machine-specific).
-# Shared config and plans are tracked; everything else under .claude/ is not.
+# Claude Code. Only plans are tracked; everything else under .claude/ is not.
+#
+# Both settings files stay out. `settings.json` is the *team* file and
+# `settings.local.json` the personal one, but this is a one-person repo, so the
+# team file has no job -- and approving a permission writes to one of them,
+# which would otherwise turn every "don't ask again" into a commit. The rules
+# that matter live in ~/.claude/settings.json, and the guard hook with them.
 .claude/*
-!.claude/settings.json
 !.claude/plans/
 
 # Build output
