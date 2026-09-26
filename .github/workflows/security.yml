@@ -15,9 +15,6 @@ jobs:
   npm-audit:
     name: npm audit
     runs-on: ubuntu-latest
-    # Non-blocking: astro 5 advisories are now `critical` with no 5.x backport,
-    # so this job fails until the astro 7 migration lands. See README backlog.
-    continue-on-error: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -32,10 +29,7 @@ jobs:
         run: npm ci
 
       - name: Run npm audit
-        # Relaxed to `critical` while on astro 5 (open high astro + sharp
-        # advisories only fixable via breaking astro 7 upgrade). Restore to
-        # `high` after the astro 7 migration.
-        run: npm audit --audit-level=critical
+        run: npm audit --audit-level=high
 
   pip-audit:
     name: pip audit

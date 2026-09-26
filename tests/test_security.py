@@ -271,21 +271,11 @@ class TestDependencyAudit(unittest.TestCase):
 
     PROJECT_ROOT = Path(__file__).parent.parent
 
-    @unittest.skip(
-        "Astro 5 advisories escalated high -> critical (AVIF RCE, GHSA-26w7-cxv4-gfx2), "
-        "so the --audit-level=critical relaxation no longer covers them and there is no "
-        "5.x backport. Skipped until the astro 7 migration lands; see README backlog."
-    )
     def test_npm_audit_no_high_or_higher_vulnerabilities(self):
-        """npm audit must find zero critical vulnerabilities (mirrors CI npm-audit job).
-
-        Temporarily relaxed to `critical` while we sit on astro 5: astro 5 and
-        its transitive `sharp` have open high advisories whose only fix is a
-        breaking upgrade to astro 7. Tracked at the top of the README backlog;
-        bump this back to `high` once the astro 7 migration lands.
-        """
+        """npm audit must find zero high or critical vulnerabilities
+        (mirrors the CI npm-audit job)."""
         result = subprocess.run(
-            ["npm", "audit", "--audit-level=critical", "--json"],
+            ["npm", "audit", "--audit-level=high", "--json"],
             capture_output=True,
             text=True,
             cwd=self.PROJECT_ROOT,
