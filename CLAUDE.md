@@ -29,12 +29,14 @@ the command above, denying installs outright. See the README's "Agent guardrails
 python -m unittest discover tests/
 ```
 
-Tests in `tests/test_site.py`, run against the live Docker container using requests +
-BeautifulSoup. Use `data-*` attributes on HTML elements to make them testable.
+Tests run against the live Docker container using requests + BeautifulSoup. Use `data-*`
+attributes on HTML elements to make them testable.
 
-Commit often — the pre-commit hook runs the suite, so small batches mean it runs often.
+Commit often, in small batches.
 
-## CI
+## The pipeline
 
-GitHub Actions deploys to GitHub Pages on push to main. The pre-push hook runs the full suite;
-if tests fail, the push is blocked. A Docker rebuild happens on push.
+Described only by the README's generated diagram — don't restate it anywhere else.
+
+Adding a step to a git hook? Put `# pipeline: blocks` or `# pipeline: advisory` above it.
+The scan refuses to guess.

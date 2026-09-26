@@ -34,13 +34,19 @@ import yaml
 
 
 class Group(str, Enum):
-    """Phases of the path from keystroke to live site, in order."""
+    """Phases of the path from keystroke to live site, in order.
+
+    Workflow jobs are grouped by what *triggers* them rather than by which
+    file they sit in: `security.yml` and `deploy.yml` both define a job called
+    `npm-audit`, but only one of them is on the road to production.
+    """
 
     AGENT = "agent"
     COMMIT = "commit"
     PUSH = "push"
     CI = "ci"
-    LIVE = "live"
+    PR = "pr"
+    SCHEDULED = "scheduled"
 
 
 @dataclass
@@ -67,11 +73,28 @@ class Stage:
     steps: list[Step] = field(default_factory=list)
     needs: list[str] = field(default_factory=list)
     triggers: list[str] = field(default_factory=list)
+    uses: list[str] = field(default_factory=list)
     blocks: bool = True
+
+    @property
+    def key(self) -> str:
+        """Unique id for this stage, safe to use as a diagram node.
+
+        `name` alone is not unique: `npm-audit`, `pip-audit` and `gitleaks`
+        are each defined in both workflow files.
+        """
+        if self.group in (Group.CI, Group.PR, Group.SCHEDULED):
+            return f"{Path(self.source).stem}:{self.name}"
+        return self.name
 
     @property
     def commands(self) -> list[str]:
         return [step.command for step in self.steps]
+
+    @property
+    def deploys(self) -> bool:
+        """Whether this stage is what puts the site live."""
+        return any("deploy-pages" in action for action in self.uses)
 
 
 class UnannotatedHook(Exception):
@@ -136,11 +159,14 @@ def _agent(root: Path) -> list[Stage]:
 
     rules = json.loads(rules_path.read_text())
     target = rules.get("rewrite_to", "")
+    # Summarised, not quoted: the patterns are the guard's business, and a raw
+    # regex in a diagram box is noise. What a reader needs is that a gate
+    # exists here and where its rules are declared.
     commands = []
     if "deny" in rules:
-        commands.append(f"deny  /{rules['deny']['pattern']}/")
+        commands.append("denies host package installs")
     if "rewrite" in rules:
-        commands.append(f"rewrite  /{rules['rewrite']['pattern']}/  ->  {target}")
+        commands.append(f"rewrites npm/npx/astro to `{target}`")
 
     return [
         Stage(
@@ -247,22 +273,44 @@ def _workflows(root: Path) -> list[Stage]:
             # `continue-on-error` is a property of the job, so every step in it
             # shares the same answer -- unlike a hook, where it varies by line.
             gates = not job.get("continue-on-error", False)
+            steps = job.get("steps") or []
             stages.append(
                 Stage(
                     name=job_id,
-                    group=Group.CI,
+                    group=_group_for(triggers),
                     source=str(path.relative_to(root)),
                     steps=[
                         Step(command=step["run"].strip(), blocks=gates)
-                        for step in job.get("steps") or []
+                        for step in steps
                         if isinstance(step, dict) and step.get("run")
                     ],
                     needs=[needs] if isinstance(needs, str) else list(needs),
                     triggers=triggers,
+                    uses=[
+                        step["uses"]
+                        for step in steps
+                        if isinstance(step, dict) and step.get("uses")
+                    ],
                     blocks=gates,
                 )
             )
     return stages
+
+
+# What starts a workflow decides where it sits. Ordered: a workflow that runs
+# on push is on the road to production even if it also runs on a schedule.
+TRIGGER_GROUPS = [
+    ("push", Group.CI),
+    ("pull_request", Group.PR),
+    ("schedule", Group.SCHEDULED),
+]
+
+
+def _group_for(triggers: list[str]) -> Group:
+    for trigger, group in TRIGGER_GROUPS:
+        if trigger in triggers:
+            return group
+    return Group.CI
 
 
 def _triggers(document: dict) -> list[str]:

@@ -16,6 +16,12 @@
 # pipeline: blocks
 python scripts/ensure_server.py pre-commit || exit 1
 
+# The README's diagram is derived from the hooks and workflows, so a stale one
+# is never a judgement call: --fix-or-fail rewrites it and stops this commit
+# once, so the next one carries it.
+# pipeline: blocks
+python scripts/pipeline_diagram.py --fix-or-fail || exit 1
+
 # pipeline: advisory
 python -m unittest discover tests/ && exit 0
 

@@ -63,11 +63,17 @@ test below reads the scan rather than the rendered text.
 
 **Blocking is declared, not inferred.** Deciding statically whether a shell script fails its
 caller means analysing `exit`, `||`, `&&` in the general case — a rabbit hole that fails
-quietly, which is the exact failure mode being killed here. Each hook carries one line:
+quietly, which is the exact failure mode being killed here. A hook carries the line above
+the command it describes:
 
 ```sh
 # pipeline: advisory   (or: pipeline: blocks)
 ```
+
+**Per command, not per hook** — corrected during implementation. `pre-commit` gates on the
+lockfile policy and only reports the test suite; one flag per hook cannot say that, and
+picking either would restate the exact lie CLAUDE.md told. An annotation covers every
+command under it until the next one, so a hook that does one thing still needs one line.
 
 Workflows need no annotation — `continue-on-error: true` already says it declaratively.
 The annotation is one hand-written fact, so it can still lie; that's what the second test is for.
