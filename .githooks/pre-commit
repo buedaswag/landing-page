@@ -13,8 +13,10 @@
 # Still blocking: the lockfile policy in `ensure_server.py pre-commit`. That one
 # is about the content of *this* commit (audit fix rewrote package-lock.json and
 # you have not staged it), it is deterministic, and it costs nothing.
+# pipeline: blocks
 python scripts/ensure_server.py pre-commit || exit 1
 
+# pipeline: advisory
 python -m unittest discover tests/ && exit 0
 
 # Advisory red goes stale fast -- a failure that scrolls past on every commit

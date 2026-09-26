@@ -1,4 +1,8 @@
 #!/bin/sh
+# pipeline: advisory
+# Cleanup, not a gate: switches back to dev mode however the push ends.
 trap 'python scripts/ensure_server.py post-push' EXIT
+
+# pipeline: blocks
 python scripts/ensure_server.py pre-push || exit 1
 PRE_PUSH=1 python -m unittest discover tests/
