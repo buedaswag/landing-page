@@ -96,7 +96,7 @@ graph LR
     agent["<b>Agent</b><br/>command guard"]
     commit["<b>git commit</b><br/>pre-commit, post-commit (1 of 2 gate)"]
     push["<b>git push</b><br/>pre-push"]
-    ci["<b>CI — on push to main</b><br/>npm-audit, pip-audit, gitleaks, build-and-test, deploy (4 of 5 gate)"]
+    ci["<b>CI — on push to main</b><br/>npm-audit, pip-audit, gitleaks, build-and-test, deploy"]
     agent --> commit
     commit --> push
     push --> ci

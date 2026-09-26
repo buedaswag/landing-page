@@ -23,14 +23,14 @@ graph TD
         pre_push["<div style='text-align:left'><b>pre-push</b><br/><i>.githooks/pre-push</i><br/>runs:<br/>◦ trap 'python scripts/ensure_server.py post-push' EXIT<br/>• python scripts/ensure_server.py pre-push #124;#124; exit 1<br/>• PRE_PUSH=1 python -m unittest discover tests/</div>"]
     end
     subgraph ci["CI — on push to main"]
-        deploy_npm_audit["<div style='text-align:left'><b>npm-audit</b><br/><i>.github/workflows/deploy.yml</i><br/><i>reports, does not block</i></div>"]
+        deploy_npm_audit["<div style='text-align:left'><b>npm-audit</b><br/><i>.github/workflows/deploy.yml</i></div>"]
         deploy_pip_audit["<div style='text-align:left'><b>pip-audit</b><br/><i>.github/workflows/deploy.yml</i></div>"]
         deploy_gitleaks["<div style='text-align:left'><b>gitleaks</b><br/><i>.github/workflows/deploy.yml</i></div>"]
         deploy_build_and_test["<div style='text-align:left'><b>build-and-test</b><br/><i>.github/workflows/deploy.yml</i></div>"]
         deploy_deploy["<div style='text-align:left'><b>deploy</b><br/><i>.github/workflows/deploy.yml</i></div>"]
     end
     subgraph pr["CI — on pull request"]
-        security_npm_audit["<div style='text-align:left'><b>npm-audit</b><br/><i>.github/workflows/security.yml</i><br/><i>reports, does not block</i></div>"]
+        security_npm_audit["<div style='text-align:left'><b>npm-audit</b><br/><i>.github/workflows/security.yml</i></div>"]
         security_pip_audit["<div style='text-align:left'><b>pip-audit</b><br/><i>.github/workflows/security.yml</i></div>"]
         security_gitleaks["<div style='text-align:left'><b>gitleaks</b><br/><i>.github/workflows/security.yml</i></div>"]
     end
@@ -51,5 +51,5 @@ graph TD
     deploy_build_and_test --> deploy_deploy
     deploy_deploy --> live
     classDef reports stroke-dasharray: 4 3
-    class post_commit,deploy_npm_audit,security_npm_audit reports
+    class post_commit reports
 ```
