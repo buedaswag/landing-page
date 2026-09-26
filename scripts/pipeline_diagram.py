@@ -52,7 +52,12 @@ TITLES = {
 SPINE = [Group.AGENT, Group.COMMIT, Group.PUSH, Group.CI]
 
 LIVE = "live"
-MAX_LABEL = 44
+
+# Long enough that the hooks' commands fit whole. Shorter and it truncates the
+# end of the line, which is exactly where the meaning is: `ensure_server.py
+# post-push` and `ensure_server.py pre-push` differ only in the part a short
+# cut-off throws away.
+MAX_LABEL = 80
 
 
 def render(stages: list[Stage]) -> str:

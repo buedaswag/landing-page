@@ -102,10 +102,10 @@ graph TD
         command_guard["<b>command guard</b><br/><i>guard-rules.json</i>"]
     end
     subgraph commit["git commit"]
-        pre_commit["<b>pre-commit</b><br/><i>.githooks/pre-commit</i><br/>python scripts/ensure_server.py pre-commit …<br/>python scripts/pipeline_diagram.py --fix-or…<br/>◦ python -m unittest discover tests/ &amp;&amp; exit 0"]
+        pre_commit["<b>pre-commit</b><br/><i>.githooks/pre-commit</i><br/>python scripts/ensure_server.py pre-commit &#124;&#124; exit 1<br/>python scripts/pipeline_diagram.py --fix-or-fail &#124;&#124; exit 1<br/>◦ python -m unittest discover tests/ &amp;&amp; exit 0"]
     end
     subgraph push["git push"]
-        pre_push["<b>pre-push</b><br/><i>.githooks/pre-push</i><br/>◦ trap 'python scripts/ensure_server.py post-…<br/>python scripts/ensure_server.py pre-push &#124;&#124;…<br/>PRE_PUSH=1 python -m unittest discover test…"]
+        pre_push["<b>pre-push</b><br/><i>.githooks/pre-push</i><br/>◦ trap 'python scripts/ensure_server.py post-push' EXIT<br/>python scripts/ensure_server.py pre-push &#124;&#124; exit 1<br/>PRE_PUSH=1 python -m unittest discover tests/"]
     end
     subgraph ci["CI — on push to main"]
         deploy_npm_audit["<b>npm-audit</b><br/><i>.github/workflows/deploy.yml</i><br/><i>reports, does not block</i>"]
