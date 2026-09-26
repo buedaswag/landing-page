@@ -4,7 +4,7 @@ Astro 5 has open critical advisories with no 5.x backport. The npm-audit gate is
 silenced until this lands.
 
 **One ticked box = one commit.** Where work cannot be split without breaking the
-site, it is one box with several actions inside. Updated 2026-09-16.
+site, it is one box with several actions inside. Updated 2026-09-26.
 
 **Rules:** anything verifiable under astro 5 happens before the bump. The bump
 itself is atomic — dropping `tailwind()` leaves the site unstyled until
@@ -22,26 +22,14 @@ itself is atomic — dropping `tailwind()` leaves the site unstyled until
       renders, no error page, no blank shell; previously only `/` was checked.
 
 - [x] **4. Read the upgrade guides** — Astro 6, Astro 7, `@astrojs/mdx` 5 → 8.
-      Four findings apply; they are actions 5–8 in box 7. Everything else in
-      those guides misses this repo: no adapter, no View Transitions, no
-      `Astro.glob`, no `src/fetch.ts`, no remark/rehype/recma plugins, no
-      Container API, no `@astrojs/db`, no i18n, no images through `astro:assets`.
-      Node 25.6.1 clears the ≥22.12 floor, and `content.config.ts` is already in
-      the v5 shape (new path, `loader`, no `type:`), so the Content Layer
-      migration v6 forces on legacy collections is a no-op here.
+      Four findings apply, now actions 5–8 in box 7. Everything else misses this
+      repo, and Node and `content.config.ts` are already v6-shaped.
 
-- [x] **5. Make `common.css` the Tailwind entry** — directives at the top of
-      `common.css`, `tailwind({ applyBaseStyles: false })`, imported in
-      `Layout.astro`. All 10 subtests green, shared bundle 34KB (the ~45KB
-      estimate was high), suite green against a clean preview build.
-      The visual delta was one real regression, caught only by reading computed
-      styles — screenshots missed it. `FieldNotesPrompt2026`'s `.pain-table` is
-      ruled by horizontal lines alone and declares only `border-bottom`, so the
-      newly-live `article th, article td { border: 2px solid #333 }` shorthand
-      painted the other three sides; the component now says `border: 0` before
-      re-declaring the edge it wants. `/privacy` has no table — the plan was
-      wrong about that. The markdown tables that these rules were written for
-      are in `goldratt-evaporating-cloud` and `consulting-market-strategy`.
+- [x] **5. Make `common.css` the Tailwind entry** — reaches all 10 routes; shared
+      bundle 34KB, not the ~45KB estimated. Activating it regressed
+      `FieldNotesPrompt2026`'s `.pain-table`, fixed in the same commit.
+      `/privacy` has no table — the real markdown tables are in
+      `goldratt-evaporating-cloud` and `consulting-market-strategy`.
 
 - [ ] **6. Pin the v4-sensitive classes** — 34 uses that render identically in v3
       and v4, so v4 cannot change them silently. Counts are a floor: static scan
@@ -80,11 +68,22 @@ itself is atomic — dropping `tailwind()` leaves the site unstyled until
          but no plugins are configured for it to drop — so the risk is silent
          rendering drift across the 41 `.mdx` posts, not a build break.
       *Done when:* `npm run build` passes, the full suite is green, and `prose` on
-      `blog/[...slug]`, tables on `/privacy`, and the cookie banner
+      `blog/[...slug]`, the markdown tables, and the cookie banner
       (`CookieBanner.astro:33`, the one `define:vars` use) all look right.
       *Watch:* v6 renders styles in declaration order rather than reversed, so
       confirm `Layout.astro`'s `is:global` `:root` block still wins over the
       `common.css` box 5 imports above it.
+
+---
+
+## Refactoring along the way
+
+Small things worth fixing while passing through. Each is its own commit, taken
+when the next box touches that code — not batched up at the end.
+
+- **Assert computed styles, not markup.** Box 5's regression was invisible to
+  screenshots and to all 69 tests; only `getComputedStyle` caught it. Every
+  *done when* that says "looks right" is this same hole, box 7's included.
 
 ---
 
