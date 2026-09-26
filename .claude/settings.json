@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(python -m unittest:*)",
-      "Bash(python3 -m unittest:*)",
-      "Bash(tail:*)"
-    ]
-  }
-}
