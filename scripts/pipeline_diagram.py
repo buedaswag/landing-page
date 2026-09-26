@@ -178,15 +178,22 @@ def _id(key: str) -> str:
 # `"` ends a quoted label; `|` delimits edge labels; braces open a node shape.
 # All four appear in real commands here (`curl -w "%{http_code}"`, the guard's
 # alternations), so none of them can be left raw.
+# Mermaid's own escapes (#nn;), NOT HTML entities. GitHub decodes `&quot;`
+# back into a real `"` before the parser sees it, which ends the quoted label
+# early -- that broke the whole graph. A double quote is replaced rather than
+# escaped, because nothing in a command label needs to be one.
+# `&` is first: escaping it after the others would mangle their output.
 ESCAPES = {
-    "&": "&amp;",
-    '"': "&quot;",
-    "<": "&lt;",
-    ">": "&gt;",
-    "|": "&#124;",
-    "{": "&#123;",
-    "}": "&#125;",
+    '"': "'",
+    "<": "#60;",
+    "|": "#124;",
+    "{": "#123;",
+    "}": "#125;",
 }
+# Deliberately NOT escaped: `&` and `>`. Both are harmless inside a label, and
+# escaping them turned `>/dev/null 2>&1` into `#62;/dev/null 2#62;#38;1`, which
+# is not a thing anyone can read. A diagram nobody can read has failed whatever
+# else it gets right.
 
 
 def _escape(text: str) -> str:

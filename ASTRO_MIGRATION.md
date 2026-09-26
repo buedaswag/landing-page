@@ -31,12 +31,15 @@ itself is atomic — dropping `tailwind()` leaves the site unstyled until
       `/privacy` has no table — the real markdown tables are in
       `goldratt-evaporating-cloud` and `consulting-market-strategy`.
 
-- [ ] **6. Pin the v4-sensitive classes** — 34 uses that render identically in v3
-      and v4, so v4 cannot change them silently. Counts are a floor: static scan
-      of `class="…"`, misses `class:list` and dynamic classes.
-      - `border` → `border-gray-200` (18 uses; else defaults to `currentColor`).
-      - `flex-shrink-0` → `shrink-0` (16 uses; removed in v4).
-      *Done when:* nothing moved visually and the suite is green.
+- [x] **6. Pin the v4-sensitive classes** — half the box was a no-op and the
+      other half is done. Both are now asserted in `test_styling.py`.
+      - `border`: **nothing to change.** All 26 border-width utilities already
+        name a colour, so v4's `currentColor` default cannot reach any of them.
+        The planned `border` → `border-gray-200` was also the wrong rewrite:
+        the two are disjoint utilities (`border-width` vs `border-color`), so
+        replacing rather than adding would have removed the border outright.
+      - `flex-shrink-0` → `shrink-0`: 16 uses across 4 files, confirmed to
+        compile to `flex-shrink:0` in both dev and the production build.
       *Not here:* `rounded` (3) and `shadow-sm` (2) are v3↔v4 scale renames —
       applying them now would change rendering. They belong in box 7.
       `space-y-*` (15) changes selector only; verify after the bump, no rewrite.
@@ -84,6 +87,10 @@ when the next box touches that code — not batched up at the end.
 - **Assert computed styles, not markup.** Box 5's regression was invisible to
   screenshots and to all 69 tests; only `getComputedStyle` caught it. Every
   *done when* that says "looks right" is this same hole, box 7's included.
+  Box 6 got as far as the CSS text can go without a browser; closing the rest
+  needs a real engine in the suite, and there is none — the selenium
+  dependencies in `requirements.txt` are orphaned, the package itself is gone.
+  Decide before box 7 whether that harness is worth it. *Mine to call.*
 
 ---
 

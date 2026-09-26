@@ -16,11 +16,11 @@ graph TD
         command_guard["<div style='text-align:left'><b>command guard</b><br/><i>.claude/guard-rules.json</i></div>"]
     end
     subgraph commit["git commit"]
-        pre_commit["<div style='text-align:left'><b>pre-commit</b><br/><i>.githooks/pre-commit</i><br/>runs:<br/>• python scripts/ensure_server.py pre-commit &#124;&#124; exit 1<br/>◦ python -m unittest discover tests/ &amp;&amp; exit 0</div>"]
-        post_commit["<div style='text-align:left'><b>post-commit</b><br/><i>.githooks/post-commit</i><br/>runs:<br/>◦ python scripts/pipeline_diagram.py --check &gt;/dev/null 2&gt;&amp;1 &amp;&amp; exit 0<br/>◦ python scripts/pipeline_diagram.py &gt;/dev/null<br/>◦ git add docs/pipeline.md &amp;&amp; git commit --no-verify --quiet -m &quot;Regenerate the p…<br/>◦ echo &quot;Pipeline diagram regenerated in a follow-up commit.&quot; &gt;&amp;2</div>"]
+        pre_commit["<div style='text-align:left'><b>pre-commit</b><br/><i>.githooks/pre-commit</i><br/>runs:<br/>• python scripts/ensure_server.py pre-commit #124;#124; exit 1<br/>◦ python -m unittest discover tests/ && exit 0</div>"]
+        post_commit["<div style='text-align:left'><b>post-commit</b><br/><i>.githooks/post-commit</i><br/>runs:<br/>◦ python scripts/pipeline_diagram.py --check >/dev/null 2>&1 && exit 0<br/>◦ python scripts/pipeline_diagram.py >/dev/null<br/>◦ git add docs/pipeline.md && git commit --no-verify --quiet -m 'Regenerate the p…<br/>◦ echo 'Pipeline diagram regenerated in a follow-up commit.' >&2</div>"]
     end
     subgraph push["git push"]
-        pre_push["<div style='text-align:left'><b>pre-push</b><br/><i>.githooks/pre-push</i><br/>runs:<br/>◦ trap 'python scripts/ensure_server.py post-push' EXIT<br/>• python scripts/ensure_server.py pre-push &#124;&#124; exit 1<br/>• PRE_PUSH=1 python -m unittest discover tests/</div>"]
+        pre_push["<div style='text-align:left'><b>pre-push</b><br/><i>.githooks/pre-push</i><br/>runs:<br/>◦ trap 'python scripts/ensure_server.py post-push' EXIT<br/>• python scripts/ensure_server.py pre-push #124;#124; exit 1<br/>• PRE_PUSH=1 python -m unittest discover tests/</div>"]
     end
     subgraph ci["CI — on push to main"]
         deploy_npm_audit["<div style='text-align:left'><b>npm-audit</b><br/><i>.github/workflows/deploy.yml</i><br/><i>reports, does not block</i></div>"]

@@ -201,6 +201,52 @@ class TestBorderColoursArePinned(StylingTestCase):
                     )
 
 
+class TestShrinkUtilityIsMigrated(StylingTestCase):
+    """Guard for ASTRO_MIGRATION.md box 6.
+
+    `flex-shrink-0` is Tailwind 2's spelling, kept as an alias through v3 and
+    removed in v4. `shrink-0` is the v3/v4 name and compiles identically in
+    both, so the rename is safe to make before the bump — and once made, it
+    must not come back.
+    """
+
+    # The routes whose markup carries the utility.
+    PAGES_USING_SHRINK = [
+        "/contact",
+        "/workshops/intro",
+        "/workshops/facilitation",
+    ]
+
+    def test_removed_alias_is_absent_from_markup(self):
+        """`flex-shrink-0` compiles to nothing under v4 — a silent layout
+        change, since a flex item that may shrink simply starts shrinking."""
+        for path in PAGES:
+            with self.subTest(page=path):
+                response = requests.get(
+                    urljoin(self.BASE_URL, path), timeout=10
+                )
+                self.assertNotIn(
+                    "flex-shrink-0", response.text,
+                    f"{path} still uses `flex-shrink-0`, which Tailwind 4 "
+                    f"removed — use `shrink-0`",
+                )
+
+    def test_shrink_utility_compiles(self):
+        """The rename is only safe if the new name produces the declaration.
+        Asserted on the routes that use it, not the whole site."""
+        for path in self.PAGES_USING_SHRINK:
+            with self.subTest(page=path):
+                css = self.normalize(self.css_for(path))
+                # Prefix, no closing brace: dev keeps the trailing semicolon
+                # (`{flex-shrink:0;}`) and the build strips it. Same reason
+                # SENTINELS above is matched without one.
+                self.assertTrue(
+                    ".shrink-0{flex-shrink:0" in css,
+                    f"{path} uses `shrink-0` but it compiles to no rule "
+                    f"({len(css)} bytes of CSS searched)",
+                )
+
+
 if __name__ == "__main__":
     import unittest
     unittest.main()

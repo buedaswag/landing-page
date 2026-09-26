@@ -86,6 +86,17 @@ class TestRendering(unittest.TestCase):
                 for char in '"|{}':
                     self.assertNotIn(char, label)
 
+    def test_labels_use_mermaid_escapes_not_html_entities(self):
+        """GitHub decodes `&quot;` into a real quote before mermaid parses it.
+
+        That ends the label early and takes the whole graph down with it, so
+        the escapes have to be mermaid's own `#nn;` form. This is a regression
+        test for a diagram that rendered as "Unable to render rich display".
+        """
+        for label in re.findall(r'\["(.*?)"\]', self.diagram):
+            with self.subTest(label=label[:40]):
+                self.assertNotRegex(label, r"&[a-zA-Z]+;|&#\d+;")
+
     def test_non_blocking_stages_are_marked(self):
         """`npm-audit` is `continue-on-error`, and the diagram must show it."""
         reporting = [s for s in self.stages if not s.blocks]
