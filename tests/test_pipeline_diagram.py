@@ -108,12 +108,21 @@ class TestRendering(unittest.TestCase):
                 self.assertNotRegex(label, r"&[a-zA-Z]+;|&#\d+;")
 
     def test_non_blocking_stages_are_marked(self):
-        """`npm-audit` is `continue-on-error`, and the diagram must show it."""
+        """A stage that never blocks must be drawn dashed.
+
+        post-commit only reports. CI jobs marked `continue-on-error` would too,
+        and also carry a "reports, does not block" line; none do today.
+        """
         reporting = [s for s in self.stages if not s.blocks]
         self.assertTrue(reporting, "expected at least one reporting stage")
+        dashed = re.search(r"^\s*class (.+) reports$", self.diagram, re.M)
+        self.assertIsNotNone(dashed, "no stage is drawn dashed")
+        ids = dashed.group(1).split(",")
         for stage in reporting:
             with self.subTest(stage=stage.key):
-                self.assertIn("reports, does not block", self.diagram)
+                self.assertIn(
+                    stage.key.replace(":", "_").replace("-", "_"), ids
+                )
 
     def test_the_deploy_reaches_the_live_site(self):
         deploying = [s for s in self.stages if s.deploys]
