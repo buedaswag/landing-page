@@ -36,13 +36,13 @@ PAGES = [
 ]
 
 # Tailwind utilities used in the markup of every page, paired with the
-# declaration they must compile to. Chosen to be stable across Tailwind 3
-# and 4 so the migration doesn't have to rewrite this list.
+# declaration they must compile to, in Tailwind 4's output. Theme-backed
+# utilities compile to a variable, not a literal (`font-weight:700` in v3).
 SENTINELS = {
     "flex": "display:flex",
     "grid": "display:grid",
     "hidden": "display:none",
-    "font-bold": "font-weight:700",
+    "font-bold": "--tw-font-weight:var(--font-weight-bold)",
     "text-center": "text-align:center",
 }
 
@@ -218,17 +218,24 @@ class TestShrinkUtilityIsMigrated(StylingTestCase):
     ]
 
     def test_removed_alias_is_absent_from_markup(self):
-        """`flex-shrink-0` compiles to nothing under v4 — a silent layout
-        change, since a flex item that may shrink simply starts shrinking."""
+        """`flex-shrink-0` is the deprecated spelling; `shrink-0` is canonical.
+
+        Tailwind 4.3 still compiles the alias, so this is hygiene, not a
+        layout guard. Reads `class` attributes, not raw HTML: in dev the
+        inlined stylesheet is part of the page text.
+        """
         for path in PAGES:
             with self.subTest(page=path):
                 response = requests.get(
                     urljoin(self.BASE_URL, path), timeout=10
                 )
-                self.assertNotIn(
-                    "flex-shrink-0", response.text,
-                    f"{path} still uses `flex-shrink-0`, which Tailwind 4 "
-                    f"removed — use `shrink-0`",
+                soup = BeautifulSoup(response.text, "html.parser")
+                users = [
+                    el.name for el in soup.find_all(class_="flex-shrink-0")
+                ]
+                self.assertEqual(
+                    users, [],
+                    f"{path} still uses `flex-shrink-0` — use `shrink-0`",
                 )
 
     def test_shrink_utility_compiles(self):
@@ -245,6 +252,73 @@ class TestShrinkUtilityIsMigrated(StylingTestCase):
                     f"{path} uses `shrink-0` but it compiles to no rule "
                     f"({len(css)} bytes of CSS searched)",
                 )
+
+
+class TestTailwind4(StylingTestCase):
+    """Guard for ASTRO_MIGRATION.md box 7.
+
+    Every test above is written to hold under both Tailwind 3 and 4, so none
+    of them can tell whether the bump happened. `@layer theme` is emitted only
+    by v4 — v3 has no theme layer, it inlines values into each rule.
+    """
+
+    def test_css_is_compiled_by_tailwind_4(self):
+        for path in PAGES:
+            with self.subTest(page=path):
+                css = self.normalize(self.css_for(path))
+                self.assertTrue(
+                    "@layertheme" in css,
+                    f"{path} has no `@layer theme` — its CSS was not "
+                    f"compiled by Tailwind 4 ({len(css)} bytes searched)",
+                )
+
+
+class TestScaleRenames(StylingTestCase):
+    """Guard for ASTRO_MIGRATION.md box 7, the half of box 6 that had to wait.
+
+    Tailwind 4 shifted the radius and shadow scales down one step: v3's
+    `rounded` is v4's `rounded-sm`, v3's `shadow-sm` is v4's `shadow-xs`.
+    Keeping the old names across the bump silently changes how they render.
+    """
+
+    def test_rounded_sm_keeps_the_v3_rounded_radius(self):
+        html = requests.get(urljoin(self.BASE_URL, "/privacy"), timeout=10).text
+        self.assertTrue("rounded-sm" in html, "/privacy lost its `rounded-sm` code chips")
+        css = self.normalize(self.css_for("/privacy"))
+        self.assertTrue(
+            ".rounded-sm{border-radius:var(--radius-sm)" in css
+            and re.search(r"--radius-sm:0?\.25rem", css),
+            "`rounded-sm` must resolve to 0.25rem, v3's bare `rounded`",
+        )
+
+    def test_shadow_xs_compiles(self):
+        html = requests.get(
+            urljoin(self.BASE_URL, "/workshops/intro"), timeout=10
+        ).text
+        self.assertTrue(
+            "shadow-xs" in html, "/workshops/intro lost its `shadow-xs` cards"
+        )
+        css = self.normalize(self.css_for("/workshops/intro"))
+        self.assertTrue(
+            ".shadow-xs{" in css,
+            "`shadow-xs` (v3's `shadow-sm`) compiles to no rule",
+        )
+
+
+class TestButtonCursor(StylingTestCase):
+    """Guard for ASTRO_MIGRATION.md box 7.
+
+    Tailwind 3's preflight gave `button` a pointer cursor; Tailwind 4's does
+    not. The cookie banner and the mobile menu toggle are plain buttons, so
+    without a base rule they stop looking clickable.
+    """
+
+    def test_buttons_get_a_pointer_cursor(self):
+        css = self.normalize(self.css_for("/"))
+        self.assertTrue(
+            re.search(r"(^|[{},])button[^{]*\{[^}]*cursor:pointer", css),
+            "no base rule gives `button` a pointer cursor",
+        )
 
 
 if __name__ == "__main__":

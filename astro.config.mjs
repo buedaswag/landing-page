@@ -1,9 +1,14 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  // common.css is the Tailwind entry: it carries the @tailwind directives, so
-  // the integration must not inject a second copy of preflight.
-  integrations: [tailwind({ applyBaseStyles: false }), mdx()],
+  integrations: [mdx()],
+  // common.css is the Tailwind entry (`@import "tailwindcss"`); the Vite
+  // plugin compiles it. There is no Astro integration for Tailwind 4.
+  vite: { plugins: [tailwindcss()] },
+  // Astro 7 defaults to 'jsx', which strips newline whitespace between inline
+  // elements and glues words together in prose. Keep the old behaviour;
+  // tests/test_inline_whitespace.py guards it.
+  compressHTML: true,
 });

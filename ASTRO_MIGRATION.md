@@ -4,7 +4,7 @@ Astro 5 has open critical advisories with no 5.x backport. The npm-audit gate is
 silenced until this lands.
 
 **One ticked box = one commit.** Where work cannot be split without breaking the
-site, it is one box with several actions inside. Updated 2026-09-26.
+site, it is one box with several actions inside. Updated 2026-09-27.
 
 **Rules:** anything verifiable under astro 5 happens before the bump. The bump
 itself is atomic — dropping `tailwind()` leaves the site unstyled until
@@ -44,7 +44,17 @@ itself is atomic — dropping `tailwind()` leaves the site unstyled until
       applying them now would change rendering. They belong in box 7.
       `space-y-*` (15) changes selector only; verify after the bump, no rewrite.
 
-- [ ] **7. The bump** — one commit, eight changes. 5–8 come from box 4.
+- [x] **7. The bump** — one commit. Landed astro 7.3.5, tailwind 4.3.3;
+      `npm audit` clean. Four things the plan missed, fixed in the same commit:
+      - v4 scans the whole repo, not the old `content` glob — it compiled
+        `flex-shrink-0` out of this file. `source("../")` limits it to `src/`.
+      - v4's preflight drops the pointer cursor on buttons (cookie banner,
+        mobile menu). Base rule in `common.css`, asserted.
+      - Host `node_modules` was being `COPY`'d over the image's Linux install.
+        Added `.dockerignore`.
+      - Box 6 was wrong that v4 removed `flex-shrink-0`: 4.3 still compiles it.
+        The rename stands as hygiene.
+      Original plan, as executed:
       1. Deps: `astro` ^7.3.2, `@astrojs/mdx` ^8.0.1, `tailwindcss` ^4,
          `@tailwindcss/typography` ^0.5.16+. Add `@tailwindcss/vite`, remove
          `@astrojs/tailwind`. Node ≥22.12 already satisfied.
@@ -90,7 +100,9 @@ when the next box touches that code — not batched up at the end.
   Box 6 got as far as the CSS text can go without a browser; closing the rest
   needs a real engine in the suite, and there is none — the selenium
   dependencies in `requirements.txt` are orphaned, the package itself is gone.
-  Decide before box 7 whether that harness is worth it. *Mine to call.*
+  **Decided 2026-09-27:** Playwright driving the local Chrome
+  (`channel="chrome"`), in `requirements.txt` like the other test deps; CI
+  uses the runner's Chrome. Next commit after box 7.
 
 ---
 
