@@ -155,49 +155,49 @@ class TestCommonStylesheet(StylingTestCase):
                 )
 
 
-class TestBorderPinning(StylingTestCase):
-    """Guards for ASTRO_MIGRATION.md box 6.
+# A border-WIDTH utility: `border`, `border-2`, `border-t`, `border-b-2`.
+# A border-COLOR utility: `border-gray-200`, `border-white/40`,
+# `border-[rgb(67,97,238)]/15`, `border-transparent`.
+BORDER_WIDTH = re.compile(r"^border(?:-[xytrbl])?(?:-\d+)?$")
+BORDER_COLOR = re.compile(
+    r"^border-(?:[xytrbl]-)?"
+    r"(?:[a-z]+-\d{2,3}|white|black|transparent|current|inherit|\[.+\])"
+    r"(?:/\d+)?$"
+)
+
+
+class TestBorderColoursArePinned(StylingTestCase):
+    """Guard for ASTRO_MIGRATION.md box 6.
 
     Tailwind 3's preflight defaults every border-color to `#e5e7eb`
-    (gray-200); Tailwind 4 defaults it to `currentColor`. So bare `border`
-    renders grey today and would silently turn text-coloured after the bump.
-    Box 6 pins the colour ahead of the bump, while v3 and v4 still agree.
+    (gray-200); Tailwind 4 defaults it to `currentColor`. A border utility
+    with no colour beside it therefore renders grey today and would silently
+    become text-coloured after the bump — on a blue-on-white site, a visible
+    change that no other test would catch.
 
-    The trap is that `border` and `border-gray-200` are disjoint utilities —
-    the first sets only `border-width`, the second only `border-color`.
-    Pinning by *replacing* the class removes the border. These tests are what
-    make that loud, because nothing else in the suite would notice.
+    Every border in the codebase already names its colour, so this starts
+    green and stays green. It is here to stop a bare `border` being added
+    between now and the bump, when v3 and v4 stop agreeing.
     """
 
-    def test_border_utilities_stay_disjoint(self):
-        """The premise of the test below. If Tailwind ever merges these two
-        utilities, the pin stops being necessary and this stops being true."""
-        css = self.normalize(self.css_for("/"))
-        self.assertTrue(
-            ".border{border-width:1px}" in css,
-            "`.border` no longer compiles to just a width — re-check whether "
-            "box 6's pin is still the right shape",
-        )
-
-    def test_pinned_borders_keep_their_width(self):
-        """`border-gray-200` must never appear without `border` beside it.
-
-        Colour without width is an invisible border: the element loses its
-        outline and every existing test still passes.
-        """
+    def test_no_border_width_without_a_colour(self):
+        """Read rendered HTML, not source: this also covers `class:list`."""
         for path in PAGES:
             with self.subTest(page=path):
                 response = requests.get(
                     urljoin(self.BASE_URL, path), timeout=10
                 )
                 soup = BeautifulSoup(response.text, "html.parser")
-                for el in soup.find_all(class_="border-gray-200"):
+                for el in soup.find_all(class_=True):
                     classes = el.get("class", [])
-                    self.assertIn(
-                        "border", classes,
-                        f"{path} has an element pinned to `border-gray-200` "
-                        f"with no width utility beside it, so it renders no "
-                        f"border at all: class=\"{' '.join(classes)}\"",
+                    if not any(BORDER_WIDTH.match(c) for c in classes):
+                        continue
+                    self.assertTrue(
+                        any(BORDER_COLOR.match(c) for c in classes),
+                        f"{path}: <{el.name}> sets a border width with no "
+                        f"border colour, so Tailwind 4 will render it in "
+                        f"currentColor instead of gray-200 — "
+                        f"class=\"{' '.join(classes)}\"",
                     )
 
 
