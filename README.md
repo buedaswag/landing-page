@@ -53,9 +53,9 @@ agent proposes, statically, before the permission prompt appears:
 | any other `npm` / `npx` / `astro`    | Rewritten to `docker compose up --build -d` and run.              |
 | anything containing `docker`         | Untouched.                                                        |
 
-No prompt to answer and no LLM in the loop — it's a regex table in one file. The run command at
-the top of this README is the source of truth; if it changes there, change `rewrite_to` in
-`guard-rules.json` to match. Tests live with the engine, in `dev-setup`.
+No prompt to answer and no LLM in the loop — it's a regex table in one file. `rewrite_to` is the run
+command at the top of this README, which is what [`docker-compose.yml`](docker-compose.yml)
+runs. Tests live with the engine, in `dev-setup`.
 
 Plans for non-trivial work go in [`.claude/plans/`](.claude/plans/), one page each.
 
